@@ -1,0 +1,10 @@
+#+SETUPFILE: ~/Documents/style.setup
+* DONE <2019-09-09 Mon> 太茶
+  CLOSED: [2019-09-10 Tue 09:42]
+** 深圳FTP
+*** DONE 代码
+    CLOSED: [2019-09-09 Mon 18:11]
+**** DONE 支付流水
+     CLOSED: [2019-09-09 Mon 18:10]
+**** DONE 销售流水
+     CLOSED: [2019-09-09 Mon 18:10]

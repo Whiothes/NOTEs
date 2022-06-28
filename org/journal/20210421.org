@@ -1,0 +1,10 @@
+* <2021-04-21 12:46>
+** DONE 联调记录
+   CLOSED: [2021-04-21 Wed 12:46]
+*** DONE Catalog
+    CLOSED: [2021-04-21 Wed 12:46]
+    * 缺 (目前手动添加数据库便 INVITE 通过)
+*** DONE INVITE
+    CLOSED: [2021-04-21 Wed 12:46]
+    * SIP: 通过
+    * 缺少步骤: SDP 发送后调用 媒体服务器 push 接口

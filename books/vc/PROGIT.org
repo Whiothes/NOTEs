@@ -1,0 +1,165 @@
+
+#+SETUPFILE: ~/Documents/style.setup
+
+#+OPTIONS: num:nil
+#+LATEX_HEADER: \usepackage{ulem}
+#+LATEX_HEADER: \usepackage{ctex}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+title: PRO GIT (2e)
+* Getting Started
+* Git Basics
+** Getting a Git Repository
+   - Initializing a Repository in an Existing Directory
+     #+begin_src sh
+       cd /home/user/my_project;
+       git init;
+       git add *.c
+       git add  .
+       git commit -m "initial project version"
+     #+end_src
+   - Cloning an Existing Repository
+   #+begin_src sh
+     git clone https://github.com/libgit2/libgit2
+     # or
+     git clone https://github.com/libgit2/libgit2 mylibgit
+   #+end_src
+** Recording Changes to the Repository
+   - Checking the Status of Your Files
+     #+begin_src sh
+       git status
+     #+end_src
+   - Tracking New files
+   #+begin_src sh
+     git add README
+   #+end_src
+   - Staging Modified Files
+     #+begin_src sh
+       git add README.md
+       git status
+       ...
+       Changes to be committed:
+       ...
+     #+end_src
+   - Short Status
+     #+begin_src sh
+       git status -s
+     #+end_src
+   - Ignoring Files
+     *.gitignore
+     - ignore balnk lines and started with ~#~ lines
+     - glob patterns work
+     - avoid recursivity: start patterns with a forward slash(/)
+     - specify a directory: end patterns with a forward slash(/)
+     - negate a pattern by starting with (!)
+       #+begin_src conf
+         # ignore all .a files
+         ,*.a
+
+         # but do trace lib.a
+         !lib.a
+
+         #only ignore the TODO file in the current directory, not subdir/TODO
+         /TODO
+
+         # ignore all files in the build/ direcotry
+         build/
+
+         # ignore doc/notes.txt, but not doc/server/arch.txt
+         doc/*.txt
+
+         # ignore all .pdf files in the doc/ directory and any of the subdirectories
+         doc/**/*.pdf
+       #+end_src
+     - TIP
+       [[https://github.com/github/gitignore][github/gitignore: A collection of useful .gitignore templates]]
+     - NOTE
+       additional .gitignore files in subdirectories are gave prioty work
+   - View Your Staged and Unstaged Changes
+     #+begin_src sh
+       git diff                        # for unstaged
+       git diff --staged               # for staged
+     #+end_src
+     - NOTE \\
+       ~git difftool~ for *GUI* tools
+   - Committing Your Changes
+
+     #+begin_src sh
+       git config --global core.editor # set EDITOR for first using
+       git commit
+     #+end_src
+   - Skipping the Staging Area
+     #+begin_src sh
+       git commit -a -m "message"      # to skip step: git add
+     #+end_src
+   - Removing Files
+     #+begin_src sh
+       git rm
+     #+end_src
+   - Moving Files
+     #+begin_src sh
+       git mv
+     #+end_src
+** Viewing the Commit History
+   #+begin_src sh
+     git log
+   #+end_src
+
+   using ~-p~ show the differences (the patch output) introduced in each commit. \\
+   using ~-2~ to show only the last two entries.
+   #+begin_src sh
+     git log -p -2
+   #+end_src
+
+   using ~--pretty~ change output formats
+   #+begin_src sh
+     git log --pretty=online
+   #+end_src
+
+   /options for/ ~git log --pretty=format~
+   | Options | Description of Output     |
+   |---------+---------------------------|
+   | =%H=    | Commit hash               |
+   | =%h=    | Abbreviated commit hash   |
+   | =%T=    | Tree hash                 |
+   | =%t=    | Abbreviated tree hash     |
+   | =%P=    | Parent hashes             |
+   | =%p=    | abbreviated parent hashes |
+   | =%an=   | author name               |
+   | =%ae=   | author email              |
+   | =%ad=   | author date               |
+   | =%ar=   | author date, relative     |
+   | =%cn=   | commiter name             |
+   | =%ce=   | commiter email            |
+   | =%cd=   | commiter date             |
+   | =5cr=   | commiter date, relative   |
+   | =%s=    | subject                   |
+
+   /options to limit the output of/ ~git log~
+   | Options             | Description of Output                                                   |
+   |---------------------+-------------------------------------------------------------------------|
+   | =-<n>=              | show only the last n commits                                            |
+   | =--since, --after=  | limit the commits to those made after the specified date (*YYYY-mm-dd*) |
+   | =--until, --before= | in contary of the beyond                                                |
+   | =--author=          | author limit                                                            |
+   | =--commmiter=       | commiter limit                                                          |
+   | =--grep=            | commits message with =grep=                                             |
+   | =-s=                | commits adding or removing code matching the string                     |
+** Undoing Things
+   #+begin_src sh
+  git commit --amend
+   #+end_src
+   *NOTE*:
+   It’s important to understand that when you’re amending your last commit, you’re not so much fixing it as replacing it entirely with a new, improved commit that pushes the old commit out of the way and puts the new commit in its place. Effectively, it’s as if the previous commit never happened, and it won’t show up in your repository history.
+
+   The obvious value is to make minor improvements to last commits
+** Unstaging a Staged File
+   #+begin_src sh
+     git reset HEAD CONTRIBUTING.md
+   #+end_src
+
+* Git Branching
+* Git on the Server
+* Distributed Git
+* Github
+* Git tools

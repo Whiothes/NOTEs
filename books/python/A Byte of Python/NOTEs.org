@@ -1,0 +1,1200 @@
+#+SETUPFILE: ~/Documents/style.setup
+#+LATEX_HEADER: \usepackage{ulem}
+#+LATEX_HEADER: \usepackage{ctex}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+title: A Byte of Python
+
+* Basics
+** Comments
+   #+begin_src python
+     print('Hello world')
+   #+end_src
+** Literal Constants
+** Numbers
+** Strings
+** Single Quote
+   specify strings using single quotes \\
+   *All white space i.e. spaces and tabs, within the quotes, are preserved as-is.*
+** Double Quotes
+   The same as single quote
+** Tripple Quotes
+   specify multi-line strings using tripple quotes - (''' or """).
+   #+begin_src python
+     '''This is a multi-line string. This is the first line.
+     Thie is the second line.
+     "What's your name?, " I asked.
+     He said "Bond, James Bond."
+     '''
+   #+end_src
+** Strings Are Immutable
+** The format method
+   #+begin_src python
+     age = 20
+     name = 'Swaroop'
+
+     print('{0} was {1} years old when he wrote this book'.format(name, age))
+     print('Why is {0} playing with that python?'.format(name))
+   #+end_src
+*** How It Works
+    ~{0}~ corresponding to the first variable \\
+    ~{1}~ corresponding to the second variable
+
+    Numbers are optional:
+    #+begin_src python
+      age = 20
+      name = 'Swaroop'
+
+      print('{} was {} years old when he wrote this book'.format(name, age))
+      print('Why is {} playing with that python? '.format(name))
+    #+end_src
+
+    More detailed specifications:
+    #+begin_src python
+      # decimal (.) precision of 3 for float '0.333'
+      print('{0:.3f}'.format(1.0/3))
+      # fill with underscores (_) with the text centered
+      # (^) to 11 width '___hello___'
+      print('{0:_^11}'.format('hello'))
+      # keyword-based 'Swaroop wrote A Byte of Python'
+      print('{name} wrote {book}'.format(name='Swaroop', book='A Byte of Python'))
+    #+end_src
+
+    ~print~ specify the ~end~ with blank
+    #+begin_src python :exports both :results output
+      print('a', end='')
+      print('b', end='')
+    #+end_src
+
+    ~end~ with a space:
+    #+begin_src python :exports both :results output
+      print('a', end=' ')
+      print('b', end=' ')
+      print('c')
+    #+end_src
+
+** Escape Sequences
+   #+begin_src python
+     "This is the first sentence. \
+     This is the second sentence."
+   #+end_src
+   is equivalent to
+   #+begin_src python
+     "This is the first sentence. This is the second sentence."
+   #+end_src
+** Raw String
+   some strings where no special processing such as escape
+   #+begin_src python
+     r"Newlines are indicated by \n"
+   #+end_src
+** Variable
+** Indentifier Naming
+   - The first character must be one of {A-Za-z_}
+   - The rest: {A-Za-z0-9_}
+   - case-sensitive
+   - valid: ~i~, ~name_2_3~; invalid: ~2thigns~, ~this is space out~, ~my-name~, ~>a1b2_c3~
+** Data Types
+** Object
+   #+begin_quote
+   *Note for Object Oriented Programming users:*
+
+   Python is strongly object-oriented in the sense that everything is an object including numbers, strings and functions
+   #+end_quote
+** Logical And Physical Line
+   #+begin_src python
+     i = 5
+     print(i)
+   #+end_src
+   is effectively same as
+   #+begin_src python
+     i = 5;
+     print(i);
+   #+end_src
+   also same as
+   #+begin_src python
+     i = 5; print(i);
+   #+end_src
+   and same as
+   #+begin_src python
+     i = 5; print(i)
+   #+end_src
+** Indentation
+   wrong indentation can give rise to errors.
+   #+begin_src python exports:both :results output
+     i = 5
+     # Error below! Notice a signle space at the start of the line
+       print('Value is ', i)
+       print ('I repeat, the value is ', i)
+   #+end_src
+
+   #+begin_src python
+     File "<stdin>", line 5
+     print('Value is ', i)
+     ^
+     IndentationError: unexpected indent
+   #+end_src
+
+   #+begin_quote
+   *How to indent*
+
+   Use four spaces for indentation. This is the official Python language recommendation. \\
+   Good editors will automatically do this for you. \\
+   Make sure you use a consistent number of spaces for indentation, \\
+   otherwise your program will not run or will have unexpected behavior.
+   #+end_quote
+
+   #+begin_quote
+   *Note to static language programmers*
+
+   Python will always use indentation for blocks and will never use braces.\\
+   Run from __future__ import braces to learn more.
+   #+end_quote
+** Summary
+* Operators and Expressions
+** Operators
+   #+begin_src python
+     + - * / % << >> & | ^ ~ < > <= >= == != not and or
+   #+end_src
+   - ** (power)
+     - Returns x to the power of y
+     - ~3 ** 4~ gives ~81~ (i.e. ~3 * 3 * 3 * 3~)
+** Shortcut for math operation and assignment
+   #+begin_src python
+     a = 2
+     a = a * 3
+   #+end_src
+   can be written as:
+   #+begin_src python
+     a = 2
+     a *= 3
+   #+end_src
+** Evaluation Order
+   - ~lambda~: Lambda Expression
+** Changing the Order of Evaluation
+   ~()~
+** Associativity
+   operators with the same precedence left to right manner
+   ~2 + 3 + 4~ is evaluated as ~(2 + 3) + 4~
+** Expressions
+   #+begin_src python :results output :exports both
+     length = 5
+     breadth = 2
+
+     area = length * breadth
+     print('Area is', area)
+     print('Perimeter is ', 2 * (length + breadth))
+   #+end_src
+
+   #+RESULTS:
+   : Area is 10
+   : Perimeter is  14
+* Control Flow
+** The ~if~ statement
+   ~if elif else~
+** The ~while~ statement
+** The ~for~ loop
+   iterators over a sequence of objects
+   #+begin_src python
+     for i in range(0, 5):
+         print(i);                       # i -= 1 is not work
+   #+end_src
+   #+begin_quote
+   Note for C/C++/Java/C# Programmers
+
+   The Python for loop is radically different from the C/C++ ~for~ loop.
+   C# programmers will note that the ~for~ loop in Python is similar to the foreach loop in C#.
+   Java programmers will note that the same is similar to ~for (int i : IntArray)~ in Java 1.5.
+
+   In C/C++, if you want to write ~for (int i = 0; i < 5; i++)~, then in Python you write just ~for i in range(0, 5)~
+   #+end_quote
+** The ~break~ statement
+   [[file:break.py::while True:][break.py]]
+   #+begin_src python :results output :exports both
+     while True:
+         s = input('Enter something: ')
+         if s == 'quit':
+             break
+         print('Length of the strings is', len(s))
+         print('Done')
+   #+end_src
+
+** The ~continue~ statement
+   [[file:continue.py::while True:][continue.py]]
+   #+begin_src python :results output :exports both
+     while True:
+         s = input('Enter something:')
+         if s == 'quit':
+             break
+         if len(s) < 3:
+             print('Too samll')
+             continue
+         print('Input is of sufficient length')
+   #+end_src
+
+* Functions
+  [[file:functions1.py::def say_hello():][functions1.py]]
+  #+begin_src python :results output :exports both
+    def say_hello():
+        # block belonging to the function
+        print('hello world')
+
+    # End of function
+
+    say_hello()
+  #+end_src
+** Function Parameters
+   [[file:function_param.py::def print_max(a, b):][function_param.py]]
+   #+begin_src python :results output :exports both
+     def print_max(a, b):
+         if a > b:
+             print(a, "is maximum")
+         elif a == b:
+             print(a, "is equal to ", b)
+         else:
+             print(b, "is maximum")
+
+     # directly pass literal values
+
+     print_max(3, 4)
+
+     x = 5
+     y = 7
+
+     # pass variables as arguments
+     print_max(x, y)
+   #+end_src
+** Local Variables
+   [[file:function_local.py::x = 50][function_local.py]]
+   #+begin_src python :results output :exports both
+     x = 50
+
+     def func(x):
+         print("x is ", x)
+         x = 2
+         print("Channged local x to ", x)
+
+     func(x)
+     print("x is still", x)
+   #+end_src
+** The *global* statement
+   [[file:function_global.py::x = 50][function_global.py]]
+   #+begin_src python :results output :exports both
+     x = 50
+
+     def func():
+         global x
+         print('x is', x)
+         x = 2
+         print('Changed global x to ', x)
+
+     func()
+     print('Value of x is ', x)
+   #+end_src
+** Default Arguments Values
+   [[file:function_default.py::def say(message, times=1):][function_default.py]]
+   #+begin_src python :results output :exports both
+     def say(message, times=1):
+         print(message * times)
+
+     say('Hello')
+     say('Hello', 5)
+   #+end_src
+** Keyword Arguments
+   Advantages:
+   - we do not need to worry about the order of the arguments
+   - we can give values to only thos parameters to which we want to, provided that the other parameters have default argument values.
+
+   [[file:function_keyword.py::def func(a, b=5, c=10):][function_keyword.py]]
+   #+begin_src python :results output :exports both
+     def func(a, b=5, c=10):
+         print("a is", a, "and b is", b, "and c is ", c)
+
+     func(3, 7)
+     func(25, c=24)
+     func(c=50, a=100)
+   #+end_src
+** VarArgs parameters
+   just like the below code in c
+   #+begin_src c
+     void func(const char *fmt, ...)
+   #+end_src
+   [[file:function_varargs.py::def total(a=5, *numbers, **phonebook):][function_varargs.py]]
+   #+begin_src python :results output :exports both
+     def total(a=5, *numbers, **phonebook):
+         print('a', a)
+         # iterate through all the items in tuple
+         for single_item in numbers:
+             print('single_item', single_item)
+
+         # iterate through all the items in dictionary
+         for first_part, second_part in phonebook.items():
+             print(first_part, second_part)
+
+     print(total(10, 1, 2, 3, Jack=1123, John=2231, Inge=1560))
+   #+end_src
+** The ~return~ statement
+   [[file:function_return.py::def maximum(x, y):][function_return.py]]
+   #+begin_src python :results output :exports both
+     def maximum(x, y):
+         if x > y:
+             return x
+         elif x == y:
+             return 'The numbers are equal'
+         else:
+             return y
+
+     print(maximum(2, 3))
+   #+end_src
+** DocStrings
+   [[file:function_docstring.py::def print_max(x, y):][function_docstring.py]]
+   #+begin_src python :results output :exports both
+     def print_max(x, y):
+         '''Prints the maxmium of two numbers.
+
+         The two values must be integers.'''
+         # convert to integers, if possible
+         x = int(x)
+         y = int(y)
+
+         if x > y:
+             print(x, "is maxmium")
+         else:
+             print(y, "is maxmium")
+
+     print_max(3, 5)
+     print(print_max.__doc__)
+   #+end_src
+* Modules
+  [[file:module_using_sys.py::import sys][module_using_sys.py]]
+  #+begin_src python
+    import sys
+
+    print('The command line arguments are:')
+    for i in sys.argv:
+        print(i)
+
+    print('\n\nThe PYTHONPATH is ', sys.path, '\n')
+  #+end_src
+** Byet-compiled .pyc files
+** The from..import statement
+   #+begin_quote
+   WARNING: In general, avoid using the ~from..import~ statement,
+   use the ~import~ statement instead.
+   This is because your program will avoid name clashes and will be more readable.
+   #+end_quote
+   Example:
+   #+begin_src python
+     from math import sqrt
+     print('Sqare root of 16 is ', sqrt(16))
+   #+end_src
+** A module's ~__name__~
+   [[file:module_using_name.py::if __name__ == '__main__':][module_using_name.py]]
+   #+begin_src python
+     if __name__ == '__main__':
+         print('This program is being run by itself')
+     else:
+         print('I am being imported from another module')
+   #+end_src
+** Making Your Own Modules
+   [[file:mymodule.py::def say_hi():][mymodule.py]]
+   #+begin_src python
+     def say_hi():
+         print('Hi, this is my module speaking.')
+
+     __version__ = '0.1'
+   #+end_src
+   [[file:mymodule_demo.py::import mymodule][mymodule_demo.py]]
+   #+begin_src python :results output :exports both
+     import mymodule
+
+     mymodule.say_hi()
+     print('Version', mymodule.__version__)
+   #+end_src
+** The ~dir~ function
+* Data Structures
+** List
+   A data structure that holds an ordered collection of items
+*** Quick Introduction To Objects And Classes
+    [[file:ds_using_list.py::# This is my shopping list][ds_using_list.py]]
+    #+begin_src python :results output :exports both
+      # This is my shopping list
+      shoplist = ['apple', 'mango', 'carrot', 'banana']
+
+      print('I have', len(shoplist), 'items to purchase.')
+
+      print('These items are:', end=' ')
+      for item in shoplist:
+          print(item, end=' ')
+
+      print('\nI also have to buy rice.')
+      shoplist.append('rice')
+      print('My shopping list is now', shoplist)
+
+      print('I will sort my list now')
+      shoplist.sort()
+      print('Sorted shopping list is', shoplist)
+
+      print('The first item I will buy is', shoplist[0])
+      olditem = shoplist[0]
+      del shoplist[0]
+      print('I bought the', olditem)
+      print('My shopping list is now', shoplist)
+    #+end_src
+** Tuple
+   Tuples are used to hold together multiple objects
+
+   [[file:ds_using_tuple.py::# I would recommend always using parentheses][ds_using_tuple.py]]
+   #+begin_src python :results output :exports both
+     # I would recommend always using parentheses
+     # to indicate start and end of tuple
+     # even though parentheses are optional.
+     # Explicit is better than implicit.
+     zoo = ('python', 'elephant', 'penguin')
+     print('Number of animals in the zoo is', len(zoo))
+
+     new_zoo = 'monkey', 'camel', zoo
+     print('Number of cages in the new zoo is', len(new_zoo))
+     print('All animals in new zoo are', new_zoo)
+     print('Animals brought from old zoo are', new_zoo[2])
+     print('Last animal brought from old zoo is', new_zoo[2][2])
+     print('Number of animals in the new zoo is',
+           len(new_zoo) - 1 + len(new_zoo[2]))
+   #+end_src
+** Dictionary
+   key:value collection, key must be unique
+
+   [[file:ds_using_dict.py::# 'ab' is short for 'a'ddress'b'ook][ds_using_dict.py]]
+   #+begin_src python :results output :exports both
+     # 'ab' is short for 'a'ddress'b'ook
+
+     ab = {
+         'Swaroop': 'swaroop@swaroopch.com',
+         'Larry': 'larry@wall.org',
+         'Matsumoto': 'matz@ruby-lang.org',
+         'Spammer': 'spammer@hotmail.com'
+     }
+
+     print("Swaroop's address is", ab['Swaroop'])
+
+     # Deleting a key-value pair
+     del ab['Spammer']
+
+     print('\nThere are {} contacts in the address-book\n'.format(len(ab)))
+
+     for name, address in ab.items():
+         print('Contact {} at {}'.format(name, address))
+
+     # Adding a key-value pair
+     ab['Guido'] = 'guido@python.org'
+
+     if 'Guido' in ab:
+         print("\nGuido's address is", ab['Guido'])
+   #+end_src
+** Sequence
+   The major features are membership tests, (i.e. the in and not in expressions) and indexing operations, which allow us to fetch a particular item in the sequence directly.
+
+   [[file:ds_seq.py::shoplist = ['apple', 'mango', 'carrot', 'banana']][ds_seq.py]]
+   #+begin_src python :results output :exports both
+     shoplist = ['apple', 'mango', 'carrot', 'banana']
+     name = 'swaroop'
+
+     # Indexing or 'Subscription' operation #
+     print('Item 0 is', shoplist[0])
+     print('Item 1 is', shoplist[1])
+     print('Item 2 is', shoplist[2])
+     print('Item 3 is', shoplist[3])
+     print('Item -1 is', shoplist[-1])
+     print('Item -2 is', shoplist[-2])
+     print('Charater 0 is', name[0])
+
+     # Slicing on a list #
+     print('Item 1 to 3 is', shoplist[1:3])
+     print('Item 2 to end is', shoplist[2:])
+     print('Item 1 to -1 is', shoplist[1:-1])
+     print('Item start to end is', shoplist[:])
+
+     # Slicing on a string #
+     print('characters 1 to 3 is', name[1:3])
+     print('characters 2 to end is', name[2:])
+     print('characters 1 to -1 is', name[1:-1])
+     print('characters start to end is', name[:])
+   #+end_src
+** Set
+   Sets are unordered collections of simple objects.
+   These are used when the existence of an object in a collection is more important than the order or how many times it occurs.
+   #+begin_src sh
+     In [116]: bri = set(['brazil', 'russia', 'india'])
+
+     In [138]: 'india' in bri
+     Out[138]: True
+
+     In [139]: 'usa' in bri
+     Out[143]: False
+
+     In [153]: bric = bri.copy()
+
+     In [155]: bric.add('china')
+
+     In [156]: bric.issuperset(bri)
+     Out[172]: True
+
+     In [173]: bri.remove('russia')
+
+     In [177]: bri & bric            # OR bri.intersection(bric)
+     Out[184]: {'brazil', 'india'}
+   #+end_src
+** References
+   When you create an object and assign it to a variable,
+   the variable only refers to the object and does not represent the object itself
+
+   [[file:ds_reference.py::print('Simple Assignment')][ds_reference.py]]
+   #+begin_src python :results output :exports both
+     print('Simple Assignment')
+     shoplist = ['apple', 'mango', 'carrot', 'banana']
+     # mylist is just another name pointing to the same object
+     mylist = shoplist
+
+     # I purchased the first item, so I remove it from the list
+     del shoplist[0]
+
+     print('shoplist is {}'.format(shoplist))
+     print('mylist is', mylist)
+     # Notice that both shoplist and mylist both print
+     # the same list without the 'apple' confirming that
+     # they point to the same object
+
+     print('Copy by making a full slice')
+     # Make a copy by doing a full slice
+     mylist = shoplist[:]
+     # Remove first item
+     del mylist[0]
+
+     print('shoplist is', shoplist)
+     print('mylist is', mylist)
+   #+end_src
+** More About Strings
+   [[file:ds_str_methods.py::# This is a string object][ds_str_methods.py]]
+
+   some useful methods:
+   #+begin_src python :results output :exports both
+     # This is a string object
+     name = 'Swaroop'
+
+     if name.startswith('Swa'):
+         print('Yes, the string starts with "Swa"')
+
+     if 'a' in name:
+         print('Yes, it contains the string "a"')
+
+     if name.find('war') != -1:
+         print('Yes, it contains the string "war"')
+
+     delimiter = '_*_'
+     mylist = ['Brazil', 'Russia', 'India', 'China']
+     print(delimiter.join(mylist))
+   #+end_src
+
+   For a complete methods, see ~help(str)~
+* Problem Solving
+** The Problem
+   The problem we want to solve is:
+   #+begin_quote
+   I want a program which creates a backup of all my important files.
+   #+end_quote
+   Design:
+   - The files and directories to be backed up are specified in a list
+   - The backup must be stored in a main backup directory
+   - The files are backed up in a 7z file
+   - The name of the zip archive is the current data and time
+   - We use the standard ~7z~ command available by default in any standard GNU/Linux or Unix distribution.
+** The Solution
+   [[file:python3][backup_ver1.py]]
+   #+begin_src python
+     #!/usr/local/bin/python3
+
+     import os
+     import time
+
+     # 1. The files and directories to be backed up are
+     # specified in a list
+     # Example on Mac OS X and Linux:
+     source = [
+         "/Users/zhoush/Documents/Private/Notes/books/python/A Byte of Python/list"
+     ]
+
+     # 2. The backup must be stored in a
+     # main backup directory
+     # Example On Mac OS X and Linux:
+     target_dir = "/Users/zhoush/"
+
+     # 3. The files are backed up into a 7z file
+     # 4. The name of the 7z archive is the current date and time
+     target = target_dir + time.strftime('%Y%m%d%H%M%S') + '.7z'
+
+     # create target directory if it is not present
+     if not os.path.exists(target_dir):
+         os.mkdir(target_dir)  # make directory
+
+     # 5. We use the 7z command to put the files in a 7z archive
+     p7zip_command = '7z a {0} {1}'.format(target, ' '.join(source))
+
+     # Run the backup
+     print('p7zip command is :')
+     print(p7zip_command)
+     print("Running:")
+     if os.system(p7zip_command) == 0:
+         print('Successful backup to ', target)
+     else:
+         print('Backup FAILED')
+   #+end_src
+** Second Version
+   [[file:env python3][backup_ver2.py]]
+   #+begin_src python
+     #!/usr/bin/env python3
+     # -*- coding: utf-8 -*-
+
+     import os
+     import time
+
+     # 1. The files and directories to be backed up are
+     # specified in a list
+     # Example on Mac OS X and Linux:
+     source = [
+         "/Users/zhoush/Documents/Private/Notes/books/python/A Byte of Python/list"
+     ]
+
+     # 2. The backup must be stored in a
+     # main backup directory
+     # Example On Mac OS X and Linux:
+     target_dir = "/Users/zhoush/"
+
+     # create target directory if it is not present
+     if not os.path.exists(target_dir):
+         os.mkdir(target_dir)  # make directory
+
+     # 3. The files are backed up into a 7z file
+     # 4. The current day is the name of the subdirectory
+     # in the main directory
+     today = target_dir + os.sep + time.strftime('%Y%m%d')
+     # The current time is the name of the 7z archieve.
+     now = time.strftime('%H%M%S')
+
+     # The name of the 7z file
+     target = today + os.sep + now + '.7z'
+
+     # Create the subdirectory if it isn't already there
+     if not os.path.exists(today):
+         os.mkdir(today)
+         print('Successfully created directory', today)
+
+     # 5. We use the 7z command to put the files in a 7z archive
+     p7zip_command = '7z a {0} {1}'.format(target, ' '.join(source))
+
+     # Run the backup
+     print('p7zip command is :')
+     print(p7zip_command)
+     print("Running:")
+     if os.system(p7zip_command) == 0:
+         print('Successful backup to ', target)
+     else:
+         print('Backup FAILED')
+   #+end_src
+** Third Version
+   [[file:env python3][backup_ver3.py]]
+   #+begin_src python
+     #!/usr/bin/env python3
+     # -*- coding: utf-8 -*-
+
+     import os
+     import time
+     # 1. The files and directories to be backed up are
+     # specified in a list.
+     # Example on Windows:
+     # source = ['"C:\\My Documents"', 'C:\\Code']
+     # Example on Mac OS X and Linux:
+     source = ['/Users/zhoush/Documents/Practice/python']
+     # Notice we had to use double quotes inside the string
+     # for names with spaces in it.
+     # 2. The backup must be stored in a
+     # main backup directory
+     # Example on Windows:
+     # target_dir = 'E:\\Backup'
+     # Example on Mac OS X and Linux
+     target_dir = '/Users/zhoush/backup'
+     # Remember to change this to which folder you will be using
+     # Create target directory if it is not present
+     if not os.path.exists(target_dir):
+         os.mkdir(target_dir)
+         # make directory
+         # 3. The files are backed up into a zip file.
+         # 4. The current day is the name of the subdirectory
+         # in the main directory.
+     today = target_dir + os.sep + time.strftime('%Y%m%d')
+     # The current time is the name of the zip archive.
+     now = time.strftime('%H%M%S')
+     # Take a comment from the user to
+     # create the name of the zip file
+     comment = input('Enter a comment --> ')
+     # Check if a comment was entered
+     if len(comment) == 0:
+         target = today + os.sep + now + '.zip'
+     else:
+         target = today + os.sep + now + '_' + comment.replace(' ', '_') + '.zip'
+         # Create the subdirectory if it isn't already there
+     if not os.path.exists(today):
+         os.mkdir(today)
+         print('Successfully created directory', today)
+         # 5. We use the zip command to put the files in a zip archive
+     zip_command = "zip -r {0} {1}".format(target, ' '.join(source))
+     # Run the backup
+     print('Zip command is:')
+     print(zip_command)
+     print('Running:')
+     if os.system(zip_command) == 0:
+         print('Successful backup to', target)
+     else:
+         print('Backup FAILED')
+   #+end_src
+** Fourth Version
+   [[file:env python3][backup_ver4.py]]
+   #+begin_src python
+     #!/usr/bin/env python3
+     # -*- coding: utf-8 -*-
+
+     import os
+     import time
+
+     # 1. The files and directories to be backed up are
+     # specified in a list.
+     # Example on Windows:
+     # source = ['"C:\\My Documents"', 'C:\\Code']
+     # Example on Mac OS X and Linux:
+     source = ['/Users/zhoush/Documents/Practice/python']
+     # Notice we had to use double quotes inside the string
+     # for names with spaces in it.
+     # 2. The backup must be stored in a
+     # main backup directory
+     # Example on Windows:
+     # target_dir = 'E:\\Backup'
+     # Example on Mac OS X and Linux
+     target_dir = '/Users/zhoush/backup'
+     # Remember to change this to which folder you will be using
+     # Create target directory if it is not present
+     if not os.path.exists(target_dir):
+         os.mkdir(target_dir)
+         # make directory
+         # 3. The files are backed up into a zip file.
+         # 4. The current day is the name of the subdirectory
+         # in the main directory.
+     today = target_dir + os.sep + time.strftime('%Y%m%d')
+     # The current time is the name of the zip archive.
+     now = time.strftime('%H%M%S')
+     # Take a comment from the user to
+     # create the name of the zip file
+     comment = input('Enter a comment --> ')
+     # Check if a comment was entered
+     if len(comment) == 0:
+         target = today + os.sep + now + '.zip'
+     else:
+         target = today + os.sep + now + '_' + \
+             comment.replace(' ', '_') + '.zip'
+         # Create the subdirectory if it isn't already there
+     if not os.path.exists(today):
+         os.mkdir(today)
+         print('Successfully created directory', today)
+         # 5. We use the zip command to put the files in a zip archive
+     zip_command = "zip -r {0} {1}".format(target, ' '.join(source))
+     # Run the backup
+     print('Zip command is:')
+     print(zip_command)
+     print('Running:')
+     if os.system(zip_command) == 0:
+         print('Successful backup to', target)
+     else:
+         print('Backup FAILED')
+   #+end_src
+* Object Oriented Programming
+  #+begin_quote
+  Note for Static Language Programmers
+
+  Note that even integers are treated as objects (of the int class). This is unlike C++ and Java (before version 1.5) where integers are primitive native types.
+
+  See
+
+  help(int)
+
+  for more details on the class.
+
+  C# and Java 1.5 programmers will find this similar to the boxing and unboxing concept.
+  #+end_quote
+** The ~self~
+   #+begin_quote
+   The ~self~ in Python is equivalent to the ~this~ pointer in C++ and the ~this~ reference in Java and C#.
+   #+end_quote
+** Classes
+   [[file:oop_simplestclass.py::class Person:][oop_simplestclass.py]]
+   #+begin_src python :results output :exports both
+     class Person:
+         pass
+
+     p = Person()
+     print(p)
+   #+end_src
+** Methods
+   [[file:oop_method.py::class Person:][oop_method.py]]
+   #+begin_src python :results output :exports both
+     class Person:
+         def __init__(self, name):
+             self.name = name
+
+         def say_hi(self):
+             print("Hello, my name is ", self.name)
+
+     p = Person("Swaroop")
+     p.say_hi()
+   #+end_src
+** The ~__init__~ method
+   [[file:oop_init.py::class Person:][oop_init.py]]
+   #+begin_src python :results output :exports both
+     class Person:
+         def __init__(self, name):
+             self.name = name
+
+         def say_hi(self):
+             print('Hello, my name is', self.name)
+
+     p = Person('Swaroop')
+     p.say_hi()
+     # The previous 2 lines can also be written as
+     # Person('Swaroop').say_hi()
+   #+end_src
+** Class And Object Variables
+   - *Class variables* are shared
+   - *Object variables* are owned by each individual object/instance of the class.
+
+   [[file:oob_objvar.py::class Robot:][oop_objvar.py]]
+   #+begin_src python  :results output :exports both
+     class Robot:
+         """Represents a robot, with a name."""
+
+         # A class variable, counting the number of class
+         population = 0
+
+         def __init__(self, name):
+             """Initializes the data"""
+             self.name = name
+             print("(Initializing {})".format(self.name))
+
+             # When this person is created , the robot adds to the population
+             Robot.population += 1
+
+         def die(self):
+             """I am dying."""
+             print("{} is being destroyed!".format(self.name))
+
+             Robot.population -= 1
+
+             if Robot.population == 0:
+                 print("{} was the last one.".format(self.name))
+             else:
+                 print("There are still {:d} robots working".format(
+                     Robot.population))
+
+         def say_hi(self):
+             """Greating by the robot.
+
+             Yeah, they can do that."""
+             print("Greetings, my masters call me {}.".format(self.name))
+
+         @classmethod
+         def how_many(cls):
+             """Prints the current popuation."""
+             print("We have {:d} robots.".format(cls.population))
+
+     droid1 = Robot("R2-D2")
+     droid1.say_hi()
+     Robot.how_many()
+
+     droid2 = Robot("C-3P0")
+     droid2.say_hi()
+     Robot.how_many()
+
+     print("\nRobots can do some work here.\n")
+
+     print("Robots have finished their work. So let's destroy them.")
+     droid1.die()
+     droid2.die()
+
+     Robot.how_many()
+   #+end_src
+   #+begin_quote
+   *Note for C++/Java/C# Programmers*
+
+   All class members (including the data members) are public and all the methods are virtual in Python.
+   #+end_quote
+** Inheritance
+   *reuse* of code through the *inheritance* mechanism.
+
+   [[file:oop_subclass.py::class SchoolMember:][oop_subclass.py]]
+   #+begin_src python :exports both :results output
+     class SchoolMember:
+         '''Represents any school member.'''
+
+         def __init__(self, name, age):
+             self.name = name
+             self.age = age
+             print('(Initialized SchoolMember: {})'.format(self.name))
+
+         def tell(self):
+             '''Tell my details'''
+             print('Name:"{}" Age:"{}"'.format(self.name, self.age), end=" ")
+
+     class Teacher(SchoolMember):
+         '''Represents a teacher.'''
+
+         def __init__(self, name, age, salary):
+             SchoolMember.__init__(self, name, age)
+             self.salary = salary
+             print('(Initialized Teacher: {})'.format(self.name))
+
+         def tell(self):
+             SchoolMember.tell(self)
+             print('Salary: "{:d}"'.format(self.salary))
+
+     class Student(SchoolMember):
+         '''Represent a student.'''
+
+         def __init__(self, name, age, marks):
+             SchoolMember.__init__(self, name, age)
+             self.marks = marks
+             print('(Initialized Student: {})'.format(self.name))
+
+         def tell(self):
+             SchoolMember.tell(self)
+             print('Marks: "{:d}"'.format(self.marks))
+
+     t = Teacher('Mrs.Shrividya', 40, 30000)
+     s = Student('Swaroop', 25, 75)
+
+     print()
+
+     members = [t, s]
+     for member in members:
+         member.tell()
+   #+end_src
+   A note on terminology - if more than one class is listed in the inheritance tuple, then it is called multiple inheritance.
+* Input and Output
+** Input from user
+   [[file:io_input.py::def reverse(text):][io_input.py]]
+   #+begin_src python :results output :exports both
+     def reverse(text):
+         return text[::-1]
+
+     def is_palindrome(text):
+         return text == reverse(text)
+
+     something = input("Enter text: ")
+     if is_palindrome(something):
+         print("Yes, it is a palindrome")
+     else:
+         print("No, it is not a palindrome")
+   #+end_src
+** Files
+   Methods: ~read~,  ~readline~, ~write~, ~close~
+
+   [[file:io_using_file.py::poem = '''\][io_using_file.py]]
+   #+begin_src python :results output :exports both
+     poem = '''\
+     Programming is fun
+     when the work is done
+     if you wanna make your work as fun:
+         use Python'''
+
+     # open for 'w'riting
+     f = open('poem.txt', 'w')
+     # write text to file
+     f.write(poem)
+     # close the file
+     f.close()
+
+     # If no mode is specified
+     # 'r'ead mode is assumed by default
+     f = open('poem.txt')
+     while True:
+         line = f.readline()
+         # Zero length indicatates EOF
+         if len(line) == 0:
+             break
+
+         # The `line` already has a new line
+         # at the end of each line
+         # since it is reading from a file
+         print(line, end='')
+
+     # close the file
+     f.close()
+   #+end_src
+** Pickle
+   store /any/ plain Python object in a file and then get it back later
+
+   [[file:io_pickle.py::import pickle][io_pickle.py]]
+   #+begin_src python :exports both :results output
+     import pickle
+
+     shoplistfile = 'shoplist.data'
+
+     shoplist = ['apple', 'mango', 'carrot']
+
+     f = open(shoplistfile, 'wb')
+
+     pickle.dump(shoplist, f)
+     f.close()
+
+     del shoplist
+
+     f = open(shoplistfile, 'rb')
+
+     storedlist = pickle.load(f)
+     print(storedlist)
+   #+end_src
+** Unicode
+   used simple English characters only.
+* Exceptions
+  /exceptional/ situations occur in program.
+** Errors
+** Exceptions
+** Handling Exceptions
+   ~try..except~
+
+   [[file:exceptions_handle.py::try:][exceptions_handle.py]]
+   #+begin_src python
+     try:
+         text = input("Enter something --> ")
+     except EOFError:
+         print("Why did you do an EOF on me?")
+     except KeyboardInterrupt:
+         print("You cancelled the operation")
+     else:
+         print("You entered {}".format(text))
+   #+end_src
+** Raising Exceptions
+   using ~raise~ statement to raise exceptions
+
+   [[file:exceptions_raise.py::class ShortInputException(Exception):][exceptions_raise.py]]
+   #+begin_src python
+     class ShortInputException(Exception):
+         '''A user-defined exception class.'''
+
+         def __init__(self, length, atleast):
+             Exception.__init__(self)
+             self.length = length
+             self.atleast = atleast
+
+     try:
+         text = input('Enter something -->')
+         if len(text) < 3:
+             raise ShortInputException(len(text), 3)
+         # other work can continue as usual here
+
+     except EOFError:
+         print('Why did you do an EOF on me?')
+     except ShortInputException as ex:
+         print(('ShortInputException: The input was ' +
+                '{0} long, expected at least {1}').format(ex.length, ex.atleast))
+     else:
+         print('No exception was raised')
+   #+end_src
+** Try ... Finally
+   do something whether or not an exception was raised
+   [[file:exceptions_finally.py::import sys][exceptions_finally.py]]
+   #+begin_src python :exports both :results output
+     import sys
+     import time
+
+     f = None
+     try:
+         f = open("poem.txt")
+         # Our usual file-reading idiom
+         while True:
+             line = f.readline()
+             if len(line) == 0:
+                 break
+             print(line, end='')
+             sys.stdout.flush()
+             print("Press C-c now")
+             time.sleep(2)
+
+     except IOError:
+         print("Could not find file poem.txt")
+     except KeyboardInterrupt:
+         print("!! You cancelled the reading from the file.")
+     finally:
+         if f:
+             f.close()
+             print("(Cleaning up: Closed the file)")
+   #+end_src
+** The ~with~ statement
+   as same as acquiring a resource in the try block and subsequently releasing the resource in the finally block
+
+   [[file:exceptions_using_with.py::with open("poem.txt") as f:][exceptions_using_with.py]]
+   #+begin_src python :results output :exports both
+     with open("poem.txt") as f:
+         for line in f:
+             print(line, end='')
+   #+end_src
+* Standard Library
+** ~sys~ module
+   The ~sys~ module contains system-specific functionality.
+** ~logging~ module
+   store debugging messages or important messages
+
+   #+include: "stdlib_logging.py" src python
+* More
+  some more aspects that will make our knowledge of Python more well-rounded.
+** Passing tuples around
+** Special Methods
+   - ~__init__(self, ...)~
+     - This method is called just before the newly created object is returned for usage
+   - ~__del__(self)~
+     - Called just before the object is destroyed (which has unpredictable timing, so avoid using this)
+   - ~__str__(self)~
+     - Called when we use the ~print~ function or when ~str()~ is used.
+   - ~__lt__(self, other)~
+     - Called when the /less/ than operator (<) is used. Similaryly , there are special methods for all the operators (+, >, etc.)
+   - ~__getitem__(self, key)~
+     - Called when ~x[key]~ indexing operation is used.
+   - ~__len__(self)~
+     - Called when the built-in ~len()~ function is used for the sequence object.
+** Single Statement Blocks
+   #+begin_src python
+     flag = True
+     if flag: print('Yes')
+   #+end_src
+** Lambda Forms
+   is used to create new function objects.
+   takes a parameter followed by a single expression. The value of this expression is returned by the new function.
+
+   [[file:more_lambda.py::points = [{'x': 2, 'y': 3}, {'x': 4, 'y': 1}]][more_lambda.py]]
+   #+begin_src python :results output :exports both
+     points = [{'x': 2, 'y': 3}, {'x': 4, 'y': 1}]
+
+     points.sort(key=lambda i: i['y'])
+     print(points)
+   #+end_src
+** List Comprehension
+   used to derive a new list from an existing list.
+
+   [[file:more_list_comprehension.py::listone = [2, 3, 4]][more_list_comprehension.py]]
+   #+begin_src python :results output :exports both
+     listone = [2, 3, 4]
+     listtwo = [2 * i for i in listone if i > 2]
+     print(listtwo)
+   #+end_src
+** Receiving Tuples and Dictionaries in Functions
+   using the ~*~ or ~**~ prefix respectively
+** The assert statement
+   used to assert that something is true.
+** Decorators
+   a shortcut to applying wrapper functions.
+
+   #+include: "more_decorators.py" src python

@@ -1,0 +1,9 @@
+#+SETUPFILE: ~/Documents/style.setup
+#+STARTUP: align
+#+LATEX_HEADER: \usepackage{ulem}
+#+LATEX_HEADER: \usepackage{ctex}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+AUTHOR: whiothes
+
+* Head First C

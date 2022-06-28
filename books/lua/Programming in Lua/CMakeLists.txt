@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.5)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+
+project(PIL)
+set(PROJECT_SOURCE_DIR              ${CMAKE_CURRENT_SOURCE_DIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${PROJECT_SOURCE_DIR}/bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY  ${PROJECT_SOURCE_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY  ${PROJECT_SOURCE_DIR}/lib)
+set(PROJECT_LOG_DIR                 ${PROJECT_SOURCE_DIR}/log)
+
+find_package(Lua REQUIRED)
+
+include_directories(${LUA_INCLUDE_DIR})
+link_libraries(${LUA_LIBRARIES})
+
+add_subdirectory(Chapter27)

@@ -1,0 +1,659 @@
+#+SETUPFILE: ~/Documents/style.setup
+#+STARTUP: align
+#+LATEX_HEADER: \usepackage{ulem}
+#+LATEX_HEADER: \usepackage{ctex}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+TITLE: 笔记
+#+AUTHOR: whiothes
+
+* 笔记
+** Q & A
+*** invalid environment block
+    [[https://clay-atlas.com/us/blog/2020/03/19/linux-note-how-to-solve-error-invalid-environment-block-press-any-key-to-continue/][https://clay-atlas.com/us/blog/2020/03/19/linux-note-how-to-solve-error-invalid-environment-block-press-any-key-to-continue/]]
+*** gdb print full value
+    #+begin_src sh
+      set print elements 0
+    #+end_src
+*** vim negative lookahead
+    [[https://stackoverflow.com/questions/21148467/is-there-a-way-to-do-negative-lookahead-in-vim-regex]]
+    #+begin_quote
+    # abc(?!.*xyz)
+    /abc\(.*xyz\)\@!
+    #+end_quote
+*** memory leak
+    Q: find memory leak of a running process
+    A: [[https://unix.stackexchange.com/questions/36450/how-can-i-find-a-memory-leak-of-a-running-process]]
+
+    #+begin_src sh
+      /proc/$PID/smaps
+    #+end_src
+*** backtrace():[[https://stackoverflow.com/questions/6934659/how-to-make-backtrace-backtrace-symbols-print-the-function-names][How to make backtrace()/backtrace_symbols() print the function names?]]
+    ~gcc -r~
+*** vim: [[https://stackoverflow.com/questions/3997078/how-to-paste-yanked-text-into-the-vim-command-line#3997110][How to paste yanked text into the Vim command line - Stack Overflow]]
+    ~Ctrl - R~, then ~"~
+    ~help register~
+*** curl: curl xxx.sh and execute [fn:3]
+    #+begin_src bash
+      curl https://xxx.sh | bash
+    #+end_src
+
+*** Git: [[https://stackoverflow.com/questions/2227062/how-do-i-move-a-git-branch-out-into-its-own-repository][How do I move a Git branch out into its own repository? - Stack Overflow]]
+*** Lock-Free
+    [[https://preshing.com/20120612/an-introduction-to-lock-free-programming/][An Introduction to Lock-Free Programming]]
+
+    std::atomic 在 C 语言中可以通过 =volatile= 实现
+*** PUT 和 POST 的区别
+    [[https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.6][HTTP/1.1: Method Definitions]]
+    #+begin_quote
+    The fundamental difference between the POST and PUT requests is reflected in the different meaning of the Request-URI. The URI in a POST request identifies the resource that will handle the enclosed entity. That resource might be a data-accepting process, a gateway to some other protocol, or a separate entity that accepts annotations. In contrast, the URI in a PUT request identifies the entity enclosed with the request -- the user agent knows what URI is intended and the server MUST NOT attempt to apply the request to some other resource. If the server desires that the request be applied to a different URI,
+ it MUST send a 301 (Moved Permanently) response; the user agent MAY then make its own decision regarding whether or not to redirect the request.
+    #+end_quote
+*** strongSwan 依赖
+    * gperf
+      #+begin_src sh
+        dnf --enablerepo=PowerTools install gperf
+      #+end_src
+    * gmp
+      #+begin_src sh
+        yum install gmp-devel
+      #+end_src
+*** [[https://zhuanlan.zhihu.com/p/137041568][如何系统地学习数据结构与算法？ - 知乎]]
+*** check threads
+    [[https://www.golinuxcloud.com/tutorial-linux-memory-management-overview/][4 commands to check thread count per process (threads vs processes) in Linux]]
+*** rpm install with dependencies
+    #+begin_src sh
+      yum --nogpgcheck localinstall xxx.rpm
+    #+end_src
+    [[https://stackoverflow.com/questions/13876875/how-to-make-rpm-auto-install-dependencies][linux - How to make rpm auto install dependencies - Stack Overflow]]
+*** gcc error when inline without static
+    - [[https://www.geeksforgeeks.org/inline-function-in-c/][Inline function in C - GeeksforGeeks]]
+    - [[https://stackoverflow.com/questions/22767523/what-inline-attribute-always-inline-means-in-the-function#22767621][c - what “inline __attribute__((always_inline))” means in the function? - Stack Overflow]]
+
+
+    - ~inline~ only
+      - C code:
+        #+begin_src c
+          #include <stdio.h>
+
+          inline int func() { printf("dll\n"); }
+
+          int main() { func(); }
+        #+end_src
+      - asm code:
+        #+begin_src asm
+              .section	__TEXT,__text,regular,pure_instructions
+              .build_version macos, 11, 0	sdk_version 11, 1
+              .globl	_main                   ## -- Begin function main
+              .p2align	4, 0x90
+            _main:                                  ## @main
+              .cfi_startproc
+            ## %bb.0:
+              pushq	%rbp
+              .cfi_def_cfa_offset 16
+              .cfi_offset %rbp, -16
+              movq	%rsp, %rbp
+              .cfi_def_cfa_register %rbp
+              subq	$16, %rsp
+              callq	_func
+              xorl	%ecx, %ecx
+              movl	%eax, -4(%rbp)          ## 4-byte Spill
+              movl	%ecx, %eax
+              addq	$16, %rsp
+              popq	%rbp
+              retq
+              .cfi_endproc
+                                                    ## -- End function
+            .subsections_via_symbols
+        #+end_src
+    - With ~static~
+      - C code
+        #+begin_src c
+          #include <stdio.h>
+
+          static inline int func() { printf("dll\n"); }
+
+          int main() { func(); }
+        #+end_src
+      - asm code
+        #+begin_src asm
+            .section	__TEXT,__text,regular,pure_instructions
+            .build_version macos, 11, 0	sdk_version 11, 1
+            .globl	_main                   ## -- Begin function main
+            .p2align	4, 0x90
+          _main:                                  ## @main
+            .cfi_startproc
+          ## %bb.0:
+            pushq	%rbp
+            .cfi_def_cfa_offset 16
+            .cfi_offset %rbp, -16
+            movq	%rsp, %rbp
+            .cfi_def_cfa_register %rbp
+            subq	$16, %rsp
+            callq	_func
+            xorl	%ecx, %ecx
+            movl	%eax, -4(%rbp)          ## 4-byte Spill
+            movl	%ecx, %eax
+            addq	$16, %rsp
+            popq	%rbp
+            retq
+            .cfi_endproc
+                                                  ## -- End function
+            .p2align	4, 0x90         ## -- Begin function func
+          _func:                                  ## @func
+            .cfi_startproc
+          ## %bb.0:
+            pushq	%rbp
+            .cfi_def_cfa_offset 16
+            .cfi_offset %rbp, -16
+            movq	%rsp, %rbp
+            .cfi_def_cfa_register %rbp
+            subq	$16, %rsp
+            leaq	L_.str(%rip), %rdi
+            movb	$0, %al
+            callq	_printf
+            movl	-4(%rbp), %ecx
+            movl	%eax, -8(%rbp)          ## 4-byte Spill
+            movl	%ecx, %eax
+            addq	$16, %rsp
+            popq	%rbp
+            retq
+            .cfi_endproc
+                                                  ## -- End function
+            .section	__TEXT,__cstring,cstring_literals
+          L_.str:                                 ## @.str
+            .asciz	"dll\n"
+
+          .subsections_via_symbols
+        #+end_src
+    - With ~__attribute__~
+      - C code
+        #+begin_src c
+          #include <stdio.h>
+
+          #define inline __attribute__((alwyas_inline))
+
+          inline int func() { printf("dll\n"); }
+
+          int main() { func(); }
+        #+end_src
+      - asm code
+        #+begin_src asm
+            .section	__TEXT,__text,regular,pure_instructions
+            .build_version macos, 11, 0	sdk_version 11, 1
+            .globl	_func                   ## -- Begin function func
+            .p2align	4, 0x90
+          _func:                                  ## @func
+            .cfi_startproc
+          ## %bb.0:
+            pushq	%rbp
+            .cfi_def_cfa_offset 16
+            .cfi_offset %rbp, -16
+            movq	%rsp, %rbp
+            .cfi_def_cfa_register %rbp
+            subq	$16, %rsp
+            leaq	L_.str(%rip), %rdi
+            movb	$0, %al
+            callq	_printf
+            movl	-4(%rbp), %ecx
+            movl	%eax, -8(%rbp)          ## 4-byte Spill
+            movl	%ecx, %eax
+            addq	$16, %rsp
+            popq	%rbp
+            retq
+            .cfi_endproc
+                                                  ## -- End function
+            .globl	_main                   ## -- Begin function main
+            .p2align	4, 0x90
+          _main:                                  ## @main
+            .cfi_startproc
+          ## %bb.0:
+            pushq	%rbp
+            .cfi_def_cfa_offset 16
+            .cfi_offset %rbp, -16
+            movq	%rsp, %rbp
+            .cfi_def_cfa_register %rbp
+            subq	$16, %rsp
+            callq	_func
+            xorl	%ecx, %ecx
+            movl	%eax, -4(%rbp)          ## 4-byte Spill
+            movl	%ecx, %eax
+            addq	$16, %rsp
+            popq	%rbp
+            retq
+            .cfi_endproc
+                                                  ## -- End function
+            .section	__TEXT,__cstring,cstring_literals
+          L_.str:                                 ## @.str
+            .asciz	"dll\n"
+
+          .subsections_via_symbols
+        #+end_src
+
+*** [[https://stackoverflow.com/questions/4605842/how-to-identify-platform-compiler-from-preprocessor-macros#4605893][c++ - How to identify platform/compiler from preprocessor macros? - Stack Overflow]]
+    #+begin_src c
+      #ifdef __APPLE__
+      /* Mac OS */
+      #endif
+
+      #ifdef __MINGW32__
+      /* MingW on Windows */
+      #endif  // __MINGW32__
+
+      #ifdef _WIN32
+      /* Windows */
+      #endif  // _WIN32
+
+      #ifdef __linux__
+      /* Linux */
+      #endif  // __linux__
+    #+end_src
+*** valgrind messages
+    [[https://epitech-2022-technical-documentation.readthedocs.io/en/latest/valgrind.html][Debug : Understanding Valgrind’s messages — EPITECH 2022 - Technical Documentation 1.3.38 documentation]]
+*** mysql C API: still reachable
+    call ~mysql_library_end()~ after ~mysql_close()~
+*** gdb 打印数组
+    =p *array@len=
+    [[https://www.sourceware.org/gdb/onlinedocs/gdb/Arrays.html][Arrays (Debugging with GDB)]]
+*** recover/undo/get back deleted commit (even remote)
+    - [[https://stackoverflow.com/questions/1992364/git-recover-deleted-remote-branch][github - Git: Recover deleted (remote) branch - Stack Overflow]]
+      #+begin_src sh
+        git fsck --full --no-reflogs | grep commit
+      #+end_src
+*** [[https://stackoverflow.com/questions/8220098/how-to-redirect-the-output-of-an-application-in-background-to-dev-null#8220110][linux - How to redirect the output of an application in background to /dev/null - Stack Overflow]]
+    #+begin_src sh
+      cmd >/dev/null 2&>1 &
+    #+end_src
+*** [[https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1#merge][CS Visualized: Useful Git Commands - DEV]]
+*** slice an array in bash
+    [[https://stackoverflow.com/questions/1335815/how-to-slice-an-array-in-bash][How to slice an array in Bash - Stack Overflow]]
+    =${@:3:8}=
+*** gcc expand macros
+    [[https://stackoverflow.com/questions/985403/seeing-expanded-c-macros][c preprocessor - Seeing expanded C macros - Stack Overflow]]
+*** =sed=: How to use variables in =sed=
+    #+begin_src sh
+      sed -i 's|aaa|${variable}|g' Makefile
+    #+end_src
+    [[https://stackoverflow.com/questions/19151954/how-to-use-variables-in-a-command-in-sed][unix - How to use variables in a command in sed? - Stack Overflow]]
+*** Ubuntu: How to disable FireWall
+    #+begin_src sh
+      sudo ufw disable
+    #+end_src
+*** Git delete remote branch
+    #+begin_src sh
+      git push origin -d feature
+    #+end_src
+*** Makefile for Kenel module
+    [[https://stackoverflow.com/questions/60252681/how-to-write-a-linux-kernel-module-makefile][How to write a Linux kernel module makefile? - Stack Overflow]]
+*** Get client sock IP addr
+    [[https://stackoverflow.com/questions/3060950/how-to-get-ip-address-from-sock-structure-in-c][sockets - How to get ip address from sock structure in c? - Stack Overflow]]
+*** Mac 清理右键多余选单
+    #+begin_src sh
+      /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+    #+end_src
+*** differences between preprocessor and =inline=
+    [[https://stackoverflow.com/questions/1137575/inline-functions-vs-preprocessor-macros][c++ - Inline functions vs Preprocessor macros - Stack Overflow]]
+*** =w !sudo tee %= principle
+    [[https://unix.stackexchange.com/questions/301256/how-does-w-sudo-tee-work][vim - How does `:w !sudo tee %` work - Unix & Linux Stack Exchange]]
+*** Figure out the largest directory
+    #+begin_src bash
+      du -sh * | gsort -h
+    #+end_src
+*** ~long~ 和 ~long long~ 的区别
+    在 64bit OS X 和 64bit Linux 上没有区别
+    #+begin_src c
+      #include <limits.h>
+      #include <stdio.h>
+
+      int main() {
+          printf("sizeof(long): %lu\n",  sizeof(long));
+          printf("sizeof(llong): %lu\n", sizeof(long long));
+          printf("LONG_MAX: %ld\n",      LONG_MAX);
+          printf("LONG_MIN: %ld\n",      LONG_MIN);
+          printf("LLONG_MAX: %lld\n",    LLONG_MAX);
+          printf("LLONG_MIN: %lld\n",    LLONG_MIN);
+      }
+    #+end_src
+*** 删除特殊符号的文件名
+    #+begin_src sh
+      rm -- filename
+    #+end_src
+*** 通过 Netfilter 自写模块实现过滤器
+    - [[https://www.netfilter.org/documentation/HOWTO/netfilter-hacking-HOWTO-3.html][Linux netfilter Hacking HOWTO: Netfilter Architecture]]
+    - [[https://www.cnblogs.com/tzh36/p/5424564.html][Linux内核：sk_buff 解析 - 唐稚骅 - 博客园]]
+    - [[https://www.cnblogs.com/codestack/p/10850642.html][linux netfilter 五个钩子点 - codestacklinuxer - 博客园]]
+    - [[https://www.frozentux.net/iptables-tutorial/cn/iptables-tutorial-cn-1.1.19.html#TRAVERSINGOFTABLES][Iptables 指南 1.1.19]]
+    - [[https://stackoverflow.com/questions/42385002/how-to-get-payload-from-struct-sk-buff-in-netfilter-kernel-module-linux][c - How to get payload from struct sk_buff in netfilter kernel module linux - Stack Overflow]]
+*** nginx: urlencded url not found
+    #+begin_src nginx
+      rewrite ^/(.*)$         /$1    break;
+    #+end_src
+*** 数据结构
+**** 使用加法判断循环队列
+     #+begin_src c
+       if ((tail + 1) % size == head) {
+           printf("cycle queue is full");
+       }
+     #+end_src
+*** MySQL
+**** QA
+     - Q: [[https://stackoverflow.com/questions/61649764/mysql-error-2026-ssl-connection-error-ubuntu-20-04][django - MySQL ERROR 2026 - SSL connection error - Ubuntu 20.04 - Stack Overflow]]
+     - A:
+       #+begin_quote
+       [mysqld]
+       tls_version=TLSv1.2
+       #+end_quote
+     - Q: [[https://stackoverflow.com/questions/1676551/best-way-to-test-if-a-row-exists-in-a-mysql-table/10688065#10688065][sql - Best way to test if a row exists in a MySQL table - Stack Overflow]]
+     - A:
+       #+begin_src sql
+         SELECT EXISTS(SELECT * FROM table1 WHERE ...)
+       #+end_src
+
+     - Q: [[https://stackoverflow.com/questions/20116140/change-unique-key-together-in-mysql][Change unique key together in mysql - Stack Overflow]]
+     - A:
+       #+begin_src sql
+         ALTER TABLE your_table
+           DROP INDEX user_id,
+           ADD UNIQUE KEY `user_id` (`user_id`,`account_id`,`pet_id`)
+       #+end_src
+
+     - Q: ERROR 1130 (HY000): Host '192.168.253.140' is not allowed to connect to this MySQL server
+     - A:
+       #+begin_src sql
+         CREATE USER 'root'@'%' IDENTIFIED BY '';
+         GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+         FLUSH PRIVILEGES;
+       #+end_src
+       #+begin_src bash
+         vim my.cnf
+         [mysqld]
+         bind-address=*
+       #+end_src
+
+     - Q: ERROR 1805 (HY000): Column count of mysql.user is wrong. Expected 45, found 48. The table is probably corrupted
+     - A: =mysql_upgrade -u root --force=
+
+     - Q: Alter a column to be AUTO_INCREMENT
+     - A:
+       #+begin_src sql
+         ALTER TABLE document
+           MODIFY COLUMN document_id AUTO_INCREMENT;
+       #+end_src
+
+     - Q: INSERT data to MYSQL without specifying AUTO_INCREMENT column names;
+     - A:
+       #+begin_src sql
+         INSERT INTO table VALUES (NULL, value1, value2);
+       #+end_src
+
+     - Q: reset AUTO_INCREMENT
+     - A:
+       #+begin_src sql
+         ALTER TABLE table AUTO_INCREMENT = 1;
+       #+end_src
+
+     - Q: truncate multiple tables;
+     - A:
+       #+begin_src sql
+         SELECT CONCAT('TRUNCATE TABLE', TABLE_NAME, '; ') FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'db_name' AND TABLE_NAME LIKE 'pre_%';
+       #+end_src
+     - Q: ERROR 2002 (HY000): Can't connect to MySQL server on '192.168.254.20' (36)
+     - A:
+       #+begin_src bash
+         firewall-cmd --zone=public --add-port=3306/tcp --permanent
+         systemctl restart firewalld.service
+       #+end_src
+     - Q: ~ALTER TABLE~
+     - A:
+       #+begin_src sql
+         ALTER TABLE tablename ADD/MODIFY/DROP COLUMN columnname TYPE
+       #+end_src
+*** BASH
+**** if 语句: [[https://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html][Introduction to if]]
+**** 文件名带空格
+     * Q: C print chinese erro \\
+       A:
+       #+begin_src sh
+         gcc -fexec-charset=UTF-8
+       #+end_src
+
+     * Q: ~find~, ~xargs~  \\
+       A: ~-print0~
+       #+begin_src sh
+         find ./ -name '*.bak' -print0 | xargs -0 rm -rf
+       #+end_src
+     * Q: ~grep~ \\
+       A: ~-lZ~
+     #+begin_src sh
+       grep "long" C*.txt -lZ | xargs -0 ls -l
+     #+end_src
+     * Q: ~xargs~ result as source dir \\
+       A: ~-I {}~
+       [[https://askubuntu.com/questions/487035/mv-files-with-xargs][command line - mv files with | xargs - Ask Ubuntu]]
+     #+begin_src sh
+       find . -maxdepth 1 -type f | sudo xargs -I {} mv {} /etc/apache2/sites-available/
+     #+end_src
+*** ~Centos~
+    * Q: ~build essential~ \\
+      A: ~yum install groupinstall "Development Tools"~
+*** ~segfault at 1p xxxx sp xxxx~
+    [[https://stackoverflow.com/questions/2549214/interpreting-segfault-messages][linux - Interpreting segfault messages - Stack Overflow]]
+*** 正则表达式过滤指定字符串
+    [[http://www.aqee.net/post/regular-expression-to-match-string-not-containing-a-word.html][正则表达式里字符串”不包含”匹配技巧]]
+    #+begin_src sh
+      ^((?!hello).)*$
+    #+end_src
+*** 查看 IPC 信息的命令
+    - ~ipcs~
+*** 栈溢出
+    [[https://www.cnblogs.com/zmlctt/p/3987181.html][栈大小和内存分部问题 - zmlctt - 博客园]]
+*** ~volatile~
+    [[https://stackoverflow.com/questions/246127/why-is-volatile-needed-in-c][declaration - Why is volatile needed in C? - Stack Overflow]]
+*** Emacs
+**** 匹配中文
+     #+begin_src emacs-lisp
+       [一-龠]
+     #+end_src
+**** 多行操作
+     [[http://blog.lujun9972.win/blog/2016/11/18/emacs%E4%B8%AD%E9%82%A3%E4%BA%9B%E4%B8%8D%E5%B8%B8%E7%94%A8%E7%9A%84%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/][Emacs中那些不常用的行操作命令 - 暗无天日]]
+**** Projectile Doc
+     #+begin_quote
+     The contents of =.projectile= are ignored when using the =alien= project indexing method.
+     #+end_quote
+     [[https://projectile.readthedocs.io/en/latest/projects/#ignoring-files][Projects - Projectile: The Project Interaction Library for Emacs]]
+*** Differences between =RUID= and =EUID=
+    [[https://stackoverflow.com/questions/32455684/difference-between-real-user-id-effective-user-id-and-saved-user-id][linux - Difference between Real User ID, Effective User ID and Saved User ID - Stack Overflow]]
+*** static 用法 [fn:2]
+    - 全局
+      - 变量在全局数据分配空间, 仅对当前文件可见
+      - 函数与变量类似, 仅当前文件可以访问
+    - 局部
+      - 变量放到全局数据区, 初始化为 0, 且函数返回也不修改其值
+*** 使用 ~snprintf~ 替换 ~strcpy/sprintf/strncpy~
+    - strcpy/sprintf 不检验字符串长度, 可能溢出
+    - strncpy <len 时 对剩余部分补 0, 占用 CPU 时间, =len 时 不对结尾补 0
+** Book Notes
+*** Design Pattern
+**** [[file:books/design/Head_First_C/Head_First_C.org::*Head First C][Head First C]]
+*** AD
+    [[https://en.wikipedia.org/wiki/Active_Directory][Active Directory]]
+*** Kernel
+**** Linux 内核完全注释
+**** [[file:books/kernel/Linux_Kernel_Development/NOTEs.org::*Linux Kernel Development][Linux Kernel Development]]
+*** System
+**** [[file:books/system/SICP/SICP.org::*Structure and Interpreter of Computre Programs][Structure and Interpreter of Computre Programs]]                    :SICP:
+**** [[file:books/system/Shell Programming in Unix, Linux and OS X_ - Stephen G. Kochan/NOTEs.org::*Shell Programming in Unix, Linux and OS X_ - Stephen G. Kochan][Shell Programming in Unix, Linux and OS X_ - Stephen G. Kochan]]
+**** [[https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html][Linux工具快速教程 — Linux Tools Quick Tutorial]]
+**** TODO COMMENT [[file:books/system/ULK/ULK.org::*Understanding the LINUX KERNEL][Understanding the LINUX KERNEL]]
+**** TODO [[file:books/system/CSAPP/CSAPP.org::*Computer System: A Programmer's Perspective \[fn:1\]][CSAPP]]
+**** TODO [[file:books/system/TLPI/TLPI.org::*The Linux Programming Interface][The Linux Programming Interface]]
+**** TODO COMMENT [[file:books/system/TCP_IP/TCP.org::*TCP/IP Illustrated Vol.1][TCP/IP Illustrated Vol.1​]]
+     TCP/IP 详解 卷一: 协议
+**** DONE [[file:books/system/APUE/APUE.org::*Advanced Programming in the Unix Environment][Advanced Programming in the Unix Environment [76%]​]]
+     CLOSED: [2020-02-06 Thu 20:45]
+     Stop at Section 17
+**** DONE [[file:books/system/vbird_linux_basic_4e/NOTEs.org][Linux鸟哥的私房菜 4e]]
+     CLOSED: [2020-02-06 Thu 23:44]
+     Stop at Section 17
+*** Language
+**** C
+***** DONE [[file:books/c/ExCP/NOTEs.org][C 专家编程]]
+      CLOSED: [2020-03-17 Tue 21:55]
+***** DONE Understanding and Using C Pointers
+      * void 指针按 char 对齐
+      * 非 NULL 指针不相等
+      * 常量指针指向非常量
+***** DONE Pointers On C
+***** DONE [[file:books/c/C_Traps_and_Pitfalls/NOTEs.org][C 语言陷阱与缺陷]]
+      CLOSED: [2020-02-06 Thu 23:46]
+**** C++
+***** TODO C++ Primer
+**** Python
+***** DONE [[file:books/python/A Byte of Python/NOTEs.org][A Byte of Python]]
+**** Lua
+***** DONE [[file:books/lua/Programming in Lua/NOTEs.org][Programming in Lua]] :Too easy to make notes:
+      CLOSED: [2020-02-06 Thu 23:43]
+**** Go
+***** TODO [[file:books/go/GoPL/GoPL.org::*Progress][The Go Programming Language]]
+**** AWK
+***** [[https://www.tutorialspoint.com/awk/awk_workflow.htm][AWK - Workflow - Tutorialspoint]]
+*** database
+**** TODO [[file:books/DB/Redis_Design_and_Implementation/NOTEs.org::*Redis 设计与实现][Redis 设计与实现]]
+*** VC
+**** Git
+***** DONE PRO GIT
+      CLOSED: [2020-03-03 Tue 12:12]
+*** Programming
+**** DONE COMMENT [[file:books/programming/CXYDZWXY.org][程序员的自我修养]]
+     CLOSED: [2020-02-06 Thu 23:44]
+**** TODO [[file:coding/nginx/NGINX.org][深入理解 Nginx]]
+*** org-mode
+*** Algorithm
+**** [[file:books/algorithm/Programming Pearls/NOTEs.org::*Programming Pealrs][Programming Pealrs]]
+**** Leetcode
+***** Array
+****** Remove Elements
+******* Q:
+        Given an array and a value, remove all instances of that > value in place and return the new length.
+
+        The order of elements can be changed. It doesn't matter what you leave beyond the new length.
+******* A:
+        #+begin_src c
+          int remove_elem(int A[], int n, int elem) {
+              int i = 0;
+              int j = 0;
+
+              for (; j < n; ++j) {
+                  if (A[j] == elem) {
+
+                  } else {
+                      A[i] = A[j];
+                      i ++;
+                  }
+
+
+              }
+          }
+        #+end_src
+****** Two Sum
+******* Q:
+        Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+        You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+        *Example:*
+        #+begin_src
+     Given nums = [2, 7, 11, 15], target = 9,
+
+     Because nums[0] + nums[1] = 2 + 7 = 9,
+     return [0, 1].
+        #+end_src
+******* A:
+        #+begin_src C
+          int* twoSum(int* nums, int numsSize, int target) {
+              int  i   = 0;
+              int  j   = 0;
+              int* res = (int*)calloc(2, sizeof(int));
+              for (i = 0; i < numsSize - 1; ++i) {
+                  for (j = i + 1; j < numsSize; ++j) {
+                      if (nums[i] + nums[j] == target) {
+                          res[0] = i;
+                          res[1] = j;
+                          break;
+                      }
+                  }
+              }
+              return res;
+          }
+        #+end_src
+****** Median of Two Sorted Arrays
+******* Q:
+        There are two sorted arrays nums1 and nums2 of size m and n respectively.
+        Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+******* A:
+        *思路: * 合并数组, 计算中间下标的平均数.
+*** Others
+**** TODO [[file:books/暗时间.org][暗时间]]
+**** DONE [[file:psycology/NOTEs.org::*人性的弱点][人性的弱点]]
+     CLOSED: [2021-12-24 Fri 15:04]
+**** [[https://www.cnblogs.com/Open_Source/archive/2011/07/17/2108747.html][Org-mode 简明手册 - open source - 博客园]]
+**** 区块链
+***** 前言
+      [[http://blog.codinglabs.org/articles/bitcoin-mechanism-make-easy.html][CodingLabs - 一个故事告诉你比特币的原理及运作机制]] \\
+      [[http://www.8btc.com/what-is-blockchain][区块链是什么 | 巴比特]]
+***** DONE 比特币
+      CLOSED: [2020-03-03 Tue 12:12]
+****** 白皮书
+       [[https://bitcoin.org/bitcoin.pdf][bitcoin.pdf]]
+****** mastering bitcoin
+***** 以太坊
+** 随笔
+*** Principles of Git
+**** 每次 commit 只做一件事
+     针对某一项某一任务的更改
+**** commit 不能破坏构建
+     每个步骤都必须完全起作用, 并且不引起退化.
+**** 永远不要rebase公共分支
+     rebase他人使用的公共分支后, 已重新基准化的commit将不再与基于原commit匹配
+**** 保留定义明确的commit日志
+     必须在更改的commit日志中做出说明, 让所有人了解与正在进行的更改相关的所有内容.
+**** 所有代码都是二等分的
+**** Git正确合并
+**** 持续测试和集成
+*** Frequent git commands
+    #+begin_src sh
+      git init
+      git clone
+      git commit
+      git remote add/set-url/...
+      git fetch
+      git merge
+      git pull (git fetch && git merge)
+      git push
+      git checkout
+      git branch
+      git reflog
+    #+end_src
+* COMMENT 金融 && 股票
+  * [[file:eco/NOTEs.org::*股票][股票]]
+  * [[file:eco/NOTEs.org::*金融][金融]]
+* TODO 待学
+** 汇编
+** 算法
+** 源码学习
+*** libevent/libuv
+*** linux
+** 服务器
+*** 网络
+**** 协议
+     * TCP/IP Illustrate
+     * Unix Network Programming
+**** 性能
+***** 数据库
+      * 高性能 MySQL
+** Linux 内核及驱动
+* Footnotes
+[fn:3] [[https://stackoverflow.com/questions/49679676/execute-bash-script-remotely-via-curl#49679914][linux - Execute Bash script remotely via cURL - Stack Overflow]]
+
+[fn:2] [[https://blog.csdn.net/guotianqing/article/details/79828100][c语言中static关键字用法详解 - guotianqing的博客 - CSDN博客]]
+
+[fn:1] [[https://zh.wikipedia.org/wiki/%E5%8F%91%E5%8D%A1%E8%A1%8C%E8%AF%86%E5%88%AB%E7%A0%81][发卡行识别码 - 维基百科，自由的百科全书]]

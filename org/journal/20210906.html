@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-09-06 Mon 14:33 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zhoush" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9904ca9"><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-09-06 Mon 10:17&gt;</span></span></a>
+<ul>
+<li><a href="#org23a475b"><span class="done DONE">DONE</span> 认证时比较的是密码明文还是密文</a>
+<ul>
+<li><a href="#orge25af9f">解密:</a></li>
+</ul>
+</li>
+<li><a href="#orga4d9802"><span class="todo TODO">TODO</span> srv 收到数据包后的拆包细节</a></li>
+<li><a href="#org03a1def"><span class="todo TODO">TODO</span> 性能分析</a></li>
+<li><a href="#org9077831">思路:</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9904ca9" class="outline-2">
+<h2 id="org9904ca9"><span class="timestamp-wrapper"><span class="timestamp">&lt;2021-09-06 Mon 10:17&gt;</span></span></h2>
+<div class="outline-text-2" id="text-org9904ca9">
+</div>
+<div id="outline-container-org23a475b" class="outline-3">
+<h3 id="org23a475b"><span class="done DONE">DONE</span> 认证时比较的是密码明文还是密文</h3>
+<div class="outline-text-3" id="text-org23a475b">
+</div>
+<div id="outline-container-orge25af9f" class="outline-4">
+<h4 id="orge25af9f">解密:</h4>
+<div class="outline-text-4" id="text-orge25af9f">
+<ul class="org-ul">
+<li>krb5,</li>
+<li></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orga4d9802" class="outline-3">
+<h3 id="orga4d9802"><span class="todo TODO">TODO</span> srv 收到数据包后的拆包细节</h3>
+</div>
+<div id="outline-container-org03a1def" class="outline-3">
+<h3 id="org03a1def"><span class="todo TODO">TODO</span> 性能分析</h3>
+<div class="outline-text-3" id="text-org03a1def">
+<ul class="org-ul">
+<li><code>ldb_kv_callback</code>: 数据库回调</li>
+
+<li><code>ldb_kv_search/add/modify/extended</code>: 查, 增, 改, 序号</li>
+
+<li><p>
+<code>ldb_kv_(add/modify)</code>: <code>ldb_kv_(add/modify)_internal</code>
+</p>
+
+<p>
+<code>ldb_kv-&gt;kv_ops-&gt;store = ltdb_store</code> (ldb_tdb.c)
+</p>
+
+<p>
+PS: alternate: <code>lmdb_key_value_ops</code> (ldb_mdb.c)
+</p>
+<ul class="org-ul">
+<li><p>
+tdb ops:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">Returns 0 on fail.  On success, return offset of record, and fills</span>
+<span style="color: #2aa1ae; background-color: #292e34;">   in rec</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+<span style="color: #4f97d7; font-weight: bold;">static</span> <span style="color: #ce537a; font-weight: bold;">tdb_off_t</span> <span style="color: #bc6ec5; font-weight: bold;">tdb_find</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">struct</span> <span style="color: #ce537a; font-weight: bold;">tdb_context</span> *<span style="color: #7590db;">tdb</span>, <span style="color: #ce537a; font-weight: bold;">TDB_DATA</span> <span style="color: #7590db;">key</span>, <span style="color: #ce537a; font-weight: bold;">uint32_t</span> <span style="color: #7590db;">hash</span>,
+                          <span style="color: #4f97d7; font-weight: bold;">struct</span> <span style="color: #ce537a; font-weight: bold;">tdb_record</span> *<span style="color: #7590db;">r</span><span style="color: #4f97d7;">)</span>;
+
+<span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">store an element in the database, replacing any existing element</span>
+<span style="color: #2aa1ae; background-color: #292e34;">   with the same key</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">   * return 0 on success, -1 on failure</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+_PUBLIC_ <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">tdb_store</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">struct</span> <span style="color: #ce537a; font-weight: bold;">tdb_context</span> *<span style="color: #7590db;">tdb</span>, <span style="color: #ce537a; font-weight: bold;">TDB_DATA</span> <span style="color: #7590db;">key</span>, <span style="color: #ce537a; font-weight: bold;">TDB_DATA</span> <span style="color: #7590db;">dbuf</span>,
+                       <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">flag</span><span style="color: #4f97d7;">)</span>;
+</pre>
+</div></li>
+<li><p>
+tdb io:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">open the database, creating it if necessary</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">   The open_flags and mode are passed straight to the open call on the</span>
+<span style="color: #2aa1ae; background-color: #292e34;">   database file. A flags value of O_WRONLY is invalid. The hash size</span>
+<span style="color: #2aa1ae; background-color: #292e34;">   is advisory, use zero for a default value.</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">   Return is NULL on error, in which case errno is also set.  Don't</span>
+<span style="color: #2aa1ae; background-color: #292e34;">   try to call tdb_error or tdb_errname, just do strerror(errno).</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">   @param name may be NULL for internal databases.</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+_PUBLIC_ <span style="color: #4f97d7; font-weight: bold;">struct</span> <span style="color: #ce537a; font-weight: bold;">tdb_context</span> *<span style="color: #bc6ec5; font-weight: bold;">tdb_open</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">const</span> <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">name</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">hash_size</span>,
+                                      <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">tdb_flags</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">open_flags</span>,
+                                      <span style="color: #ce537a; font-weight: bold;">mode_t</span> <span style="color: #7590db;">mode</span><span style="color: #4f97d7;">)</span>;
+
+<span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">read a lump of data at a specified offset, maybe convert</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+<span style="color: #4f97d7; font-weight: bold;">static</span> <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">tdb_read</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">struct</span> <span style="color: #ce537a; font-weight: bold;">tdb_context</span> *<span style="color: #7590db;">tdb</span>, <span style="color: #ce537a; font-weight: bold;">tdb_off_t</span> <span style="color: #7590db;">off</span>, <span style="color: #ce537a; font-weight: bold;">void</span> *<span style="color: #7590db;">buf</span>,
+                    <span style="color: #ce537a; font-weight: bold;">tdb_len_t</span> <span style="color: #7590db;">len</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">cv</span><span style="color: #4f97d7;">)</span>;
+
+<span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">write a lump of data at a specified offset</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+<span style="color: #4f97d7; font-weight: bold;">static</span> <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">tdb_write</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">struct</span> <span style="color: #ce537a; font-weight: bold;">tdb_context</span> *<span style="color: #7590db;">tdb</span>, <span style="color: #ce537a; font-weight: bold;">tdb_off_t</span> <span style="color: #7590db;">off</span>, <span style="color: #4f97d7; font-weight: bold;">const</span> <span style="color: #ce537a; font-weight: bold;">void</span> *<span style="color: #7590db;">buf</span>,
+                     <span style="color: #ce537a; font-weight: bold;">tdb_len_t</span> <span style="color: #7590db;">len</span><span style="color: #4f97d7;">)</span>;
+</pre>
+</div>
+
+
+<div id="org5ee9aff" class="figure">
+<p><object type="image/svg+xml" data="performance.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9077831" class="outline-3">
+<h3 id="org9077831">思路:</h3>
+<div class="outline-text-3" id="text-org9077831">
+<p>
+宏定义在: tdb.h,
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #9f8766;">/** Flags to </span><span style="color: #a45bad;">tdb_store()</span><span style="color: #9f8766;"> */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_REPLACE</span> <span style="color: #a45bad;">1</span> <span style="color: #9f8766;">/** Unused */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_INSERT</span> <span style="color: #a45bad;">2</span>  <span style="color: #9f8766;">/** Don't overwrite an existing entry */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_MODIFY</span> <span style="color: #a45bad;">3</span>  <span style="color: #9f8766;">/** Don't create an existing entry    */</span>
+
+<span style="color: #9f8766;">/** Flags for </span><span style="color: #a45bad;">tdb_open()</span><span style="color: #9f8766;"> */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_DEFAULT</span>           <span style="color: #a45bad;">0</span>    <span style="color: #9f8766;">/** just a readability place holder */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_CLEAR_IF_FIRST</span>    <span style="color: #a45bad;">1</span>    <span style="color: #9f8766;">/** If this is the first open, wipe the db */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_INTERNAL</span>          <span style="color: #a45bad;">2</span>    <span style="color: #9f8766;">/** Don't store on disk */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_NOLOCK</span>            <span style="color: #a45bad;">4</span>    <span style="color: #9f8766;">/** Don't do any locking */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_NOMMAP</span>            <span style="color: #a45bad;">8</span>    <span style="color: #9f8766;">/** Don't use mmap */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_CONVERT</span>           <span style="color: #a45bad;">16</span>   <span style="color: #9f8766;">/** Convert endian (internal use) */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_BIGENDIAN</span>         <span style="color: #a45bad;">32</span>   <span style="color: #9f8766;">/** Header is big-endian (internal use) */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_NOSYNC</span>            <span style="color: #a45bad;">64</span>   <span style="color: #9f8766;">/** Don't use synchronous transactions */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_SEQNUM</span>            <span style="color: #a45bad;">128</span>  <span style="color: #9f8766;">/** Maintain a sequence number */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_VOLATILE</span>          <span style="color: #a45bad;">256</span>  <span style="color: #9f8766;">/** Activate the per-hashchain freelist, default 5 */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_ALLOW_NESTING</span>     <span style="color: #a45bad;">512</span>  <span style="color: #9f8766;">/** Allow transactions to nest */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_DISALLOW_NESTING</span>  <span style="color: #a45bad;">1024</span> <span style="color: #9f8766;">/** Disallow transactions to nest */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_INCOMPATIBLE_HASH</span> <span style="color: #a45bad;">2048</span> <span style="color: #9f8766;">/** Better hashing: can't be opened by tdb &lt; 1.2.6. */</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">TDB_MUTEX_LOCKING</span>     <span style="color: #a45bad;">4096</span> <span style="color: #9f8766;">/** optimized locking using robust mutexes if supported,</span>
+<span style="color: #9f8766;">                                       only with tdb &gt;= 1.3.0 and TDB_CLEAR_IF_FIRST</span>
+<span style="color: #9f8766;">                                       after checking </span><span style="color: #a45bad;">tdb_runtime_check_for_robust_mutexes()</span><span style="color: #9f8766;"> */</span>
+</pre>
+</div>
+<ol class="org-ol">
+<li>commit 前 tdb_flags = TDB_INTERNAL</li>
+<li>commit 时 tdb_flags = TDB_DEFAULT (待确认)</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: zhoush</p>
+<p class="date">Created: 2021-09-06 Mon 14:33</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

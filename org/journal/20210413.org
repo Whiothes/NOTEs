@@ -1,0 +1,9 @@
+* <2021-04-13 00:20>
+** DONE 需求字段
+   CLOSED: [2021-04-13 Tue 18:17]
+*** REGISTER
+    * 查询字段: deviceID RegisterDate StatusDate Expires
+    * 查询条件: deviceID
+*** INVITE
+    * 查询字段: SSRC
+    * 查询条件: deviceID

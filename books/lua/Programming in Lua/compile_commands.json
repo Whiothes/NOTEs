@@ -1,0 +1,16 @@
+[
+    {
+        "arguments": [
+            "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc",
+            "-c",
+            "-I/usr/local/include/lua",
+            "-isysroot",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk",
+            "-o",
+            "CMakeFiles/fig27.1.dir/fig27.1.c.o",
+            "fig27.1.c"
+        ],
+        "directory": "/Users/zhoush/Documents/Notes/books/lua/Programming in Lua/Chapter27",
+        "file": "fig27.1.c"
+    }
+]

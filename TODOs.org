@@ -1,0 +1,30 @@
+* Tasks
+** TODO 自考 [0/4]
+   :PROPERTIES:
+   :ID:       F900705E-3641-40BF-87EB-683F3D13DC24
+   :END:
+*** TODO 网络
+    :PROPERTIES:
+    :ID:       2037B711-1147-4FB2-ABDB-19B6FA0D2D71
+    :END:
+*** TODO 系统结构
+    :PROPERTIES:
+    :ID:       94D06416-0CA0-4246-9CCF-A0ECDC7CDB88
+    :END:
+*** TODO 组成
+    :PROPERTIES:
+    :ID:       D0B4AB61-3C0D-434C-80C0-CE2E8B627553
+    :END:
+*** TODO 数据库
+    :PROPERTIES:
+    :ID:       218C059C-A5DF-43CD-98BA-9882C6E09DA4
+    :END:
+** TODO SIP
+   :PROPERTIES:
+   :ID:       F3E61FA7-9825-40BF-BF7A-55F6F98A0512
+   :END:
+*** 兼容不同厂商
+*** 信令功能扩充
+*** 增强代码稳定性
+    1. 性能
+    2. 逻辑清晰化

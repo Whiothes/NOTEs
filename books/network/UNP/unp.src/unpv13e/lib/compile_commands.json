@@ -1,0 +1,498 @@
+[
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "tcp_connect.o", 
+            "tcp_connect.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "tcp_connect.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "writen.o", 
+            "writen.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "writen.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "sock_set_addr.o", 
+            "sock_set_addr.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "sock_set_addr.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "sock_set_port.o", 
+            "sock_set_port.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "sock_set_port.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "str_echo.o", 
+            "str_echo.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "str_echo.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "sock_ntop.o", 
+            "sock_ntop.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "sock_ntop.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "sock_get_port.o", 
+            "sock_get_port.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "sock_get_port.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "wraplib.o", 
+            "wraplib.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "wraplib.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "sock_bind_wild.o", 
+            "sock_bind_wild.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "sock_bind_wild.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "sock_cmp_addr.o", 
+            "sock_cmp_addr.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "sock_cmp_addr.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "str_cli.o", 
+            "str_cli.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "str_cli.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "tcp_listen.o", 
+            "tcp_listen.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "tcp_listen.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "sockfd_to_family.o", 
+            "sockfd_to_family.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "sockfd_to_family.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "signal.o", 
+            "signal.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "signal.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "rtt.o", 
+            "rtt.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "rtt.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "writable_timeo.o", 
+            "writable_timeo.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "writable_timeo.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "readn.o", 
+            "readn.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "readn.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "wrapunix.o", 
+            "wrapunix.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "wrapunix.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "udp_server.o", 
+            "udp_server.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "udp_server.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "udp_connect.o", 
+            "udp_connect.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "udp_connect.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "readable_timeo.o", 
+            "readable_timeo.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "readable_timeo.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "udp_client.o", 
+            "udp_client.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "udp_client.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "sock_cmp_port.o", 
+            "sock_cmp_port.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "sock_cmp_port.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "wrapstdio.o", 
+            "wrapstdio.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "wrapstdio.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "wrapsock.o", 
+            "wrapsock.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "wrapsock.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "write_fd.o", 
+            "write_fd.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "write_fd.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "wrappthread.o", 
+            "wrappthread.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "wrappthread.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "sock_ntop_host.o", 
+            "sock_ntop_host.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "sock_ntop_host.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "tv_sub.o", 
+            "tv_sub.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "tv_sub.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "sock_set_wild.o", 
+            "sock_set_wild.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "sock_set_wild.c"
+    }, 
+    {
+        "arguments": [
+            "cc", 
+            "-c", 
+            "-I../lib", 
+            "-g", 
+            "-O2", 
+            "-D_REENTRANT", 
+            "-Wall", 
+            "-o", 
+            "signal_intr.o", 
+            "signal_intr.c"
+        ], 
+        "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/unpv13e/lib", 
+        "file": "signal_intr.c"
+    }
+]

@@ -1,0 +1,23 @@
+#+SETUPFILE: ~/Documents/style.setup
+* Graph
+  #+begin_src dot :file graph.png
+    graph {
+      dir=LR
+      node[shape=circle dir="none"]
+      v0 v1 v2 v3 v4 v5 v6 v7 v8
+
+      v0 -- v4
+      v0 -- v1
+      v0 -- v3
+      v1 -- v2
+      v1 -- v4
+      v4 -- v8
+      v3 -- v6
+      v4 -- v6
+      v2 -- v5
+      v6 -- v7
+    }
+  #+end_src
+
+  #+RESULTS:
+  [[file:graph.png]]

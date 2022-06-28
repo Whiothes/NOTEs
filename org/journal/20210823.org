@@ -1,0 +1,66 @@
+* <2021-08-23 09:15>
+
+* SAMBA
+
+** Auth for Administrator
+   1. auth_get_challenge()
+   2. gensec
+   3. ntlmssp
+   4. auth_check_password_send
+   5. auth_logon
+   6. auth_check_password_recv
+
+** ldap change password
+*** log level
+    log level = 10
+
+*** plantuml sequence
+     #+begin_src plantuml :file ldap_change_passwd.png :cmdline -charset utf-8
+       ldapadmin -> udp: dgram_socket_recv
+       udp -> udp: ntbd_mailslot_browse_handler
+       udp -> auth :  ntlmssp_sign
+       note right
+               ntlmssp_unseal_packet
+               ntlmssp_check_pakcet
+       end note
+
+       auth -> audit: audit_logging
+       note right
+               audit_log_human_text
+       end note
+
+       auth -> ldb:
+       note right
+               partition_start_trans
+               partition_metadata_start_trans
+               ldb_trace_request: MODIFY
+               (resolve_oids)->modify
+               (rootdse)->modify
+               (lazy_commit)->modify
+               (extended_dn_store)->modify
+               (extended_dn_in)->modify
+               (audit_log)->modify
+               objectclass_modify
+               tombstone_reanimate_modify
+               ldb_trace_next_request: (descriptor)->modify
+               ldb_trace_next_request: (acl)->modify
+               acl_modify: unicodePwd
+               password_hash
+
+               encrypted_secrets
+
+               ldb_ldif_write_redacted_trace_string(this one ensures no passwords print into debug logs)
+
+               ldb_trace_response
+       end note
+     #+end_src
+
+     #+RESULTS:
+     [[file:ldap_change_passwd.png]]
+
+** gensec
+   [[https://www.samba.org/samba/news/articles/gensec-white-paper.pdf][gensec-white-paper.pdf]]
+** SPNEGO
+   [[https://en.wikipedia.org/wiki/SPNEGO][SPNEGO - Wikipedia]]
+** ldb_message
+   [[https://wiki.samba.org/index.php/Samba4/LDB/Message#ldb_message][Samba4/LDB/Message - SambaWiki]]

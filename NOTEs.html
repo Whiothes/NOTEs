@@ -1,0 +1,1690 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-12-09 Thu 23:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>笔记</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="whiothes" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">笔记</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org987ce0b">笔记</a>
+<ul>
+<li><a href="#orgee67bf4">Q &amp; A</a>
+<ul>
+<li><a href="#org585feab">vim negative lookahead</a></li>
+<li><a href="#org4376872">memory leak</a></li>
+<li><a href="#org3ca3401">backtrace():How to make backtrace()/backtrace_symbols() print the function names?</a></li>
+<li><a href="#org7e75027">vim: How to paste yanked text into the Vim command line - Stack Overflow</a></li>
+<li><a href="#org7736962">curl: curl xxx.sh and execute </a></li>
+<li><a href="#org145031d">Git: How do I move a Git branch out into its own repository? - Stack Overflow</a></li>
+<li><a href="#org9b7e823">Lock-Free</a></li>
+<li><a href="#org4f26105">PUT 和 POST 的区别</a></li>
+<li><a href="#orgae23f65">strongSwan 依赖</a></li>
+<li><a href="#orgdeab050">如何系统地学习数据结构与算法？ - 知乎</a></li>
+<li><a href="#orgf378dd3">check threads</a></li>
+<li><a href="#orgc463a1d">rpm install with dependencies</a></li>
+<li><a href="#org85af063">gcc error when inline without static</a></li>
+<li><a href="#org6586e53">c++ - How to identify platform/compiler from preprocessor macros? - Stack Overflow</a></li>
+<li><a href="#org490a6bb">valgrind messages</a></li>
+<li><a href="#org308598f">mysql C API: still reachable</a></li>
+<li><a href="#orgd58ac1d">gdb 打印数组</a></li>
+<li><a href="#orga6b3b3b">recover/undo/get back deleted commit (even remote)</a></li>
+<li><a href="#org4a69536">linux - How to redirect the output of an application in background to /dev/null - Stack Overflow</a></li>
+<li><a href="#orgda32ced">CS Visualized: Useful Git Commands - DEV</a></li>
+<li><a href="#org263b287">slice an array in bash</a></li>
+<li><a href="#org52cd746">gcc expand macros</a></li>
+<li><a href="#org620f377"><code>sed</code>: How to use variables in <code>sed</code></a></li>
+<li><a href="#orgba297fa">Ubuntu: How to disable FireWall</a></li>
+<li><a href="#org08587f9">Git delete remote branch</a></li>
+<li><a href="#orgf97e469">Makefile for Kenel module</a></li>
+<li><a href="#org41cab78">Get client sock IP addr</a></li>
+<li><a href="#orgbfbc548">Mac 清理右键多余选单</a></li>
+<li><a href="#org230e9cb">differences between preprocessor and <code>inline</code></a></li>
+<li><a href="#org6235a27"><code>w !sudo tee %</code> principle</a></li>
+<li><a href="#orgfe01a0b">Figure out the largest directory</a></li>
+<li><a href="#org8f47717"><code>long</code> 和 <code>long long</code> 的区别</a></li>
+<li><a href="#orgc663b2d">删除特殊符号的文件名</a></li>
+<li><a href="#orge9b7a57">通过 Netfilter 自写模块实现过滤器</a></li>
+<li><a href="#orgde85f24">nginx: urlencded url not found</a></li>
+<li><a href="#orge319090">数据结构</a></li>
+<li><a href="#org3a1915a">MySQL</a></li>
+<li><a href="#org19c02ca">BASH</a></li>
+<li><a href="#org4561e8f"><code>Centos</code></a></li>
+<li><a href="#org8d53600"><code>segfault at 1p xxxx sp xxxx</code></a></li>
+<li><a href="#org0bbe508">正则表达式过滤指定字符串</a></li>
+<li><a href="#org4e13bac">查看 IPC 信息的命令</a></li>
+<li><a href="#org02b514d">栈溢出</a></li>
+<li><a href="#org8a6657c"><code>volatile</code></a></li>
+<li><a href="#orga2c485d">Emacs</a></li>
+<li><a href="#org42f2c3b">Differences between <code>RUID</code> and <code>EUID</code></a></li>
+<li><a href="#orgc744432">static 用法 </a></li>
+<li><a href="#org4f1fb76">使用 <code>snprintf</code> 替换 <code>strcpy/sprintf/strncpy</code></a></li>
+</ul>
+</li>
+<li><a href="#orgb0ca650">Book Notes</a>
+<ul>
+<li><a href="#org98822fe">Design Pattern</a></li>
+<li><a href="#org491ac39">AD</a></li>
+<li><a href="#org00f97a7">Kernel</a></li>
+<li><a href="#orgebee8a6">System</a></li>
+<li><a href="#org18a295c">Language</a></li>
+<li><a href="#orga991eaf">数据库</a></li>
+<li><a href="#org6d609a6">版本控制</a></li>
+<li><a href="#org7f46831">其他</a></li>
+<li><a href="#org8880cf8">org-mode</a></li>
+<li><a href="#org139d252">区块链</a></li>
+<li><a href="#org263c49b">算法</a></li>
+<li><a href="#orgd03cdee">时间管理</a></li>
+</ul>
+</li>
+<li><a href="#orgb5dc847">随笔</a>
+<ul>
+<li><a href="#org4cdfcd8">Principles of Git</a></li>
+<li><a href="#orgd21f458">Frequent git commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgb057ccb"><span class="todo TODO">TODO</span> 待学</a>
+<ul>
+<li><a href="#orge5aac58">汇编</a></li>
+<li><a href="#orgaca7ca2">算法</a></li>
+<li><a href="#org7645bf0">源码学习</a>
+<ul>
+<li><a href="#org079e065">libevent/libuv</a></li>
+<li><a href="#org0bc95b9">linux</a></li>
+</ul>
+</li>
+<li><a href="#org3b47661">服务器</a>
+<ul>
+<li><a href="#org85c3f60">网络</a></li>
+</ul>
+</li>
+<li><a href="#orgaaae112">Linux 内核及驱动</a></li>
+</ul>
+</li>
+<li><a href="#orgb28870d">项目经验</a>
+<ul>
+<li><a href="#orgc1c7161">首信历史项目</a></li>
+<li><a href="#orgb324fc9">浙星历史项目</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org987ce0b" class="outline-2">
+<h2 id="org987ce0b">笔记</h2>
+<div class="outline-text-2" id="text-org987ce0b">
+</div>
+<div id="outline-container-orgee67bf4" class="outline-3">
+<h3 id="orgee67bf4">Q &amp; A</h3>
+<div class="outline-text-3" id="text-orgee67bf4">
+</div>
+<div id="outline-container-org585feab" class="outline-4">
+<h4 id="org585feab">vim negative lookahead</h4>
+<div class="outline-text-4" id="text-org585feab">
+<p>
+<a href="https://stackoverflow.com/questions/21148467/is-there-a-way-to-do-negative-lookahead-in-vim-regex">https://stackoverflow.com/questions/21148467/is-there-a-way-to-do-negative-lookahead-in-vim-regex</a>
+</p>
+<blockquote>
+<p>
+/abc\(.*xyz\)\@!
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org4376872" class="outline-4">
+<h4 id="org4376872">memory leak</h4>
+<div class="outline-text-4" id="text-org4376872">
+<p>
+Q: find memory leak of a running process
+A: <a href="https://unix.stackexchange.com/questions/36450/how-can-i-find-a-memory-leak-of-a-running-process">https://unix.stackexchange.com/questions/36450/how-can-i-find-a-memory-leak-of-a-running-process</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">/proc/$<span style="color: #7590db;">PID</span>/smaps
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3ca3401" class="outline-4">
+<h4 id="org3ca3401">backtrace():<a href="https://stackoverflow.com/questions/6934659/how-to-make-backtrace-backtrace-symbols-print-the-function-names">How to make backtrace()/backtrace_symbols() print the function names?</a></h4>
+<div class="outline-text-4" id="text-org3ca3401">
+<p>
+<code>gcc -r</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org7e75027" class="outline-4">
+<h4 id="org7e75027">vim: <a href="https://stackoverflow.com/questions/3997078/how-to-paste-yanked-text-into-the-vim-command-line#3997110">How to paste yanked text into the Vim command line - Stack Overflow</a></h4>
+<div class="outline-text-4" id="text-org7e75027">
+<p>
+<code>Ctrl - R</code>, then <code>"</code>
+<code>help register</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org7736962" class="outline-4">
+<h4 id="org7736962">curl: curl xxx.sh and execute <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h4>
+<div class="outline-text-4" id="text-org7736962">
+<div class="org-src-container">
+<pre class="src src-bash">curl https://xxx.sh | bash
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org145031d" class="outline-4">
+<h4 id="org145031d">Git: <a href="https://stackoverflow.com/questions/2227062/how-do-i-move-a-git-branch-out-into-its-own-repository">How do I move a Git branch out into its own repository? - Stack Overflow</a></h4>
+</div>
+<div id="outline-container-org9b7e823" class="outline-4">
+<h4 id="org9b7e823">Lock-Free</h4>
+<div class="outline-text-4" id="text-org9b7e823">
+<p>
+<a href="https://preshing.com/20120612/an-introduction-to-lock-free-programming/">An Introduction to Lock-Free Programming</a>
+</p>
+
+<p>
+std::atomic 在 C 语言中可以通过 <code>volatile</code> 实现
+</p>
+</div>
+</div>
+<div id="outline-container-org4f26105" class="outline-4">
+<h4 id="org4f26105">PUT 和 POST 的区别</h4>
+<div class="outline-text-4" id="text-org4f26105">
+<p>
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.6">HTTP/1.1: Method Definitions</a>
+</p>
+<blockquote>
+<p>
+   The fundamental difference between the POST and PUT requests is reflected in the different meaning of the Request-URI. The URI in a POST request identifies the resource that will handle the enclosed entity. That resource might be a data-accepting process, a gateway to some other protocol, or a separate entity that accepts annotations. In contrast, the URI in a PUT request identifies the entity enclosed with the request &#x2013; the user agent knows what URI is intended and the server MUST NOT attempt to apply the request to some other resource. If the server desires that the request be applied to a different URI,
+it MUST send a 301 (Moved Permanently) response; the user agent MAY then make its own decision regarding whether or not to redirect the request.
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orgae23f65" class="outline-4">
+<h4 id="orgae23f65">strongSwan 依赖</h4>
+<div class="outline-text-4" id="text-orgae23f65">
+<ul class="org-ul">
+<li><p>
+gperf
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">dnf --enablerepo=PowerTools install gperf
+</pre>
+</div></li>
+<li><p>
+gmp
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">yum install gmp-devel
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdeab050" class="outline-4">
+<h4 id="orgdeab050"><a href="https://zhuanlan.zhihu.com/p/137041568">如何系统地学习数据结构与算法？ - 知乎</a></h4>
+</div>
+<div id="outline-container-orgf378dd3" class="outline-4">
+<h4 id="orgf378dd3">check threads</h4>
+<div class="outline-text-4" id="text-orgf378dd3">
+<p>
+<a href="https://www.golinuxcloud.com/tutorial-linux-memory-management-overview/">4 commands to check thread count per process (threads vs processes) in Linux</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgc463a1d" class="outline-4">
+<h4 id="orgc463a1d">rpm install with dependencies</h4>
+<div class="outline-text-4" id="text-orgc463a1d">
+<div class="org-src-container">
+<pre class="src src-sh">yum --nogpgcheck localinstall xxx.rpm
+</pre>
+</div>
+<p>
+<a href="https://stackoverflow.com/questions/13876875/how-to-make-rpm-auto-install-dependencies">linux - How to make rpm auto install dependencies - Stack Overflow</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org85af063" class="outline-4">
+<h4 id="org85af063">gcc error when inline without static</h4>
+<div class="outline-text-4" id="text-org85af063">
+<ul class="org-ul">
+<li><a href="https://www.geeksforgeeks.org/inline-function-in-c/">Inline function in C - GeeksforGeeks</a></li>
+<li><a href="https://stackoverflow.com/questions/22767523/what-inline-attribute-always-inline-means-in-the-function#22767621">c - what “inline __attribute__((always_inline))” means in the function? - Stack Overflow</a></li>
+</ul>
+
+
+<ul class="org-ul">
+<li><code>inline</code> only
+<ul class="org-ul">
+<li><p>
+C code:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #bc6ec5;">#include</span> <span style="color: #4f97d7;">&lt;</span><span style="color: #2d9574;">stdio.h</span><span style="color: #4f97d7;">&gt;</span>
+
+<span style="color: #4f97d7; font-weight: bold;">inline</span> <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">func</span><span style="color: #4f97d7;">()</span> <span style="color: #4f97d7;">{</span> printf<span style="color: #bc6ec5;">(</span><span style="color: #2d9574;">"dll\n"</span><span style="color: #bc6ec5;">)</span>; <span style="color: #4f97d7;">}</span>
+
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span><span style="color: #4f97d7;">()</span> <span style="color: #4f97d7;">{</span> func<span style="color: #bc6ec5;">()</span>; <span style="color: #4f97d7;">}</span>
+</pre>
+</div></li>
+<li><p>
+asm code:
+</p>
+<div class="org-src-container">
+<pre class="src src-asm">  <span style="color: #4f97d7; font-weight: bold;">.section</span>      __TEXT,__text,regular,pure_instructions
+  <span style="color: #4f97d7; font-weight: bold;">.build_version</span> macos, 11, 0   sdk_version 11, 1
+  <span style="color: #4f97d7; font-weight: bold;">.globl</span>        _main                   ## -- Begin function main
+  <span style="color: #4f97d7; font-weight: bold;">.p2align</span>      4, 0x90
+<span style="color: #bc6ec5; font-weight: bold;">_main</span>:                                  ## @main
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_startproc</span>
+## <span style="color: #7590db;">%bb</span>.0:
+  <span style="color: #4f97d7; font-weight: bold;">pushq</span> <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_def_cfa_offset</span> 16
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_offset</span> <span style="color: #7590db;">%rbp</span>, -16
+  <span style="color: #4f97d7; font-weight: bold;">movq</span>  <span style="color: #7590db;">%rsp</span>, <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_def_cfa_register</span> <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">subq</span>  $16, <span style="color: #7590db;">%rsp</span>
+  <span style="color: #4f97d7; font-weight: bold;">callq</span> _func
+  <span style="color: #4f97d7; font-weight: bold;">xorl</span>  <span style="color: #7590db;">%ecx</span>, <span style="color: #7590db;">%ecx</span>
+  <span style="color: #4f97d7; font-weight: bold;">movl</span>  <span style="color: #7590db;">%eax</span>, -4<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rbp</span><span style="color: #4f97d7;">)</span>          ## 4-byte Spill
+  <span style="color: #4f97d7; font-weight: bold;">movl</span>  <span style="color: #7590db;">%ecx</span>, <span style="color: #7590db;">%eax</span>
+  <span style="color: #4f97d7; font-weight: bold;">addq</span>  $16, <span style="color: #7590db;">%rsp</span>
+  <span style="color: #4f97d7; font-weight: bold;">popq</span>  <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">retq</span>
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_endproc</span>
+                                        ## -- End function
+<span style="color: #4f97d7; font-weight: bold;">.subsections_via_symbols</span>
+</pre>
+</div></li>
+</ul></li>
+<li>With <code>static</code>
+<ul class="org-ul">
+<li><p>
+C code
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #bc6ec5;">#include</span> <span style="color: #4f97d7;">&lt;</span><span style="color: #2d9574;">stdio.h</span><span style="color: #4f97d7;">&gt;</span>
+
+<span style="color: #4f97d7; font-weight: bold;">static</span> <span style="color: #4f97d7; font-weight: bold;">inline</span> <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">func</span><span style="color: #4f97d7;">()</span> <span style="color: #4f97d7;">{</span> printf<span style="color: #bc6ec5;">(</span><span style="color: #2d9574;">"dll\n"</span><span style="color: #bc6ec5;">)</span>; <span style="color: #4f97d7;">}</span>
+
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span><span style="color: #4f97d7;">()</span> <span style="color: #4f97d7;">{</span> func<span style="color: #bc6ec5;">()</span>; <span style="color: #4f97d7;">}</span>
+</pre>
+</div></li>
+<li><p>
+asm code
+</p>
+<div class="org-src-container">
+<pre class="src src-asm">  <span style="color: #4f97d7; font-weight: bold;">.section</span>      __TEXT,__text,regular,pure_instructions
+  <span style="color: #4f97d7; font-weight: bold;">.build_version</span> macos, 11, 0   sdk_version 11, 1
+  <span style="color: #4f97d7; font-weight: bold;">.globl</span>        _main                   ## -- Begin function main
+  <span style="color: #4f97d7; font-weight: bold;">.p2align</span>      4, 0x90
+<span style="color: #bc6ec5; font-weight: bold;">_main</span>:                                  ## @main
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_startproc</span>
+## <span style="color: #7590db;">%bb</span>.0:
+  <span style="color: #4f97d7; font-weight: bold;">pushq</span> <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_def_cfa_offset</span> 16
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_offset</span> <span style="color: #7590db;">%rbp</span>, -16
+  <span style="color: #4f97d7; font-weight: bold;">movq</span>  <span style="color: #7590db;">%rsp</span>, <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_def_cfa_register</span> <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">subq</span>  $16, <span style="color: #7590db;">%rsp</span>
+  <span style="color: #4f97d7; font-weight: bold;">callq</span> _func
+  <span style="color: #4f97d7; font-weight: bold;">xorl</span>  <span style="color: #7590db;">%ecx</span>, <span style="color: #7590db;">%ecx</span>
+  <span style="color: #4f97d7; font-weight: bold;">movl</span>  <span style="color: #7590db;">%eax</span>, -4<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rbp</span><span style="color: #4f97d7;">)</span>          ## 4-byte Spill
+  <span style="color: #4f97d7; font-weight: bold;">movl</span>  <span style="color: #7590db;">%ecx</span>, <span style="color: #7590db;">%eax</span>
+  <span style="color: #4f97d7; font-weight: bold;">addq</span>  $16, <span style="color: #7590db;">%rsp</span>
+  <span style="color: #4f97d7; font-weight: bold;">popq</span>  <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">retq</span>
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_endproc</span>
+                                        ## -- End function
+  <span style="color: #4f97d7; font-weight: bold;">.p2align</span>      4, 0x90         ## -- Begin function func
+<span style="color: #bc6ec5; font-weight: bold;">_func</span>:                                  ## @func
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_startproc</span>
+## <span style="color: #7590db;">%bb</span>.0:
+  <span style="color: #4f97d7; font-weight: bold;">pushq</span> <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_def_cfa_offset</span> 16
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_offset</span> <span style="color: #7590db;">%rbp</span>, -16
+  <span style="color: #4f97d7; font-weight: bold;">movq</span>  <span style="color: #7590db;">%rsp</span>, <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_def_cfa_register</span> <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">subq</span>  $16, <span style="color: #7590db;">%rsp</span>
+  <span style="color: #4f97d7; font-weight: bold;">leaq</span>  L_.str<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rip</span><span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rdi</span>
+  <span style="color: #4f97d7; font-weight: bold;">movb</span>  $0, <span style="color: #7590db;">%al</span>
+  <span style="color: #4f97d7; font-weight: bold;">callq</span> _printf
+  <span style="color: #4f97d7; font-weight: bold;">movl</span>  -4<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rbp</span><span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%ecx</span>
+  <span style="color: #4f97d7; font-weight: bold;">movl</span>  <span style="color: #7590db;">%eax</span>, -8<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rbp</span><span style="color: #4f97d7;">)</span>          ## 4-byte Spill
+  <span style="color: #4f97d7; font-weight: bold;">movl</span>  <span style="color: #7590db;">%ecx</span>, <span style="color: #7590db;">%eax</span>
+  <span style="color: #4f97d7; font-weight: bold;">addq</span>  $16, <span style="color: #7590db;">%rsp</span>
+  <span style="color: #4f97d7; font-weight: bold;">popq</span>  <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">retq</span>
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_endproc</span>
+                                        ## -- End function
+  <span style="color: #4f97d7; font-weight: bold;">.section</span>      __TEXT,__cstring,cstring_literals
+<span style="color: #bc6ec5; font-weight: bold;">L</span>_.str:                                 ## @.str
+  <span style="color: #4f97d7; font-weight: bold;">.asciz</span>        <span style="color: #2d9574;">"dll\n"</span>
+
+<span style="color: #4f97d7; font-weight: bold;">.subsections_via_symbols</span>
+</pre>
+</div></li>
+</ul></li>
+<li>With <code>__attribute__</code>
+<ul class="org-ul">
+<li><p>
+C code
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #bc6ec5;">#include</span> <span style="color: #4f97d7;">&lt;</span><span style="color: #2d9574;">stdio.h</span><span style="color: #4f97d7;">&gt;</span>
+
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">inline</span> <span style="color: #4f97d7; font-weight: bold;">__attribute__</span><span style="color: #4f97d7;">(</span><span style="color: #bc6ec5;">(</span>alwyas_inline<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+
+<span style="color: #4f97d7; font-weight: bold;">inline</span> <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">func</span><span style="color: #4f97d7;">()</span> <span style="color: #4f97d7;">{</span> printf<span style="color: #bc6ec5;">(</span><span style="color: #2d9574;">"dll\n"</span><span style="color: #bc6ec5;">)</span>; <span style="color: #4f97d7;">}</span>
+
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span><span style="color: #4f97d7;">()</span> <span style="color: #4f97d7;">{</span> func<span style="color: #bc6ec5;">()</span>; <span style="color: #4f97d7;">}</span>
+</pre>
+</div></li>
+<li><p>
+asm code
+</p>
+<div class="org-src-container">
+<pre class="src src-asm">  <span style="color: #4f97d7; font-weight: bold;">.section</span>      __TEXT,__text,regular,pure_instructions
+  <span style="color: #4f97d7; font-weight: bold;">.build_version</span> macos, 11, 0   sdk_version 11, 1
+  <span style="color: #4f97d7; font-weight: bold;">.globl</span>        _func                   ## -- Begin function func
+  <span style="color: #4f97d7; font-weight: bold;">.p2align</span>      4, 0x90
+<span style="color: #bc6ec5; font-weight: bold;">_func</span>:                                  ## @func
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_startproc</span>
+## <span style="color: #7590db;">%bb</span>.0:
+  <span style="color: #4f97d7; font-weight: bold;">pushq</span> <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_def_cfa_offset</span> 16
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_offset</span> <span style="color: #7590db;">%rbp</span>, -16
+  <span style="color: #4f97d7; font-weight: bold;">movq</span>  <span style="color: #7590db;">%rsp</span>, <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_def_cfa_register</span> <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">subq</span>  $16, <span style="color: #7590db;">%rsp</span>
+  <span style="color: #4f97d7; font-weight: bold;">leaq</span>  L_.str<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rip</span><span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rdi</span>
+  <span style="color: #4f97d7; font-weight: bold;">movb</span>  $0, <span style="color: #7590db;">%al</span>
+  <span style="color: #4f97d7; font-weight: bold;">callq</span> _printf
+  <span style="color: #4f97d7; font-weight: bold;">movl</span>  -4<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rbp</span><span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%ecx</span>
+  <span style="color: #4f97d7; font-weight: bold;">movl</span>  <span style="color: #7590db;">%eax</span>, -8<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rbp</span><span style="color: #4f97d7;">)</span>          ## 4-byte Spill
+  <span style="color: #4f97d7; font-weight: bold;">movl</span>  <span style="color: #7590db;">%ecx</span>, <span style="color: #7590db;">%eax</span>
+  <span style="color: #4f97d7; font-weight: bold;">addq</span>  $16, <span style="color: #7590db;">%rsp</span>
+  <span style="color: #4f97d7; font-weight: bold;">popq</span>  <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">retq</span>
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_endproc</span>
+                                        ## -- End function
+  <span style="color: #4f97d7; font-weight: bold;">.globl</span>        _main                   ## -- Begin function main
+  <span style="color: #4f97d7; font-weight: bold;">.p2align</span>      4, 0x90
+<span style="color: #bc6ec5; font-weight: bold;">_main</span>:                                  ## @main
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_startproc</span>
+## <span style="color: #7590db;">%bb</span>.0:
+  <span style="color: #4f97d7; font-weight: bold;">pushq</span> <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_def_cfa_offset</span> 16
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_offset</span> <span style="color: #7590db;">%rbp</span>, -16
+  <span style="color: #4f97d7; font-weight: bold;">movq</span>  <span style="color: #7590db;">%rsp</span>, <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_def_cfa_register</span> <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">subq</span>  $16, <span style="color: #7590db;">%rsp</span>
+  <span style="color: #4f97d7; font-weight: bold;">callq</span> _func
+  <span style="color: #4f97d7; font-weight: bold;">xorl</span>  <span style="color: #7590db;">%ecx</span>, <span style="color: #7590db;">%ecx</span>
+  <span style="color: #4f97d7; font-weight: bold;">movl</span>  <span style="color: #7590db;">%eax</span>, -4<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rbp</span><span style="color: #4f97d7;">)</span>          ## 4-byte Spill
+  <span style="color: #4f97d7; font-weight: bold;">movl</span>  <span style="color: #7590db;">%ecx</span>, <span style="color: #7590db;">%eax</span>
+  <span style="color: #4f97d7; font-weight: bold;">addq</span>  $16, <span style="color: #7590db;">%rsp</span>
+  <span style="color: #4f97d7; font-weight: bold;">popq</span>  <span style="color: #7590db;">%rbp</span>
+  <span style="color: #4f97d7; font-weight: bold;">retq</span>
+  <span style="color: #4f97d7; font-weight: bold;">.cfi_endproc</span>
+                                        ## -- End function
+  <span style="color: #4f97d7; font-weight: bold;">.section</span>      __TEXT,__cstring,cstring_literals
+<span style="color: #bc6ec5; font-weight: bold;">L</span>_.str:                                 ## @.str
+  <span style="color: #4f97d7; font-weight: bold;">.asciz</span>        <span style="color: #2d9574;">"dll\n"</span>
+
+<span style="color: #4f97d7; font-weight: bold;">.subsections_via_symbols</span>
+</pre>
+</div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6586e53" class="outline-4">
+<h4 id="org6586e53"><a href="https://stackoverflow.com/questions/4605842/how-to-identify-platform-compiler-from-preprocessor-macros#4605893">c++ - How to identify platform/compiler from preprocessor macros? - Stack Overflow</a></h4>
+<div class="outline-text-4" id="text-org6586e53">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #bc6ec5;">#ifdef</span> __APPLE__
+<span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">Mac OS</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+<span style="color: #bc6ec5;">#endif</span>
+
+<span style="color: #bc6ec5;">#ifdef</span> __MINGW32__
+<span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">MingW on Windows</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+<span style="color: #bc6ec5;">#endif</span>  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">__MINGW32__</span>
+
+<span style="color: #bc6ec5;">#ifdef</span> _WIN32
+<span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">Windows</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+<span style="color: #bc6ec5;">#endif</span>  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">_WIN32</span>
+
+<span style="color: #bc6ec5;">#ifdef</span> __linux__
+<span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">Linux</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+<span style="color: #bc6ec5;">#endif</span>  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">__linux__</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org490a6bb" class="outline-4">
+<h4 id="org490a6bb">valgrind messages</h4>
+<div class="outline-text-4" id="text-org490a6bb">
+<p>
+<a href="https://epitech-2022-technical-documentation.readthedocs.io/en/latest/valgrind.html">Debug : Understanding Valgrind’s messages — EPITECH 2022 - Technical Documentation 1.3.38 documentation</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org308598f" class="outline-4">
+<h4 id="org308598f">mysql C API: still reachable</h4>
+<div class="outline-text-4" id="text-org308598f">
+<p>
+call <code>mysql_library_end()</code> after <code>mysql_close()</code>
+</p>
+</div>
+</div>
+<div id="outline-container-orgd58ac1d" class="outline-4">
+<h4 id="orgd58ac1d">gdb 打印数组</h4>
+<div class="outline-text-4" id="text-orgd58ac1d">
+<p>
+<code>p *array@len</code>
+<a href="https://www.sourceware.org/gdb/onlinedocs/gdb/Arrays.html">Arrays (Debugging with GDB)</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orga6b3b3b" class="outline-4">
+<h4 id="orga6b3b3b">recover/undo/get back deleted commit (even remote)</h4>
+<div class="outline-text-4" id="text-orga6b3b3b">
+<ul class="org-ul">
+<li><p>
+<a href="https://stackoverflow.com/questions/1992364/git-recover-deleted-remote-branch">github - Git: Recover deleted (remote) branch - Stack Overflow</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">git fsck --full --no-reflogs | grep commit
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4a69536" class="outline-4">
+<h4 id="org4a69536"><a href="https://stackoverflow.com/questions/8220098/how-to-redirect-the-output-of-an-application-in-background-to-dev-null#8220110">linux - How to redirect the output of an application in background to /dev/null - Stack Overflow</a></h4>
+<div class="outline-text-4" id="text-org4a69536">
+<div class="org-src-container">
+<pre class="src src-sh">cmd &gt;/dev/null <span style="color: #a45bad;">2</span>&amp;&gt;<span style="color: #a45bad;">1</span> &amp;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgda32ced" class="outline-4">
+<h4 id="orgda32ced"><a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1#merge">CS Visualized: Useful Git Commands - DEV</a></h4>
+</div>
+<div id="outline-container-org263b287" class="outline-4">
+<h4 id="org263b287">slice an array in bash</h4>
+<div class="outline-text-4" id="text-org263b287">
+<p>
+<a href="https://stackoverflow.com/questions/1335815/how-to-slice-an-array-in-bash">How to slice an array in Bash - Stack Overflow</a>
+<code>${@:3:8}</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org52cd746" class="outline-4">
+<h4 id="org52cd746">gcc expand macros</h4>
+<div class="outline-text-4" id="text-org52cd746">
+<p>
+<a href="https://stackoverflow.com/questions/985403/seeing-expanded-c-macros">c preprocessor - Seeing expanded C macros - Stack Overflow</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org620f377" class="outline-4">
+<h4 id="org620f377"><code>sed</code>: How to use variables in <code>sed</code></h4>
+<div class="outline-text-4" id="text-org620f377">
+<div class="org-src-container">
+<pre class="src src-sh">sed -i <span style="color: #2d9574;">'s|aaa|${variable}|g'</span> Makefile e
+</pre>
+</div>
+<p>
+<a href="https://stackoverflow.com/questions/19151954/how-to-use-variables-in-a-command-in-sed">unix - How to use variables in a command in sed? - Stack Overflow</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgba297fa" class="outline-4">
+<h4 id="orgba297fa">Ubuntu: How to disable FireWall</h4>
+<div class="outline-text-4" id="text-orgba297fa">
+<div class="org-src-container">
+<pre class="src src-sh">sudo ufw disable
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org08587f9" class="outline-4">
+<h4 id="org08587f9">Git delete remote branch</h4>
+<div class="outline-text-4" id="text-org08587f9">
+<div class="org-src-container">
+<pre class="src src-sh">git push origin -d feature
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf97e469" class="outline-4">
+<h4 id="orgf97e469">Makefile for Kenel module</h4>
+<div class="outline-text-4" id="text-orgf97e469">
+<p>
+<a href="https://stackoverflow.com/questions/60252681/how-to-write-a-linux-kernel-module-makefile">How to write a Linux kernel module makefile? - Stack Overflow</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org41cab78" class="outline-4">
+<h4 id="org41cab78">Get client sock IP addr</h4>
+<div class="outline-text-4" id="text-org41cab78">
+<p>
+<a href="https://stackoverflow.com/questions/3060950/how-to-get-ip-address-from-sock-structure-in-c">sockets - How to get ip address from sock structure in c? - Stack Overflow</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgbfbc548" class="outline-4">
+<h4 id="orgbfbc548">Mac 清理右键多余选单</h4>
+<div class="outline-text-4" id="text-orgbfbc548">
+<div class="org-src-container">
+<pre class="src src-sh">/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org230e9cb" class="outline-4">
+<h4 id="org230e9cb">differences between preprocessor and <code>inline</code></h4>
+<div class="outline-text-4" id="text-org230e9cb">
+<p>
+<a href="https://stackoverflow.com/questions/1137575/inline-functions-vs-preprocessor-macros">c++ - Inline functions vs Preprocessor macros - Stack Overflow</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org6235a27" class="outline-4">
+<h4 id="org6235a27"><code>w !sudo tee %</code> principle</h4>
+<div class="outline-text-4" id="text-org6235a27">
+<p>
+<a href="https://unix.stackexchange.com/questions/301256/how-does-w-sudo-tee-work">vim - How does `:w !sudo tee %` work - Unix &amp; Linux Stack Exchange</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgfe01a0b" class="outline-4">
+<h4 id="orgfe01a0b">Figure out the largest directory</h4>
+<div class="outline-text-4" id="text-orgfe01a0b">
+<div class="org-src-container">
+<pre class="src src-bash">du -sh * | gsort -h
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8f47717" class="outline-4">
+<h4 id="org8f47717"><code>long</code> 和 <code>long long</code> 的区别</h4>
+<div class="outline-text-4" id="text-org8f47717">
+<p>
+在 64bit OS X 和 64bit Linux 上没有区别
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #bc6ec5;">#include</span> <span style="color: #4f97d7;">&lt;</span><span style="color: #2d9574;">limits.h</span><span style="color: #4f97d7;">&gt;</span>
+<span style="color: #bc6ec5;">#include</span> <span style="color: #4f97d7;">&lt;</span><span style="color: #2d9574;">stdio.h</span><span style="color: #4f97d7;">&gt;</span>
+
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span><span style="color: #4f97d7;">()</span> <span style="color: #4f97d7;">{</span>
+    printf<span style="color: #bc6ec5;">(</span><span style="color: #2d9574;">"sizeof(long): %lu\n"</span>,  <span style="color: #4f97d7; font-weight: bold;">sizeof</span><span style="color: #2d9574;">(</span><span style="color: #ce537a; font-weight: bold;">long</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span>;
+    printf<span style="color: #bc6ec5;">(</span><span style="color: #2d9574;">"sizeof(llong): %lu\n"</span>, <span style="color: #4f97d7; font-weight: bold;">sizeof</span><span style="color: #2d9574;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #ce537a; font-weight: bold;">long</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span>;
+    printf<span style="color: #bc6ec5;">(</span><span style="color: #2d9574;">"LONG_MAX: %ld\n"</span>,      LONG_MAX<span style="color: #bc6ec5;">)</span>;
+    printf<span style="color: #bc6ec5;">(</span><span style="color: #2d9574;">"LONG_MIN: %ld\n"</span>,      LONG_MIN<span style="color: #bc6ec5;">)</span>;
+    printf<span style="color: #bc6ec5;">(</span><span style="color: #2d9574;">"LLONG_MAX: %lld\n"</span>,    LLONG_MAX<span style="color: #bc6ec5;">)</span>;
+    printf<span style="color: #bc6ec5;">(</span><span style="color: #2d9574;">"LLONG_MIN: %lld\n"</span>,    LLONG_MIN<span style="color: #bc6ec5;">)</span>;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc663b2d" class="outline-4">
+<h4 id="orgc663b2d">删除特殊符号的文件名</h4>
+<div class="outline-text-4" id="text-orgc663b2d">
+<div class="org-src-container">
+<pre class="src src-sh">rm -- filename
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge9b7a57" class="outline-4">
+<h4 id="orge9b7a57">通过 Netfilter 自写模块实现过滤器</h4>
+<div class="outline-text-4" id="text-orge9b7a57">
+<ul class="org-ul">
+<li><a href="https://www.netfilter.org/documentation/HOWTO/netfilter-hacking-HOWTO-3.html">Linux netfilter Hacking HOWTO: Netfilter Architecture</a></li>
+<li><a href="https://www.cnblogs.com/tzh36/p/5424564.html">Linux内核：sk_buff 解析 - 唐稚骅 - 博客园</a></li>
+<li><a href="https://www.cnblogs.com/codestack/p/10850642.html">linux netfilter 五个钩子点 - codestacklinuxer - 博客园</a></li>
+<li><a href="https://www.frozentux.net/iptables-tutorial/cn/iptables-tutorial-cn-1.1.19.html#TRAVERSINGOFTABLES">Iptables 指南 1.1.19</a></li>
+<li><a href="https://stackoverflow.com/questions/42385002/how-to-get-payload-from-struct-sk-buff-in-netfilter-kernel-module-linux">c - How to get payload from struct sk_buff in netfilter kernel module linux - Stack Overflow</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgde85f24" class="outline-4">
+<h4 id="orgde85f24">nginx: urlencded url not found</h4>
+<div class="outline-text-4" id="text-orgde85f24">
+<div class="org-src-container">
+<pre class="src src-nginx"><span style="color: #4f97d7; font-weight: bold;">rewrite</span> ^/<span style="color: #4f97d7;">(</span>.*<span style="color: #4f97d7;">)</span>$         /<span style="color: #a45bad;">$1</span>    <span style="color: #bc6ec5; font-weight: bold;">break</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge319090" class="outline-4">
+<h4 id="orge319090">数据结构</h4>
+<div class="outline-text-4" id="text-orge319090">
+</div>
+<ul class="org-ul">
+<li><a id="org258d4d2"></a>使用加法判断循环队列<br />
+<div class="outline-text-5" id="text-org258d4d2">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #4f97d7;">(</span><span style="color: #bc6ec5;">(</span>tail + <span style="color: #a45bad;">1</span><span style="color: #bc6ec5;">)</span> % size == head<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+    printf<span style="color: #bc6ec5;">(</span><span style="color: #2d9574;">"cycle queue is full"</span><span style="color: #bc6ec5;">)</span>;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org3a1915a" class="outline-4">
+<h4 id="org3a1915a">MySQL</h4>
+<div class="outline-text-4" id="text-org3a1915a">
+</div>
+<ul class="org-ul">
+<li><a id="orgec2a208"></a>QA<br />
+<div class="outline-text-5" id="text-orgec2a208">
+<ul class="org-ul">
+<li>Q: <a href="https://stackoverflow.com/questions/61649764/mysql-error-2026-ssl-connection-error-ubuntu-20-04">django - MySQL ERROR 2026 - SSL connection error - Ubuntu 20.04 - Stack Overflow</a></li>
+<li><p>
+A:
+</p>
+<blockquote>
+<p>
+[mysqld]
+tls_version=TLSv1.2
+</p>
+</blockquote></li>
+<li>Q: <a href="https://stackoverflow.com/questions/1676551/best-way-to-test-if-a-row-exists-in-a-mysql-table/10688065#10688065">sql - Best way to test if a row exists in a MySQL table - Stack Overflow</a></li>
+<li><p>
+A:
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">SELECT</span> <span style="color: #4f97d7; font-weight: bold;">EXISTS</span>(<span style="color: #4f97d7; font-weight: bold;">SELECT</span> * <span style="color: #4f97d7;">FROM</span> table1 <span style="color: #4f97d7; font-weight: bold;">WHERE</span> ...)
+</pre>
+</div></li>
+
+<li>Q: <a href="https://stackoverflow.com/questions/20116140/change-unique-key-together-in-mysql">Change unique key together in mysql - Stack Overflow</a></li>
+<li><p>
+A:
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">ALTER</span> <span style="color: #4f97d7; font-weight: bold;">TABLE</span> <span style="color: #bc6ec5; font-weight: bold;">your_table</span>
+  <span style="color: #4f97d7; font-weight: bold;">DROP</span> <span style="color: #4f97d7; font-weight: bold;">INDEX</span> user_id,
+  <span style="color: #4f97d7; font-weight: bold;">ADD</span> <span style="color: #4f97d7; font-weight: bold;">UNIQUE</span> <span style="color: #4f97d7; font-weight: bold;">KEY</span> `user_id` (`user_id`,`account_id`,`pet_id`)
+</pre>
+</div></li>
+
+<li>Q: ERROR 1130 (HY000): Host '192.168.253.140' is not allowed to connect to this MySQL server</li>
+<li><p>
+A:
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">CREATE</span> <span style="color: #4f97d7;">USER</span> <span style="color: #2d9574;">'root'</span>@<span style="color: #2d9574;">'%'</span> IDENTIFIED <span style="color: #4f97d7; font-weight: bold;">BY</span> <span style="color: #2d9574;">''</span>;
+<span style="color: #4f97d7; font-weight: bold;">GRANT</span> <span style="color: #4f97d7; font-weight: bold;">ALL</span> <span style="color: #4f97d7; font-weight: bold;">PRIVILEGES</span> <span style="color: #4f97d7; font-weight: bold;">ON</span> *.* <span style="color: #4f97d7; font-weight: bold;">TO</span> <span style="color: #2d9574;">'root'</span>@<span style="color: #2d9574;">'%'</span> <span style="color: #4f97d7; font-weight: bold;">WITH</span> <span style="color: #4f97d7; font-weight: bold;">GRANT</span> <span style="color: #4f97d7; font-weight: bold;">OPTION</span>;
+FLUSH <span style="color: #4f97d7; font-weight: bold;">PRIVILEGES</span>;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-bash">vim my.cnf
+<span style="color: #4f97d7;">[</span>mysqld<span style="color: #4f97d7;">]</span>
+bind-address=*
+</pre>
+</div></li>
+
+<li>Q: ERROR 1805 (HY000): Column count of mysql.user is wrong. Expected 45, found 48. The table is probably corrupted</li>
+<li>A: <code>mysql_upgrade -u root --force</code></li>
+
+<li>Q: Alter a column to be AUTO_INCREMENT</li>
+<li><p>
+A:
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">ALTER</span> <span style="color: #4f97d7; font-weight: bold;">TABLE</span> <span style="color: #bc6ec5; font-weight: bold;">document</span>
+  <span style="color: #4f97d7; font-weight: bold;">MODIFY</span> <span style="color: #4f97d7; font-weight: bold;">COLUMN</span> document_id <span style="color: #4f97d7; font-weight: bold;">AUTO_INCREMENT</span>;
+</pre>
+</div></li>
+
+<li>Q: INSERT data to MYSQL without specifying AUTO_INCREMENT column names;</li>
+<li><p>
+A:
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">INSERT</span> <span style="color: #4f97d7; font-weight: bold;">INTO</span> <span style="color: #4f97d7; font-weight: bold;">table</span> <span style="color: #4f97d7; font-weight: bold;">VALUES</span> (<span style="color: #4f97d7; font-weight: bold;">NULL</span>, value1, value2);
+</pre>
+</div></li>
+
+<li>Q: reset AUTO_INCREMENT</li>
+<li><p>
+A:
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">ALTER</span> <span style="color: #4f97d7; font-weight: bold;">TABLE</span> <span style="color: #4f97d7; font-weight: bold;">table</span> <span style="color: #4f97d7; font-weight: bold;">AUTO_INCREMENT</span> = 1;
+</pre>
+</div></li>
+
+<li>Q: truncate multiple tables;</li>
+<li><p>
+A:
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">SELECT</span> <span style="color: #4f97d7;">CONCAT</span>(<span style="color: #2d9574;">'TRUNCATE TABLE'</span>, <span style="color: #4f97d7; font-weight: bold;">TABLE_NAME</span>, <span style="color: #2d9574;">'; '</span>) <span style="color: #4f97d7;">FROM</span> INFORMATION_SCHEMA.<span style="color: #4f97d7; font-weight: bold;">TABLES</span> <span style="color: #4f97d7; font-weight: bold;">WHERE</span> TABLE_SCHEMA = <span style="color: #2d9574;">'db_name'</span> <span style="color: #4f97d7; font-weight: bold;">AND</span> <span style="color: #4f97d7; font-weight: bold;">TABLE_NAME</span> <span style="color: #4f97d7; font-weight: bold;">LIKE</span> <span style="color: #2d9574;">'pre_%'</span>;
+</pre>
+</div></li>
+<li>Q: ERROR 2002 (HY000): Can't connect to MySQL server on '192.168.254.20' (36)</li>
+<li><p>
+A:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">firewall-cmd --zone=public --add-port=<span style="color: #a45bad;">3306/tcp</span> --permanent
+systemctl restart firewalld.service
+</pre>
+</div></li>
+<li>Q: <code>ALTER TABLE</code></li>
+<li><p>
+A:
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">ALTER</span> <span style="color: #4f97d7; font-weight: bold;">TABLE</span> <span style="color: #bc6ec5; font-weight: bold;">tablename</span> <span style="color: #4f97d7; font-weight: bold;">ADD</span>/<span style="color: #4f97d7; font-weight: bold;">MODIFY</span>/<span style="color: #4f97d7; font-weight: bold;">DROP</span> <span style="color: #4f97d7; font-weight: bold;">COLUMN</span> columnname <span style="color: #4f97d7; font-weight: bold;">TYPE</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org19c02ca" class="outline-4">
+<h4 id="org19c02ca">BASH</h4>
+<div class="outline-text-4" id="text-org19c02ca">
+</div>
+<ul class="org-ul">
+<li><a id="org7322845"></a>if 语句: <a href="https://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html">Introduction to if</a><br /></li>
+<li><a id="org86de855"></a>文件名带空格<br />
+<div class="outline-text-5" id="text-org86de855">
+<ul class="org-ul">
+<li><p>
+Q: C print chinese erro <br />
+A:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">gcc -fexec-charset=UTF-8
+</pre>
+</div></li>
+
+<li><p>
+Q: <code>find</code>, <code>xargs</code>  <br />
+A: <code>-print0</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">find ./ -name <span style="color: #2d9574;">'*.bak'</span> -print0 | xargs -0 rm -rf
+</pre>
+</div></li>
+<li>Q: <code>grep</code> <br />
+A: <code>-lZ</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sh">grep <span style="color: #2d9574;">"long"</span> C*.txt -lZ | xargs -0 ls -l
+</pre>
+</div>
+<ul class="org-ul">
+<li>Q: <code>xargs</code> result as source dir <br />
+A: <code>-I {}</code>
+<a href="https://askubuntu.com/questions/487035/mv-files-with-xargs">command line - mv files with | xargs - Ask Ubuntu</a></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sh">find . -maxdepth <span style="color: #a45bad;">1</span> -type f | sudo xargs -I <span style="color: #4f97d7;">{}</span> mv <span style="color: #4f97d7;">{}</span> /etc/apache2/sites-available/
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org4561e8f" class="outline-4">
+<h4 id="org4561e8f"><code>Centos</code></h4>
+<div class="outline-text-4" id="text-org4561e8f">
+<ul class="org-ul">
+<li>Q: <code>build essential</code> <br />
+A: <code>yum install groupinstall "Development Tools"</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8d53600" class="outline-4">
+<h4 id="org8d53600"><code>segfault at 1p xxxx sp xxxx</code></h4>
+<div class="outline-text-4" id="text-org8d53600">
+<p>
+<a href="https://stackoverflow.com/questions/2549214/interpreting-segfault-messages">linux - Interpreting segfault messages - Stack Overflow</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org0bbe508" class="outline-4">
+<h4 id="org0bbe508">正则表达式过滤指定字符串</h4>
+<div class="outline-text-4" id="text-org0bbe508">
+<p>
+<a href="http://www.aqee.net/post/regular-expression-to-match-string-not-containing-a-word.html">正则表达式里字符串”不包含”匹配技巧</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">^<span style="color: #4f97d7;">(</span><span style="color: #bc6ec5;">(</span>?!hello<span style="color: #bc6ec5;">)</span>.<span style="color: #4f97d7;">)</span>*$
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4e13bac" class="outline-4">
+<h4 id="org4e13bac">查看 IPC 信息的命令</h4>
+<div class="outline-text-4" id="text-org4e13bac">
+<ul class="org-ul">
+<li><code>ipcs</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org02b514d" class="outline-4">
+<h4 id="org02b514d">栈溢出</h4>
+<div class="outline-text-4" id="text-org02b514d">
+<p>
+<a href="https://www.cnblogs.com/zmlctt/p/3987181.html">栈大小和内存分部问题 - zmlctt - 博客园</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org8a6657c" class="outline-4">
+<h4 id="org8a6657c"><code>volatile</code></h4>
+<div class="outline-text-4" id="text-org8a6657c">
+<p>
+<a href="https://stackoverflow.com/questions/246127/why-is-volatile-needed-in-c">declaration - Why is volatile needed in C? - Stack Overflow</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orga2c485d" class="outline-4">
+<h4 id="orga2c485d">Emacs</h4>
+<div class="outline-text-4" id="text-orga2c485d">
+</div>
+<ul class="org-ul">
+<li><a id="orga654187"></a>匹配中文<br />
+<div class="outline-text-5" id="text-orga654187">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #4f97d7;">[</span>&#19968;-&#40864;<span style="color: #4f97d7;">]</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org7c435af"></a>多行操作<br />
+<div class="outline-text-5" id="text-org7c435af">
+<p>
+<a href="http://blog.lujun9972.win/blog/2016/11/18/emacs%E4%B8%AD%E9%82%A3%E4%BA%9B%E4%B8%8D%E5%B8%B8%E7%94%A8%E7%9A%84%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/">Emacs中那些不常用的行操作命令 - 暗无天日</a>
+</p>
+</div>
+</li>
+<li><a id="org3acbce4"></a>Projectile Doc<br />
+<div class="outline-text-5" id="text-org3acbce4">
+<blockquote>
+<p>
+The contents of <code>.projectile</code> are ignored when using the <code>alien</code> project indexing method.
+</p>
+</blockquote>
+<p>
+<a href="https://projectile.readthedocs.io/en/latest/projects/#ignoring-files">Projects - Projectile: The Project Interaction Library for Emacs</a>
+</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org42f2c3b" class="outline-4">
+<h4 id="org42f2c3b">Differences between <code>RUID</code> and <code>EUID</code></h4>
+<div class="outline-text-4" id="text-org42f2c3b">
+<p>
+<a href="https://stackoverflow.com/questions/32455684/difference-between-real-user-id-effective-user-id-and-saved-user-id">linux - Difference between Real User ID, Effective User ID and Saved User ID - Stack Overflow</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgc744432" class="outline-4">
+<h4 id="orgc744432">static 用法 <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h4>
+<div class="outline-text-4" id="text-orgc744432">
+<ul class="org-ul">
+<li>全局
+<ul class="org-ul">
+<li>变量在全局数据分配空间, 仅对当前文件可见</li>
+<li>函数与变量类似, 仅当前文件可以访问</li>
+</ul></li>
+<li>局部
+<ul class="org-ul">
+<li>变量放到全局数据区, 初始化为 0, 且函数返回也不修改其值</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4f1fb76" class="outline-4">
+<h4 id="org4f1fb76">使用 <code>snprintf</code> 替换 <code>strcpy/sprintf/strncpy</code></h4>
+<div class="outline-text-4" id="text-org4f1fb76">
+<ul class="org-ul">
+<li>strcpy/sprintf 不检验字符串长度, 可能溢出</li>
+<li>strncpy &lt;len 时 对剩余部分补 0, 占用 CPU 时间, =len 时 不对结尾补 0</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb0ca650" class="outline-3">
+<h3 id="orgb0ca650">Book Notes</h3>
+<div class="outline-text-3" id="text-orgb0ca650">
+</div>
+<div id="outline-container-org98822fe" class="outline-4">
+<h4 id="org98822fe">Design Pattern</h4>
+<div class="outline-text-4" id="text-org98822fe">
+</div>
+<ul class="org-ul">
+<li><a id="org9aabd28"></a><a href="books/design/Head_First_C/Head_First_C.html#MissingReference">Head First C</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org491ac39" class="outline-4">
+<h4 id="org491ac39">AD</h4>
+<div class="outline-text-4" id="text-org491ac39">
+<p>
+<a href="https://en.wikipedia.org/wiki/Active_Directory">Active Directory</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org00f97a7" class="outline-4">
+<h4 id="org00f97a7">Kernel</h4>
+<div class="outline-text-4" id="text-org00f97a7">
+</div>
+<ul class="org-ul">
+<li><a id="org2d7cb31"></a>Linux 内核完全注释<br /></li>
+<li><a id="orgaebbb86"></a><a href="books/kernel/Linux_Kernel_Development/NOTEs.html#MissingReference">Linux Kernel Development</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-orgebee8a6" class="outline-4">
+<h4 id="orgebee8a6">System</h4>
+<div class="outline-text-4" id="text-orgebee8a6">
+</div>
+<ul class="org-ul">
+<li><a id="org1258064"></a><a href="books/system/SICP/SICP.html#MissingReference">Structure and Interpreter of Computre Programs</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="SICP">SICP</span></span><br /></li>
+<li><a id="org0983a25"></a><a href="books/system/Shell Programming in Unix, Linux and OS X_ - Stephen G. Kochan/NOTEs.html#MissingReference">Shell Programming in Unix, Linux and OS X_ - Stephen G. Kochan</a><br /></li>
+<li><a id="orgdba3f32"></a><a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html">Linux工具快速教程 — Linux Tools Quick Tutorial</a><br /></li>
+<li><a id="org9a6bd2f"></a><span class="todo TODO">TODO</span> <a href="books/system/CSAPP/CSAPP.html#MissingReference">Computer System: A Programmer's Perspective</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="CSAPP">CSAPP</span></span><br /></li>
+<li><a id="org63ef851"></a><span class="todo TODO">TODO</span> <a href="books/system/TLPI/TLPI.html#MissingReference">The Linux Programming Interface</a><br /></li>
+<li><a id="orgdabb3d8"></a><span class="done DONE">DONE</span> <a href="books/system/APUE/APUE.html#MissingReference">Advanced Programming in the Unix Environment <code>[76%]</code>​</a><br />
+<div class="outline-text-5" id="text-orgdabb3d8">
+<p>
+Stop at Section 17
+</p>
+</div>
+</li>
+<li><a id="orgbea45f6"></a><span class="done DONE">DONE</span> <a href="books/system/vbird_linux_basic_4e/NOTEs.html">Linux鸟哥的私房菜 4e</a><br />
+<div class="outline-text-5" id="text-orgbea45f6">
+<p>
+Stop at Section 17
+</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org18a295c" class="outline-4">
+<h4 id="org18a295c">Language</h4>
+<div class="outline-text-4" id="text-org18a295c">
+</div>
+<ul class="org-ul">
+<li><a id="org73a0485"></a>C<br />
+<ul class="org-ul">
+<li><a id="org7fa0e3a"></a><span class="done DONE">DONE</span> <a href="books/c/ExCP/NOTEs.html">C 专家编程</a><br />
+<div class="outline-text-6" id="text-org7fa0e3a">
+</div>
+</li>
+<li><a id="org16001b0"></a><span class="done DONE">DONE</span> Understanding and Using C Pointers<br />
+<div class="outline-text-6" id="text-org16001b0">
+<ul class="org-ul">
+<li>void 指针按 char 对齐</li>
+<li>非 NULL 指针不相等</li>
+<li>常量指针指向非常量</li>
+</ul>
+</div>
+</li>
+<li><a id="org9803f9d"></a><span class="done DONE">DONE</span> Pointers On C<br /></li>
+<li><a id="org7f519cd"></a><span class="done DONE">DONE</span> <a href="books/c/C_Traps_and_Pitfalls/NOTEs.html">C 语言陷阱与缺陷</a><br />
+<div class="outline-text-6" id="text-org7f519cd">
+</div>
+</li>
+</ul>
+</li>
+<li><a id="orgcf025bd"></a>C++<br />
+<ul class="org-ul">
+<li><a id="orge8f65cf"></a><span class="todo TODO">TODO</span> C++ Primer<br /></li>
+</ul>
+</li>
+<li><a id="org6f45e05"></a>Python<br />
+<ul class="org-ul">
+<li><a id="org318b43b"></a><span class="done DONE">DONE</span> <a href="books/python/A Byte of Python/NOTEs.html">A Byte of Python</a><br /></li>
+</ul>
+</li>
+<li><a id="org65de99a"></a>Lua<br />
+<ul class="org-ul">
+<li><a id="orgaef7df0"></a><span class="done DONE">DONE</span> <a href="books/lua/Programming in Lua/NOTEs.html">Programming in Lua</a> :Too easy to make notes:<br />
+<div class="outline-text-6" id="text-orgaef7df0">
+</div>
+</li>
+</ul>
+</li>
+<li><a id="org9ddcacf"></a>Go<br />
+<ul class="org-ul">
+<li><a id="org14bd38c"></a><span class="todo TODO">TODO</span> <a href="books/go/GoPL/GoPL.html#MissingReference">The Go Programming Language</a><br /></li>
+</ul>
+</li>
+<li><a id="org6a45266"></a>AWK<br />
+<ul class="org-ul">
+<li><a id="org5357df8"></a><a href="https://www.tutorialspoint.com/awk/awk_workflow.htm">AWK - Workflow - Tutorialspoint</a><br /></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-orga991eaf" class="outline-4">
+<h4 id="orga991eaf">数据库</h4>
+<div class="outline-text-4" id="text-orga991eaf">
+</div>
+<ul class="org-ul">
+<li><a id="org481ccfc"></a><span class="todo TODO">TODO</span> <a href="books/DB/Redis_Design_and_Implementation/NOTEs.html#MissingReference">Redis 设计与实现</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org6d609a6" class="outline-4">
+<h4 id="org6d609a6">版本控制</h4>
+<div class="outline-text-4" id="text-org6d609a6">
+</div>
+<ul class="org-ul">
+<li><a id="orgf175028"></a>Git<br />
+<ul class="org-ul">
+<li><a id="orga1d7df7"></a><span class="done DONE">DONE</span> PRO GIT<br />
+<div class="outline-text-6" id="text-orga1d7df7">
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-org7f46831" class="outline-4">
+<h4 id="org7f46831">其他</h4>
+<div class="outline-text-4" id="text-org7f46831">
+</div>
+<ul class="org-ul">
+<li><a id="orgf76b1aa"></a><span class="todo TODO">TODO</span> <a href="coding/nginx/NGINX.html">深入理解 Nginx</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org8880cf8" class="outline-4">
+<h4 id="org8880cf8">org-mode</h4>
+<div class="outline-text-4" id="text-org8880cf8">
+<ul class="org-ul">
+<li><a href="https://www.cnblogs.com/Open_Source/archive/2011/07/17/2108747.html">Org-mode 简明手册 - open source - 博客园</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org139d252" class="outline-4">
+<h4 id="org139d252">区块链</h4>
+<div class="outline-text-4" id="text-org139d252">
+</div>
+<ul class="org-ul">
+<li><a id="org5e2a04d"></a>前言<br />
+<div class="outline-text-5" id="text-org5e2a04d">
+<p>
+<a href="http://blog.codinglabs.org/articles/bitcoin-mechanism-make-easy.html">CodingLabs - 一个故事告诉你比特币的原理及运作机制</a> <br />
+<a href="http://www.8btc.com/what-is-blockchain">区块链是什么 | 巴比特</a>
+</p>
+</div>
+</li>
+<li><a id="org44a3bf9"></a><span class="done DONE">DONE</span> 比特币<br />
+<div class="outline-text-5" id="text-org44a3bf9">
+</div>
+<ul class="org-ul">
+<li><a id="org793dd7b"></a>白皮书<br />
+<div class="outline-text-6" id="text-org793dd7b">
+<p>
+<a href="https://bitcoin.org/bitcoin.pdf">bitcoin.pdf</a>
+</p>
+</div>
+</li>
+<li><a id="org45f4f4a"></a>mastering bitcoin<br /></li>
+</ul>
+</li>
+<li><a id="orgb003219"></a>以太坊<br /></li>
+</ul>
+</div>
+<div id="outline-container-org263c49b" class="outline-4">
+<h4 id="org263c49b">算法</h4>
+<div class="outline-text-4" id="text-org263c49b">
+</div>
+<ul class="org-ul">
+<li><a id="orgda2673e"></a><a href="books/algorithm/Programming Pearls/NOTEs.html#MissingReference">Programming Pealrs</a><br /></li>
+<li><a id="org95569ec"></a>Leetcode<br />
+<ul class="org-ul">
+<li><a id="org43d3d0c"></a>Array<br />
+<ul class="org-ul">
+<li><a id="orgfcd8e8b"></a>Remove Elements<br />
+<ul class="org-ul">
+<li><a id="orgaaaa3bc"></a>Q:<br />
+<div class="outline-text-8" id="text-orgaaaa3bc">
+<p>
+Given an array and a value, remove all instances of that &gt; value in place and return the new length.
+</p>
+
+<p>
+The order of elements can be changed. It doesn't matter what you leave beyond the new length.
+</p>
+</div>
+</li>
+<li><a id="org0f73404"></a>A:<br />
+<div class="outline-text-8" id="text-org0f73404">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">remove_elem</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">A</span><span style="color: #bc6ec5;">[]</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">n</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">elem</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+    <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span> = <span style="color: #a45bad;">0</span>;
+    <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">j</span> = <span style="color: #a45bad;">0</span>;
+
+    <span style="color: #4f97d7; font-weight: bold;">for</span> <span style="color: #bc6ec5;">(</span>; j &lt; n; ++j<span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">{</span>
+        <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #2d9574;">(</span>A<span style="color: #67b11d;">[</span>j<span style="color: #67b11d;">]</span> == elem<span style="color: #2d9574;">)</span> <span style="color: #2d9574;">{</span>
+
+        <span style="color: #2d9574;">}</span> <span style="color: #4f97d7; font-weight: bold;">else</span> <span style="color: #2d9574;">{</span>
+            A<span style="color: #67b11d;">[</span>i<span style="color: #67b11d;">]</span> = A<span style="color: #67b11d;">[</span>j<span style="color: #67b11d;">]</span>;
+            i ++;
+        <span style="color: #2d9574;">}</span>
+
+
+    <span style="color: #bc6ec5;">}</span>
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="org9f02f27"></a>Two Sum<br />
+<ul class="org-ul">
+<li><a id="orge692393"></a>Q:<br />
+<div class="outline-text-8" id="text-orge692393">
+<p>
+Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+</p>
+
+<p>
+<b>Example:</b>
+</p>
+<pre class="example">
+Given nums = [2, 7, 11, 15], target = 9,
+
+Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1].
+</pre>
+</div>
+</li>
+<li><a id="orgb123eb1"></a>A:<br />
+<div class="outline-text-8" id="text-orgb123eb1">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ce537a; font-weight: bold;">int</span>* <span style="color: #bc6ec5; font-weight: bold;">twoSum</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">int</span>* <span style="color: #7590db;">nums</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">numsSize</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">target</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+    <span style="color: #ce537a; font-weight: bold;">int</span>  <span style="color: #7590db;">i</span>   = <span style="color: #a45bad;">0</span>;
+    <span style="color: #ce537a; font-weight: bold;">int</span>  <span style="color: #7590db;">j</span>   = <span style="color: #a45bad;">0</span>;
+    <span style="color: #ce537a; font-weight: bold;">int</span>* <span style="color: #7590db;">res</span> = <span style="color: #bc6ec5;">(</span><span style="color: #ce537a; font-weight: bold;">int</span>*<span style="color: #bc6ec5;">)</span>calloc<span style="color: #bc6ec5;">(</span><span style="color: #a45bad;">2</span>, <span style="color: #4f97d7; font-weight: bold;">sizeof</span><span style="color: #2d9574;">(</span><span style="color: #ce537a; font-weight: bold;">int</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span>;
+    <span style="color: #4f97d7; font-weight: bold;">for</span> <span style="color: #bc6ec5;">(</span>i = <span style="color: #a45bad;">0</span>; i &lt; numsSize - <span style="color: #a45bad;">1</span>; ++i<span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">{</span>
+        <span style="color: #4f97d7; font-weight: bold;">for</span> <span style="color: #2d9574;">(</span>j = i + <span style="color: #a45bad;">1</span>; j &lt; numsSize; ++j<span style="color: #2d9574;">)</span> <span style="color: #2d9574;">{</span>
+            <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #67b11d;">(</span>nums<span style="color: #b1951d;">[</span>i<span style="color: #b1951d;">]</span> + nums<span style="color: #b1951d;">[</span>j<span style="color: #b1951d;">]</span> == target<span style="color: #67b11d;">)</span> <span style="color: #67b11d;">{</span>
+                res<span style="color: #b1951d;">[</span><span style="color: #a45bad;">0</span><span style="color: #b1951d;">]</span> = i;
+                res<span style="color: #b1951d;">[</span><span style="color: #a45bad;">1</span><span style="color: #b1951d;">]</span> = j;
+                <span style="color: #4f97d7; font-weight: bold;">break</span>;
+            <span style="color: #67b11d;">}</span>
+        <span style="color: #2d9574;">}</span>
+    <span style="color: #bc6ec5;">}</span>
+    <span style="color: #4f97d7; font-weight: bold;">return</span> res;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="org852705a"></a>Median of Two Sorted Arrays<br />
+<ul class="org-ul">
+<li><a id="org26c34c1"></a>Q:<br />
+<div class="outline-text-8" id="text-org26c34c1">
+<p>
+There are two sorted arrays nums1 and nums2 of size m and n respectively.
+Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+</p>
+</div>
+</li>
+<li><a id="orgb48b769"></a>A:<br />
+<div class="outline-text-8" id="text-orgb48b769">
+<p>
+*思路: * 合并数组, 计算中间下标的平均数.
+</p>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgd03cdee" class="outline-4">
+<h4 id="orgd03cdee">时间管理</h4>
+<div class="outline-text-4" id="text-orgd03cdee">
+</div>
+<ul class="org-ul">
+<li><a id="org7617259"></a><span class="todo TODO">TODO</span> <a href="books/暗时间.html">暗时间</a><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb5dc847" class="outline-3">
+<h3 id="orgb5dc847">随笔</h3>
+<div class="outline-text-3" id="text-orgb5dc847">
+</div>
+<div id="outline-container-org4cdfcd8" class="outline-4">
+<h4 id="org4cdfcd8">Principles of Git</h4>
+<div class="outline-text-4" id="text-org4cdfcd8">
+</div>
+<ul class="org-ul">
+<li><a id="org9bf9edd"></a>每次 commit 只做一件事<br />
+<div class="outline-text-5" id="text-org9bf9edd">
+<p>
+针对某一项某一任务的更改
+</p>
+</div>
+</li>
+<li><a id="org2c53e73"></a>commit 不能破坏构建<br />
+<div class="outline-text-5" id="text-org2c53e73">
+<p>
+每个步骤都必须完全起作用, 并且不引起退化.
+</p>
+</div>
+</li>
+<li><a id="org72ff1a1"></a>永远不要rebase公共分支<br />
+<div class="outline-text-5" id="text-org72ff1a1">
+<p>
+rebase他人使用的公共分支后, 已重新基准化的commit将不再与基于原commit匹配
+</p>
+</div>
+</li>
+<li><a id="orgb28d639"></a>保留定义明确的commit日志<br />
+<div class="outline-text-5" id="text-orgb28d639">
+<p>
+必须在更改的commit日志中做出说明, 让所有人了解与正在进行的更改相关的所有内容.
+</p>
+</div>
+</li>
+<li><a id="org23cc340"></a>所有代码都是二等分的<br /></li>
+<li><a id="orge4643bf"></a>Git正确合并<br /></li>
+<li><a id="org8d49b97"></a>持续测试和集成<br /></li>
+</ul>
+</div>
+<div id="outline-container-orgd21f458" class="outline-4">
+<h4 id="orgd21f458">Frequent git commands</h4>
+<div class="outline-text-4" id="text-orgd21f458">
+<div class="org-src-container">
+<pre class="src src-sh">git init
+git clone
+git commit
+git remote add/set-url/...
+git fetch
+git merge
+git pull <span style="color: #4f97d7;">(</span>git fetch &amp;&amp; git merge<span style="color: #4f97d7;">)</span>
+git push
+git checkout
+git branch
+git reflog
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb057ccb" class="outline-2">
+<h2 id="orgb057ccb"><span class="todo TODO">TODO</span> 待学</h2>
+<div class="outline-text-2" id="text-orgb057ccb">
+</div>
+<div id="outline-container-orge5aac58" class="outline-3">
+<h3 id="orge5aac58">汇编</h3>
+</div>
+<div id="outline-container-orgaca7ca2" class="outline-3">
+<h3 id="orgaca7ca2">算法</h3>
+</div>
+<div id="outline-container-org7645bf0" class="outline-3">
+<h3 id="org7645bf0">源码学习</h3>
+<div class="outline-text-3" id="text-org7645bf0">
+</div>
+<div id="outline-container-org079e065" class="outline-4">
+<h4 id="org079e065">libevent/libuv</h4>
+</div>
+<div id="outline-container-org0bc95b9" class="outline-4">
+<h4 id="org0bc95b9">linux</h4>
+</div>
+</div>
+<div id="outline-container-org3b47661" class="outline-3">
+<h3 id="org3b47661">服务器</h3>
+<div class="outline-text-3" id="text-org3b47661">
+</div>
+<div id="outline-container-org85c3f60" class="outline-4">
+<h4 id="org85c3f60">网络</h4>
+<div class="outline-text-4" id="text-org85c3f60">
+</div>
+<ul class="org-ul">
+<li><a id="org0548fb1"></a>协议<br />
+<div class="outline-text-5" id="text-org0548fb1">
+<ul class="org-ul">
+<li>TCP/IP Illustrate</li>
+<li>Unix Network Programming</li>
+</ul>
+</div>
+</li>
+<li><a id="org12395b5"></a>性能<br />
+<ul class="org-ul">
+<li><a id="org0316c06"></a>数据库<br />
+<div class="outline-text-6" id="text-org0316c06">
+<ul class="org-ul">
+<li>高性能 MySQL</li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgaaae112" class="outline-3">
+<h3 id="orgaaae112">Linux 内核及驱动</h3>
+</div>
+</div>
+<div id="outline-container-orgb28870d" class="outline-2">
+<h2 id="orgb28870d">项目经验</h2>
+<div class="outline-text-2" id="text-orgb28870d">
+</div>
+<div id="outline-container-orgc1c7161" class="outline-3">
+<h3 id="orgc1c7161">首信历史项目</h3>
+<div class="outline-text-3" id="text-orgc1c7161">
+<ol class="org-ol">
+<li>IPTV 登录校验及 IP 分配</li>
+<li>日流水解析</li>
+<li>缓存服务器</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgb324fc9" class="outline-3">
+<h3 id="orgb324fc9">浙星历史项目</h3>
+<div class="outline-text-3" id="text-orgb324fc9">
+<ol class="org-ol">
+<li>惠尔丰 POS_Z300M</li>
+<li>百富 QR65</li>
+<li>PTS 收单</li>
+<li>支付安卓库</li>
+<li>唐库 6 7 批处理, 同步及异步接口</li>
+<li>乐道批处理</li>
+<li>商米收单系统</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://stackoverflow.com/questions/49679676/execute-bash-script-remotely-via-curl#49679914">linux - Execute Bash script remotely via cURL - Stack Overflow</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://blog.csdn.net/guotianqing/article/details/79828100">c语言中static关键字用法详解 - guotianqing的博客 - CSDN博客</a>
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: whiothes</p>
+<p class="date">Created: 2021-12-09 Thu 23:09</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

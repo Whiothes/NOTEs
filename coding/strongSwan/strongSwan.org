@@ -1,0 +1,13 @@
+#+SETUPFILE: ~/Documents/style.setup
+#+STARTUP: align
+#+LATEX_HEADER: \usepackage{ulem}
+#+LATEX_HEADER: \usepackage{ctex}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+TITLE: strongSwan笔记
+#+AUTHOR: whiothes
+* Introduction [fn:1]
+
+
+* Footnotes
+[fn:1]  [[https://wiki.strongswan.org/projects/strongswan/wiki/UserDocumentation][strongSwan User Documentation - strongSwan]]

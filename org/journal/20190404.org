@@ -1,0 +1,28 @@
+#+SETUPFILE: ~/Documents/style.setup
+* TREE
+  * 后序遍历: FDEBGCA
+  * 中序遍历: FDBEACG
+
+  #+BEGIN_SRC dot :file tree.png :cmdline -Kdot -Tpng
+    digraph {
+      splines=true;
+
+      node [shape=circle];
+      A B C D F E G;
+
+      node[shape=circle label=""];
+      blank0 blank1;
+
+      A -> B;
+      A -> C;
+      B -> D;
+      B -> blank0;
+      D -> F;
+      D -> E;
+      C -> G;
+      C -> blank1;
+    }
+  #+END_SRC
+
+  #+RESULTS:
+  [[file:tree.png]]

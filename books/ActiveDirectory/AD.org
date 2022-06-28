@@ -1,0 +1,325 @@
+#+SETUPFILE: ~/Documents/style.setup
+#+STARTUP: align
+#+LATEX_HEADER: \usepackage{ulem}
+#+LATEX_HEADER: \usepackage{ctex}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+AUTHOR: whiothes
+
+
+* [[https://en.wikipedia.org/wiki/Active_Directory][Active Directory]]
+
+  Related services: Certificates Service, Active Directory Federation Service, Lightweight Directory Service, Rights Management Services.
+
+  Active Directory uses [[https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol][Lightweight Directory Access Protocol (LDAP)]] version 2 and 3.
+
+** Logical Structure
+
+*** Objects
+
+    Once created, an object can only be deactivated—not deleted. Changing the schema usually requires planning.
+
+*** Forests, trees, and domains
+    A *domain* is defined as a logical group of network objects (computers, users, devices) that share the same Active Directory database.
+
+    A *tree* is a collection of one or more domains and domain trees in a contiguous namespace, and is linked in a transitive trust hierarchy.
+
+    A *forest* is a collection of trees that share a common global catalog, directory schema, logical structure, and directory configuration. The forest represents the security boundary within which users, computers, groups, and other objects are accessible.
+
+*** Organizational units
+
+    The objects held within a domain can be grouped into organizational units (OUs).
+
+** Physical Structure
+
+   *Global catalog (GC) servers provide a global listing of all objects in the Forest.* (所以不能在本域中复制)
+
+*** Replication
+
+    /multi-master replication/. Replication by default is 'pull' rather than 'push'.
+
+* TODO Active Directory
+** Chapter 4 Schema
+   Each object in Active Directory is an instance of a class in the schema.
+
+*** Structure of the Schema
+    The schema is made up of classes and attributes.
+
+**** X.500 and the OID Namespace
+     OID is composed of two parts:
+     * The first part indicates the unique path to the branch holding the object in the X.500 tree-like structure.
+     * The second part uniquely indicates the object in that branch.
+
+
+     /Each branch within and OID number also corresponds to a name./
+
+     The Internet Assigned Numbers Authority (IANA) maintains the main set of root branches and defines itself as "the central coordinator for the assignment of unique pararameter values for Internet protocols."
+
+*** Attributes (attributeSchema Objects)
+
+    class infomation  is stored in Active Directory as instances of the class of the class called *classSchema*, attributes are represented by instances of the class called *attributeSchema*. the *attributeSchema* class has a number of attributes that can be set when specifying a new instance. The *attributeSchema* class inherits attributes from the class called top.
+
+**** Dissecting an Example Active Directory Attribute
+     *userPrincipalName* (UPN) attribute is used on user objects to provide a unique method of identifying each user across a forest.
+
+     The *userPrincipalName* attributes show the following:
+     * It is to be stored in the GC (*isMemberOfPartialAttributeSet* and *systemFlags*).
+     * It is to be indexed (*searchFlags*).
+     * It has an OID of 1.2.840.113556.1.4.656 (attributeID)
+     * We should use *userPrincipalName* (*lDAPDisplayName*) when binding to it with ADSI.
+     * Instances can be created by anyone (systemOnly).
+     * It stores single (*isSingleValued*) Unicode strings (*attributeSyntax* and *oMSyntax*).
+
+*** Attribute Properties
+
+**** Attribute Syntax
+     * [[https://www.ietf.org/rfc/rfc2252.txt][rfc2252 syntax]]
+     * [[https://docs.microsoft.com/en-us/windows/win32/adschema/s-boolean][MS choosing syntax]]
+     * [[https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/7cda533e-d7a4-4aec-a517-91d02ff4a1aa][map rfc2252 and MS syntax]]
+
+** Chapter 5 Site Topology and Replication
+
+   - [[https://wiki.samba.org/index.php/Active_Directory_Sites][Samba Site]]
+
+   potential problems with a single-master replication scheme:
+   * single point of failure for updates.
+   * geographic distance from master to clients performing the updates.
+   * less efficient replication due to single originating location of updates.
+
+*** Site Topology
+    The map that describes the network connectivity, Active Directory Replication guidelines, and locations for resources as it relates to the Active Directory forest.
+
+    The major components of this tpologoy are sites, subnets, site links, site link bridges, and connection objects.
+
+**** Subnets
+     You must define subnet information in the directory because the only key available for determining relative location on a network is the IP addresses of the machines.
+
+**** Sites
+     Active Directory /sites/ are generally defined as a collection of well-connected AD subnets.
+
+     By default, there is one site defined in Active Directory, the Default-First-Site-Name site.
+
+**** Site Links
+     /Site links/ allow you to define what sites are connected to each other and the relative cost of the connections.
+
+**** Site Link Bridges
+
+**** Connection Objects
+     A connection object specifies which domain controllers replicate with which other domain controllers, how often, and which naming context are involved.
+
+**** Knowledge Consistency Checker (KCC)
+
+**** Site and Replication Management Tools
+
+*** How Replication Works
+
+    1. An object (a user) is created on DC A.
+    2. That object is replicated to DC B.
+    3. That object is subsequently modified on DC B.
+    4. The new changes to that object are repliacted back to DC A.
+
+**** A Background  to Metadata
+
+**** How an Object's Metadata is Modified During Replication
+
+**** The Replication of a Naming Context Between Two Servers
+
+**** How Replication Conflicts Are Reconsiled
+
+*** Summary
+
+
+** Chapter 7 Read-Only Domain Controllers
+   By default, RODCs do not store any passwords locally in their database
+
+   scenario:
+   * branch office.
+   * DMZ (demilitarized zone), is a section of a network that is considered untrusted relate to the rest of the network.
+
+*** Prerequisites
+    * Your forest at a minimum be at the Windows Server 2003 forest-functional level. (*for Windows*)
+    * You need to have a writeable domain controller in a site that your RODC is connected to, as determined by the Active Directory site link topology.
+
+*** Password Replication Policies
+
+** Chapter 10 Designing the Namespace
+
+*** Domain Namespace Design
+
+**** Step 3: Design the Workstaion and Server-Naming Scheme
+
+*** Design of the Internal Domain Structure
+
+
+** Chapter 26 Extending the Schema and the Active Directory Snap-ins
+
+*** Modifying the Schema with ADSI
+
+* Windows Server 2012 活动目录管理实践
+  [[https://zh.wikipedia.org/zh-cn/Active_Directory][活动目录 - 维基百科，自由的百科全书]]
+
+
+** 第 1 章 域概述
+
+*** 1.5 管理域控制器需要注意的问题
+
+**** 1.5.3 禁止 FSMO 角色的任意分配 [fn:1]
+
+
+
+     1. 用户只能复制到其它域, 不能复制在本域
+
+** 第 6 章 管理操作主机角色
+
+*** 6.1 FSMO 简介
+
+**** 6.1.1 类型
+
+     AD DS 域服务定义五个操作主机角色, 分别是:
+     * 架构主机角色 (Schema Master).
+     * 域命名主机角色 (Domain Naming Master).
+     * RID 主机角色 (Relative Identifier Master).
+     * PDC 模拟主机角色 (PDC Emulator Master).
+     * 基础架构主机角色 (Infrastucture Master).
+
+
+     1. 林范围操作主机角色 (林中唯一)
+        * Schema
+        * Domain Naming
+     2. 域范围操作主机角色 (域中唯一)
+        * PDC
+        * RID
+
+**** 6.1.2 各个 FSMO 角色作用
+     1. 架构主机
+        定义所有域对象属性, 或称定义数据库字段以及存储方式
+     2. 域命名主机
+        负责控制林内域的添加或删除
+     3. PDC主机
+        * 兼容性, 兼容低版本域控制器
+        * 所在域控制器优先成为主域浏览器, ~Net Accounts~ 查看是否为主域控制器
+        * 活动目录数据库的优先复制权.
+        * 时间同步
+        * 防止重复套用组策略
+     4. RID主机
+        * 在域中建立对象时的SID 由 Doamin ID + RID
+        * 跨域访问时确认唯一性
+     5. 基础结构主机
+        负责对跨域对象的引用进行更新.
+
+**** 6.1.7 FSMO 角色出现故障后的影响
+     1. Schema Master
+        对用户没有影响. 对管理员来说除非更新架构数据否则没有影响
+     2. Domain Naming Master
+
+** 第 7 章 管理组织单位
+
+*** 7.3 组织单位委派控制
+
+**** 7.3.1 委派权限
+
+**** TODO 7.3.2 委派权限测试
+     存疑:
+     1. 登录 Administrator 账户
+     2. 委派 zhoushang 用户在 研发部上的完全控制权限
+     3. 切换 zhoushang 登录, 查看权限
+     4. 切换 Administrator, 委派 zhoushang 在研发部上只读权限
+     5. 切换 zhoushang 查看, 此时疑似依然是完全控制
+
+** 第 8 章 管理组
+
+*** 8.1 组基本知识
+    同一个组中可以包含用户, 计算机和其他嵌套组. 与 Linux 中 Group 的概念相近
+
+**** 8.1.1 组的作用
+     1. 设置计算机文件或者文件夹的访问权限
+     2. 访问示例
+        * 文件或文件夹属性对话框的"安全"选项卡, 单位添加用户并配置每个用户相应的权限
+        * 域控制器中创建访问组, 将相关人员添加到该组.
+
+**** 8.1.2 组类型
+     1. 安全组
+        * 将用户权限分配给 AD DS 域服务中的安全组
+        * 将资源权限分配给安全组
+        * 发送电子邮件
+     2. 通信组
+        用于用户之间通信的组, 使用通信组可以向一组用户发送电子邮件
+
+**** 8.1.3 组作用域
+     1. 域本地组: 主要用来设置访问权限, 只能将同一个域内的资源指派给域本地组
+     2. 全局组: 用来组织用户, 即将多个将赋予相同权限的用户账户加入同一个全局组内, 林范围可用
+     3. 通用组: 来自林中任何域的用户账户, 全局组和其他的通用组, 全林范围可用. 保存在全局编录服务器中, 适于跨域访问.
+
+*** 8.3 组 AGDLP 应用
+
+**** 8.3.1 组应用原则
+     1. AGDLP 原则
+        如果全局组在一个域内, 首先把用户账户(Account) 加入到全局组(Global group), 然后把全局组加入到域本地组 (Domain Local group, 可以是本域或者其他域), 最后, 对于域本地组进行授权 (Permissions).
+     2. AGGDLP 原则
+        ...  然后把全局组加入到另外的全局组, 然后把全局组加入到域本地组 ...
+     3. AGUDLP 原则
+        如果全局组不在一个域内, 首先把用户账户加入到全局组, 然后把全局组加入到 *通用组*, 然后把全局组另入到域本地组, 最后对域本地组进行授权
+     4. AGGUDLP 原则
+        ... 将全局组加入到另外一个全局组, 再将全局组加入到通用组 ...
+
+**** 8.3.2 应用场景规划
+     * 创建 "全局组": 全局域文件服务器共享组.
+     * 用户账户加入到 "全局组": 用户 "demo" 添加到 "全局域文件服务器共享组".
+     * 创建 " 本地域组": 本地用户授权.
+     * "全局组" 加入到 "本地域组": "全局域文件服务器共享组" 加入到本地用户授权组".
+     * 授予 "本地用户授权组" 访问 "Software" 文件夹的权限.
+
+** 第 9 章 管理域计算机
+
+*** 9.1.1 计算机名称命名方法
+    * 工作环境中, 使用计算机名. 如 xp.
+    * 域环境中, 使用的是DNS名称. 如 xp.book.com, 域名为 book.com.
+
+*** 9.1.2 普通计算机
+    3. 查看普通计算机的 SID
+
+       ~whoami /user~
+
+*** 9.1.3 域内计算机
+    1. 计算机的 SID 变化
+
+       ~dsquery computer -name $COMPUTER | dsget computer -sid~
+
+** 第 10 章 管理域用户
+
+*** 10.3 常用用户属性
+
+**** 10.3.3 GUID
+
+     Global Unique Identifier, 128 位, 创建对象时自动分配, 对象名称改变, GUID 保持不变.
+
+**** 10.3.4 常用账户属性
+
+     #+caption: 表 10-1  用户常用属性列表
+     | 用户账户属性  |                                         |
+     |---------------+-----------------------------------------|
+     | "常规" 选项卡 |                                         |
+     |---------------+-----------------------------------------|
+     | 姓            | sn                                      |
+     | 名            | Givenname                               |
+     | 英文缩写      | Initials                                |
+     | 显示名称      | displayName                             |
+     | 描述          | Description                             |
+     | 办公室        | physicalDeliveryOfficeName              |
+     | 电话号码      | telephoneNumber                         |
+     | 电话号码      | 其他 otherTelephone, 多个以英文分号分隔 |
+     | 电子邮件      | Mail                                    |
+     | 网页          | wWWWHomePage                            |
+     | 网页          | 其他url, 多个以英文分号分隔             |
+     |               |                                         |
+     |---------------+-----------------------------------------|
+     | "地址"选项卡  |                                         |
+     |---------------+-----------------------------------------|
+     | 国家/地区     | C, 如中国 CN, 英国 GB                   |
+     | 省/自治区     | St                                      |
+     | 市/县         | L                                       |
+     |               |                                         |
+
+* Footnotes
+
+[fn:1] FSMO: 营运主机（Operation Masters，又称为Flexible Single Master Operation.

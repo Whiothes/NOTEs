@@ -1,0 +1,38 @@
+#+OPTIONS: num:nil
+* <2021-01-04 10:01>
+** DONE [[https://git-scm.com/][Git]]
+   CLOSED: [2021-01-04 Mon 15:46]
+** DONE 常用命令
+   CLOSED: [2021-01-04 Mon 15:46]
+*** 初始化
+    * git init
+    * git clone
+*** 提交
+    * git commit
+*** 仓库
+    * git remote add/...
+*** 分支
+    * git checkout [-b(-B)]
+    * git branch -d(-D)
+    * git branch --set-upstream-to REMOTE_REPO (git remote)
+*** 合并
+    * git fetch
+    * git merge
+    * git pull : git fetch && git merge
+    * git push
+    * git diff
+    * git difftool/mergetool
+*** 记录
+    * git log
+    * git reflog
+** DONE 文档
+   CLOSED: [2021-01-04 Mon 15:54]
+   1. [X] [[file:~/Documents/Working/AW_Tech/proj/AW-Libs/AW-String/doc/CHANGELOG.org::*CHANGELOG][CHANGELOG]]
+   2. [X] [[file:~/Documents/Working/AW_Tech/proj/AW-Libs/AW-String/doc/README.org::*项目说明][README]]
+   3. [X] [[file:~/Documents/Working/AW_Tech/proj/AW-Libs/AW-String/doc/TODOs.org::*TODOs 工作计划][TODOs]]
+** DONE 原则
+   CLOSED: [2021-01-04 Mon 15:54]
+   [[file:~/Documents/Notes/NOTEs.org::*Principles of Git][Principles of Git]]
+** DONE 图解
+   CLOSED: [2021-01-04 Mon 16:25]
+   [[file:~/Documents/Notes/NOTEs.org::*\[\[https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1#merge\]\[CS Visualized: Useful Git Commands - DEV\]\]][CS Visualized: Useful Git Commands - DEV]]

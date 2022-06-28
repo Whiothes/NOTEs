@@ -1,0 +1,52 @@
+#+LATEX_HEADER: \usepackage{xeCJK}
+#+SETUPFILE: ~/Documents/style.setup
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LaTeX_HEADER: \pdfmapfile{/home/neilsen/texmf/fonts/map/dvips/libertine/libertine.map}
+#+LaTeX_HEADER: \usepackage[ttscale=.875]{libertine}
+#+LaTeX_HEADER: \usepackage{sectsty}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+AUTHOR: whiothes
+
+
+* Understanding the Linux Kernel
+** Chapter 2 Memory Addressing
+*** 2.1 Memory Addresses
+    #+begin_quote
+    Logical address \\
+    specify the address of an operand or of an instruction
+
+    Linear address (also known as virtual address) \\
+    up to 4 GB, from 0x0000000 to 0xfffffff
+
+    Physical address \\
+    address memory cells in memory chips.
+    They correspond to the electrical signals sent along the address pins of the microprocessor to the memory buses.
+    #+end_quote
+
+    #+caption: Figure 2.1 Logical address translation
+    [[file:ch2/fig2-1.png]]
+
+*** 2.2. Segmentation in Hardware
+**** 2.2.1 Segment Selectors and Segmentation Registers
+     #+caption: Figure 2-2. Segment Selector format
+     [[file:ch2/fig2-2.png]]
+
+     #+begin_quote
+     cs \\
+     The code segmenta register, which points to a segment containing program instructions
+
+     ss \\
+     The stack segment register, which points to a segment containing the current program stack
+
+     ds \\
+     The data segment register, which points to a segment containing global and static data
+     #+end_quote
+
+**** 2.2.2 Segment Descriptors
+
+** 8. Memory Management
+*** 8.1. Page Frame Management
+
+    #+caption: Figure 8-1. Dynamic memory
+    [[file:ch8/fig8-1.png]]

@@ -1,0 +1,19 @@
+* <2021-06-15 18:12>
+** DONE 数据库修改
+   CLOSED: [2021-06-15 Tue 18:12]
+*** DONE 新增clientinfo 表
+    CLOSED: [2021-06-15 Tue 18:12]
+*** DONE invite 表新增 callid 字段
+    CLOSED: [2021-06-15 Tue 18:12]
+** DONE 706
+   CLOSED: [2021-06-15 Tue 18:12]
+*** DONE 1. 重写 invite 流程
+    CLOSED: [2021-05-30 Sun 21:04]
+    基于原 message, 保留 from/to 的 tag
+
+    *BYE 有误*
+*** DONE 2. info
+    CLOSED: [2021-05-30 Sun 21:04]
+    *未转发*
+*** DONE [#C] 4. 双路视频流
+    CLOSED: [2021-06-15 Tue 18:12]

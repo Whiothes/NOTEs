@@ -1,0 +1,84 @@
+#+SETUPFILE: ~/Documents/style.setup
+#+STARTUP: align
+#+LATEX_HEADER: \usepackage{ulem}
+#+LATEX_HEADER: \usepackage{ctex}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+AUTHOR: whiothes
+* Computer Orgnization and Design
+** TODO Computer Abstractions and Technology [4/13]
+*** DONE 1.1 Introduction
+    CLOSED: [2020-09-02 Wed 22:50]
+**** Classes of Computing Applications and Their Characteristics
+     * Personal computers (PC)
+
+        emphasize deliver of good performance to single users at low cost and usually execute third-party software.
+
+     * Servers
+
+       be oriented to carrying large workloads, which may consist of either single complex applications - usually a scientfic or engineering application -- or handling many small jobs, such as would occur in building a large web server.
+
+     * Embeded computers
+
+       be designed to run one application or one set of related applications that are normally integrated with the hardware and delivered as a single system
+
+       #+caption: FIGURE 1.1 The 2^X vs. 10^Y bytes ambiguity was resoled by adding a binary notation for all the common size terms.
+       | Decimal term | Abbreviation | Value | Binary term | Abbreviation | Value | % Larger |
+       |--------------+--------------+-------+-------------+--------------+-------+----------|
+       | kilobyte     | KB           |  10^3 | kibibyte    | KiB          |  2^10 |       2% |
+       | megabyte     | MB           |  10^6 | Mebibyte    | MiB          |  2^20 |       5% |
+       | gigabyte     | GB           |  10^9 | gibibyte    | GiB          |  2^30 |       7% |
+       | terabyte     | TB           | 10^12 | tebibyte    | TiB          |  2^40 |      10% |
+       | petabyte     | PB           | 10^15 | pebibyte    | PiB          |  2^50 |      13% |
+       | exabyte      | EB           | 10^18 | exbibyte    | EiB          |  2^60 |      15% |
+       | zettabyte    | ZB           | 10^21 | zebibyte    | ZiB          |  2^70 |      18% |
+       | yottabyte    | YB           | 10^24 | yobibyte    | YiB          |  2^80 |      21% |
+**** Welcome to the PostPC Era
+**** What You Can Learn in This Book
+    #+caption: Understanding Program Performance
+    | Hardware of software                             | How this component affects performance                                                          | Where is this topic covered |
+    |--------------------------------------------------+-------------------------------------------------------------------------------------------------+-----------------------------|
+    | Algorithm                                        | Determines both the number of source-level statements and the number of I/O operations executed | Other books!                |
+    | Programming language, compiler, and architecture | Determines the number of computer instructions for each source-level statements                 | Chapters 2 and 3            |
+    | Processor and memory system                      | Determines how fast instructions can be exectuted                                               | Chapters 4, 5 and 6         |
+    | I/O system (hardware and operating system)       | Determines how fast I/O operations may be executed                                              | Chapters 4, 5 and 6         |
+*** DONE 1.2 Eight Great Ideas in Computer Architecture
+    CLOSED: [2020-09-02 Wed 22:50]
+**** Design for Moore's Law
+     [[https://zh.wikipedia.org/wiki/%E6%91%A9%E5%B0%94%E5%AE%9A%E5%BE%8B][摩尔定律 - 维基百科，自由的百科全书]]
+
+**** Use Abstraction to Simplify Design
+
+**** Make the Common Case Fast
+
+**** Performance via Parallelism
+
+**** Performance via Pipelining
+
+**** Performance via Prediction
+
+**** Hierachy of Memories
+
+**** Dependability via Redundancy
+     not only need to be fast; but also need to be dependable
+
+*** DONE 1.3 Below Your Program
+    CLOSED: [2020-09-02 Wed 22:51]
+    most important functions:
+    * Handing basic input and output operations
+    * Allocating storage and memory
+    * Providng for protected sharing of the computer among multiple applications using it simultaneously.
+
+**** From a High-Level Language to the Language of hardware
+
+*** TODO 1.4 Under the Covers
+*** TODO 1.5 Technologies for Building Processors and Memory
+*** TODO 1.6 Performance
+*** TODO 1.7 The Power Wall
+*** TODO 1.8 The Sea Change: The Switch from Uniprocessors to Multiprocessors
+*** TODO 1.9 Real Stuff: Benchmarking the Inter Core i7
+*** TODO 1.10 Fallacies and Pitfalls
+*** TODO 1.11 Concluding Remarks
+*** TODO 1.12 Historical Perspective and Further Reading
+*** DONE 1.13 Exercises
+    CLOSED: [2020-09-02 Wed 22:50]

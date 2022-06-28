@@ -1,0 +1,3 @@
+* About
+#+SETUPFILE: ~/Documents/style.setup
+ The study notes for "The Linux Programming Interface"

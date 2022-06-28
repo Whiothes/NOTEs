@@ -1,0 +1,50 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/zhoush/Documents/Notes/books/lua/Programming in Lua/Chapter27/fig27.1.c
+lauxlib.h
+/Users/zhoush/Documents/Notes/books/lua/Programming in Lua/Chapter27/lauxlib.h
+lua.h
+/Users/zhoush/Documents/Notes/books/lua/Programming in Lua/Chapter27/lua.h
+lualib.h
+/Users/zhoush/Documents/Notes/books/lua/Programming in Lua/Chapter27/lualib.h
+stdio.h
+-
+string.h
+-
+
+/usr/local/include/lua/lauxlib.h
+stddef.h
+-
+stdio.h
+-
+lua.h
+/usr/local/include/lua/lua.h
+
+/usr/local/include/lua/lua.h
+stdarg.h
+-
+stddef.h
+-
+luaconf.h
+/usr/local/include/lua/luaconf.h
+
+/usr/local/include/lua/luaconf.h
+limits.h
+-
+stddef.h
+-
+stdint.h
+-
+assert.h
+-
+
+/usr/local/include/lua/lualib.h
+lua.h
+/usr/local/include/lua/lua.h
+

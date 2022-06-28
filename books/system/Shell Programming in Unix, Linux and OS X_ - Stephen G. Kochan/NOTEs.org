@@ -1,0 +1,26 @@
+#+SETUPFILE: ~/Documents/style.setup
+#+STARTUP: align
+#+LATEX_HEADER: \usepackage{ulem}
+#+LATEX_HEADER: \usepackage{ctex}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+TITLE: 笔记
+#+AUTHOR: whiothes
+
+* Shell Programming in Unix, Linux and OS X_ - Stephen G. Kochan
+** 14 Interactive and Nonstandard Shell Features
+*** Arrays
+    #+begin_src sh
+      arr[0]=hello
+      arr[1]="some text"
+      arr[2]=/users/steve/memos
+    #+end_src
+
+    #+caption: 14.3 Array Constructs
+    | Construct    | Meaning                                      |
+    |--------------+----------------------------------------------|
+    | ${array[i]}  | Substitute value of element i                |
+    | $array       | Substitute value of first element (array[0]) |
+    | ${array[*]}  | Substitute value of all elements             |
+    | ${#array[*]} | Substitute number of elements                |
+    | array[i]=val | Store val into array[i]                      |

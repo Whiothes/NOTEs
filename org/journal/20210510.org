@@ -1,0 +1,11 @@
+* <2021-05-10 10:02>
+** DONE [#A] 28181Server
+   CLOSED: [2021-05-08 Sat 13:35]
+*** DONE 706 合并 C 级修改
+    CLOSED: [2021-05-10 Mon 10:06]
+*** DONE 706 转发 INVITE 模式调整读取值
+    CLOSED: [2021-05-10 Mon 10:06]
+*** DONE 注册后发catalog
+    CLOSED: [2021-05-10 Mon 10:06]
+    * DeviceID 中有 118, 注册后回200, 然后发catalog请求
+** TODO WEB 端发来Bye 处理

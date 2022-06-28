@@ -1,0 +1,4155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-12-09 Thu 10:34 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="whiothes" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org82f657f">Computer System: A Programmer's Perspective </a>
+<ul>
+<li><a href="#orge977933">Chapter A Tour of Computer System</a>
+<ul>
+<li><a href="#org5883a41">1.7 The Operating System Manages the Hardware</a></li>
+</ul>
+</li>
+<li><a href="#org9a6cadc">Chapter 3 Machine-Level Representation of Programms</a>
+<ul>
+<li><a href="#orge8320d6">3.1 A Historical Perspective</a></li>
+<li><a href="#org94ced78">3.2 Program Encodings</a></li>
+<li><a href="#orgab95739">3.3 Data Formats</a></li>
+<li><a href="#org062f6c5">3.4 Acessing Information</a></li>
+<li><a href="#org66cbea6">3.5 Arithmetic and Logical Operations</a></li>
+<li><a href="#orga394319">3.6 Control</a></li>
+<li><a href="#org9a1a668">3.7 Procedures</a></li>
+<li><a href="#org69401c1">3.9 Heterogeneous Data Structure</a></li>
+<li><a href="#org7158bf4">3.10 Combining Control and Data in Machine-Level Programs</a></li>
+<li><a href="#orgc9f0455">3.11 Floating-Point Code</a></li>
+<li><a href="#org7c46c74">3.12 Summary</a></li>
+</ul>
+</li>
+<li><a href="#org2dfc1d7">Chapter 4 Processor Architecture</a>
+<ul>
+<li><a href="#orgd79cb49">4.1 The Y86-64 Instruction Set Architecture</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org82f657f" class="outline-2">
+<h2 id="org82f657f">Computer System: A Programmer's Perspective <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h2>
+<div class="outline-text-2" id="text-org82f657f">
+</div>
+<div id="outline-container-orge977933" class="outline-3">
+<h3 id="orge977933">Chapter A Tour of Computer System</h3>
+<div class="outline-text-3" id="text-orge977933">
+</div>
+<div id="outline-container-org5883a41" class="outline-4">
+<h4 id="org5883a41">1.7 The Operating System Manages the Hardware</h4>
+<div class="outline-text-4" id="text-org5883a41">
+<blockquote>
+<p>
+The operating system has two primary purposes:
+(1) to protect the hardware from misuse by runaway applications
+(2) to provide applications with simple and uniform mechanisms for manipulating complicated and often wildly different low-level hardware devices.
+</p>
+</blockquote>
+</div>
+<ul class="org-ul">
+<li><a id="org45ad1ab"></a>1.7.3 Virtual Memory<br />
+<div class="outline-text-5" id="text-org45ad1ab">
+<ul class="org-ul">
+<li><b>Program code and data.</b> Code begins at the same fixed address for all processes, followed by data locations that correspond to global C variables.</li>
+<li><b>Heap.</b> <code>malloc</code> and <code>free</code>.</li>
+<li>*Shared libraries. *</li>
+<li><b>Stack.</b> top of user's virtual address space.</li>
+<li><b>Kernel virtual memory</b>: The top region of the address space is reserved for the kernel.</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9a6cadc" class="outline-3">
+<h3 id="org9a6cadc">Chapter 3 Machine-Level Representation of Programms</h3>
+<div class="outline-text-3" id="text-org9a6cadc">
+</div>
+<div id="outline-container-orge8320d6" class="outline-4">
+<h4 id="orge8320d6">3.1 A Historical Perspective</h4>
+</div>
+<div id="outline-container-org94ced78" class="outline-4">
+<h4 id="org94ced78">3.2 Program Encodings</h4>
+<div class="outline-text-4" id="text-org94ced78">
+</div>
+<ul class="org-ul">
+<li><a id="org762eee0"></a>3.2.1 Machine-Level Code<br />
+<div class="outline-text-5" id="text-org762eee0">
+<p>
+processor state are visible that normally are hidden from the C programmer
+</p>
+<blockquote>
+<ul class="org-ul">
+<li>The <i>program counter</i> (%rip in x86-64) indicates the address in memory of the next instruction to be executed</li>
+<li>The integer <i>register file</i> contains 16 named locations storing 64-bit values.</li>
+<li>The condition code register hold status information about the most recently executed arithmetic or logical instruction.</li>
+<li>A set of vector registers can each hold one or more integer or floating-point values.</li>
+</ul>
+</blockquote>
+</div>
+</li>
+<li><a id="org9102efe"></a>3.2.2 Code Examples<br />
+<div class="outline-text-5" id="text-org9102efe">
+<p>
+long mult2(long, long);
+</p>
+
+<p>
+void multstore(long x, long y, long *dest) {
+    long t = mult2(x, y);
+    *dest = t;
+}
+</p>
+
+<p>
+generate assembly code by C compiler:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">linux&gt; gcc -Og -S mstore.c
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+Aside How do I display the byte representation of a program?
+</p>
+<blockquote>
+<p>
+(gdb) x/14xb multstore
+0x0 &lt;multstore&gt;:        0x53    0x48    0x89    0xd3    0xe8    0x00    0x00    0x00
+0x8 &lt;multstore+8&gt;:      0x00    0x48    0x89    0x03    0x5b    0xc3
+</p>
+</blockquote>
+<p>
+<code>objdump -d mstore.o</code> get detail.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">0</span>:   <span style="color: #4f97d7; font-weight: bold;">53</span>                      push   <span style="color: #7590db;">%rbx</span>
+<span style="color: #bc6ec5; font-weight: bold;">1</span>:   <span style="color: #4f97d7; font-weight: bold;">48</span> 89 d3                mov    <span style="color: #7590db;">%rdx</span>,<span style="color: #7590db;">%rbx</span>
+<span style="color: #bc6ec5; font-weight: bold;">4</span>:   <span style="color: #4f97d7; font-weight: bold;">e8</span> 00 00 00 00          callq  9 &lt;multstore+0x9&gt;
+<span style="color: #bc6ec5; font-weight: bold;">9</span>:   <span style="color: #4f97d7; font-weight: bold;">48</span> 89 03                mov    <span style="color: #7590db;">%rax</span>,<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rbx</span><span style="color: #4f97d7;">)</span>
+<span style="color: #bc6ec5; font-weight: bold;">c</span>:   <span style="color: #4f97d7; font-weight: bold;">5b</span>                      pop    <span style="color: #7590db;">%rbx</span>
+<span style="color: #bc6ec5; font-weight: bold;">d</span>:   <span style="color: #4f97d7; font-weight: bold;">c3</span>                      retq
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sh">gcc -Og -o prog main.c mstore.c
+objdum -d prog
+</pre>
+</div></li>
+</ul>
+
+
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">prog</span>:     <span style="color: #4f97d7; font-weight: bold;">file</span> format elf64-x86-64
+
+<span style="color: #bc6ec5; font-weight: bold;">0000000000400563</span> &lt;mult2&gt;:
+  <span style="color: #4f97d7; font-weight: bold;">400563</span>:       48 89 f8                mov    <span style="color: #7590db;">%rdi</span>,<span style="color: #7590db;">%rax</span>
+  <span style="color: #4f97d7; font-weight: bold;">400566</span>:       48 0f af c6             imul   <span style="color: #7590db;">%rsi</span>,<span style="color: #7590db;">%rax</span>
+  <span style="color: #4f97d7; font-weight: bold;">40056a</span>:       c3                      retq
+
+<span style="color: #bc6ec5; font-weight: bold;">000000000040056b</span> &lt;multstore&gt;:
+  <span style="color: #4f97d7; font-weight: bold;">40056b</span>:       53                      push   <span style="color: #7590db;">%rbx</span>
+  <span style="color: #4f97d7; font-weight: bold;">40056c</span>:       48 89 d3                mov    <span style="color: #7590db;">%rdx</span>,<span style="color: #7590db;">%rbx</span>
+  <span style="color: #4f97d7; font-weight: bold;">40056f</span>:       e8 ef ff ff ff          callq  400563 &lt;mult2&gt; <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">callq use in calling the function</span>
+  <span style="color: #4f97d7; font-weight: bold;">400574</span>:       48 89 03                mov    <span style="color: #7590db;">%rax</span>,<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rbx</span><span style="color: #4f97d7;">)</span>
+  <span style="color: #4f97d7; font-weight: bold;">400577</span>:       5b                      pop    <span style="color: #7590db;">%rbx</span>
+  <span style="color: #4f97d7; font-weight: bold;">400578</span>:       c3                      retq
+  <span style="color: #4f97d7; font-weight: bold;">400579</span>:       0f 1f 80 00 00 00 00    nopl   0x0<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rax</span><span style="color: #4f97d7;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;  </span><span style="color: #2aa1ae; background-color: #292e34;">inserted to grow the code for the function 16-bytes</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org6d9b561"></a>3.2.3 Notes on Formating<br />
+<div class="outline-text-5" id="text-org6d9b561">
+<p>
+<code>[root@iz2zea5bxfhn21swfxzfzmz CSAPP]# gcc -Og -S mstore.c</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-asm">        <span style="color: #4f97d7; font-weight: bold;">.file</span>   <span style="color: #2d9574;">"mstore.c"</span>
+        <span style="color: #4f97d7; font-weight: bold;">.text</span>
+        <span style="color: #4f97d7; font-weight: bold;">.globl</span>  multstore
+        <span style="color: #4f97d7; font-weight: bold;">.type</span>   multstore, @function
+<span style="color: #bc6ec5; font-weight: bold;">multstore</span>:
+<span style="color: #bc6ec5; font-weight: bold;">.LFB0</span>:
+        <span style="color: #4f97d7; font-weight: bold;">.cfi_startproc</span>
+        <span style="color: #4f97d7; font-weight: bold;">pushq</span>   <span style="color: #7590db;">%rbx</span>
+        <span style="color: #4f97d7; font-weight: bold;">.cfi_def_cfa_offset</span> 16
+        <span style="color: #4f97d7; font-weight: bold;">.cfi_offset</span> 3, -16
+        <span style="color: #4f97d7; font-weight: bold;">movq</span>    <span style="color: #7590db;">%rdx</span>, <span style="color: #7590db;">%rbx</span>
+        <span style="color: #4f97d7; font-weight: bold;">call</span>    mult2
+        <span style="color: #4f97d7; font-weight: bold;">movq</span>    <span style="color: #7590db;">%rax</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rbx</span><span style="color: #4f97d7;">)</span>
+        <span style="color: #4f97d7; font-weight: bold;">popq</span>    <span style="color: #7590db;">%rbx</span>
+        <span style="color: #4f97d7; font-weight: bold;">.cfi_def_cfa_offset</span> 8
+        <span style="color: #4f97d7; font-weight: bold;">ret</span>
+        <span style="color: #4f97d7; font-weight: bold;">.cfi_endproc</span>
+<span style="color: #bc6ec5; font-weight: bold;">.LFE0</span>:
+        <span style="color: #4f97d7; font-weight: bold;">.size</span>   multstore, .-multstore
+        <span style="color: #4f97d7; font-weight: bold;">.ident</span>  <span style="color: #2d9574;">"GCC: (GNU) 4.8.5 20150623 (Red Hat 4.8.5-39)"</span>
+        <span style="color: #4f97d7; font-weight: bold;">.section</span>        .note.GNU-stack,<span style="color: #2d9574;">""</span>,@progbits
+
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orgab95739" class="outline-4">
+<h4 id="orgab95739">3.3 Data Formats</h4>
+<div class="outline-text-4" id="text-orgab95739">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Sizes of C data types in x86-64.</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">C declaration</th>
+<th scope="col" class="org-left">Intel data type</th>
+<th scope="col" class="org-left">Assembly-code suffix</th>
+<th scope="col" class="org-right">Size(bytes)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">char</td>
+<td class="org-left">Byte</td>
+<td class="org-left">b</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-left">short</td>
+<td class="org-left">Word</td>
+<td class="org-left">w</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-left">int</td>
+<td class="org-left">Double word</td>
+<td class="org-left">l</td>
+<td class="org-right">4</td>
+</tr>
+
+<tr>
+<td class="org-left">long</td>
+<td class="org-left">Quad word</td>
+<td class="org-left">q</td>
+<td class="org-right">8</td>
+</tr>
+
+<tr>
+<td class="org-left">char *</td>
+<td class="org-left">Quad word</td>
+<td class="org-left">q</td>
+<td class="org-right">8</td>
+</tr>
+
+<tr>
+<td class="org-left">float</td>
+<td class="org-left">single precision</td>
+<td class="org-left">s</td>
+<td class="org-right">4</td>
+</tr>
+
+<tr>
+<td class="org-left">double</td>
+<td class="org-left">double precision</td>
+<td class="org-left">l</td>
+<td class="org-right">8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org062f6c5" class="outline-4">
+<h4 id="org062f6c5">3.4 Acessing Information</h4>
+<div class="outline-text-4" id="text-org062f6c5">
+
+<div id="org2812e38" class="figure">
+<p><img src="ch3/registers.jpg" alt="registers.jpg" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Figure 3.2 Integer registers</p>
+</div>
+</div>
+
+
+<ul class="org-ul">
+<li><a id="org4629776"></a>3.4.1 Operand Specifiers<br />
+<div class="outline-text-5" id="text-org4629776">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 2:</span> 3.3. Operand forms</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Type</th>
+<th scope="col" class="org-left">Form</th>
+<th scope="col" class="org-left">Operand value</th>
+<th scope="col" class="org-left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Immediate</td>
+<td class="org-left">$Imm</td>
+<td class="org-left">Imm</td>
+<td class="org-left">Immediate</td>
+</tr>
+
+<tr>
+<td class="org-left">Register</td>
+<td class="org-left">r</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Memory</td>
+<td class="org-left">Imm</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Absolute</td>
+</tr>
+
+<tr>
+<td class="org-left">Memory</td>
+<td class="org-left">(r )</td>
+<td class="org-left">M[R[ r  ]]</td>
+<td class="org-left">Indirect</td>
+</tr>
+
+<tr>
+<td class="org-left">Memory</td>
+<td class="org-left">Imm (r )</td>
+<td class="org-left">M[Imm + R[ r  ]]</td>
+<td class="org-left">Base + displacement</td>
+</tr>
+
+<tr>
+<td class="org-left">Memory</td>
+<td class="org-left">(r r )</td>
+<td class="org-left">M[R[ r  ] + R[ r  ]]</td>
+<td class="org-left">Indexed</td>
+</tr>
+
+<tr>
+<td class="org-left">Memory</td>
+<td class="org-left">Imm(r, r )</td>
+<td class="org-left">M[Imm + R[r ] + R[r ]]</td>
+<td class="org-left">Indexed</td>
+</tr>
+
+<tr>
+<td class="org-left">Memory</td>
+<td class="org-left">(,r ,s)</td>
+<td class="org-left">M[R[r] &sdot; s]</td>
+<td class="org-left">Scaled indexed</td>
+</tr>
+
+<tr>
+<td class="org-left">Memory</td>
+<td class="org-left">Imm(,r ,s)</td>
+<td class="org-left">M[Imm + R[r ] &sdot; s]</td>
+<td class="org-left">Scaled indexed</td>
+</tr>
+
+<tr>
+<td class="org-left">Memory</td>
+<td class="org-left">(r ,r ,s)</td>
+<td class="org-left">M[R[r] + R[r] &sdot; s]</td>
+<td class="org-left">Scaled indexed</td>
+</tr>
+
+<tr>
+<td class="org-left">Memory</td>
+<td class="org-left">Imm(r ,r ,s)</td>
+<td class="org-left">M[Imm + R[r ] + R[r] &sdot; s]</td>
+<td class="org-left">Scaled indexed</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+*******ractice Problem 3.1
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Address</th>
+<th scope="col" class="org-right">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">0x100</td>
+<td class="org-right">0xFF</td>
+</tr>
+
+<tr>
+<td class="org-right">0x104</td>
+<td class="org-right">0xAB</td>
+</tr>
+
+<tr>
+<td class="org-right">0x108</td>
+<td class="org-right">0x13</td>
+</tr>
+
+<tr>
+<td class="org-right">0x10C</td>
+<td class="org-right">0x11</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-right">Register</td>
+<td class="org-right">Value</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">%rax</td>
+<td class="org-right">0x100</td>
+</tr>
+
+<tr>
+<td class="org-right">%rcx</td>
+<td class="org-right">0x1</td>
+</tr>
+
+<tr>
+<td class="org-right">%rdx</td>
+<td class="org-right">0x3</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Fill the Value (NOTE is the process)
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operand</th>
+<th scope="col" class="org-right">Value</th>
+<th scope="col" class="org-left">NOTE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">%rax</td>
+<td class="org-right">0x100</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">0x104</td>
+<td class="org-right">0xAB</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">$0x108</td>
+<td class="org-right">0x108</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">(%rax)</td>
+<td class="org-right">0xFF</td>
+<td class="org-left">0x100</td>
+</tr>
+
+<tr>
+<td class="org-left">4(%rax)</td>
+<td class="org-right">0xAB</td>
+<td class="org-left">0x100 + 4</td>
+</tr>
+
+<tr>
+<td class="org-left">9($rax, %rdx)</td>
+<td class="org-right">0x11</td>
+<td class="org-left">0x100 + 0x3 + 9   = 0x10C</td>
+</tr>
+
+<tr>
+<td class="org-left">260(%rcx,%rdx)</td>
+<td class="org-right">0x13</td>
+<td class="org-left">0x1 + 0x3 + 0x104 = 0x108</td>
+</tr>
+
+<tr>
+<td class="org-left">0xFC(, %rcx, 4)</td>
+<td class="org-right">0x13</td>
+<td class="org-left">0xFC + 0x1 * 4    = 0x108</td>
+</tr>
+
+<tr>
+<td class="org-left">(%rax, %rdx, 4)</td>
+<td class="org-right">0x11</td>
+<td class="org-left">0x100 + 0x3 * 4   = 0x10C</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+
+<li><a id="org15f776f"></a>3.4.2 Data Movement Instructions<br />
+<div class="outline-text-5" id="text-org15f776f">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 3:</span> Figure 3.4 Simple data movement instructions</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Instruction</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Effect</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-right">size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Movement</td>
+<td class="org-left">S, D</td>
+<td class="org-left">D &lt;- S</td>
+<td class="org-left">Move S to D</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">movb</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">move byte</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-left">movw</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">move word</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-left">movl</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">move double word</td>
+<td class="org-right">4</td>
+</tr>
+
+<tr>
+<td class="org-left">movq</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">move quad word</td>
+<td class="org-right">8</td>
+</tr>
+
+<tr>
+<td class="org-left">moveabsq</td>
+<td class="org-left">I,R</td>
+<td class="org-left">R &lt;- I</td>
+<td class="org-left">move absolute quad word</td>
+<td class="org-right">8</td>
+</tr>
+</tbody>
+</table>
+
+
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=ViP6V-U4y8M&amp;list=PLcQU3vbfgCc9sVAiHf5761UUApjZ3ZD3x&amp;index=5">CMU 15213/15513 CSAPP 深入理解计算机系统 Lecture 05 Machine Level Programming I Basics 中英字幕 - YouTube</a></li>
+</ul>
+<p>
+movq:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">src</th>
+<th scope="col" class="org-left">dst</th>
+<th scope="col" class="org-left">src, dst</th>
+<th scope="col" class="org-left">C Analog</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">movq</td>
+<td class="org-left">Imm</td>
+<td class="org-left">Reg</td>
+<td class="org-left">movq $0x4, %rax</td>
+<td class="org-left">temp = 0x4</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Mem</td>
+<td class="org-left">movq $-147, (%rax)</td>
+<td class="org-left">*p = -147</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Reg</td>
+<td class="org-left">Reg</td>
+<td class="org-left">movq %rax, %rdx</td>
+<td class="org-left">temp2 = temp1</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Mem</td>
+<td class="org-left">movq %rax, (%rdx)</td>
+<td class="org-left">*p = temp</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Mem</td>
+<td class="org-left">reg</td>
+<td class="org-left">movq (%rax), %rdx</td>
+<td class="org-left">temp = *p</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+C:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">swap</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">xp</span>, <span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">yp</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">t0</span> = *xp;
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">t1</span> = *yp;
+        *xp = t1;
+        *yp = t0;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+
+<p>
+assembly:
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">swap</span>:
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdi</span><span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rax</span>             <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">t0 = *xp</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rsi</span><span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rdx</span>             <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">t1 =*yp</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rdx</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rsi</span><span style="color: #4f97d7;">)</span>             <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">*xp = t1</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rax</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdi</span><span style="color: #4f97d7;">)</span>             <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">*yp = t0</span>
+  <span style="color: #4f97d7; font-weight: bold;">ret</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+Aside Understanding how data movement changes a destination register
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">movabsq</span> <span style="color: #4f97d7; font-weight: bold;">$0x00111223344556677</span>, <span style="color: #7590db;">%rax</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">%rax = 0011223344556677</span>
+<span style="color: #bc6ec5; font-weight: bold;">movb</span> <span style="color: #4f97d7; font-weight: bold;">$</span>-1, <span style="color: #7590db;">%al</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">%rax = 00112233445566FF</span>
+<span style="color: #bc6ec5; font-weight: bold;">movw</span> <span style="color: #4f97d7; font-weight: bold;">$</span>-1, <span style="color: #7590db;">%ax</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">%rax = 001122334455FFFF</span>
+<span style="color: #bc6ec5; font-weight: bold;">movl</span> <span style="color: #4f97d7; font-weight: bold;">$</span>-1, <span style="color: #7590db;">%eax</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">%rax = 00000000FFFFFFFF</span>
+<span style="color: #bc6ec5; font-weight: bold;">movq</span> <span style="color: #4f97d7; font-weight: bold;">$</span>-1, <span style="color: #7590db;">%rax</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">%rax = FFFFFFFFFFFFFFFF</span>
+</pre>
+</div></li>
+</ul>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 4:</span> Figure 3.5 Zero-extending data movement instructions</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Instruction</th>
+<th scope="col" class="org-left">Effect</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">MOVZ S,R</td>
+<td class="org-left">R&lt;&#x2013;ZeroExtend(S)</td>
+<td class="org-left">Move with zero extension</td>
+</tr>
+
+<tr>
+<td class="org-left">movzbw</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">move zero-extended byte to word</td>
+</tr>
+
+<tr>
+<td class="org-left">movzbl</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">move zero-extended byte to double word</td>
+</tr>
+
+<tr>
+<td class="org-left">movzwl</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">move zero-extended word to double word</td>
+</tr>
+
+<tr>
+<td class="org-left">movzbq</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">move zero-extended byte to quad word</td>
+</tr>
+
+<tr>
+<td class="org-left">movzwq</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">move zero-extended word to quad word</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 5:</span> Figure 3.6 Sign-extending data movement instructions</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Instruction</th>
+<th scope="col" class="org-left">Effect</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">MOVS S,R</td>
+<td class="org-left">R&lt;&#x2013;SignedExtend(S)</td>
+<td class="org-left">Move with sign extension</td>
+</tr>
+
+<tr>
+<td class="org-left">movsbw</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Move sig-extended byte to word</td>
+</tr>
+
+<tr>
+<td class="org-left">movsbl</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">move sign-extended byte to word</td>
+</tr>
+
+<tr>
+<td class="org-left">movswl</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">move sign-extended byte to double word</td>
+</tr>
+
+<tr>
+<td class="org-left">movsbq</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">move sign-extended word to double word</td>
+</tr>
+
+<tr>
+<td class="org-left">movswq</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">move sign-extended byte to quad word</td>
+</tr>
+
+<tr>
+<td class="org-left">movslq</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">ove sign-extended double word to quad word</td>
+</tr>
+
+<tr>
+<td class="org-left">cltq</td>
+<td class="org-left">%rax&lt;&#x2013;SignedExtend(%eax)</td>
+<td class="org-left">Sign-extend %eax to %rax</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<ul class="org-ul">
+<li><a id="org006c150"></a>Practice Problem 3.2<br />
+<div class="outline-text-6" id="text-org006c150">
+<p>
+fill the mov_
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">movl</span>  <span style="color: #4f97d7; font-weight: bold;">%eax</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rsp</span><span style="color: #4f97d7;">)</span>
+<span style="color: #bc6ec5; font-weight: bold;">movw</span>  <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rax</span><span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%dx</span>
+<span style="color: #bc6ec5; font-weight: bold;">movb</span>  <span style="color: #4f97d7; font-weight: bold;">$0xFF</span>, <span style="color: #7590db;">%bl</span>
+<span style="color: #bc6ec5; font-weight: bold;">movb</span>  <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rsp</span>, <span style="color: #7590db;">%rdx</span>, 4<span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%dl</span>
+<span style="color: #bc6ec5; font-weight: bold;">movq</span>  <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdx</span><span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rax</span>
+<span style="color: #bc6ec5; font-weight: bold;">movw</span>  <span style="color: #4f97d7; font-weight: bold;">%dx</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rax</span><span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+
+
+<ul class="org-ul">
+<li><p>
+Aside Comparing byte movement instructions
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">movabsq</span> <span style="color: #4f97d7; font-weight: bold;">$0x0011223344556677</span>, <span style="color: #7590db;">%rax</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">%rax = 0011223344556677</span>
+<span style="color: #bc6ec5; font-weight: bold;">movb</span> <span style="color: #4f97d7; font-weight: bold;">$0xAA</span>, <span style="color: #7590db;">%dl</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">%dl = AA</span>
+<span style="color: #bc6ec5; font-weight: bold;">movb</span> <span style="color: #4f97d7; font-weight: bold;">%dl</span>, <span style="color: #7590db;">%al</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">%rax = 00112233445566AA</span>
+<span style="color: #bc6ec5; font-weight: bold;">movsbq</span> <span style="color: #4f97d7; font-weight: bold;">%dl</span>, <span style="color: #7590db;">%rax</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">%rax = FFFFFFFFFFFFFFAA</span>
+<span style="color: #bc6ec5; font-weight: bold;">movzbq</span> <span style="color: #4f97d7; font-weight: bold;">%dl</span>, <span style="color: #7590db;">%rax</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">%rax = 00000000000000AA</span>
+</pre>
+</div></li>
+</ul>
+
+<p>
+*******ractice Problem 3.3
+</p>
+
+<p>
+Explain why error generated
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">movb</span> <span style="color: #4f97d7; font-weight: bold;">$0xF</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%ebx</span><span style="color: #4f97d7;">)</span>               <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">%ebx cannot be address register</span>
+<span style="color: #bc6ec5; font-weight: bold;">movl</span> <span style="color: #4f97d7; font-weight: bold;">%rax</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rsp</span><span style="color: #4f97d7;">)</span>               <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">mismatch between instruction suffix and register ID</span>
+<span style="color: #bc6ec5; font-weight: bold;">movw</span> <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rax</span><span style="color: #4f97d7;">)</span>, 4<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rsp</span><span style="color: #4f97d7;">)</span>            <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">cannot have both source and destination be memory references</span>
+<span style="color: #bc6ec5; font-weight: bold;">movb</span> <span style="color: #4f97d7; font-weight: bold;">%al</span>, <span style="color: #7590db;">%sl</span>                   <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">no register named %sl</span>
+<span style="color: #bc6ec5; font-weight: bold;">movq</span> <span style="color: #4f97d7; font-weight: bold;">%rax</span>, $0x123               <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">cannot have immediate as destination</span>
+<span style="color: #bc6ec5; font-weight: bold;">movl</span> <span style="color: #4f97d7; font-weight: bold;">%eax</span>, <span style="color: #7590db;">%rdx</span>                 <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">should be movq</span>
+<span style="color: #bc6ec5; font-weight: bold;">movb</span> <span style="color: #4f97d7; font-weight: bold;">%si</span>, 8<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rbp</span><span style="color: #4f97d7;">)</span>               <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">mismatch between instruction suffix and register ID</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org9d83a5b"></a>3.4.3 Data Movement Example<br />
+<div class="outline-text-5" id="text-org9d83a5b">
+<p>
+a. C code
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #bc6ec5; font-weight: bold;">exchange</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">xp</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">y</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span> = *xp;
+        *xp = y;
+        <span style="color: #4f97d7; font-weight: bold;">return</span> x;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+<p>
+b. Assembly code
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">exchange</span>:
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdi</span><span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rax</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rsi</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdi</span><span style="color: #4f97d7;">)</span>
+  <span style="color: #4f97d7; font-weight: bold;">ret</span>
+</pre>
+</div>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgc183283"></a>Practice Problem 3.4<br />
+<div class="outline-text-6" id="text-orgc183283">
+<p>
+Assume variables sp and dp are declared with types
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">src_t</span> *<span style="color: #7590db;">sp</span>;
+<span style="color: #ce537a; font-weight: bold;">dest_t</span> *<span style="color: #7590db;">dp</span>;
+</pre>
+</div>
+<p>
+to implement the operation:
+</p>
+<div class="org-src-container">
+<pre class="src src-c">*dp = <span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">dest_t</span><span style="color: #4f97d7;">)</span> *sp;
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">src_t</th>
+<th scope="col" class="org-left">dest_t</th>
+<th scope="col" class="org-left">Instruction</th>
+<th scope="col" class="org-left">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">long</td>
+<td class="org-left">long</td>
+<td class="org-left">movq (%rdi), %rax</td>
+<td class="org-left">Read 8 bytes</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">movq %rax, (%rsi)</td>
+<td class="org-left">Store 8 bytes</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">char</td>
+<td class="org-left">int</td>
+<td class="org-left">movsbl (%rdi), %eax</td>
+<td class="org-left">Convert char to int</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">movl %eax, (%rsi)</td>
+<td class="org-left">Store 4 bytes</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">char</td>
+<td class="org-left">unsigned</td>
+<td class="org-left">movzbl (%rdi), %eax</td>
+<td class="org-left">Convert char to int</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">movl %eax, (%rsi)</td>
+<td class="org-left">sotre 4 bytes</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">unsigned char</td>
+<td class="org-left">long</td>
+<td class="org-left">movzbl (%rdi), %ax [movzbq (%rdi), %rax)?]</td>
+<td class="org-left">Read byte and zero-extend</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">movq %rax, (%rsi)</td>
+<td class="org-left">Store 8 bytes</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">int</td>
+<td class="org-left">char</td>
+<td class="org-left">movl (%rdi), %eax</td>
+<td class="org-left">Read 4 bytes</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">movb %al, (%rsi)</td>
+<td class="org-left">Store low-order bytes</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">unsigned</td>
+<td class="org-left">unsigned</td>
+<td class="org-left">movl (%rdi), %eax</td>
+<td class="org-left">Read 4 bytes</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">char</td>
+<td class="org-left">movb %al, (%rsi)</td>
+<td class="org-left">Store low-order bytes</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">char</td>
+<td class="org-left">short</td>
+<td class="org-left">movsbw (%rdi), %ax</td>
+<td class="org-left">Read byte and sign-extend</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">movw %ax, (%rsi)</td>
+<td class="org-left">Store 2 bytes</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+*******ractice Problem 3.5
+      A function with prototype
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">decodel</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">xp</span>, <span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">yp</span>, <span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">zp</span><span style="color: #4f97d7;">)</span>;
+</pre>
+</div>
+
+<p>
+compiled into assembly code, yielding the following
+</p>
+<div class="org-src-container">
+<pre class="src src-asm">  <span style="color: #4f97d7; font-weight: bold;">void</span> decodel<span style="color: #4f97d7;">(</span>long *xp, long *yp, long *zp<span style="color: #4f97d7;">)</span>
+  <span style="color: #4f97d7; font-weight: bold;">xp</span> in <span style="color: #7590db;">%rdi</span>, yp in <span style="color: #7590db;">%rsi</span>, zp in <span style="color: #7590db;">%rdx</span>
+<span style="color: #bc6ec5; font-weight: bold;">decodel</span>:
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdi</span><span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%r8</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rsi</span><span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rcx</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdx</span><span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rax</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%r8</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rsi</span><span style="color: #4f97d7;">)</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rcx</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdx</span><span style="color: #4f97d7;">)</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rax</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdi</span><span style="color: #4f97d7;">)</span>
+  <span style="color: #4f97d7; font-weight: bold;">ret</span>
+</pre>
+</div>
+
+<p>
+C code for <code>decodel</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">decodel</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">xp</span>, <span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">yp</span>, <span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">zp</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span>, <span style="color: #7590db;">y</span>, <span style="color: #7590db;">z</span>;
+
+        *xp = x;
+        *yp = y;
+        *zp = z;
+
+        x = *yp;
+        y = *zp;
+        z = *xp;
+<span style="color: #4f97d7;">}</span>
+
+
+<span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">REVISE</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+<span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">move LEFT to RIGTH!</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+<span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">decodel</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">xp</span>, <span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">yp</span>, <span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">zp</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span> = *xp;
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">y</span> = *yp;
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">z</span> = *zp;
+
+        *yp = x;
+        *zp = y;
+        *xp = z;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgc779f03"></a>3.4.4 Pushing and Popping Stack Data<br />
+<div class="outline-text-5" id="text-orgc779f03">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 6:</span> Figure 3.8 Push and pop instruction</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Instruction</th>
+<th scope="col" class="org-left">Effect</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Equivalent to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">pushq S</td>
+<td class="org-left">R[%rsp] &lt;- R[%rsp] - 8;</td>
+<td class="org-left">Push quad word</td>
+<td class="org-left">subq $8, %rsp       # Decrement stack pointer</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">M[R[%rsp]] &lt;- S</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">movq %rbp, (%rsp)   # Store %rbp on stack</td>
+</tr>
+
+<tr>
+<td class="org-left">popq S</td>
+<td class="org-left">D &lt;- M[R[%rsp]];</td>
+<td class="org-left">pop quad word</td>
+<td class="org-left">movq %(rsp), %rax   # Read %rax from stack</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">R[%rsp] &lt;- R[%rsp] + 8</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">addq $8, %rsp       # Increment stack pointer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org66cbea6" class="outline-4">
+<h4 id="org66cbea6">3.5 Arithmetic and Logical Operations</h4>
+<div class="outline-text-4" id="text-org66cbea6">
+</div>
+<ul class="org-ul">
+<li><a id="org9e4fd35"></a>3.5.1 Load Effective Address<br />
+<div class="outline-text-5" id="text-org9e4fd35">
+<ul class="org-ul">
+<li>Note taken on <span class="timestamp-wrapper"><span class="timestamp">[2021-01-10 Sun 22:19] </span></span> <br />
+<a href="https://stackoverflow.com/questions/44694957/the-difference-between-logical-shift-right-arithmetic-shift-right-and-rotate-r#44695162">bit manipulation - The difference between logical shift right, arithmetic shift right, and rotate right - Stack Overflow</a></li>
+</ul>
+<p>
+<i>load effective address</i> instruction <code>leaq</code> is actually a variant of the <code>movq</code> instruction.
+</p>
+<!-- This HTML table template is generated by emacs 27.1 -->
+<table border="1">
+  <tr>
+    <td colspan="2" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Effect&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;leaq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;INC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;DEC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;NEG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;NOT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;Add&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;SUB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;IMUL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;XOR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;OR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;AND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;SAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;SHL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;SAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;SHR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;S,D&nbsp;<br />
+      &nbsp;D&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;S,D&nbsp;<br />
+      &nbsp;S,D&nbsp;<br />
+      &nbsp;S,D&nbsp;<br />
+      &nbsp;S,D&nbsp;<br />
+      &nbsp;S,D&nbsp;<br />
+      &nbsp;S,D&nbsp;<br />
+      &nbsp;k,D&nbsp;<br />
+      &nbsp;k,D&nbsp;<br />
+      &nbsp;k,D&nbsp;<br />
+      &nbsp;k,D&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;D&nbsp;<-&nbsp;&S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;<-&nbsp;D+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;<-&nbsp;D-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;<-&nbsp;-D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;<-&nbsp;~D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;<-&nbsp;D&nbsp;+&nbsp;S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;<-&nbsp;D&nbsp;-&nbsp;S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;<-&nbsp;D&nbsp;*&nbsp;S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;<-&nbsp;D&nbsp;^&nbsp;S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;<-&nbsp;D&nbsp;\ver&nbsp;S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;<-&nbsp;D&nbsp;&&nbsp;S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;<-&nbsp;D&nbsp;<<&nbsp;k&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;<-&nbsp;D&nbsp;<<&nbsp;k&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;D&nbsp;<-&nbsp;D&nbsp;>>&nbsp;$_{A}$&nbsp;k&nbsp;<br />
+      &nbsp;D&nbsp;<-&nbsp;D&nbsp;>>&nbsp;$_{L}$&nbsp;k&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;Load&nbsp;effective&nbsp;address&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;Increment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;Decrement&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;Negate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;Complement&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;Add&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;Subtract&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;Multiply&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;Exclusive-or&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;Or&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;And&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;Left&nbsp;shift&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;Left&nbsp;shift&nbsp;(same&nbsp;as&nbsp;SAL)&nbsp;<br />
+      &nbsp;Arithmetic&nbsp;right&nbsp;shift&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;Logical&nbsp;right&nbsp;shift&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgea5b186"></a>Practice Problem 3.6<br />
+<div class="outline-text-6" id="text-orgea5b186">
+<p>
+Fill the result
+(%rax = x, %rcx = y)
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Instruction</th>
+<th scope="col" class="org-left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>leaq 6(%rax), %rdx</code></td>
+<td class="org-left">6 + x</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>leaq (%rax, %rcx), %rdx</code></td>
+<td class="org-left">x + y</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>leaq (%rax, %rcx, 4), %rdx</code></td>
+<td class="org-left">x + 4y</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>leaq 7(%rax, %rax, 8), %rdx</code></td>
+<td class="org-left">7 + 9x</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>leaq 0xA(, %rcx, 4), %rdx</code></td>
+<td class="org-left">10 + 4y</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>leaq 9(%rax, %rcx, 2), %rdx</code></td>
+<td class="org-left">9 + x + 2y</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+consider the following C program:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #bc6ec5; font-weight: bold;">scale</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">y</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">z</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">t</span> = x + <span style="color: #a45bad;">4</span> * y + <span style="color: #a45bad;">12</span> * z;
+        <span style="color: #4f97d7; font-weight: bold;">return</span> t;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">long scale(long x, long y, long z)</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">x in %rsi, y in %rdi, z in %rdx</span>
+<span style="color: #bc6ec5; font-weight: bold;">scale</span>:
+  <span style="color: #4f97d7; font-weight: bold;">leaq</span> <span style="color: #4f97d7;">(</span>, <span style="color: #7590db;">%rsi</span>, 4<span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rax</span>        <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">x + 4*y</span>
+  <span style="color: #4f97d7; font-weight: bold;">leaq</span> <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdx</span>, <span style="color: #7590db;">%rdx</span>, 2<span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rdx</span>    <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">z + 2*z = 3 * z</span>
+  <span style="color: #4f97d7; font-weight: bold;">leaq</span> <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rax</span>, <span style="color: #7590db;">%rdx</span>, 4<span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rax</span>    <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">(x + 4*y) + 4 * (3 * z) = x + 4 * y + 12 * z;</span>
+  <span style="color: #4f97d7; font-weight: bold;">ret</span>
+</pre>
+</div>
+
+<p>
+*******ractice Problem 3.7
+      fill the C code from asm
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #bc6ec5; font-weight: bold;">scale2</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">y</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">z</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">t</span> = <span style="color: #a45bad;">5</span> * x + <span style="color: #a45bad;">2</span> * y + <span style="color: #a45bad;">8</span> * z;
+        <span style="color: #4f97d7; font-weight: bold;">return</span> t;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-asm">  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">long scale2(long x, long y, long z)</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">x in %rdi, y in %rsi, z in %rdx</span>
+<span style="color: #bc6ec5; font-weight: bold;">scale2</span>:
+  <span style="color: #4f97d7; font-weight: bold;">leaq</span> <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdi</span>, <span style="color: #7590db;">%rdi</span>, 4<span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rax</span>    <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">y + 4x = 5x</span>
+  <span style="color: #4f97d7; font-weight: bold;">leaq</span> <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rax</span>, <span style="color: #7590db;">%rsi</span>, 2<span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rax</span>    <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">5x + 2y</span>
+  <span style="color: #4f97d7; font-weight: bold;">leaq</span> <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rax</span>, <span style="color: #7590db;">%rdx</span>, 8<span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rax</span>    <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">5x + 2y + 8z</span>
+  <span style="color: #4f97d7; font-weight: bold;">ret</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org351075b"></a>3.5.2 Unary and Binary Operations<br />
+<ul class="org-ul">
+<li><a id="org27908f4"></a>Practice Problem 3.8<br />
+<div class="outline-text-6" id="text-org27908f4">
+<p>
+Assume the following values are stored
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Address</th>
+<th scope="col" class="org-right">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">0x100</td>
+<td class="org-right">0xFF</td>
+</tr>
+
+<tr>
+<td class="org-right">0x108</td>
+<td class="org-right">0xAB</td>
+</tr>
+
+<tr>
+<td class="org-right">0x110</td>
+<td class="org-right">0x13</td>
+</tr>
+
+<tr>
+<td class="org-right">0x118</td>
+<td class="org-right">0x11</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-right">Register</td>
+<td class="org-right">Value</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right"><code>%rax</code></td>
+<td class="org-right">0x100</td>
+</tr>
+
+<tr>
+<td class="org-right"><code>%rcx</code></td>
+<td class="org-right">0x1</td>
+</tr>
+
+<tr>
+<td class="org-right"><code>%rdx</code></td>
+<td class="org-right">0x3</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Instruction</th>
+<th scope="col" class="org-left">Destination</th>
+<th scope="col" class="org-right">Value</th>
+<th scope="col" class="org-left">Detail and rectify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>addq  %rcx, (%rax)</code></td>
+<td class="org-left">0x100</td>
+<td class="org-right">0x100</td>
+<td class="org-left">0xff + 0x1</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>subq  $rdx, 8(%rax)</code></td>
+<td class="org-left">0x108</td>
+<td class="org-right">0xA8</td>
+<td class="org-left">0xAB - 0x3</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>imulq $16, ( %rax, %rdx, 8)</code></td>
+<td class="org-left">0x118</td>
+<td class="org-right">0x110</td>
+<td class="org-left">0x11 * 16</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>incq  16(%rax)</code></td>
+<td class="org-left">0x100 (0x110)</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">0x14 (0x13 + 1)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>decq  %rcx</code></td>
+<td class="org-left">%rcx</td>
+<td class="org-right">0x0</td>
+<td class="org-left">0x1 - 1</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>subq  %rdx, %rax</code></td>
+<td class="org-left">%rax</td>
+<td class="org-right">0xFD</td>
+<td class="org-left">0xff - 0x3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org423077b"></a>3.5.3 Shift Operations<br />
+<div class="outline-text-5" id="text-org423077b">
+<p>
+*******ractice Problem 3.9
+      C function:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #bc6ec5; font-weight: bold;">shift_left4_rightn</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">n</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+        x &lt;&lt;= <span style="color: #a45bad;">4</span>;
+        x &gt;&gt;=n ;
+        <span style="color: #4f97d7; font-weight: bold;">return</span> x;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+<p>
+assembly:
+</p>
+<div class="org-src-container">
+<pre class="src src-asm">  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">long shift_left4_rightn(long x, long n)</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">x in %rdi, n in %rsi</span>
+<span style="color: #bc6ec5; font-weight: bold;">shift_left4_rightn</span>:
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rdi</span>, <span style="color: #7590db;">%rax</span>               <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">Get x</span>
+  <span style="color: #4f97d7; font-weight: bold;">salq</span> $4, <span style="color: #7590db;">%rax</span>                 <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">x &lt;&lt;= 4</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%esi</span>, <span style="color: #7590db;">%ecx</span>               <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">Get n (4 bytes)</span>
+  <span style="color: #4f97d7; font-weight: bold;">sarq</span> <span style="color: #7590db;">%ecx</span>, <span style="color: #7590db;">%rax</span>               <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">x &gt;&gt;= n</span>
+  <span style="color: #4f97d7; font-weight: bold;">ret</span>
+</pre>
+</div>
+
+<p>
+C code
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #bc6ec5; font-weight: bold;">arith</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">y</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">z</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">t1</span> = x ^ y;
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">t2</span> = z * <span style="color: #a45bad;">48</span>;
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">t3</span> = t1 &amp; <span style="color: #a45bad;">0x0F0F0F0F</span>;
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">t4</span> = t2 - t3;
+        <span style="color: #4f97d7; font-weight: bold;">return</span> t4;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+<p>
+assembly:
+</p>
+<div class="org-src-container">
+<pre class="src src-asm">  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">long arith(long x, long y, long z)</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">x in %rdi, y in %rsi, z in %rdx</span>
+<span style="color: #bc6ec5; font-weight: bold;">arith</span>:
+  <span style="color: #4f97d7; font-weight: bold;">xorq</span> <span style="color: #7590db;">%rsi</span>, <span style="color: #7590db;">%rdi</span>
+  <span style="color: #4f97d7; font-weight: bold;">leaq</span> <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdx</span>, <span style="color: #7590db;">%rdx</span>, 2<span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rax</span>
+  <span style="color: #4f97d7; font-weight: bold;">salq</span> $4, <span style="color: #7590db;">%rax</span>
+  <span style="color: #4f97d7; font-weight: bold;">andl</span> $0x0F0F0F0F, <span style="color: #7590db;">%edi</span>        <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">4 bytes, so %edi</span>
+  <span style="color: #4f97d7; font-weight: bold;">subq</span> <span style="color: #7590db;">%rdi</span>, <span style="color: #7590db;">%rax</span>
+  <span style="color: #4f97d7; font-weight: bold;">ret</span>
+</pre>
+</div>
+</div>
+
+<ul class="org-ul">
+<li><a id="org1167d76"></a>Practice Problem 3.11<br />
+<div class="outline-text-6" id="text-org1167d76">
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">xorq</span> <span style="color: #4f97d7; font-weight: bold;">%rdx</span>, <span style="color: #7590db;">%rax</span>
+</pre>
+</div>
+<p>
+explain:
+</p>
+<blockquote>
+<p>
+A. set <code>%rdx</code> to zero , corresponds to <code>x = 0</code>, exploiting the property <code>x^x = 0</code>
+B. A more straightforward way: <code>movq 0, %rdx</code>
+C. <code>xorq</code> requires 3 bytes, <code>movq</code> requirs 7 bytes, <code>xorl</code> (2 bytes), or <code>movl</code> (5 bytes)
+</p>
+</blockquote>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org4009ca6"></a>3.5.4 Discussion<br />
+<div class="outline-text-5" id="text-org4009ca6">
+<p>
+*******ractice Problem 3.10
+      C code:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #bc6ec5; font-weight: bold;">arith2</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">y</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">z</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">t1</span> = x | y ;
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">t2</span> = t1 &gt;&gt; <span style="color: #a45bad;">3</span>;
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">t3</span> = ~t2;
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">t4</span> = z-t3;
+        <span style="color: #4f97d7; font-weight: bold;">return</span> t4;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+<p>
+generated assembly code:
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">long arith2(long x, long y, long z)</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">x in %rdi, y in %rsi, z in %rdx</span>
+<span style="color: #bc6ec5; font-weight: bold;">arith2</span>:
+  <span style="color: #4f97d7; font-weight: bold;">orq</span> <span style="color: #7590db;">%rsi</span>, <span style="color: #7590db;">%rdi</span>                <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">t1 = x | y?</span>
+  <span style="color: #4f97d7; font-weight: bold;">sarq</span> $3, <span style="color: #7590db;">%rdi</span>                 <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">t2 = t1 &gt;&gt; 3?</span>
+  <span style="color: #4f97d7; font-weight: bold;">notq</span> <span style="color: #7590db;">%rdi</span>                     <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">t3 = ~t2</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rdx</span>, <span style="color: #7590db;">%rax</span>               <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">t4 = z?</span>
+  <span style="color: #4f97d7; font-weight: bold;">subq</span> <span style="color: #7590db;">%rdi</span>, <span style="color: #7590db;">%rax</span>               <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">t4 = t4 - t3?</span>
+  <span style="color: #4f97d7; font-weight: bold;">ret</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org5ecb968"></a>3.5.5 Special Arithmetic Operations<br />
+<div class="outline-text-5" id="text-org5ecb968">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 8:</span> Figure 3.12 Special arithmetic operations</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Instruction</th>
+<th scope="col" class="org-left">Effect</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">imulq S</td>
+<td class="org-left">R[%rdx]: R[%rax] &lt;- S * R[%rax]</td>
+<td class="org-left">Signed full multiply</td>
+</tr>
+
+<tr>
+<td class="org-left">mulq S</td>
+<td class="org-left">R[%rdx]: R[%rax] &lt;- S * R[%rax]</td>
+<td class="org-left">Unsigned full multiply</td>
+</tr>
+
+<tr>
+<td class="org-left">cqto S</td>
+<td class="org-left">R[%rdx]: R[%rax] &lt;- SignExtend(R[%rax])</td>
+<td class="org-left">convert to oct word</td>
+</tr>
+
+<tr>
+<td class="org-left">idviq S</td>
+<td class="org-left">R[%rdx] &lt;- R[%rdx]:R[%rax] mod S;</td>
+<td class="org-left">Signed divide</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">R[%rax] &lt;- R[%rax]:%[%rax] / S</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">divq S</td>
+<td class="org-left">R[%rdx] &lt;- R[%rdx]:R[%rax] mod S;</td>
+<td class="org-left">Unsigned divide</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">R[%rax] &lt;- R[%rax]:%[%rax] / S</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li><p>
+example:
+C code
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #bc6ec5;">#include</span> <span style="color: #4f97d7;">&lt;</span><span style="color: #2d9574;">inttypes.h</span><span style="color: #4f97d7;">&gt;</span>
+
+<span style="color: #4f97d7; font-weight: bold;">typedef</span> <span style="color: #ce537a; font-weight: bold;">unsigned</span> <span style="color: #ce537a; font-weight: bold;">__int128</span> <span style="color: #ce537a; font-weight: bold;">uint128_t</span>;
+
+<span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">store_uprod</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">uint128_t</span> *<span style="color: #7590db;">dest</span>, <span style="color: #ce537a; font-weight: bold;">uint64_t</span> <span style="color: #7590db;">x</span>, <span style="color: #ce537a; font-weight: bold;">uint64_t</span> <span style="color: #7590db;">y</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+        *dest = x * <span style="color: #bc6ec5;">(</span><span style="color: #ce537a; font-weight: bold;">uint128_t</span><span style="color: #bc6ec5;">)</span>y;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+<p>
+generated assembly:
+</p>
+<div class="org-src-container">
+<pre class="src src-asm">  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">void store_uprod(uint128_t *dest, uint64_t x, uint64_t y)</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">dest in %rdi, x in %rsi, y in %rdx</span>
+<span style="color: #bc6ec5; font-weight: bold;">store_uprod</span>:
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rsi</span>, <span style="color: #7590db;">%rax</span>                <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">copy x to multiplicand</span>
+  <span style="color: #4f97d7; font-weight: bold;">mulq</span> <span style="color: #7590db;">%rdx</span>                      <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">multiply by y</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rax</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdi</span><span style="color: #4f97d7;">)</span>              <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">store lower 8 bytes at dest</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rdx</span>, 8<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdi</span><span style="color: #4f97d7;">)</span>             <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">store upper 8 bytes at dest+8</span>
+  <span style="color: #4f97d7; font-weight: bold;">ret</span>
+</pre>
+</div>
+
+<p>
+c code:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">remdiv</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">y</span>, <span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">qp</span>, <span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">rp</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">q</span> = x / y;
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">r</span> = x % y;
+        *qp    = q;
+        *rp    = r;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+<p>
+generated assembly:
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">void remdiv(long x, long y, long *qp, long *rp)</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">x in %rdi, y in %rsi, qp in %rdx, rp in %rcx</span>
+<span style="color: #bc6ec5; font-weight: bold;">remdiv</span>:
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rdx</span>, <span style="color: #7590db;">%r8</span>                <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">copy qp</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rdi</span>, <span style="color: #7590db;">%rax</span>               <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">move x to lower 8 bytes of dividend</span>
+  <span style="color: #4f97d7; font-weight: bold;">cqto</span>                          <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">sign-extend to upper 8 bytes of dividend</span>
+  <span style="color: #4f97d7; font-weight: bold;">idivq</span> <span style="color: #7590db;">%rsi</span>                    <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">divide by y</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rax</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%r8</span><span style="color: #4f97d7;">)</span>              <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">store quotient at qp</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rdx</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rcx</span><span style="color: #4f97d7;">)</span>             <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">store reminder at rp</span>
+  <span style="color: #4f97d7; font-weight: bold;">ret</span>
+</pre>
+</div></li>
+</ul>
+</div>
+
+<ul class="org-ul">
+<li><a id="org34b74f9"></a>Practice Problem 3.12<br />
+<div class="outline-text-6" id="text-org34b74f9">
+<p>
+c code:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">uremdiv</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">unsigned</span> <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span>, <span style="color: #ce537a; font-weight: bold;">unsigned</span> <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">y</span>,
+             <span style="color: #ce537a; font-weight: bold;">unsigned</span> <span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">qp</span>, <span style="color: #ce537a; font-weight: bold;">unsigned</span> <span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">rp</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+        <span style="color: #ce537a; font-weight: bold;">unsigned</span> <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">q</span> = x / y;
+        <span style="color: #ce537a; font-weight: bold;">unsigned</span> <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">r</span> = x % y;
+        *qp             = q;
+        *rp             = r;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+<p>
+implement assembly code:
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">void remdiv(long x, long y, long *qp, long *rp)</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">x in %rdi, y in %rsi, qp in %rdx, rp in %rcx</span>
+<span style="color: #bc6ec5; font-weight: bold;">remdiv</span>:
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rdx</span>, <span style="color: #7590db;">%r8</span>                <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">copy qp</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rdi</span>, <span style="color: #7590db;">%rax</span>               <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">move x to lower 8 bytes of dividend</span>
+  <span style="color: #4f97d7; font-weight: bold;">cqto</span>                          <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">sign-extend to upper 8 bytes of dividend</span>
+  <span style="color: #4f97d7; font-weight: bold;">divq</span> <span style="color: #7590db;">%rsi</span>                    <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">divide by y</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rax</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%r8</span><span style="color: #4f97d7;">)</span>              <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">store quotient at qp</span>
+  <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rdx</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rcx</span><span style="color: #4f97d7;">)</span>             <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">store reminder at rp</span>
+  <span style="color: #4f97d7; font-weight: bold;">ret</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org7ce7d05"></a>Some Arithmetic Operations<br />
+<div class="outline-text-6" id="text-org7ce7d05">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Format</th>
+<th scope="col" class="org-left">Computation</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">addq src,dst</td>
+<td class="org-left">dst = dst + src</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">subq src,dst</td>
+<td class="org-left">dst = dst - src</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">imulq src,dst</td>
+<td class="org-left">dst = dst * src</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">salq src,dst</td>
+<td class="org-left">dst = dst &lt;&lt; src</td>
+<td class="org-left">Also called shlq</td>
+</tr>
+
+<tr>
+<td class="org-left">sarq src,dst</td>
+<td class="org-left">dst = dst &gt;&gt; src</td>
+<td class="org-left">Arithmetic</td>
+</tr>
+
+<tr>
+<td class="org-left">shrq src,dst</td>
+<td class="org-left">dst = dst &gt;&gt; src</td>
+<td class="org-left">Logic</td>
+</tr>
+
+<tr>
+<td class="org-left">xorq src,dst</td>
+<td class="org-left">dst = dst ^ src</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">andq src,dst</td>
+<td class="org-left">dst = dst &amp; src</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">orq src,dst</td>
+<td class="org-left">dst = dst &vert; src</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orga394319" class="outline-4">
+<h4 id="orga394319">3.6 Control</h4>
+<div class="outline-text-4" id="text-orga394319">
+</div>
+<ul class="org-ul">
+<li><a id="org57d0609"></a>3.6.1 Condition Codes<br />
+<div class="outline-text-5" id="text-org57d0609">
+<p>
+CF: carry flag. Used to detect overflow for unsigned operations
+</p>
+
+<p>
+ZF: zero flag.
+</p>
+
+<p>
+SF: Sign flag.
+</p>
+
+<p>
+OF: overflow flag. caused a two's-complement overflow - either negative or positive.
+</p>
+
+<ul class="org-ul">
+<li><p>
+Example:
+<code>t = a + b</code>
+</p>
+<blockquote>
+<ul class="org-ul">
+<li>CF set if carry out from most significant bit (unsigned overflow)</li>
+<li>ZF set if t == 0</li>
+<li>SF set if t &lt; 0</li>
+<li>OF set if <code>(a &gt; 0 &amp;&amp; b &gt; 0 &amp;&amp; t &lt; 0) || (a &lt; 0 &amp;&amp; b &lt; 0 &amp;&amp; t &gt; 0)</code></li>
+</ul>
+</blockquote>
+
+<p>
+The <code>leaq</code> instruction does not alter any condition codes, since it is intended to be used in address computations.
+</p></li>
+</ul>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 9:</span> Figure 3.13 Comparison and test instructions</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Instruction</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Based on</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">CMP</td>
+<td class="org-left">S_1, S_2</td>
+<td class="org-left">S_2 - S_1</td>
+<td class="org-left">Compare</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>cmpb</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Compare byte</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>cmpw</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Compare word</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>cmpl</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Compare double word</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>cmpq</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Compare quad word</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">TEST</td>
+<td class="org-left">S_1, S_2</td>
+<td class="org-left">S_1 &amp; S_2</td>
+<td class="org-left">TEST</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>testb</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>testw</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>testl</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>testq</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+
+<li><a id="org27d53cc"></a>3.6.2 Accessing the Condition Codes<br />
+<div class="outline-text-5" id="text-org27d53cc">
+<p>
+three ways to use the condition codes:
+</p>
+<ol class="org-ol">
+<li>set a single byte to 0 or 1 depending on some combination of the condition codes</li>
+<li>conditionally jump to some other part of the program</li>
+<li>conditinoally transfer data</li>
+</ol>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 10:</span> Figure 3.14 The <code>SET</code> instructions</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Instruction</th>
+<th scope="col" class="org-left">Synonym</th>
+<th scope="col" class="org-left">Effect</th>
+<th scope="col" class="org-left">Set condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>sete</code> D</td>
+<td class="org-left"><code>setz</code></td>
+<td class="org-left">D &lt;- <code>ZF</code></td>
+<td class="org-left">Euqal/zero</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>setne</code> D</td>
+<td class="org-left"><code>setnz</code></td>
+<td class="org-left">D &lt;- ~ <code>ZF</code></td>
+<td class="org-left">Not euqal/not zero</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sets</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Negative</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>setns</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Nonnegative</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Signed</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>setg</code></td>
+<td class="org-left"><code>setnle</code></td>
+<td class="org-left">D &lt;- <code>~ (SF ^ OF) &amp; ~ ZF</code></td>
+<td class="org-left">Greater (signed &gt;)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>setge</code></td>
+<td class="org-left"><code>setnl</code></td>
+<td class="org-left">D &lt;- <code>~ (SF ^ OF)</code></td>
+<td class="org-left">Greater or equal (signed &gt;=)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>setl</code></td>
+<td class="org-left"><code>setnge</code></td>
+<td class="org-left">D &lt;- <code>SF ^ OF</code></td>
+<td class="org-left">Less (signed &lt;)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>setle</code></td>
+<td class="org-left"><code>setng</code></td>
+<td class="org-left">D &lt;- <code>(SF ^ OF) \vert ZF</code></td>
+<td class="org-left">Less or equal (signed &lt;=)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Unsigned</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>seta</code></td>
+<td class="org-left"><code>setnbe</code></td>
+<td class="org-left">D &lt;- <code>~ CF &amp; ~ ZF</code></td>
+<td class="org-left">Above (unsigned &gt;)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>setae</code></td>
+<td class="org-left"><code>setnb</code></td>
+<td class="org-left">D &lt;- <code>~ CF</code></td>
+<td class="org-left">Above or euqal(unsigned &gt;=)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>setb</code></td>
+<td class="org-left"><code>setnae</code></td>
+<td class="org-left">D &lt;- <code>CF</code></td>
+<td class="org-left">Below (unsigned &lt;)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>setbe</code></td>
+<td class="org-left"><code>setna</code></td>
+<td class="org-left">D &lt;- <code>CF \vert ZF</code></td>
+<td class="org-left">Below or equal (unsigned &lt;=)</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">int comp(data_t a, data_t b)</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">a in %rdi, b in %rsi</span>
+<span style="color: #bc6ec5; font-weight: bold;">comp</span>:
+  <span style="color: #4f97d7; font-weight: bold;">cmpq</span> <span style="color: #7590db;">%rsi</span>, <span style="color: #7590db;">%rdi</span>               <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">compare a:b</span>
+  <span style="color: #4f97d7; font-weight: bold;">setl</span> <span style="color: #7590db;">%al</span>                      <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">set low-order byte of %eax to 0 or 1 (depends on the result of a-b)</span>
+  <span style="color: #4f97d7; font-weight: bold;">movzbl</span> <span style="color: #7590db;">%al</span>, <span style="color: #7590db;">%eax</span>              <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">Clear rest of %eax (and rest of %rax)</span>
+  <span style="color: #4f97d7; font-weight: bold;">ret</span>
+</pre>
+</div>
+</div>
+
+<ul class="org-ul">
+<li><a id="org2d83bf5"></a>Practice Problem 3.13<br />
+<div class="outline-text-6" id="text-org2d83bf5">
+<p>
+C code:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">comp</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">data_t</span> <span style="color: #7590db;">a</span>, <span style="color: #ce537a; font-weight: bold;">data_b</span> <span style="color: #7590db;">b</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+        <span style="color: #4f97d7; font-weight: bold;">return</span> a COMP b;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+<p>
+determine which data type is for <code>data_t</code> and which COMP could cause
+</p>
+<ul class="org-ul">
+<li><p>
+A.
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">cmpl</span> <span style="color: #4f97d7; font-weight: bold;">%esi</span>, <span style="color: #7590db;">%edi</span>
+<span style="color: #bc6ec5; font-weight: bold;">setl</span> <span style="color: #4f97d7; font-weight: bold;">%al</span>                        <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">&lt;</span>
+</pre>
+</div>
+<p>
+`l` means 32-bit, <code>setl</code> is for signed, so <code>data_t</code> is <code>int</code>
+</p></li>
+<li><p>
+B.
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">cmpw</span> <span style="color: #4f97d7; font-weight: bold;">%si</span>, <span style="color: #7590db;">%di</span>
+<span style="color: #bc6ec5; font-weight: bold;">setge</span> <span style="color: #4f97d7; font-weight: bold;">%al</span>                       <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">&gt;=</span>
+</pre>
+</div>
+<p>
+`w` means 16-bit, <code>setge</code> is for signed, so <code>data_t</code> is <code>short</code>
+</p></li>
+<li><p>
+C.
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">cmpb</span> <span style="color: #4f97d7; font-weight: bold;">%sil</span>, <span style="color: #7590db;">%dil</span>
+<span style="color: #bc6ec5; font-weight: bold;">setbe</span> <span style="color: #4f97d7; font-weight: bold;">%al</span>                       <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">&lt;=</span>
+</pre>
+</div>
+<p>
+`b` means 8-bit, <code>setbe</code> is for unsigned, so <code>data_t</code> is <code>unsigned char</code>
+</p></li>
+<li><p>
+D.
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">cmpq</span> <span style="color: #4f97d7; font-weight: bold;">%rsi</span>, <span style="color: #7590db;">%rdi</span>
+<span style="color: #bc6ec5; font-weight: bold;">setne</span> <span style="color: #4f97d7; font-weight: bold;">%a</span>                        <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">!=</span>
+</pre>
+</div>
+<p>
+`q` means 64-bit, <code>setne</code> does not matter signed or not, so <code>data_t</code> can be <code>long</code> or <code>unsigned long</code>
+</p></li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgabea5cb"></a>Practice Problem 3.14<br />
+<div class="outline-text-6" id="text-orgabea5cb">
+<p>
+The C code:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">test</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">data_t</span> <span style="color: #7590db;">a</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+        <span style="color: #4f97d7; font-weight: bold;">return</span> a TEST <span style="color: #a45bad;">0</span>;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+A
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">testq</span> <span style="color: #4f97d7; font-weight: bold;">%rdi</span>, <span style="color: #7590db;">%rdi</span>
+<span style="color: #bc6ec5; font-weight: bold;">setge</span> <span style="color: #4f97d7; font-weight: bold;">%al</span>                       <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">&gt;=</span>
+</pre>
+</div>
+<p>
+<code>long</code>
+</p></li>
+<li><p>
+B
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">testw</span> <span style="color: #4f97d7; font-weight: bold;">%di</span>, <span style="color: #7590db;">%di</span>
+<span style="color: #bc6ec5; font-weight: bold;">sete</span> <span style="color: #4f97d7; font-weight: bold;">%al</span>                        <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">==</span>
+</pre>
+</div>
+<p>
+<code>short</code>, <code>unsigned short</code>
+</p>
+
+<ul class="org-ul">
+<li><p>
+C
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">testb</span> <span style="color: #4f97d7; font-weight: bold;">%dil</span>, <span style="color: #7590db;">%dil</span>
+<span style="color: #bc6ec5; font-weight: bold;">seta</span> <span style="color: #4f97d7; font-weight: bold;">%al</span>                        <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">&gt;</span>
+</pre>
+</div>
+<p>
+<code>unsigned char</code>
+</p></li>
+
+<li><p>
+D
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">testl</span> <span style="color: #4f97d7; font-weight: bold;">%edi</span>, <span style="color: #7590db;">%edi</span>
+<span style="color: #bc6ec5; font-weight: bold;">setle</span> <span style="color: #4f97d7; font-weight: bold;">%al</span>                       <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">&lt;=</span>
+</pre>
+</div>
+<p>
+<code>int</code>
+</p></li>
+</ul></li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgdbf973c"></a>3.6.3 Jump Instructions<br />
+<div class="outline-text-5" id="text-orgdbf973c">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 11:</span> Figure 3.15 The jump instructions.</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Instruction</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Synonym</th>
+<th scope="col" class="org-left">Condition</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>jmp</code></td>
+<td class="org-left">Label</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">1</td>
+<td class="org-left">Direct jump</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>jmp</code></td>
+<td class="org-left">*Operand</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">1</td>
+<td class="org-left">Indirect jump</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>je</code></td>
+<td class="org-left">Label</td>
+<td class="org-left"><code>jz</code></td>
+<td class="org-left">ZF</td>
+<td class="org-left">Euqal/zero</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>jne</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>jnz</code></td>
+<td class="org-left">~ZF</td>
+<td class="org-left">Not equal/not zero</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>js</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">SF</td>
+<td class="org-left">Negative</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>jns</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">~SF</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>jg</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>jnle</code></td>
+<td class="org-left">~(SF ^ OF) &amp; ~ZF</td>
+<td class="org-left">Greater (signed &gt; )</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>jge</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>jnl</code></td>
+<td class="org-left">~(SF ^ OF)</td>
+<td class="org-left">signed &gt;=</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>jl</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>jnge</code></td>
+<td class="org-left">SF ^ OF</td>
+<td class="org-left">signed &lt;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>jle</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>jng</code></td>
+<td class="org-left">(SF ^ OF) &vert; ZF</td>
+<td class="org-left">signed &lt;=</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ja</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>jnbe</code></td>
+<td class="org-left">~CF &amp; ~ZF</td>
+<td class="org-left">unsigned &gt;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>jae</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>jnb</code></td>
+<td class="org-left">~CF</td>
+<td class="org-left">unsigned &gt;=</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>jb</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>jnae</code></td>
+<td class="org-left">CF</td>
+<td class="org-left">unsigned &lt;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>jbe</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>jna</code></td>
+<td class="org-left">CF &vert; ZF</td>
+<td class="org-left">unsigned &lt;=</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">jmp</span> *<span style="color: #7590db;">%rax</span>
+</pre>
+</div>
+<p>
+uses the value in <code>%rax</code> as the jump target
+</p>
+
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">jmp</span> *<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rax</span><span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+<p>
+reads the jump target from memory, using the value in <code>%rax</code> as the read address
+</p>
+</div>
+</li>
+
+<li><a id="org6e4671e"></a>3.6.4 Jump Instruction Encodings<br />
+<div class="outline-text-5" id="text-org6e4671e">
+<blockquote>
+<ul class="org-ul">
+<li><p>
+Aside What do the instructions <code>rep</code> and <code>repz</code> do?
+</p>
+
+<p>
+See <a id="org53607b4"></a> - AMD: 8.3 Repeated String Instructions
+</p>
+
+<p>
+They recommend using the combination of rep followed by ret to avoid making the ret instruction the destination of a conditional jump instruction. Without the rep instruction, the jg instruction (line 7 of the assembly code) would proceed to the ret instruction when the branch is not taken. ”
+</p></li>
+</ul>
+
+<p>
+Excerpt From: Randal E. Bryant. “Computer Systems: A Programmer's Perspective.
+</p>
+</blockquote>
+
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">0</span>:      <span style="color: #4f97d7; font-weight: bold;">48</span> 89 f8        mov     <span style="color: #7590db;">%rdi</span>,<span style="color: #7590db;">%rax</span>
+<span style="color: #bc6ec5; font-weight: bold;">3</span>:      <span style="color: #4f97d7; font-weight: bold;">eb</span> 03           jmp     8 &lt;loop+0x8&gt; <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">0x5(the next addr) + 0x3 = 0x8</span>
+<span style="color: #bc6ec5; font-weight: bold;">5</span>:      <span style="color: #4f97d7; font-weight: bold;">48</span> d1 f8        sar     <span style="color: #7590db;">%rax</span>
+<span style="color: #bc6ec5; font-weight: bold;">8</span>:      <span style="color: #4f97d7; font-weight: bold;">48</span> 85 c0        test    <span style="color: #7590db;">%rax</span>,<span style="color: #7590db;">%rax</span>
+<span style="color: #bc6ec5; font-weight: bold;">b</span>:      <span style="color: #4f97d7; font-weight: bold;">7f</span> f8           jg      5 &lt;loop+0x5&gt; <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">0xd(the nex addr) - 0x8 = 0x5</span>
+<span style="color: #bc6ec5; font-weight: bold;">d</span>:      <span style="color: #4f97d7; font-weight: bold;">f3</span> c3           repz retq
+</pre>
+</div>
+</div>
+
+
+<ul class="org-ul">
+<li><a id="orgc57aa17"></a>Practice Problem 3.15<br />
+<div class="outline-text-6" id="text-orgc57aa17">
+<ul class="org-ul">
+<li><p>
+A. What is the target of the <code>je</code> instruction below?
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">4003fa</span>:  <span style="color: #4f97d7; font-weight: bold;">74</span>  02  je     XXXXXX
+<span style="color: #bc6ec5; font-weight: bold;">4003fc</span>:  <span style="color: #4f97d7; font-weight: bold;">ff</span>  d0  callq  *<span style="color: #7590db;">%rax</span>
+</pre>
+</div>
+<p>
+ans. : 0x4003fc + 0x20 = x40043e
+</p></li>
+<li><p>
+B. What is the target of the <code>je</code> instruction below?
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">40042f</span>:  <span style="color: #4f97d7; font-weight: bold;">74</span> f4 je  XXXXXX
+<span style="color: #bc6ec5; font-weight: bold;">400431</span>:  <span style="color: #4f97d7; font-weight: bold;">5d</span>    pop <span style="color: #7590db;">%rbp</span>
+</pre>
+</div>
+<p>
+ans. : do pop on 0x40033b (<b>0xf4 is -12, so 0x400431 - 12 = 0x400425</b>)
+</p></li>
+<li><p>
+C. What is the address of the <code>ja</code> and <code>pop</code> instructions ?
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">XXXXXX</span>:  <span style="color: #4f97d7; font-weight: bold;">77</span>     02      ja      400547 <span style="color: #4f97d7;">(</span>+0x2 = 0x400547-0x2<span style="color: #4f97d7;">)</span>
+<span style="color: #bc6ec5; font-weight: bold;">XXXXXX</span>:  <span style="color: #4f97d7; font-weight: bold;">5d</span>             pop     <span style="color: #7590db;">%rbp</span>   <span style="color: #4f97d7;">(</span>+0x2 = 0x400547<span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+<p>
+<code>ja</code> addr: 0x400545 (<b>right answer: 0x400543, <code>ja</code> itself has 2 bytes, namely 0x400547 - 02 - 02 = 400543</b>)
+<code>pop</code> addr: 0x400547 (<b>right answer: 0x400545, <code>pop</code> itslef has 2 bytes, namely 0x400547 - 02 = 0x400545</b>)
+</p></li>
+<li><p>
+D. In the code that follows, the jump target is encoded in PC-relative form as a 4-byte two's complement number. The bytes are listed from least significant to most, reflecting the litte-endian byte ordering of X86-64. What is the address of the jump target?
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">4005e8</span>:  <span style="color: #4f97d7; font-weight: bold;">e9</span> 73 ff ff ff jmpq XXXXXX
+<span style="color: #bc6ec5; font-weight: bold;">4005ed</span>:  <span style="color: #4f97d7; font-weight: bold;">90</span>             nop
+</pre>
+</div>
+<p>
+ans: 0x4005ed - 0xffffff73(-141) = 0x400560
+</p></li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgcf1fc5e"></a>3.6.5 Implementing Conditional Branches with Conditional Contral<br />
+<div class="outline-text-5" id="text-orgcf1fc5e">
+<ul class="org-ul">
+<li>Figure 3.16 Compilation of conditional statements</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">long absdiff_se(long x, long y)</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">x in %rdi, y in %rsi</span>
+<span style="color: #bc6ec5; font-weight: bold;">absdiff_se</span>:
+    <span style="color: #4f97d7; font-weight: bold;">cmpq</span>    <span style="color: #7590db;">%rsi</span>, <span style="color: #7590db;">%rdi</span>          <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">compare x     y</span>
+    <span style="color: #4f97d7; font-weight: bold;">jge</span>     .L2                 <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (x &gt;= y) { goto .L2; }</span>
+    <span style="color: #4f97d7; font-weight: bold;">addq</span>    $1,lt_cnt<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rip</span><span style="color: #4f97d7;">)</span>     <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">lt_cnt++;</span>
+    <span style="color: #4f97d7; font-weight: bold;">movq</span>    <span style="color: #7590db;">%rsi</span>,<span style="color: #7590db;">%rax</span>           <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">int ret = y;</span>
+    <span style="color: #4f97d7; font-weight: bold;">subq</span>    <span style="color: #7590db;">%rdi</span>,<span style="color: #7590db;">%rax</span>           <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">ret -= x;</span>
+    <span style="color: #4f97d7; font-weight: bold;">ret</span>                         <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">return ret;</span>
+  <span style="color: #4f97d7; font-weight: bold;">.L2</span>:
+    <span style="color: #4f97d7; font-weight: bold;">addq</span>    $1,ge_cnt<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rip</span><span style="color: #4f97d7;">)</span>     <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">ge_cnt++</span>
+    <span style="color: #4f97d7; font-weight: bold;">movq</span>    <span style="color: #7590db;">%rdi</span>,<span style="color: #7590db;">%rax</span>           <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">int ret = x;</span>
+    <span style="color: #4f97d7; font-weight: bold;">subq</span>    <span style="color: #7590db;">%rsi</span>,<span style="color: #7590db;">%rax</span>           <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">ret -= y;</span>
+    <span style="color: #4f97d7; font-weight: bold;">ret</span>                         <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">return ret;</span>
+</pre>
+</div>
+
+<blockquote>
+<p>
+Using <code>goto</code> statements is generally considered a bad programming style, since their use can make code very difficult to read and debug.
+</p>
+</blockquote>
+</div>
+
+
+<ul class="org-ul">
+<li><a id="orgfc2b3ae"></a>Practice Problem 3.16<br />
+<div class="outline-text-6" id="text-orgfc2b3ae">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">cond</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">a</span>, <span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">p</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+        <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #bc6ec5;">(</span>p &amp;&amp; a &gt; *p<span style="color: #bc6ec5;">)</span>
+                *p = a;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">void cond(long a, long *p)</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">a in %rdi, p in %rsi</span>
+
+<span style="color: #bc6ec5; font-weight: bold;">cond</span>:
+        <span style="color: #4f97d7; font-weight: bold;">testq</span>   <span style="color: #7590db;">%rsi</span>, <span style="color: #7590db;">%rsi</span>      <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (p is not null)</span>
+        <span style="color: #4f97d7; font-weight: bold;">je</span>      .L1             <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (!p) { goto .L1; }</span>
+        <span style="color: #4f97d7; font-weight: bold;">cmpq</span>    <span style="color: #7590db;">%rdi</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rsi</span><span style="color: #4f97d7;">)</span>
+        <span style="color: #4f97d7; font-weight: bold;">jge</span>     .L1             <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (*p &gt;= a) { goto .L1; }</span>
+        <span style="color: #4f97d7; font-weight: bold;">movq</span>    <span style="color: #7590db;">%rdi</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rsi</span><span style="color: #4f97d7;">)</span>    <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">*p = a</span>
+      <span style="color: #4f97d7; font-weight: bold;">.L1</span>:
+        <span style="color: #4f97d7; font-weight: bold;">rep</span>                     <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">ret</span>
+</pre>
+</div>
+<p>
+A. write a goto version in C
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">cond</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">a</span>, <span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">p</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+        <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #bc6ec5;">(</span><span style="color: #a45bad;">!</span>p<span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">{</span>
+                <span style="color: #4f97d7; font-weight: bold;">goto</span> <span style="color: #a45bad;">end</span>;
+        <span style="color: #bc6ec5;">}</span>
+
+        <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #bc6ec5;">(</span>*p &gt;= a<span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">{</span>
+                <span style="color: #4f97d7; font-weight: bold;">goto</span> <span style="color: #a45bad;">end</span>;
+        <span style="color: #bc6ec5;">}</span>
+
+        *p = a;
+
+<span style="color: #a45bad;">end</span>:
+        <span style="color: #4f97d7; font-weight: bold;">return</span>;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+<p>
+B. Explain why the assembly code contains two conditional branches: \
+ans:  because p &amp;&amp; a &gt; *p means two conditions, and the order is from left to right.
+</p>
+</div>
+</li>
+
+<li><a id="org4e7843a"></a>Practice Problem 3.17<br />
+<div class="outline-text-6" id="text-org4e7843a">
+<p>
+A. Rewrite <code>absdiff_se</code> based on if-goto rule
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #bc6ec5; font-weight: bold;">absdiff_se</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">y</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">result</span>;
+        <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #bc6ec5;">(</span>x &gt;= y<span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">{</span>
+                <span style="color: #4f97d7; font-weight: bold;">goto</span> <span style="color: #a45bad;">x_ge_</span>;
+        <span style="color: #bc6ec5;">}</span> <span style="color: #4f97d7; font-weight: bold;">else</span> <span style="color: #bc6ec5;">{</span>
+                lt_cnt++;
+                result = y - x;
+                <span style="color: #4f97d7; font-weight: bold;">goto</span> <span style="color: #a45bad;">done</span>;
+        <span style="color: #bc6ec5;">}</span>
+<span style="color: #a45bad;">x_ge_y</span>:
+        ge_cnt++;
+        result = x - y;
+
+<span style="color: #a45bad;">done</span>:
+        <span style="color: #4f97d7; font-weight: bold;">return</span> result;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+<p>
+B. reasons:
+</p>
+
+<p>
+a) the code is note readable (it's not parallel in look)
+</p>
+
+<p>
+b) it's difficult to find label if there are too many ones.
+</p>
+</div>
+</li>
+
+<li><a id="org453503d"></a>Practice Problem 3.18<br />
+<div class="outline-text-6" id="text-org453503d">
+<p>
+fulfill C code from assembly code
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #bc6ec5; font-weight: bold;">test</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">y</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">z</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">val</span> = ;
+        <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #bc6ec5;">(</span>x &lt; -<span style="color: #a45bad;">3</span><span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">{</span>
+                <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #2d9574;">(</span>y &lt; z<span style="color: #2d9574;">)</span>
+                        val = x * y;
+                <span style="color: #4f97d7; font-weight: bold;">else</span>
+                        val = y * z;
+        <span style="color: #bc6ec5;">}</span> <span style="color: #4f97d7; font-weight: bold;">else</span> <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #bc6ec5;">(</span>x &gt; <span style="color: #a45bad;">2</span><span style="color: #bc6ec5;">)</span>
+                val = x * z;
+        <span style="color: #4f97d7; font-weight: bold;">return</span> val;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-asm">        <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">long test (long x, long y, long z)</span>
+        <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">x in %rdi, y in %rsi, z in %rdx</span>
+<span style="color: #bc6ec5; font-weight: bold;">test</span>:
+        <span style="color: #4f97d7; font-weight: bold;">leaq</span>    <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdi</span>,<span style="color: #7590db;">%rsi</span><span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rax</span>
+        <span style="color: #4f97d7; font-weight: bold;">addq</span>    <span style="color: #7590db;">%rdx</span>,<span style="color: #7590db;">%rax</span>
+        <span style="color: #4f97d7; font-weight: bold;">cmpq</span>    $-3,<span style="color: #7590db;">%rdi</span>        <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">compare</span>
+        <span style="color: #4f97d7; font-weight: bold;">jge</span>     .L2             <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (x &gt;= -3) { goto .L2; }</span>
+        <span style="color: #4f97d7; font-weight: bold;">cmpq</span>    <span style="color: #7590db;">%rdx</span>,<span style="color: #7590db;">%rsi</span>
+        <span style="color: #4f97d7; font-weight: bold;">jge</span>     .L3             <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (x &lt; -3 &amp;&amp; y &gt;= z) { goto .L3; }</span>
+        <span style="color: #4f97d7; font-weight: bold;">movq</span>    <span style="color: #7590db;">%rdi</span>,<span style="color: #7590db;">%rax</span>       <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (x &lt; -3 &amp;&amp; y &lt; z) { val = x; }</span>
+        <span style="color: #4f97d7; font-weight: bold;">imulq</span>   <span style="color: #7590db;">%rsi</span>,<span style="color: #7590db;">%rax</span>       <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (x &lt; -3 &amp;&amp; y &lt; z) { val = x * y; }</span>
+        <span style="color: #4f97d7; font-weight: bold;">ret</span>
+   <span style="color: #4f97d7; font-weight: bold;">.L3</span>:
+        <span style="color: #4f97d7; font-weight: bold;">movq</span>    <span style="color: #7590db;">%rsi</span>,<span style="color: #7590db;">%rax</span>       <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (x &lt; -3 &amp;&amp; y &gt;= z) { val = y; }</span>
+        <span style="color: #4f97d7; font-weight: bold;">imulq</span>   <span style="color: #7590db;">%rdx</span>,<span style="color: #7590db;">%rax</span>       <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (x &lt; -3 &amp;&amp; y &gt;= z) { val = y * z; }</span>
+        <span style="color: #4f97d7; font-weight: bold;">ret</span>
+   <span style="color: #4f97d7; font-weight: bold;">.L2</span>:
+        <span style="color: #4f97d7; font-weight: bold;">cmpq</span>    $2,<span style="color: #7590db;">%rdi</span>         <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (x &gt;= -3)</span>
+        <span style="color: #4f97d7; font-weight: bold;">jle</span>     .L4             <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (x &gt;= -3 &amp;&amp; x &lt;= 2) { goto .L4; }</span>
+        <span style="color: #4f97d7; font-weight: bold;">movq</span>    <span style="color: #7590db;">%rdi</span>,<span style="color: #7590db;">%rax</span>       <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (x &gt;= -3 &amp;&amp; x &gt; 2) { val = x; }</span>
+        <span style="color: #4f97d7; font-weight: bold;">imulq</span>   <span style="color: #7590db;">%rdx</span>,<span style="color: #7590db;">%rax</span>       <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (x &gt;= -3 &amp;&amp; x &gt; 2) { val = x * z; }</span>
+   <span style="color: #4f97d7; font-weight: bold;">.L4</span>:
+        <span style="color: #4f97d7; font-weight: bold;">rep</span>                     <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">ret val;</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgda546cd"></a>3.6.6 Implementing Conditional Branches with Conditional Moves<br />
+<div class="outline-text-5" id="text-orgda546cd">
+<ul class="org-ul">
+<li>Figure 3.17 Compilation of conditional statements using conditional assignment.
+(a) Original C code</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #bc6ec5; font-weight: bold;">absdiff</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">y</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">result</span>;
+        <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #bc6ec5;">(</span>x &lt; y<span style="color: #bc6ec5;">)</span>
+                result = y - x;
+        <span style="color: #4f97d7; font-weight: bold;">else</span>
+                result = x - y;
+        <span style="color: #4f97d7; font-weight: bold;">return</span> result;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+<p>
+(b) Implementing using conditional assignment
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #bc6ec5; font-weight: bold;">cmovdiff</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">y</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">rval</span> = y - x;
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">eval</span> = x - y;
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">test</span> = x &gt;= y;
+        <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">Line below requires single instruction:</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+        <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #bc6ec5;">(</span>ntest<span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">{</span>
+                rval = eval;
+        <span style="color: #bc6ec5;">}</span>
+        <span style="color: #4f97d7; font-weight: bold;">return</span> rval;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+<p>
+(c) Generated assembly code
+</p>
+<div class="org-src-container">
+<pre class="src src-asm">        <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">long absdiff(long x, long y)</span>
+        <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">x in %rdi, y in %rsi</span>
+<span style="color: #bc6ec5; font-weight: bold;">absdiff</span>:
+        <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rsi</span>, <span style="color: #7590db;">%rax</span>
+        <span style="color: #4f97d7; font-weight: bold;">subq</span> <span style="color: #7590db;">%rdi</span>, <span style="color: #7590db;">%rax</span>         <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">rval = y - x</span>
+        <span style="color: #4f97d7; font-weight: bold;">movq</span> <span style="color: #7590db;">%rdi</span>, <span style="color: #7590db;">%rdx</span>
+        <span style="color: #4f97d7; font-weight: bold;">subq</span> <span style="color: #7590db;">%rsi</span>, <span style="color: #7590db;">%rdx</span>         <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">eval = x - y</span>
+        <span style="color: #4f97d7; font-weight: bold;">cmpq</span> <span style="color: #7590db;">%rsi</span>, <span style="color: #7590db;">%rdi</span>         <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">compare x:y</span>
+        <span style="color: #4f97d7; font-weight: bold;">cmovge</span> <span style="color: #7590db;">%rdx</span>, <span style="color: #7590db;">%rax</span>       <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (x &gt;= y)</span>
+        <span style="color: #4f97d7; font-weight: bold;">ret</span>
+</pre>
+</div>
+
+<blockquote>
+<p>
+The key is that the single  <code>cmovge</code> instruction of the assembly code implements the conditional assignment of <code>cmovdiff</code>. It will transfer the data from the source register to the destination, <b>only if</b> the <code>cmpq</code> instruction of line 6 indicates that value is greater than or equal to the other (as indicated by the suffix <code>ge</code>).
+</p>
+
+<p>
+This approach achieves high performance by overlapping the steps of the successive instructions.
+</p>
+</blockquote>
+
+
+
+<p>
+misprediction penalty is \(T_{avg}(P) = (1 - P)T_{OK} + T_{MP} = T_OK + PT_{MP}.\)
+</p>
+\begin{align*}
+T_{ran} &= T_{avg}(P) = T_{OK} + 0.5 T_{MP} \\
+T_{MP} &= 2(T_{ran} - T{OK})
+\end{align*}
+</div>
+<ul class="org-ul">
+<li><a id="orge358a10"></a>Practice Problem 3.19<br />
+<div class="outline-text-6" id="text-orge358a10">
+<ul class="org-ul">
+<li>What is the approximate miss penalty?
+\[T_{MP} = 2(T_{ran} - T_{OK}) = 30\]</li>
+<li>How many cycles would the function require when the branch is mispredicted?
+\[ 30 + 16 = 46 \]</li>
+</ul>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 12:</span> Figure 3.18 The conditional move instructions</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Instruction</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Synonym</td>
+<td class="org-left">Move condition</td>
+<td class="org-left">Description</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>cmove</code></td>
+<td class="org-left">S, R</td>
+<td class="org-left"><code>cmovz</code></td>
+<td class="org-left"><code>ZF</code></td>
+<td class="org-left">Equal /Zero</td>
+</tr>
+
+<tr>
+<td class="org-left">cmovne</td>
+<td class="org-left">S, R</td>
+<td class="org-left">cmovnz</td>
+<td class="org-left">~ZF</td>
+<td class="org-left">Not equal / not zero</td>
+</tr>
+
+<tr>
+<td class="org-left">cmovs</td>
+<td class="org-left">S, R</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">SF</td>
+<td class="org-left">Negative</td>
+</tr>
+
+<tr>
+<td class="org-left">cmovns</td>
+<td class="org-left">S, R</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">~SF</td>
+<td class="org-left">Nonnegative</td>
+</tr>
+
+<tr>
+<td class="org-left">cmovg</td>
+<td class="org-left">S, R</td>
+<td class="org-left">cmovnle</td>
+<td class="org-left">~(SF ^ OF) &amp; ~ZF</td>
+<td class="org-left">Greater (signed &gt; )</td>
+</tr>
+
+<tr>
+<td class="org-left">cmovge</td>
+<td class="org-left">S, R</td>
+<td class="org-left">cmovnl</td>
+<td class="org-left">~(SF ^ OF)</td>
+<td class="org-left">Greater or equal (signed &gt;=)</td>
+</tr>
+
+<tr>
+<td class="org-left">cmovl</td>
+<td class="org-left">S, R</td>
+<td class="org-left">cmovnge</td>
+<td class="org-left">SF ^ OF</td>
+<td class="org-left">Less (signed &lt; )</td>
+</tr>
+
+<tr>
+<td class="org-left">cmovnle</td>
+<td class="org-left">S, R</td>
+<td class="org-left">cmovng</td>
+<td class="org-left">(SF ^ OF) &vert; ZF</td>
+<td class="org-left">Less or equal (signed &lt;= )</td>
+</tr>
+
+<tr>
+<td class="org-left">cmova</td>
+<td class="org-left">S, R</td>
+<td class="org-left">cmovnbe</td>
+<td class="org-left">~CF &amp; ~ZF</td>
+<td class="org-left">Above (unsigned &gt;)</td>
+</tr>
+
+<tr>
+<td class="org-left">cmovae</td>
+<td class="org-left">S, R</td>
+<td class="org-left">cmovnb</td>
+<td class="org-left">~CF</td>
+<td class="org-left">Above or equal (unsigned &gt;=)</td>
+</tr>
+
+<tr>
+<td class="org-left">cmovb</td>
+<td class="org-left">S, R</td>
+<td class="org-left">cmovna</td>
+<td class="org-left">CF</td>
+<td class="org-left">Below (unsigned &lt; )</td>
+</tr>
+
+<tr>
+<td class="org-left">cmovbe</td>
+<td class="org-left">S, R</td>
+<td class="org-left">cmova</td>
+<td class="org-left">CF &vert; ZF</td>
+<td class="org-left">Below or euqal (unsigned &lt;= )</td>
+</tr>
+</tbody>
+</table>
+
+
+<pre class="example" id="orgf6c2d37">
+v = test-expr ? then-expr : else-expr;
+
+# is equivalent to
+if (!test-expr)
+        goto false;
+v = then-expr;
+goto done;
+
+false:
+        v = else-expr;
+done:
+
+# can be described by the following abstract code
+v = then-expr;
+ve = else-expr;
+t = test-expr;
+if (!t) v = ve;
+</pre>
+
+<p>
+consider the C function:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #bc6ec5; font-weight: bold;">cread</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">xp</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+        <span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #bc6ec5;">(</span>xp ? *xp : <span style="color: #a45bad;">0</span><span style="color: #bc6ec5;">)</span>;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-asm">        <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">long cread(long *xp)</span>
+        <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">Invlaid implementation of function cread</span>
+        <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">xp in register %rdi</span>
+<span style="color: #bc6ec5; font-weight: bold;">cread</span>:
+        <span style="color: #4f97d7; font-weight: bold;">movq</span>    <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdi</span><span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rax</span>    <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">v = *xp     -- if xp == NULL !!!</span>
+        <span style="color: #4f97d7; font-weight: bold;">testq</span>   <span style="color: #7590db;">%rdi</span>, <span style="color: #7590db;">%rdi</span>      <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">Test x</span>
+        <span style="color: #4f97d7; font-weight: bold;">movl</span>    $0, <span style="color: #7590db;">%edx</span>        <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">ve = 0</span>
+        <span style="color: #4f97d7; font-weight: bold;">cmove</span>   <span style="color: #7590db;">%rdx</span>, <span style="color: #7590db;">%rax</span>      <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (x == 0) v = ve;</span>
+        <span style="color: #4f97d7; font-weight: bold;">ret</span>                     <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">return v;</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org6fcbc00"></a>Practice Problem 3.20<br />
+<div class="outline-text-6" id="text-org6fcbc00">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">OP</span> ____ <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">Unknown operator</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+<span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #bc6ec5; font-weight: bold;">arith</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+        <span style="color: #4f97d7; font-weight: bold;">return</span> x OP <span style="color: #a45bad;">8</span>;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-asm">        <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">long arith(long x)</span>
+        <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">x in %rdi</span>
+<span style="color: #bc6ec5; font-weight: bold;">arith</span>:
+        <span style="color: #4f97d7; font-weight: bold;">leaq</span>    7<span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rdi</span><span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rax</span>   <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">r = x + 7</span>
+        <span style="color: #4f97d7; font-weight: bold;">testq</span>   <span style="color: #7590db;">%rdi</span>, <span style="color: #7590db;">%rdi</span>      <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">Test x</span>
+        <span style="color: #4f97d7; font-weight: bold;">cmovns</span>  <span style="color: #7590db;">%rdi</span>, <span style="color: #7590db;">%rax</span>      <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (x &gt;= 0) {r = x;}</span>
+        <span style="color: #4f97d7; font-weight: bold;">sarq</span>    $3, <span style="color: #7590db;">%rax</span>        <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">r &gt;&gt;= 3       -- r / 8</span>
+        <span style="color: #4f97d7; font-weight: bold;">ret</span>                     <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">return r;</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>What operation is <code>OP</code> ? <br />
+<code>/</code></li>
+<li>Annoate the code to explain how it works.</li>
+</ul>
+</div>
+</li>
+<li><a id="org8cd79de"></a>Practice Problem 3.21<br />
+<div class="outline-text-6" id="text-org8cd79de">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #bc6ec5; font-weight: bold;">test</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">x</span>, <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">y</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+        <span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">val</span> = <span style="color: #a45bad;">8</span> * x;
+        <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #bc6ec5;">(</span>y &gt; <span style="color: #a45bad;">0</span><span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">{</span>
+                <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #2d9574;">(</span>x &gt;= y<span style="color: #2d9574;">)</span>
+                        val = x &amp; y;
+                <span style="color: #4f97d7; font-weight: bold;">else</span>
+                        val = y - x;
+
+        <span style="color: #bc6ec5;">}</span> <span style="color: #4f97d7; font-weight: bold;">else</span> <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #bc6ec5;">(</span>y &lt;= -<span style="color: #a45bad;">2</span><span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">{</span>
+                val = x + y;
+        <span style="color: #bc6ec5;">}</span>
+
+        <span style="color: #4f97d7; font-weight: bold;">return</span> val;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">long test(long x, long y)</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">x in %rdi, y in %rsi</span>
+<span style="color: #bc6ec5; font-weight: bold;">test</span>:
+        <span style="color: #4f97d7; font-weight: bold;">leaq</span>    0<span style="color: #4f97d7;">(</span>, <span style="color: #7590db;">%rdi</span>, 8<span style="color: #4f97d7;">)</span>, <span style="color: #7590db;">%rax</span> <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">val = 8x;</span>
+        <span style="color: #4f97d7; font-weight: bold;">testq</span>   <span style="color: #7590db;">%rsi</span>, <span style="color: #7590db;">%rsi</span>         <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">Test y</span>
+        <span style="color: #4f97d7; font-weight: bold;">jle</span>     .L2                <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (y &lt;= 0) goto .L2;</span>
+        <span style="color: #4f97d7; font-weight: bold;">movq</span>    <span style="color: #7590db;">%rsi</span>, <span style="color: #7590db;">%rax</span>         <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">val = y;</span>
+        <span style="color: #4f97d7; font-weight: bold;">subq</span>    <span style="color: #7590db;">%rdi</span>, <span style="color: #7590db;">%rax</span>         <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">val = y - x;</span>
+        <span style="color: #4f97d7; font-weight: bold;">movq</span>    <span style="color: #7590db;">%rdi</span>, <span style="color: #7590db;">%rdx</span>         <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">v = x;</span>
+        <span style="color: #4f97d7; font-weight: bold;">andq</span>    <span style="color: #7590db;">%rsi</span>, <span style="color: #7590db;">%rdx</span>         <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">v = x &amp; y;</span>
+        <span style="color: #4f97d7; font-weight: bold;">cmpq</span>    <span style="color: #7590db;">%rsi</span>, <span style="color: #7590db;">%rdi</span>         <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">compare y:x</span>
+        <span style="color: #4f97d7; font-weight: bold;">cmovge</span>  <span style="color: #7590db;">%rdx</span>, <span style="color: #7590db;">%rax</span>         <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (y &gt;= x) val = v = x &amp; y;</span>
+        <span style="color: #4f97d7; font-weight: bold;">ret</span>                        <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">return val;</span>
+  <span style="color: #4f97d7; font-weight: bold;">.L2</span>:
+        <span style="color: #4f97d7; font-weight: bold;">addq</span>    <span style="color: #7590db;">%rsi</span>, <span style="color: #7590db;">%rdi</span>      <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">x  = x + y;</span>
+        <span style="color: #4f97d7; font-weight: bold;">cmpq</span>    $-2, <span style="color: #7590db;">%rsi</span>       <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">compare -2: y</span>
+        <span style="color: #4f97d7; font-weight: bold;">cmovle</span>  <span style="color: #7590db;">%rdi</span>, <span style="color: #7590db;">%rax</span>      <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">if (y &lt;= -2) { val = x; } // x + y</span>
+        <span style="color: #4f97d7; font-weight: bold;">ret</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="orgf59c6e2"></a>3.6.7 Loops<br />
+<div class="outline-text-5" id="text-orgf59c6e2">
+<p>
+<b>Always go-to mode</b>
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgd760fae"></a>Do-While Loops<br /></li>
+
+<li><a id="org9cefa5b"></a>While Loops<br /></li>
+
+<li><a id="org15d5d64"></a>For Loops<br /></li>
+</ul>
+</li>
+
+<li><a id="org5a513ed"></a>3.6.7 Switch Statements<br />
+<div class="outline-text-5" id="text-org5a513ed">
+<p>
+<b>go-to different labels</b>
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org9a1a668" class="outline-4">
+<h4 id="org9a1a668">3.7 Procedures</h4>
+<div class="outline-text-4" id="text-org9a1a668">
+</div>
+<ul class="org-ul">
+<li><a id="org51b280f"></a>3.7.1 The Run-Time Stack<br />
+<div class="outline-text-5" id="text-org51b280f">
+<blockquote>
+<p>
+the x86-64 stack grows toward lower addresses and the stack pointer <code>%rsp</code> points to the top element of the stack.
+</p>
+
+<p>
+Procedure <code>P</code> can pass up to <b>6</b> integral values on the stack, but if <code>Q</code> requires more arguments, these can be stored by <code>P</code> within its stack frame prior to the call.
+</p>
+</blockquote>
+</div>
+</li>
+
+<li><a id="org56405dd"></a>3.7.2 Control Transfer<br />
+<div class="outline-text-5" id="text-org56405dd">
+<p>
+<b>program counter (PC)</b>
+</p>
+</div>
+</li>
+
+
+<li><a id="org4c10e3d"></a>3.7.3 Data Transfer<br />
+<div class="outline-text-5" id="text-org4c10e3d">
+<blockquote>
+<p>
+most of these data passing to and from procedures take place via registers.
+</p>
+</blockquote>
+
+<!-- This HTML table template is generated by emacs 27.1 -->
+<table border="1">
+  <tr>
+    <td rowspan="2" align="left" valign="top">
+      Operand&nbsp;<br />
+      &nbsp;&nbsp;size&nbsp;&nbsp;<br />
+      &nbsp;(bits)&nbsp;
+    </td>
+    <td colspan="6" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Argument&nbsp;number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;64&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%rdi&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%rsi&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%rdx&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%rcx&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%r8&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%r9&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;32&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%edi&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%esi&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%rdx&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%ecx&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%r8d&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%r9d&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%di&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%si&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%dx&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%cx&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%r8w&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%r9w&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%dil&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%sil&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%dl&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%cl&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%r8b&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;%r9b&nbsp;
+    </td>
+  </tr>
+</table>
+
+<blockquote>
+<p>
+The proccedure copies arguments 1-6 into the appropriate registers, and it puts arguments 7 through <i>n</i> onto the stack , with argument 7 at the top of the stack.
+</p>
+</blockquote>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgfd1c3dc"></a>Practice Problem 3.33<br />
+<div class="outline-text-6" id="text-orgfd1c3dc">
+<div class="org-src-container">
+<pre class="src src-c">*u += a;
+*v += b;
+<span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #4f97d7; font-weight: bold;">sizeof</span><span style="color: #4f97d7;">(</span>a<span style="color: #4f97d7;">)</span> + <span style="color: #4f97d7; font-weight: bold;">sizeof</span><span style="color: #4f97d7;">(</span>b<span style="color: #4f97d7;">)</span>;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #bc6ec5; font-weight: bold;">procprob</span>:
+        <span style="color: #4f97d7; font-weight: bold;">movslq</span>  <span style="color: #7590db;">%edi</span>, <span style="color: #7590db;">%rdi</span>      <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">'a' was converted from 4 bytes to 8 bytes, so 'a' is int, 'u' is long *</span>
+        <span style="color: #4f97d7; font-weight: bold;">addq</span>    <span style="color: #7590db;">%rdi</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rax</span><span style="color: #4f97d7;">)</span>    <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">int a, long *u;</span>
+        <span style="color: #4f97d7; font-weight: bold;">addb</span>    <span style="color: #7590db;">%sil</span>, <span style="color: #4f97d7;">(</span><span style="color: #7590db;">%rcx</span><span style="color: #4f97d7;">)</span>    <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">char b, long *v;</span>
+                                <span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">Add low-order byte of b to *v</span>
+</pre>
+</div>
+
+
+<p>
+(a) C code
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">proc</span><span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">long</span> <span style="color: #7590db;">a1</span>, <span style="color: #ce537a; font-weight: bold;">long</span> *<span style="color: #7590db;">a1p</span>,
+          <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">a2</span>, <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">a2p</span>,
+          <span style="color: #ce537a; font-weight: bold;">short</span> <span style="color: #7590db;">a3</span>, <span style="color: #ce537a; font-weight: bold;">short</span> *<span style="color: #7590db;">a3p</span>,
+          <span style="color: #ce537a; font-weight: bold;">char</span> <span style="color: #7590db;">a4</span>, <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">a4p</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+        *a1p += a1;
+        *a2p += a2;
+        *a3p += a3;
+        *a4p += a4;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org69401c1" class="outline-4">
+<h4 id="org69401c1">3.9 Heterogeneous Data Structure</h4>
+<div class="outline-text-4" id="text-org69401c1">
+</div>
+<ul class="org-ul">
+<li><a id="org026ad08"></a>3.9.1 Structures<br /></li>
+
+<li><a id="org92f6468"></a>3.9.2 Unions<br /></li>
+
+<li><a id="orgf73ab50"></a>3.9.3 Data Alignment<br /></li>
+</ul>
+</div>
+
+<div id="outline-container-org7158bf4" class="outline-4">
+<h4 id="org7158bf4">3.10 Combining Control and Data in Machine-Level Programs</h4>
+<div class="outline-text-4" id="text-org7158bf4">
+</div>
+<ul class="org-ul">
+<li><a id="orgba1537f"></a>3.10.1 Understanding Pointers<br />
+<div class="outline-text-5" id="text-orgba1537f">
+<ul class="org-ul">
+<li>Every pointer has an associated type</li>
+<li>Every pointer has a value.</li>
+<li>Pointers are created with the '&amp;' operator</li>
+<li>Pointers are dereferenced with the '*' operator</li>
+<li>Arrays and pointers are closely related</li>
+<li>Casting from one type of pointer to another changes its type but not its value.</li>
+<li>Pointers can also point to functions</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org133816e"></a>3.10.3 Out-ofbounds Memory Refernces and Buffer Overflow<br />
+<div class="outline-text-5" id="text-org133816e">
+<!-- This HTML table template is generated by emacs 27.1 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      Command&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Effect&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Starting&nbsp;and&nbsp;stopping&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      quit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Exit&nbsp;GDB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      run&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Run&nbsp;your&nbsp;program&nbsp;(give&nbsp;command-line&nbsp;arguments&nbsp;he)&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      kill&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Stop&nbsp;your&nbsp;program&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Breakpoints&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      break&nbsp;multstore&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Set&nbsp;breakpoint&nbsp;at&nbsp;entry&nbsp;to&nbsp;function&nbsp;multstore&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      break&nbsp;*0x400540&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Set&nbsp;breakpoint&nbsp;at&nbsp;address&nbsp;0x400540&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      delete&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Delete&nbsp;breakpoint&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      delete&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Delete&nbsp;all&nbsp;breakpoints&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Execution&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      stepi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Execute&nbsp;one&nbsp;instruction&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      stepi&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Execute&nbsp;four&nbsp;instructions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      nexti&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Like&nbsp;stepi&nbsp;,&nbsp;but&nbsp;proceed&nbsp;through&nbsp;function&nbsp;call&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      continue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Resume&nbsp;exectuion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      finish&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Run&nbsp;until&nbsp;function&nbsp;returns&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Examining&nbsp;code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      disas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Disassemble&nbsp;current&nbsp;function&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      disas&nbsp;multstore&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Disassemble&nbsp;function&nbsp;multstore&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      disas&nbsp;0x400544&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Disassemble&nbsp;function&nbsp;around&nbsp;address&nbsp;0x400544&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      disas&nbsp;0x400544,&nbsp;0x40054d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Disassemble&nbsp;code&nbsp;within&nbsp;specified&nbsp;address&nbsp;range&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      print&nbsp;/x&nbsp;$rip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Print&nbsp;program&nbsp;counter&nbsp;in&nbsp;hex&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Examining&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      print&nbsp;$rax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Print&nbsp;contents&nbsp;of&nbsp;%rax&nbsp;in&nbsp;decimal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      print&nbsp;/x&nbsp;$rax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Print&nbsp;contents&nbsp;of&nbsp;%rax&nbsp;in&nbsp;hex&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      print&nbsp;/t&nbsp;$rax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Print&nbsp;contents&nbsp;of&nbsp;%rax&nbsp;in&nbsp;binary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      print&nbsp;/x&nbsp;555&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Print&nbsp;hex&nbsp;representation&nbsp;of&nbsp;555&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      pirnt&nbsp;/x&nbsp;($rsp&nbsp;+&nbsp;8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Print&nbsp;contents&nbsp;of&nbsp;%rsp&nbsp;plus&nbsp;8&nbsp;in&nbsp;hex&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      print&nbsp;*(long&nbsp;*)0x7fffffffe818&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Print&nbsp;long&nbsp;integer&nbsp;at&nbsp;address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      print&nbsp;*(long&nbsp;*)($rsp&nbsp;+&nbsp;8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Print&nbsp;long&nbsp;integer&nbsp;at&nbsp;address&nbsp;%rsp&nbsp;+&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      x/2g&nbsp;0x7fffffffe818&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Examine&nbsp;two&nbsp;(8-byte)&nbsp;words&nbsp;starting&nbsp;at&nbsp;address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      x/20b&nbsp;multstore&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Examine&nbsp;first&nbsp;20&nbsp;bytes&nbsp;of&nbsp;function&nbsp;multstore&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left" valign="top">
+      Useful&nbsp;information&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      info&nbsp;frame&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Information&nbsp;about&nbsp;current&nbsp;stack&nbsp;frame&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      info&nbsp;registers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Values&nbsp;of&nbsp;all&nbsp;the&nbsp;registers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Get&nbsp;information&nbsp;about&nbsp;GDB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+</div>
+</li>
+
+<li><a id="org1f9b09f"></a>3.10.4 Thwarting Buffer Overflow Attacks<br /></li>
+
+<li><a id="orge5a1323"></a>3.10.5 Limiting Executable Code Regions<br />
+<div class="outline-text-5" id="text-orge5a1323">
+<blockquote>
+<p>
+AMD introduced an NX (for "no-executable") bit into the memory protection for its 64-bit processors, separating the read and exectue access modes. The stack can be marked as being readable and writable, but not executable, check performed in hardware.
+</p>
+</blockquote>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orgc9f0455" class="outline-4">
+<h4 id="orgc9f0455">3.11 Floating-Point Code</h4>
+<div class="outline-text-4" id="text-orgc9f0455">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 15:</span> Figure 3.46 Floating-point movement instructions.</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Instruction</th>
+<th scope="col" class="org-left">Source</th>
+<th scope="col" class="org-left">Destination</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>vmovss</code></td>
+<td class="org-left">\(M_{32}\)</td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">Move single precision</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vmovss</code></td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">\(M_{32}\)</td>
+<td class="org-left">Move single precision</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vmovsd</code></td>
+<td class="org-left">\(M_{64}\)</td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">Move double precision</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vmovsd</code></td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">\(M_{32}\)</td>
+<td class="org-left">Move double precision</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vmovaps</code></td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">Move aligned, packed single precision</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vmovapd</code></td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">Move aligned, packed double precision</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgbf70c88"></a>3.11.1 Floating-Point Movement and Conversion Operations<br />
+<div class="outline-text-5" id="text-orgbf70c88">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 16:</span> Figure 3.47 Two-operand floating-point conversion operations</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Instruction</th>
+<th scope="col" class="org-left">Source</th>
+<th scope="col" class="org-left">Destination</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>vcvttss2si</code></td>
+<td class="org-left">\(X/M_{32}\)</td>
+<td class="org-left">\(R_{32}\)</td>
+<td class="org-left">Convert with truncation single precision to integer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vcvttsd2si</code></td>
+<td class="org-left">\(X/M_{64}\)</td>
+<td class="org-left">\(R_{32}\)</td>
+<td class="org-left">Convert with truncation double precision to integer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vcvttss2siq</code></td>
+<td class="org-left">\(X/M_{32}\)</td>
+<td class="org-left">\(R_{64}\)</td>
+<td class="org-left">Convert with truncation single precision to quad word integer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vcvttsd2siq</code></td>
+<td class="org-left">\(X/M_{64}\)</td>
+<td class="org-left">\(R_{64}\)</td>
+<td class="org-left">Convert with truncation double precision to quad word integer</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>
+These convert floating-point data to integers. (\(X\): XMM register (e.g., <code>%xmm3</code>); \(R_{32}\): 32-bit general-purpose register (e.g., <code>%eax</code>); \(R_{64}\): 64-bit general-purpose register (e.g., <code>%rax</code>); \(M_{32}\):32-bit memory range; \(M_{64}\): 64-bit memory range)
+</p>
+</blockquote>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 17:</span> Figure 3.48 Three-operand floating-point conversion operations</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Instruction</th>
+<th scope="col" class="org-left">Source 1</th>
+<th scope="col" class="org-left">Source 2</th>
+<th scope="col" class="org-left">Destination</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>vcvtsi2ss</code></td>
+<td class="org-left">\(M_{32}/R_{32}\)</td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">Convert integer to single precision</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vcvtsi2sd</code></td>
+<td class="org-left">\(M_{32}/R_{32}\)</td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">Convert integer to double precision</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vcvtsi2ssq</code></td>
+<td class="org-left">\(M_{32}/R_{64}\)</td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">Convert quad word integer to single precision</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vcvtsi2sd</code></td>
+<td class="org-left">\(M/R_{64}\)</td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">\(X\)</td>
+<td class="org-left">Convert quad word integer to double precision</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-asm">  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">Reads a long integer from register %rax,</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">converts it to data type double,</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">and stores the result in the lower bytes of %xmm1</span>
+<span style="color: #bc6ec5; font-weight: bold;">vcvtsi2sdq</span>  <span style="color: #4f97d7; font-weight: bold;">%rax</span>, <span style="color: #7590db;">%xmm1</span>, <span style="color: #7590db;">%xmm1</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-asm">  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">convert to a double-precision value</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">and store the result in the lower 8 bytes of %xmm0</span>
+<span style="color: #bc6ec5; font-weight: bold;">vcvtss2sd</span>   <span style="color: #4f97d7; font-weight: bold;">%xmm0</span>, <span style="color: #7590db;">%xmm0</span>, <span style="color: #7590db;">%xmm0</span>
+</pre>
+</div>
+
+<blockquote>
+<p>
+The <code>vunpcklps</code> instruction is normally used to interleave the values in two XMM registers and store them in a third.
+</p>
+</blockquote>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org7c46c74" class="outline-4">
+<h4 id="org7c46c74">3.12 Summary</h4>
+</div>
+</div>
+
+<div id="outline-container-org2dfc1d7" class="outline-3">
+<h3 id="org2dfc1d7">Chapter 4 Processor Architecture</h3>
+<div class="outline-text-3" id="text-org2dfc1d7">
+</div>
+<div id="outline-container-orgd79cb49" class="outline-4">
+<h4 id="orgd79cb49">4.1 The Y86-64 Instruction Set Architecture</h4>
+<div class="outline-text-4" id="text-orgd79cb49">
+</div>
+<ul class="org-ul">
+<li><a id="org744b18b"></a>4.1.1 Programmer-Visible State<br />
+<div class="outline-text-5" id="text-org744b18b">
+<p>
+programs reference memory locations using virtual addresses.
+</p>
+
+<p>
+physical addresses indicating where the values are actaully stored in memory
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://www.youtube.com/watch?v=ScMxnXq6fbI&amp;list=PLcQU3vbfgCc9sVAiHf5761UUApjZ3ZD3x&amp;index=1&amp;t=26s">CMU 15213/15513 CSAPP 深入理解计算机系统 Lecture 01 Course Overview 中英字幕 - YouTube 🔊</a>
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: whiothes</p>
+<p class="date">Created: 2021-12-09 Thu 10:34</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

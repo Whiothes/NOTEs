@@ -1,0 +1,6 @@
+* Functions and Program Structure
+#+SETUPFILE: ~/Documents/style.setup
+** External Variables
+   1. [[file:ch4/calculator.c::case '%':][ex4.3]]
+   2. [[file:ch4/calculator.c::case '?':][ex4.4]]
+   3. -lmath

@@ -1,0 +1,4 @@
+add_executable(signal signal)
+add_executable(jump jump)
+add_executable(cache cache)
+add_executable(segmentation segmentation)

@@ -1,0 +1,82 @@
+[
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/simple",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/twosum.dir/twosum.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/simple/twosum.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/simple/twosum.cpp"
+},
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/array",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/largestRectangleArea.dir/largestRectangleArea.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/largestRectangleArea.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/largestRectangleArea.cpp"
+},
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/array",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/findMin2.dir/findMin2.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/findMin2.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/findMin2.cpp"
+},
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/array",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/2sum2.dir/2sum2.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/2sum2.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/2sum2.cpp"
+},
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/array",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/merge_sorted.dir/merge_sorted.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/merge_sorted.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/merge_sorted.cpp"
+},
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/array",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/4sum.dir/4sum.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/4sum.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/4sum.cpp"
+},
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/array",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/3sum_closet.dir/3sum_closet.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/3sum_closet.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/3sum_closet.cpp"
+},
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/array",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/3sum.dir/3sum.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/3sum.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/3sum.cpp"
+},
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/array",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/plus_one.dir/plus_one.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/plus_one.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/plus_one.cpp"
+},
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/array",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/remove_element.dir/remove_element.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/remove_element.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/remove_element.cpp"
+},
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/array",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/marximalRectangle.dir/marximalRectangle.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/marximalRectangle.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/marximalRectangle.cpp"
+},
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/array",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/pascal2.dir/pascal2.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/pascal2.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/pascal2.cpp"
+},
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/array",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/pascal.dir/pascal.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/pascal.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/pascal.cpp"
+},
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/array",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/findMin.dir/findMin.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/findMin.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/findMin.cpp"
+},
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/array",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/2sum.dir/2sum.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/2sum.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/2sum.cpp"
+},
+{
+  "directory": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/build/array",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -std=c++11 -g -o CMakeFiles/remove_duplicates.dir/remove_duplicates.cpp.o -c /Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/remove_duplicates.cpp",
+  "file": "/Users/zhoush/Documents/Notes/books/algorithm/leetcode/array/remove_duplicates.cpp"
+}
+]

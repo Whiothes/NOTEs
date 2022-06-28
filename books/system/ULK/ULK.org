@@ -1,0 +1,17 @@
+#+SETUPFILE: ~/Documents/style.setup
+#+STARTUP: align
+#+LATEX_HEADER: \usepackage{ulem}
+#+LATEX_HEADER: \usepackage{ctex}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+TITLE: Understanding the LINUX KERNEL
+#+AUTHOR: whiothes
+
+* Understanding the LINUX KERNEL
+
+** 1. Introduction
+
+*** 1.3 Linux Version
+    - The second version number
+      - Even number: Stable
+      - Odd number: Development

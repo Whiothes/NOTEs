@@ -1,0 +1,321 @@
+#+SETUPFILE: ~/Documents/style.setup
+#+OPTIONS: num:nil
+#+TITLE: C 专家编程
+#+AUTHOR: whiothes
+
+* 1 C: 穿越时空的迷雾
+** 1.10 "安静的改变" 究竟有多少安静
+   * 要注意隐式转换为 unsigned 类型 (符号位)
+* 2 这不是Bug, 而是语言特性
+** 2.2 多做之过
+*** 2.2.1 由于存在 fall through, switch 语句会带来麻烦
+    * switch 中的case 绝大多数需要break;
+    * switch 中语句加标签会破坏程序结构, 慎用!
+*** 2.2.2 粉笔也成了可用的硬件
+    * 字符串换行自动合并，注意字符串数组中的逗号间隔不能遗漏
+    * 若期望第一次执行与之后的行为不同，可以在代码块中声明static变量
+*** 2.2.3 太多的缺少可见性
+    * 可以给内部函数/变量增加static 关键字，以规避全局可见可能引起的重全名
+** 2.3 误做之过
+*** 2.3.1 骆驼背上的重载
+    #+caption: 表2-1  C语言中的符号重载
+    | 符号   | 意义                                                 |
+    |--------+------------------------------------------------------|
+    | static | 在函数内部，表示该变量的值在各个调用间一直保持延续性 |
+    |        | 在函数这一级，表示该函数只对本文件可见               |
+    | extern | 对于函数定义，表示全局可见(属性冗余的)               |
+    |        | 用于变量，表示它在其它地方定义                       |
+    | void   | 作为函数的返回类型，表示不返回类型                   |
+    |        | 在指针声明中，表示通用指针的类型                     |
+    |        | 位于参数列表中，表示没有参数                         |
+    | *      | 乘法运算符                                           |
+    |        | 用于指针，间接引用                                   |
+    |        | 在声明中，表示指针                                   |
+    | &      | 位的AND操作符                                        |
+    |        | 取地址操作符                                         |
+    | =      | 赋值                                                 |
+    | ==     | 比较运算符                                           |
+    |--------+------------------------------------------------------|
+    | <=     | 小于等于运算符                                       |
+    | <<=    | 左移复合赋值运算符                                   |
+    |--------+------------------------------------------------------|
+    | <      | 小于运算符                                           |
+    |        | 左移运算符                                           |
+    |--------+------------------------------------------------------|
+    | ()     | 在函数定义中，包围参数列表                           |
+    |        | 调用一个函数.                                        |
+    |        | 改变表达式的运算顺序.                                |
+    |        | 强制类型转换                                         |
+    |        | 定义带参数的宏                                       |
+    |        | 包围sizeof运算符的操作数.                            |
+*** 2.3.2 有些运算符的优先级是错误的
+    #+CAPTION: 表2-2 C语言运算符优先级存在的问题
+    | 优先级问题                         | 表达式               | 人们可能误以为的结果            | 实际结果                        |
+    |------------------------------------+----------------------+---------------------------------+---------------------------------|
+    | .的优先级高于*                     | *p.f                 | p所指对象的字段f                | 对p取f偏移,作为指针，然后解引用 |
+    | -> 操作符用于消除这个问题          |                      | (*p).f                          | *(p.f)                          |
+    |------------------------------------+----------------------+---------------------------------+---------------------------------|
+    | [] 高于*                           | int *ap[]            | ap是个指向int数组的指针         | ap是个元素为int指针的数组       |
+    |                                    |                      | int (*ap)[]                     | int *(ap[])                     |
+    |------------------------------------+----------------------+---------------------------------+---------------------------------|
+    | 函数() 高于*                       | int *fp()            | fp是个函数指针，所指函数返回int | fp是个函数，返回 int*           |
+    |                                    |                      | int (*fp)()                     | int *(fp())                     |
+    |------------------------------------+----------------------+---------------------------------+---------------------------------|
+    | $==$和$!=$ 高于位操作符            | (val & mask != 0)    | (val & mask) != 0               | val & (mask != 0)               |
+    | $==$和$!=$ 高于赋值运算符          | c = getchar() != EOF | (c = getchar()) != EOF          | c = (getchar() != EOF)          |
+    | 算术运算高于移位运算               | msb << 4 + lsb       | (msb << 4) + lsb                | msb << (4 + lsb)                |
+    | 逗号运算符在所有运算符中优先级最低 | i = 1,2              | i= (1,2)                        | (i = 1), 2                      |
+*** 2.4 少做之过
+**** 2.4.1 用户名中若有字母f, 便不能收到邮件
+     * argv 的参数解析问题
+**** 2.4.2 空格 -- 最后的领域
+     * "\" 转义
+     * 缺少空格可能导致的编译问题
+**** 2.4.3 C++ 的另一种注释形式
+     #+begin_src c
+       a //*
+       //*/ b
+     #+end_src
+     书中原文:
+     #+begin_quote
+     is a/b in C, but is a in C++. The C++ language allows the C notation for comments, too.
+     #+end_quote
+     但在OS X 10.15.3 上测试，C和C++都为a
+**** 2.4.4 编译器日期被破坏
+     #+begin_src c
+       /* Convert the source file timestamp into a localized date
+          string */
+       char *
+       localized_time(char * filename)
+       {
+           struct tm *tm_ptr;
+           struct stat stat_block;
+           char buffer[120];
+           /* get the sourcefile's timestamp in time_t format */
+           stat(filename, &stat_block);
+           /* convert UNIX time_t into a struct tm holding local time
+            ,*/
+           tm_ptr = localtime(&stat_block.st_mtime);
+
+           /* convert the tm struct into a string in local format */
+           strftime(buffer, sizeof(buffer), "%a %b %e %T %Y", tm_ptr);
+           return buffer;
+       }
+     #+end_src
+     buffer 是一个局部变量，离开函数后可能被覆盖.
+     解决方案:
+     1. 返回指向字符串常量的指针，适用于简单字符串
+     2. 使用全局变量
+     3. 使用静态变量
+     4. 显示分配内存
+     5. 要求调用者分配内存并指定大小
+* 3 分析C语言的声明
+** 3.1 只有编译器会喜欢的语法
+   #+begin_src c
+     char (*j)[20]; /* j 是一个指向数组的指针，数组内有20个元素 */
+     j = (char (*j)[20])malloc(20);
+
+     const int *grape;        /* 指向对象只读 */
+     const *int grape;        /* 指向对象只读 */
+     int *const graple_jelly; /* 指针只读     */
+
+     /* 指针和指向对象都只读 */
+     const int *const grape_jam;
+     int const *const grape_jam;
+   #+end_src
+** 3.3 优先级规则[fn:1]
+   1. 声明从它的名字开始读取，然后按优先级顺序
+   2. 优先级从高到低依次是
+      1) 声明中被括起来的部分
+      2) 后缀操作符:
+         括号() 表示这是一个函数，而方括号[] 表示这是一个数组
+      3) 前缀操作符: 星号*表示 "指向...的指针"
+   3. 如果 const 和 (或) volatile 关键字的后面紧跟类型说明符(如 int, long 等), 那么它作用于类型说明符. 在其它情况下，const 和(或) volatile 关键字作用于它左边紧邻的指针星号
+
+** 3.4 通过图表分析 C 语言的声明
+   #+begin_src c
+     char *const *(*next)();
+   #+end_src
+   next 是一个指向函数的指针，返回类型为 char * const *
+** 3.6 ~typedef int x[10]~ 和 ~#define x int[10]~ 的区别
+   * 宏类型名可以扩展，typedef不可以
+   * typedef 定义的类型可以保证声明中所有的变量均为同一类型，define 不能
+     #+begin_src c
+       #define int_ptr int *
+       int_ptr chalk, cheese; /* int *chalk, cheese */
+
+       typedef char *char_ptr;
+       char_ptr Bentley, Rolls_Royce; /* char *Bentley; char *Rolls_Royce */
+     #+end_src
+** 3.8 理解所有分析过程的代码段
+   #+caption: 理解所有分析过程的代码段
+   #+include: "ch3/cdecl.c" src c
+* 4 数组和指针并不相同
+** 4.1 数组并非指针
+   #+BEGIN_SRC c
+     extern int *x;
+     extern int y[];
+   #+END_SRC
+   *第一条语句声明x是个int的指针; 第二条语句声明 y 是个int型数组，长度尚未确定*
+** 4.3 什么是声明，什么是定义
+   | 定义(definition)  | 只出现一次   | 确定对象的类型并分配内存，用于创建新的对象. 例如: ~int my_array[100];~ |
+   | 声明(declaration) | 可以多次出现 | 描述对象的类型，用于指代其他地方定义的对象                             |
+
+   #+begin_quote
+   声明(declaration) 相当于普通的声明: 描述其他地方的创建的对象
+   定义(definition) 相当于特殊的声明: 为对象分配内存
+   #+end_quote
+*** 4.3.2 "定义为指针，以数组引用"时会发生什么
+    #+begin_src c
+   extern char *p;
+    #+end_src
+    1. 取得p的地址，提取指针
+    2. 根据偏移量获取偏移地址
+    3. 访问偏移地址，获取值
+** 4.4 使声明与定义相匹配
+** 4.5 数组和指针的其他区别
+   #+caption: 数组和指针的区别
+   | 指针                                                                                               | 数组                                     |
+   |----------------------------------------------------------------------------------------------------+------------------------------------------|
+   | 保存数据的地址                                                                                     | 保存数据                                 |
+   | 间接访问数据 1. 取得指针的内存，把它作秋地址，然后从这个地址提取数据，如果指针有下标，则作为偏移量 | 直接访问数据，下标作为变量地址的偏移量   |
+   | 通常用于动态数据结构                                                                               | 通常用于存储固定数目且数据类型相同的元素 |
+   | 相关函数malloc(), free()                                                                           | 自动分配和释放                           |
+   | 通常指向匿名数据                                                                                   | 自身为数据名                             |
+* 5 对链接的思考
+** 5.2 动态链接的优点
+   1. 动态比静态体积小
+   2. 所有链接到特定函数库的可执行文件在运行时共享函数库的一个单独拷贝。
+
+   动态链接使得函数库升级更容易。
+
+   * 怎样在函数库中观察一个符号?
+   #+begin_quote
+   ~nm~ 命令在 =/usr/lib/= 的每个函数库中浏览所有的符号，从中寻找所丢失的符号。找不到就进一步扩展查找范围。
+   #+end_quote
+** 5.4 警惕 Interpositioning
+   实现库函数同名函数来取代库函数的行为。
+** 5.5 产生链接器报告文件
+   可以在 ~ld~ 程序中使用 "-m" 选项，让链接器产生一个报告。
+* 6 运动的诗章：运行时数据结构
+  #+begin_quote
+  There are three reasons to learn about the runtime system:
+  * It will help you tune code for the highest performance.
+  * It will help you understand more advanced material.
+  * It will help you diagnose problems more easily, when you run into trouble.
+  #+end_quote
+** 6.1 a.out
+   #+begin_quote
+   NAME
+          a.out - assembler and link editor output format
+   #+end_quote
+** 6.2 段
+   * A segment on UNIX is a section of related stuff in a binary.
+   * A segment in the Intel x86 memory model is the result of a design.
+
+   *BSS:* "Block Started by Symbol" （由符号开始的块）
+** 6.6 The =auto= and =static= keywords
+   自动变量在进入函数时在栈中分配内存, 函数退出时释放，随时可能被覆盖。(=auto= 关键字不需要显示输入）
+
+   静态变量会在数据段而非栈中分配内存，变量的生命周期即是程序的生命周期。
+* 7 Thanks for the Memory
+** 7.4 Cache Memory
+   small, expensive, but extremely fast memory buffer that sits somewhere between CPU and the physical memory.
+
+   #+caption: test for cache performance
+   #+include: "ch7/cache.c" src c
+** Segmentation Fault
+   #+include: "ch7/segmentation.c" src c
+** Programming Solution
+   #+caption: Using setjmp/longjmp to Recover from a Signal
+   #+include: "ch7/jump.c" src c
+* 8 为什么程序员无法分清万圣节和圣诞节
+* 9 再论数组
+** 9.1 什么时候数组与指针相同
+   作为函数的形参
+** 9.5 数组和指针可交换性的总结
+   1. 用 a[i] 这样的形式对数组进行访问总是被编译器 “改写” 或解释为像 *(a + 1) 这样的指针访问
+   2. 指针始终就是指针。
+   3. 在特定的上下文中，也就是它作为函数的参数时，数组的声明可以看作是一个指针。
+   4. 当把一个数组定义为函数的参数时，可以选择把它定义为数组，也可以定义为指针
+   5. 在其他所有情况中，定义和声腔明必须匹配。
+* 10 再论指针
+** 10.6 使用指针从函数返回一个数组
+   #+begin_src c
+     int (*paf())[20] {
+         int (*pear)[20];
+         pear = calloc(20, sizeof(int));
+         if (!pear) {
+             longjmp (error, 1);
+         }
+
+         return pear;
+     }
+   #+end_src
+* 11 你懂得C，所以C++也不在话下
+** 11.1 初识 OOP
+   #+caption: 表11-1 面向对象编程的关键概念
+   | 术语 | 定义                                                                   |
+   |------+------------------------------------------------------------------------|
+   | 抽象 | 去除对象中不重要细节的过程                                             |
+   | 类   | 用户定义的类型。包含类的操作, 类成员也称方法                           |
+   | 对象 | 某个类的特定变量。也可被称作类的实例                                   |
+   | 封装 | 把类型、数据和函数组合成一个类。C 语言中头文件是一个非常脆弱的封装实例 |
+   | 继承 | 允许类从一个更简单的基类中接收数据结构和函数。C 语言中不存在此概念     |
+** 11.2 抽象——取事物的本质物性
+   - 目标
+     - 隐藏不相关的细节
+     - 向外部提供一个“黑盒子”接口
+     - 把一个复杂的系统分解成几个相互独立的组成部分
+     - 重用和共享代码
+** 11.3 封装——把相关的类型、数据和函数组合在一起
+** 11.5 访问控制
+   - 作用多个声明
+   - public
+   - protected
+   - private
+   - friend: 不属于类的成员函数，但可以像类的成员函数一样访问类的 private 和 protected 成员。friend 可以是一个函数也可以是一个类。
+   - virtual: 虚函数，未提供实现
+** 11.10 重载——作用于不同类型的同一操作具有相同的名字
+   重载就是简单地复用一个现存的名字，但使它操作一个不同的类型。
+** 11.11 C++ 如何进程操作符重载
+    #+begin_src c
+      class Fruit {
+         public:
+          void peel();
+          void slice();
+          void juice();
+          int  operator+(Fruit &f);
+
+         private:
+          int weight, calories_per_oz;
+      }
+
+      int Fruit :
+          operator+(Fruit &f) {
+          printf("calling fruit addition\n");
+          return weight + f.weight;
+      }
+   #+end_src
+** 11.15 C++ 如何表现多态
+   #+begin_src c
+     class Fruit {
+        public:
+         virtual void peel() { "peeling a base class fruit\n"; }
+         void         slice();
+         void         juice();
+         int          operator+(Fruit &f);
+
+        private:
+         int weight, calories_per_oz;
+     }
+
+     class Apple : public Fruit {
+        public:
+         void peel() { printf("peeling an apple\n"); }
+         void make_candy_apple(float weight);
+     }
+   #+end_src
+* Footnotes
+
+[fn:1] 完整优先级列表可见 《C Primer Plus》: Page-908 Section II: C Operators

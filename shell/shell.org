@@ -1,0 +1,3 @@
+#+TITLE: daily command collection
+#+SETUPFILE: ~/Documents/style.setup
+

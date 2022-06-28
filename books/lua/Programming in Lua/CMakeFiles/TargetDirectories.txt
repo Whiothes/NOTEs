@@ -1,0 +1,5 @@
+/Users/zhoush/Documents/Notes/books/lua/Programming in Lua/CMakeFiles/rebuild_cache.dir
+/Users/zhoush/Documents/Notes/books/lua/Programming in Lua/CMakeFiles/edit_cache.dir
+/Users/zhoush/Documents/Notes/books/lua/Programming in Lua/Chapter27/CMakeFiles/rebuild_cache.dir
+/Users/zhoush/Documents/Notes/books/lua/Programming in Lua/Chapter27/CMakeFiles/edit_cache.dir
+/Users/zhoush/Documents/Notes/books/lua/Programming in Lua/Chapter27/CMakeFiles/fig27.1.dir

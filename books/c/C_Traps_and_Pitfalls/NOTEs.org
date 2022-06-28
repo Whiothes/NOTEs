@@ -1,0 +1,395 @@
+#+SETUPFILE: ~/Documents/style.setup
+#+LATEX_HEADER: \usepackage{ulem}
+#+LATEX_HEADER: \usepackage{ctex}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+
+#+TITLE: C 语言陷阱和缺陷
+* \S 1 词法"陷阱"
+** 1.1 = 和 ==
+   * = 是赋值
+   * == 是比较
+
+**  1.2 & 和 | 不同于 && 和 ||
+   * & 和 | 是位运算
+   * &&  和 || 是逻辑运算
+
+**  1.3 "贪心法"
+   * *每个符号包含尽可能多的字符*
+   * 符号的中间不能有空白
+   * a --- b 与 a -- - b 相同, 与 a - -- b 不同
+
+** 1.4 int
+   * [[file:ch1/int.c::#include <stdio.h>][以 0 开头的整型常量是 8 进制数]]
+     注意可能因对齐需要无意中将十进制数写成八进制数
+     #+begin_src c
+       struct
+       {
+           int part_number;
+           char *description;
+       } parttab[] = {
+                      046, "left-anded widget",
+                      047, "right-handed widget",
+                      125, "frammis"
+       };
+     #+end_src
+
+** 1.5 字符与字符串
+   * 单引号引起的一个字符代表一个整数, 值对应 ASCII 表
+   * 双引号代表指向无名数组起始字符的指针
+   * 字符串有一个额外的'\0'结尾
+
+** Ex
+   1.
+   2.
+   3. 贪心法：包含尽可能多的字符
+   4. a++不能作左值(结果未存储到变量)
+      [[file:ch1/comment.c::#include <stdio.h>]]
+
+* \S 2 语法"陷阱"
+** 2.1 理解函数声明
+   #+begin_src c
+     (* (void(*)())0)();
+   #+end_src
+
+   信号处理函数
+   #+begin_src c
+     void (*signal(int, void(*)(int)))(int);
+
+     /* 等价于 */
+     typedef void (*HANDLER)(int);
+     HANDLER signal(int, HANDLER);
+   #+end_src
+
+** 2.2 运算符的优先级问题
+   #+caption: C 语言运算符优先级表（由上至下递减）
+   | 运算符                        | 结合性 |
+   |-------------------------------+--------|
+   | () [] -> .                    | LR     |
+   | ! ~ ++ -- - (type) * & sizeof | RL     |
+   | ,* / %                        | LR     |
+   | +  -                          | LR     |
+   | <<  >>                        | LR     |
+   | <  <=  >  >=                  | LR     |
+   | $==$  $!=$                    | LR     |
+   | &                             | LR     |
+   | ^                             | LR     |
+   | $\vert$                       | LR     |
+   | &&                            | LR     |
+   | $\Vert$                       | LR     |
+   | ?:                            | RL     |
+   | assignments                   | RL     |
+   | ,                             | LR     |
+
+** 2.3 注意作为语句结束标志的分号
+   多出分号
+   #+begin_src c
+     if (x[i] > big);
+     big = x[i];
+
+     /* 等价于 */
+     if (x[i] > big) { }
+     big = x[i];
+
+     /* 等价于 */
+     big = x[i];
+   #+end_src
+   遗漏分号
+   #+begin_src c
+     if (n < 3)
+         return
+             logrec.date = x[0];
+     logrec.time = x[1];
+     logrec.code = x[2];
+
+     /* 等价 */
+     if (n < 3)
+         return logrec.date = x[0];
+   #+end_src
+
+** 2.4 ~switch~ 语句
+   ~case~ 要有 ~break~
+
+** 2.5 函数调用
+   函数调用即使不带参也要有参数列表
+   #+begin_src c
+     f();
+   #+end_src
+
+** 2.6 “悬挂” ~else~ 引发的问题
+   注意 ~else~ 对齐，以避免与对应 ~if~ 嵌套层级混淆
+
+** Ex
+   1. 可以方便自动生成代码
+   2. 大括号
+
+* \S 3 语义“陷阱”
+** 3.1 指针与数组
+   1. C 语言只有一维数组，而且数组的大小必须在编译期间就作为一个常数确定下来。
+   2. 对于一个数组，只能：确定数组大小，以及获得指向数组下标0的元素的指针。
+
+** 3.2 非数组的指针
+   分配内存空间，并在使用完成后释放
+
+** 3.3 作为参数的数组声明
+   数组名会被转换为指向该数组第1个元素的指针
+
+** 3.4 避免“举隅法”
+   #+begin_src c
+     char *p, *q;
+     p = "xyz";                      /* p 是一个指向 'x' 'y' 'z' '\0' 4个字符组成的数组的起始元素的指针 */
+     q = p;
+   #+end_src
+
+   #+caption: 图3.1 指针复制示意图
+   [[file:ch3/指针复制示意图.jpg]]
+
+   ~q[1]='Y'~ 这种修改行为不值得提倡
+
+** 3.5 空指针并非空字符串
+   0 被转换为指针使用时不能被解引用
+   #+begin_src c
+     if (p == (char *)0) {
+      } /* 合法 */
+     if (strcmp(p, (char *)0) == 0) {
+      } /* 非法 */
+   #+end_src
+
+** 3.6 边界计算与不对称边界
+   声明了 N 个元素的数组，实际上编译器分配了 N+1 个元素的空间，下标范围从 0 到 N-1。
+
+** 3.7 求值顺序
+   &&、||、?:、,
+
+   &&、|| 先对左而求值，结果不为 FALSE 时再对右侧求值
+
+   a ? b : c 先对a求值，TRUE 则对 b 求值，FALSE 则对 c 求值
+
+   , 先对左侧求值，然后丢弃，再对右侧求值
+
+** 3.8 运算符 && 、|| 和 !
+
+** 3.9 整数溢出
+   如果算术运算符中两个操作数都是有符号整数，“溢出”就有可能发生，且结果未定义。
+   正确做法是转换为无符号整数：
+   #+begin_src c
+     if ((unsigned) a + (unsigned) b > INT_MAX) {
+         complain();
+      }
+   #+end_src
+   或者
+   #+begin_src c
+     if (a > INT_MAX - b) {
+         complain();
+      }
+   #+end_src
+
+** 3.10 为函数 main 提供返回值
+
+* \S 4 连接
+** 4.1 什么是连接器
+   连接器读入目标模块和库文件，同时生成载入模块。对每个目标模块中的每个外部对象，连接器都要检查载入模块，看是否已有同名的外部对象。
+
+** 4.2 声明与定义
+   声明用于表明变量类型和名字
+
+   定义用于为变量分配空间
+
+   =extern= 关键字是显式说明变量的存储空间是在其他地方分配的，是引用而不是定义。
+
+** 4.3 命名冲突与 =static= 修饰符
+   两个具有相同名称的外部对象实际上代表同一个对象
+
+   =static= 修饰符会将变量的作用域限制在一个源文件内，对于其它源文件不可见。
+
+** 4.4 形参、实参与返回值
+   函数声明会有一个形参列表
+
+   函数调用会传入一个实参列表
+
+   函数声明的形参列表必须与函数调用的实参列表一致。
+
+** 4.5 检查外部类型
+   同一个外部变量名在不同的文件中的声明和引用必须类型一致。
+
+** 4.6 头文件
+   避免类型冲突：每个外部对象只在一个地方声明。（头文件）
+
+* \S 5 库函数
+** 5.1 返回整数的 ~getchar~ 函数
+   #+begin_src c
+     #include <stdio.h>
+
+     int main() {
+         char c;
+         while ((c = getchar()) != EOF) {
+             putchar(c);
+         }
+     }
+   #+end_src
+
+** 5.2 更新顺序文件
+   如果要同时进入输入和输出操作，必须在其中插入 ~fseek~ 函数的使用
+   #+begin_src c
+     FILE *        fp;
+     struct record rec;
+
+     /* ... */
+
+     while (fread((char *)&rec, sizeof(rec), 1, fp) == 1) {
+         /* 对 rec 执行某些操作 */
+         if (/* rec 必须被重新写入 */) {
+             fseek(fp, -(long)sizeof(rec), 1);
+             fwrite((char *)&rec, sizeof(rec), 1, fp);
+
+             fseek(fp, 0L, 1);
+         }
+      }
+   #+end_src
+
+** 5.3 缓冲输出与内存分配
+   即时处理方式将造成较高的系统负担，通常会暂存起来。
+   #+begin_src c
+     /*****************************************************************************/
+     /*        错在最后一次被清空是在main函数结束之后，但此前buf数组已释放        */
+     /* 解决方案: 1) static char buf[BUFSIZ];                                     */
+     /*           2) setbuf(stdout, malloc(BUFSIZ));                              */
+     /*****************************************************************************/
+
+     #include <stdio.h>
+
+     int main() {
+         int c;
+         char buf[BUFSIZE];
+
+         setbuf(stdout, buf);
+
+         while ((c = getchar()) != EOF) {
+             putchar(c);
+         }
+     }
+   #+end_src
+
+** 5.4 使用 =errno= 检测错误
+   在调用没有失败的情况下，没有要求 =errno= 置 0
+
+** 5.5 库函数 ~signal~
+   ~signal~ 函数应该尽可能地简单
+
+* \S 6 预处理器
+** 6.1 不能忽视宏定义中的空格
+   #+begin_src c
+     #define f (x) ((x)-1)
+   #+end_src
+   f 代表 (x) ((x)-1)
+
+** 6.2 宏并不是函数
+   变量需要加括号，以预防引起与优先级有关的问题
+
+** 6.3 宏并不是语句
+   #+begin_src c
+     #define assert(e)                               \
+         if (!e) assert_error(__FILE__, __LINE__);
+
+     if (x > 0 && y > 0)
+         assert( x > y);
+     else
+         assert( y > x);
+
+     /* 展开后 */
+     if (x > 0 && y > 0)
+         if (!x > y) assert_error("assert.c", 8);
+     ;
+      else if (!y > x) assert_error("assert.c", 10);
+     ;
+   #+end_src
+
+   解决方案：
+   #+begin_src c
+     #define assert(e)                                                              \
+         (void)((e) || __assert_error(__func__, __FILE__, __LINE__))
+
+     /* 展开后 */
+     if (x > 0 && y > 0)
+         (void)((x > y) || __assert_error(__func__, "assert.c", 5));
+     else
+         (void)((y > x) || __assert_error(__func__, "assert.c", 7));
+   #+end_src
+
+** 6.4 宏并不是类型定义
+   #+begin_src c
+     #define T1 struct foo *
+     typedef struct foo *T2;
+
+     T1 a, b;                        /* struct * a, b */
+     T2 a, b;                        /* struct foo *a, *b */
+   #+end_src
+
+* \S 7 可移植性缺陷
+** 7.1 应对C语言标准变更
+
+** 7.2 标识符名称的限制
+   部分C实现会自动截断一些长标识符的尾部，C 实现必须能够区分出前6个字符不同的外部名称。
+
+** 7.3 整数的大小
+   1. 3 种类型的整数其长度是非递减的。
+   2. 一个普通（int 类型）整数足以容纳任何数组下标
+   3. 字符长度由硬件特性决定
+
+** 7.4 字符是有符号整数还是无符号整数
+   强制类型转换
+
+** 7.5 移位运算符
+   1. 向右移位时，空出的位是由0填充，还是由符号位副本填充？
+
+      无符号数由0填充，有符号数既可以用0，也可以用符号位的副本填充。
+
+   2. 移位计数（即移位操作的位数）允许的取值范围是什么
+
+      移位计数必须 >= 0，而 < n。
+
+** 7.6 内存位置0
+   null 指针不指向任何对象。除非用于赋值或比较运算，否则使用null非法。
+
+** 7.7 除法运算时发生的截断
+   使用 C 和 Python 分别计算 $-3 / 2$，查看结果
+
+   程序在设计时应该避免被除数为负，并且声明为无符号数
+
+** 7.8 随机数的大小
+   =RAND_MAX=
+
+** 7.9 大小写转换
+   #+begin_src c
+     #define toupper(c) ((c) + 'A' - 'a')
+     #define tolower(c) ((c) + 'a' - 'A')
+   #+end_src
+   依赖于特定字符集
+
+   增加调用函数的开销，但是保证在不同字符集下的通用性
+   #+begin_src c
+     int toupper(int c) {
+         if (c >= 'a' && c <= 'A') return c + 'A' - 'a';
+         return c;
+     }
+   #+end_sr
+
+** 7.10 首先释放，然后重新分配
+   有些较老的C程序先 free 再 realloc
+
+** 7.11 可移植性问题的一个例子
+
+* \S 8 建议与答案
+** 8.1 建议
+*** 不要说服自己相信“皇帝的新装”
+    条件语句中的 = 和 ==
+*** 直接了当地表明意图（可读性）
+    使用括号或其他方式让意图尽可能清晰
+*** 考查最简单的特例
+    在设计程序时，首先考虑输入数据全为空的情形
+*** 使用不对称边界
+    \S 3.6
+*** 注意潜伏在暗处的Bug
+    坚持只使用C语言中众所周知的部分，避免使用“生僻”的语言特性
+*** 防御性编程
+    对程序用户和编译器实现的假设不要过多

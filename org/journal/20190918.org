@@ -1,0 +1,8 @@
+#+SETUPFILE: ~/Documents/style.setup
+* <2019-09-18 Wed> 商米
+** DONE 终端管理类交易
+   CLOSED: [2019-09-18 Wed 09:33]
+*** DONE termianl status upload
+    CLOSED: [2019-09-18 Wed 09:32]
+*** DONE terminal key downloda
+    CLOSED: [2019-09-18 Wed 09:32]

@@ -1,0 +1,5 @@
+* <2021-09-08 09:08>
+** Time
+   Committing: 10:43
+** NOTE
+   * --newservername 指定的名称不能重复使用, 删除 private 和 backup 无效: 所以 相关数据的存储位置在哪?

@@ -1,0 +1,41 @@
+#+STARTUP: inlineimages:png
+#+SETUPFILE: ~/Documents/style.setup
+#+OPTIONS: num:nil
+#+LATEX_HEADER: \usepackage{ulem}
+#+LATEX_HEADER: \usepackage{ctex}
+#+LaTex_HEADER: \usepackage{lipsum}
+#+LaTex_HEADER: \usepackage{tcolorbox}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+AUTHOR: whiothes
+#+title: TCP/IP Illustrated
+* TCP/IP Illustrated Vol.1
+** Chapter 1 Introduction
+*** 1.1 Architectural Principles
+**** 1.1.1 Packets, Connections, and Datagrams
+     Establishing a connection meant that a circuit (initially, a physical electrical circuit) was made between one telephone and another, for the duration of a call.
+
+
+     In packet switching, "chunks" (packets) of digital information comprising some number of bytes are carried through the network somewhat independently. Chunks coming from different sources or senders can be mixed together and pulled apart later, which is called multiplexing.
+
+
+     When packets are received at a packet switch, they are ordinarily stored in buffer memory or queue and procesed in a first-come-first-served (FCFS) fashion.
+
+
+     A datagram is a special type of packet in which all the identifying information of the source and final destination resides inside the packet itself (instead of in the packet switches).
+
+
+
+
+** Chapter 2 The Internet Address Architecture
+** Chapter 12 TCP: The Transmission Control Protocol (Preliminaries)
+*** 12.1 Introduction
+*** 12.2 Introduction to TCP
+*** 12.3 TCP Header and Encapsulation
+    * format: [IP Header][TCP Header][TCP (Application) Data]
+      * IP Header: 20 bytes - IPv4, no options, 40 bytes - IPv6
+      * TCP Header: 20 bytes, no options
+
+
+*** 12.4 Summary
+*** 12.5 References

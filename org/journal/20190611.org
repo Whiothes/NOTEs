@@ -1,0 +1,34 @@
+#+SETUPFILE: ~/Documents/style.setup
+* <2019-06-11 Tue>
+** CyberSource Meeting
+*** CTV (CyberSource Through VisaNet)
+    1. 授权它行亦由Visa转处理
+*** 请款时间
+    1. 北京时间 0 点
+*** API 对接
+    1. 交易类型
+       1. Auth
+       2. Capture
+          1. 需要在CyberSource请款时间之前发送请款
+          2. 等待CyberSource请款
+       3. Sale
+          Auth + Capture
+       4. Void
+          for Capture and Refund
+       5. Auth Reversal
+          发起请款前冲正交易
+       6. Refund
+          与auth reversal的区别：费用
+*** Fields
+    MerchantReference = mer_map_id
+    requestID = order_no
+    ccCaptureReplay_reconsilationID : for account capture
+*** 需求
+    1. 密钥体系：设备选型
+    2. 测试环境
+    3
+** SunMi Meeting
+*** 认证
+    1. 是否必须 8583
+    2. 币种
+       交易币种, 结算币种, 标价币种

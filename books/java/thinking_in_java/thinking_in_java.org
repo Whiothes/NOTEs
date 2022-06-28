@@ -1,0 +1,17 @@
+#+OPTIONS: num:nil
+#+SETUPFILE: ~/Documents/style.setup
+* Introduction to Objects
+** The progress of abstraction
+   1. Everything is an boject
+   2. A program is a bunch of objects telling each other what to do by sending message
+   3. Each object has its own memory made up of other objects
+   4. Every object has a type
+   5. All objects of a particular type can receive the same messages
+** An object has an interface
+** An boject provides services
+** The hidden implementation
+** Reusing the implementation
+** Inheritance
+** Is-a vs. is-like-a relationships
+** Interchangeable objects with polymorphism
+ 

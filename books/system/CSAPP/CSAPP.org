@@ -1,0 +1,1721 @@
+#+SETUPFILE: ~/Documents/style.setup
+#+STARTUP: align
+#+LATEX_HEADER: \usepackage{ulem}
+#+LATEX_HEADER: \usepackage{ctex}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+AUTHOR: whiothes
+
+* Computer System: A Programmer's Perspective [fn:1]
+** Chapter A Tour of Computer System
+*** 1.7 The Operating System Manages the Hardware
+    #+begin_quote
+    The operating system has two primary purposes:
+    (1) to protect the hardware from misuse by runaway applications
+    (2) to provide applications with simple and uniform mechanisms for manipulating complicated and often wildly different low-level hardware devices.
+    #+end_quote
+**** 1.7.3 Virtual Memory
+     * *Program code and data.* Code begins at the same fixed address for all processes, followed by data locations that correspond to global C variables.
+     * *Heap.* ~malloc~ and ~free~.
+     * *Shared libraries. *
+     * *Stack.* top of user's virtual address space.
+     * *Kernel virtual memory*: The top region of the address space is reserved for the kernel.
+** Chapter 3 Machine-Level Representation of Programms
+*** 3.1 A Historical Perspective
+*** 3.2 Program Encodings
+**** 3.2.1 Machine-Level Code
+
+     processor state are visible that normally are hidden from the C programmer
+     #+begin_quote
+     * The /program counter/ (%rip in x86-64) indicates the address in memory of the next instruction to be executed
+     * The integer /register file/ contains 16 named locations storing 64-bit values.
+     * The condition code register hold status information about the most recently executed arithmetic or logical instruction.
+     * A set of vector registers can each hold one or more integer or floating-point values.
+     #+end_quote
+**** 3.2.2 Code Examples
+     #+caption: mstore.c
+     #+include: "ch3/mstore.c"
+
+     generate assembly code by C compiler:
+     #+begin_src sh
+       linux> gcc -Og -S mstore.c
+     #+end_src
+
+     * Aside How do I display the byte representation of a program?
+       #+begin_quote
+       (gdb) x/14xb multstore
+       0x0 <multstore>:        0x53    0x48    0x89    0xd3    0xe8    0x00    0x00    0x00
+       0x8 <multstore+8>:      0x00    0x48    0x89    0x03    0x5b    0xc3
+       #+end_quote
+       ~objdump -d mstore.o~ get detail.
+
+       #+begin_src asm
+                 0:   53                      push   %rbx
+                 1:   48 89 d3                mov    %rdx,%rbx
+                 4:   e8 00 00 00 00          callq  9 <multstore+0x9>
+                 9:   48 89 03                mov    %rax,(%rbx)
+                 c:   5b                      pop    %rbx
+                 d:   c3                      retq
+       #+end_src
+
+       #+begin_src sh
+         gcc -Og -o prog main.c mstore.c
+         objdum -d prog
+       #+end_src
+
+
+     #+begin_src asm
+               prog:     file format elf64-x86-64
+
+               0000000000400563 <mult2>:
+                 400563:       48 89 f8                mov    %rdi,%rax
+                 400566:       48 0f af c6             imul   %rsi,%rax
+                 40056a:       c3                      retq
+
+               000000000040056b <multstore>:
+                 40056b:       53                      push   %rbx
+                 40056c:       48 89 d3                mov    %rdx,%rbx
+                 40056f:       e8 ef ff ff ff          callq  400563 <mult2> ; callq use in calling the function
+                 400574:       48 89 03                mov    %rax,(%rbx)
+                 400577:       5b                      pop    %rbx
+                 400578:       c3                      retq
+                 400579:       0f 1f 80 00 00 00 00    nopl   0x0(%rax) ;  inserted to grow the code for the function 16-bytes
+     #+end_src
+
+**** 3.2.3 Notes on Formating
+     ~[root@iz2zea5bxfhn21swfxzfzmz CSAPP]# gcc -Og -S mstore.c~
+     #+begin_src asm
+                       .file   "mstore.c"
+                       .text
+                       .globl  multstore
+                       .type   multstore, @function
+               multstore:
+               .LFB0:
+                       .cfi_startproc
+                       pushq   %rbx
+                       .cfi_def_cfa_offset 16
+                       .cfi_offset 3, -16
+                       movq    %rdx, %rbx
+                       call    mult2
+                       movq    %rax, (%rbx)
+                       popq    %rbx
+                       .cfi_def_cfa_offset 8
+                       ret
+                       .cfi_endproc
+               .LFE0:
+                       .size   multstore, .-multstore
+                       .ident  "GCC: (GNU) 4.8.5 20150623 (Red Hat 4.8.5-39)"
+                       .section        .note.GNU-stack,"",@progbits
+
+     #+end_src
+
+*** 3.3 Data Formats
+    #+caption: Sizes of C data types in x86-64.
+    | C declaration | Intel data type  | Assembly-code suffix | Size(bytes) |
+    |---------------+------------------+----------------------+-------------|
+    | char          | Byte             | b                    |           1 |
+    | short         | Word             | w                    |           2 |
+    | int           | Double word      | l                    |           4 |
+    | long          | Quad word        | q                    |           8 |
+    | char *        | Quad word        | q                    |           8 |
+    | float         | single precision | s                    |           4 |
+    | double        | double precision | l                    |           8 |
+
+*** 3.4 Acessing Information
+    #+caption: Figure 3.2 Integer registers
+    [[file:ch3/registers.jpg]]
+
+
+**** 3.4.1 Operand Specifiers
+     #+caption: 3.3. Operand forms
+     | Type      | Form         | Operand value                 | Name                |
+     |-----------+--------------+-------------------------------+---------------------|
+     | Immediate | $Imm         | Imm                           | Immediate           |
+     | Register  | r            |                               |                     |
+     | Memory    | Imm          |                               | Absolute            |
+     | Memory    | (r )         | M[R[ r  ]]                    | Indirect            |
+     | Memory    | Imm (r )     | M[Imm + R[ r  ]]              | Base + displacement |
+     | Memory    | (r r )       | M[R[ r  ] + R[ r  ]]          | Indexed             |
+     | Memory    | Imm(r, r )   | M[Imm + R[r ] + R[r ]]        | Indexed             |
+     | Memory    | (,r ,s)      | M[R[r] \cdot s]               | Scaled indexed      |
+     | Memory    | Imm(,r ,s)   | M[Imm + R[r ] \cdot s]        | Scaled indexed      |
+     | Memory    | (r ,r ,s)    | M[R[r] + R[r] \cdot s]        | Scaled indexed      |
+     | Memory    | Imm(r ,r ,s) | M[Imm + R[r ] + R[r] \cdot s] | Scaled indexed      |
+
+*******ractice Problem 3.1
+      | Address  | Value |
+      |----------+-------|
+      | 0x100    |  0xFF |
+      | 0x104    |  0xAB |
+      | 0x108    |  0x13 |
+      | 0x10C    |  0x11 |
+      |          |       |
+      | Register | Value |
+      |----------+-------|
+      | %rax     | 0x100 |
+      | %rcx     |   0x1 |
+      | %rdx     |   0x3 |
+
+      Fill the Value (NOTE is the process)
+      | Operand         | Value | NOTE                      |
+      |-----------------+-------+---------------------------|
+      | %rax            | 0x100 |                           |
+      | 0x104           |  0xAB |                           |
+      | $0x108          | 0x108 |                           |
+      | (%rax)          |  0xFF | 0x100                     |
+      | 4(%rax)         |  0xAB | 0x100 + 4                 |
+      | 9($rax, %rdx)   |  0x11 | 0x100 + 0x3 + 9   = 0x10C |
+      | 260(%rcx,%rdx)  |  0x13 | 0x1 + 0x3 + 0x104 = 0x108 |
+      | 0xFC(, %rcx, 4) |  0x13 | 0xFC + 0x1 * 4    = 0x108 |
+      | (%rax, %rdx, 4) |  0x11 | 0x100 + 0x3 * 4   = 0x10C |
+
+**** 3.4.2 Data Movement Instructions
+     #+caption: Figure 3.4 Simple data movement instructions
+     | Instruction |      | Effect | Description             | size |
+     |-------------+------+--------+-------------------------+------|
+     | Movement    | S, D | D <- S | Move S to D             |      |
+     |-------------+------+--------+-------------------------+------|
+     | movb        |      |        | move byte               |    1 |
+     | movw        |      |        | move word               |    2 |
+     | movl        |      |        | move double word        |    4 |
+     | movq        |      |        | move quad word          |    8 |
+     | moveabsq    | I,R  | R <- I | move absolute quad word |    8 |
+
+
+     - [[https://www.youtube.com/watch?v=ViP6V-U4y8M&list=PLcQU3vbfgCc9sVAiHf5761UUApjZ3ZD3x&index=5][CMU 15213/15513 CSAPP 深入理解计算机系统 Lecture 05 Machine Level Programming I Basics 中英字幕 - YouTube]]
+     movq:
+     |      | src | dst | src, dst           | C Analog      |
+     |------+-----+-----+--------------------+---------------|
+     | movq | Imm | Reg | movq $0x4, %rax    | temp = 0x4    |
+     |      |     | Mem | movq $-147, (%rax) | *p = -147     |
+     |      | Reg | Reg | movq %rax, %rdx    | temp2 = temp1 |
+     |      |     | Mem | movq %rax, (%rdx)  | *p = temp     |
+     |      | Mem | reg | movq (%rax), %rdx  | temp = *p     |
+
+
+     C:
+     #+begin_src c
+       void swap(long *xp, long *yp)
+       {
+               long t0 = *xp;
+               long t1 = *yp;
+               ,*xp = t1;
+               ,*yp = t0;
+       }
+     #+end_src
+
+     assembly:
+     #+begin_src asm
+               swap:
+                 movq (%rdi), %rax             ; t0 = *xp
+                 movq (%rsi), %rdx             ; t1 =*yp
+                 movq %rdx, (%rsi)             ; *xp = t1
+                 movq %rax, (%rdi)             ; *yp = t0
+                 ret
+     #+end_src
+
+     * Aside Understanding how data movement changes a destination register
+       #+begin_src asm
+                 movabsq $0x00111223344556677, %rax
+                 ;; %rax = 0011223344556677
+                 movb $-1, %al
+                 ;; %rax = 00112233445566FF
+                 movw $-1, %ax
+                 ;; %rax = 001122334455FFFF
+                 movl $-1, %eax
+                 ;; %rax = 00000000FFFFFFFF
+                 movq $-1, %rax
+                 ;; %rax = FFFFFFFFFFFFFFFF
+       #+end_src
+
+
+     #+caption: Figure 3.5 Zero-extending data movement instructions
+     | Instruction | Effect            | Description                            |
+     |-------------+-------------------+----------------------------------------|
+     | MOVZ S,R    | R<--ZeroExtend(S) | Move with zero extension               |
+     | movzbw      |                   | move zero-extended byte to word        |
+     | movzbl      |                   | move zero-extended byte to double word |
+     | movzwl      |                   | move zero-extended word to double word |
+     | movzbq      |                   | move zero-extended byte to quad word   |
+     | movzwq      |                   | move zero-extended word to quad word   |
+
+     #+caption: Figure 3.6 Sign-extending data movement instructions
+     | Instruction | Effect                    | Description                                |
+     |-------------+---------------------------+--------------------------------------------|
+     | MOVS S,R    | R<--SignedExtend(S)       | Move with sign extension                   |
+     | movsbw      |                           | Move sig-extended byte to word             |
+     | movsbl      |                           | move sign-extended byte to word            |
+     | movswl      |                           | move sign-extended byte to double word     |
+     | movsbq      |                           | move sign-extended word to double word     |
+     | movswq      |                           | move sign-extended byte to quad word       |
+     | movslq      |                           | ove sign-extended double word to quad word |
+     | cltq        | %rax<--SignedExtend(%eax) | Sign-extend %eax to %rax                   |
+
+***** Practice Problem 3.2
+
+       fill the mov_
+       #+begin_src asm
+                 movl  %eax, (%rsp)
+                 movw  (%rax), %dx
+                 movb  $0xFF, %bl
+                 movb  (%rsp, %rdx, 4), %dl
+                 movq  (%rdx), %rax
+                 movw  %dx, (%rax)
+       #+end_src
+
+
+       * Aside Comparing byte movement instructions
+         #+begin_src asm
+                   movabsq $0x0011223344556677, %rax
+                   ;; %rax = 0011223344556677
+                   movb $0xAA, %dl
+                   ;; %dl = AA
+                   movb %dl, %al
+                   ;; %rax = 00112233445566AA
+                   movsbq %dl, %rax
+                   ;; %rax = FFFFFFFFFFFFFFAA
+                   movzbq %dl, %rax
+                   ;; %rax = 00000000000000AA
+         #+end_src
+
+*******ractice Problem 3.3
+
+      Explain why error generated
+      #+begin_src asm
+                movb $0xF, (%ebx)               ; %ebx cannot be address register
+                movl %rax, (%rsp)               ; mismatch between instruction suffix and register ID
+                movw (%rax), 4(%rsp)            ; cannot have both source and destination be memory references
+                movb %al, %sl                   ; no register named %sl
+                movq %rax, $0x123               ; cannot have immediate as destination
+                movl %eax, %rdx                 ; should be movq
+                movb %si, 8(%rbp)               ; mismatch between instruction suffix and register ID
+      #+end_src
+
+**** 3.4.3 Data Movement Example
+     #+caption: Figure 3.7 C and assembly code for exchange routine
+     a. C code
+     #+begin_src c
+       long exchange(long *xp, long y)
+       {
+               long x = *xp;
+               ,*xp = y;
+               return x;
+       }
+     #+end_src
+     b. Assembly code
+     #+begin_src asm
+               exchange:
+                 movq (%rdi), %rax
+                 movq %rsi, (%rdi)
+                 ret
+     #+end_src
+
+***** Practice Problem 3.4
+      Assume variables sp and dp are declared with types
+      #+begin_src c
+        src_t *sp;
+        dest_t *dp;
+      #+end_src
+      to implement the operation:
+      #+begin_src c
+        ,*dp = (dest_t) *sp;
+      #+end_src
+
+      | src_t         | dest_t   | Instruction                                | Comments                  |
+      |---------------+----------+--------------------------------------------+---------------------------|
+      | long          | long     | movq (%rdi), %rax                          | Read 8 bytes              |
+      |               |          | movq %rax, (%rsi)                          | Store 8 bytes             |
+      |---------------+----------+--------------------------------------------+---------------------------|
+      | char          | int      | movsbl (%rdi), %eax                        | Convert char to int       |
+      |               |          | movl %eax, (%rsi)                          | Store 4 bytes             |
+      |---------------+----------+--------------------------------------------+---------------------------|
+      | char          | unsigned | movzbl (%rdi), %eax                        | Convert char to int       |
+      |               |          | movl %eax, (%rsi)                          | sotre 4 bytes             |
+      |---------------+----------+--------------------------------------------+---------------------------|
+      | unsigned char | long     | movzbl (%rdi), %ax [movzbq (%rdi), %rax)?] | Read byte and zero-extend |
+      |               |          | movq %rax, (%rsi)                          | Store 8 bytes             |
+      |---------------+----------+--------------------------------------------+---------------------------|
+      | int           | char     | movl (%rdi), %eax                          | Read 4 bytes              |
+      |               |          | movb %al, (%rsi)                           | Store low-order bytes     |
+      |---------------+----------+--------------------------------------------+---------------------------|
+      | unsigned      | unsigned | movl (%rdi), %eax                          | Read 4 bytes              |
+      |               | char     | movb %al, (%rsi)                           | Store low-order bytes     |
+      |---------------+----------+--------------------------------------------+---------------------------|
+      | char          | short    | movsbw (%rdi), %ax                         | Read byte and sign-extend |
+      |               |          | movw %ax, (%rsi)                           | Store 2 bytes             |
+
+*******ractice Problem 3.5
+      A function with prototype
+      #+begin_src c
+        void decodel(long *xp, long *yp, long *zp);
+      #+end_src
+
+      compiled into assembly code, yielding the following
+      #+begin_src asm
+                  void decodel(long *xp, long *yp, long *zp)
+                  xp in %rdi, yp in %rsi, zp in %rdx
+                decodel:
+                  movq (%rdi), %r8
+                  movq (%rsi), %rcx
+                  movq (%rdx), %rax
+                  movq %r8, (%rsi)
+                  movq %rcx, (%rdx)
+                  movq %rax, (%rdi)
+                  ret
+      #+end_src
+
+      C code for =decodel=
+      #+begin_src c
+        void decodel(long *xp, long *yp, long *zp) {
+                long x, y, z;
+
+                ,*xp = x;
+                ,*yp = y;
+                ,*zp = z;
+
+                x = *yp;
+                y = *zp;
+                z = *xp;
+        }
+
+
+        /* REVISE */
+        /* move LEFT to RIGTH! */
+        void decodel(long *xp, long *yp, long *zp) {
+                long x = *xp;
+                long y = *yp;
+                long z = *zp;
+
+                ,*yp = x;
+                ,*zp = y;
+                ,*xp = z;
+        }
+      #+end_src
+
+**** 3.4.4 Pushing and Popping Stack Data
+     #+caption: Figure 3.8 Push and pop instruction
+     | Instruction | Effect                  | Description    | Equivalent to                                 |
+     |-------------+-------------------------+----------------+-----------------------------------------------|
+     | pushq S     | R[%rsp] <- R[%rsp] - 8; | Push quad word | subq $8, %rsp       # Decrement stack pointer |
+     |             | M[R[%rsp]] <- S         |                | movq %rbp, (%rsp)   # Store %rbp on stack     |
+     | popq S      | D <- M[R[%rsp]];        | pop quad word  | movq %(rsp), %rax   # Read %rax from stack    |
+     |             | R[%rsp] <- R[%rsp] + 8  |                | addq $8, %rsp       # Increment stack pointer |
+
+*** 3.5 Arithmetic and Logical Operations
+
+**** 3.5.1 Load Effective Address
+     - Note taken on [2021-01-10 Sun 22:19] \\
+       [[https://stackoverflow.com/questions/44694957/the-difference-between-logical-shift-right-arithmetic-shift-right-and-rotate-r#44695162][bit manipulation - The difference between logical shift right, arithmetic shift right, and rotate right - Stack Overflow]]
+     /load effective address/ instruction =leaq= is actually a variant of the =movq= instruction.
+     #+caption: Figure 3.10 Integer arithmetic operations
+     +-------------------+--------------------+--------------------------+
+     |    Instruction    |       Effect       |       Description        |
+     +-------------+-----+--------------------+--------------------------+
+     | leaq        | S,D | D <- &S            | Load effective address   |
+     | INC         | D   | D <- D+1           | Increment                |
+     | DEC         | D   | D <- D-1           | Decrement                |
+     | NEG         | D   | D <- -D            | Negate                   |
+     | NOT         | D   | D <- ~D            | Complement               |
+     | Add         | S,D | D <- D + S         | Add                      |
+     | SUB         | S,D | D <- D - S         | Subtract                 |
+     | IMUL        | S,D | D <- D * S         | Multiply                 |
+     | XOR         | S,D | D <- D ^ S         | Exclusive-or             |
+     | OR          | S,D | D <- D \ver S      | Or                       |
+     | AND         | S,D | D <- D & S         | And                      |
+     | SAL         | k,D | D <- D << k        | Left shift               |
+     | SHL         | k,D | D <- D << k        | Left shift (same as SAL) |
+     | SAR         | k,D | D <- D >> $_{A}$ k | Arithmetic right shift   |
+     | SHR         | k,D | D <- D >> $_{L}$ k | Logical right shift      |
+     +-------------+-----+--------------------+--------------------------+
+
+***** Practice Problem 3.6
+
+      Fill the result
+      (%rax = x, %rcx = y)
+      | Instruction                   | Result     |
+      |-------------------------------+------------|
+      | ~leaq 6(%rax), %rdx~          | 6 + x      |
+      | ~leaq (%rax, %rcx), %rdx~     | x + y      |
+      | ~leaq (%rax, %rcx, 4), %rdx~  | x + 4y     |
+      | ~leaq 7(%rax, %rax, 8), %rdx~ | 7 + 9x     |
+      | ~leaq 0xA(, %rcx, 4), %rdx~   | 10 + 4y    |
+      | ~leaq 9(%rax, %rcx, 2), %rdx~ | 9 + x + 2y |
+
+
+      consider the following C program:
+      #+begin_src c
+        long scale(long x, long y, long z) {
+                long t = x + 4 * y + 12 * z;
+                return t;
+        }
+      #+end_src
+
+      #+begin_src asm
+                ;; long scale(long x, long y, long z)
+                  ;; x in %rsi, y in %rdi, z in %rdx
+                scale:
+                  leaq (, %rsi, 4), %rax        ; x + 4*y
+                  leaq (%rdx, %rdx, 2), %rdx    ; z + 2*z = 3 * z
+                  leaq (%rax, %rdx, 4), %rax    ; (x + 4*y) + 4 * (3 * z) = x + 4 * y + 12 * z;
+                  ret
+      #+end_src
+
+*******ractice Problem 3.7
+      fill the C code from asm
+      #+begin_src c
+        long scale2(long x, long y, long z) {
+                long t = 5 * x + 2 * y + 8 * z;
+                return t;
+        }
+      #+end_src
+
+      #+begin_src asm
+                  ;; long scale2(long x, long y, long z)
+                  ;; x in %rdi, y in %rsi, z in %rdx
+                scale2:
+                  leaq (%rdi, %rdi, 4), %rax    ; y + 4x = 5x
+                  leaq (%rax, %rsi, 2), %rax    ; 5x + 2y
+                  leaq (%rax, %rdx, 8), %rax    ; 5x + 2y + 8z
+                  ret
+      #+end_src
+
+**** 3.5.2 Unary and Binary Operations
+
+***** Practice Problem 3.8
+      Assume the following values are stored
+      | Address  | Value |
+      |----------+-------|
+      | 0x100    |  0xFF |
+      | 0x108    |  0xAB |
+      | 0x110    |  0x13 |
+      | 0x118    |  0x11 |
+      |          |       |
+      | Register | Value |
+      |----------+-------|
+      | ~%rax~   | 0x100 |
+      | ~%rcx~   |   0x1 |
+      | ~%rdx~   |   0x3 |
+
+      | Instruction                   | Destination   | Value | Detail and rectify |
+      |-------------------------------+---------------+-------+--------------------|
+      | ~addq  %rcx, (%rax)~          | 0x100         | 0x100 | 0xff + 0x1         |
+      | ~subq  $rdx, 8(%rax)~         | 0x108         |  0xA8 | 0xAB - 0x3         |
+      | ~imulq $16, ( %rax, %rdx, 8)~ | 0x118         | 0x110 | 0x11 * 16          |
+      | ~incq  16(%rax)~              | 0x100 (0x110) |       | 0x14 (0x13 + 1)    |
+      | ~decq  %rcx~                  | %rcx          |   0x0 | 0x1 - 1            |
+      | ~subq  %rdx, %rax~            | %rax          |  0xFD | 0xff - 0x3         |
+
+**** 3.5.3 Shift Operations
+
+*******ractice Problem 3.9
+      C function:
+      #+begin_src c
+        long shift_left4_rightn(long x, long n)
+        {
+                x <<= 4;
+                x >>=n ;
+                return x;
+        }
+      #+end_src
+      assembly:
+      #+begin_src asm
+                  ;; long shift_left4_rightn(long x, long n)
+                  ;; x in %rdi, n in %rsi
+                shift_left4_rightn:
+                  movq %rdi, %rax               ; Get x
+                  salq $4, %rax                 ; x <<= 4
+                  movq %esi, %ecx               ; Get n (4 bytes)
+                  sarq %ecx, %rax               ; x >>= n
+                  ret
+      #+end_src
+
+      C code
+      #+begin_src c
+        long arith(long x, long y, long z)
+        {
+                long t1 = x ^ y;
+                long t2 = z * 48;
+                long t3 = t1 & 0x0F0F0F0F;
+                long t4 = t2 - t3;
+                return t4;
+        }
+      #+end_src
+      assembly:
+      #+begin_src asm
+                  ;; long arith(long x, long y, long z)
+                  ;; x in %rdi, y in %rsi, z in %rdx
+                arith:
+                  xorq %rsi, %rdi
+                  leaq (%rdx, %rdx, 2), %rax
+                  salq $4, %rax
+                  andl $0x0F0F0F0F, %edi        ; 4 bytes, so %edi
+                  subq %rdi, %rax
+                  ret
+      #+end_src
+
+***** Practice Problem 3.11
+      #+begin_src asm
+                xorq %rdx, %rax
+      #+end_src
+      explain:
+      #+begin_quote
+      A. set =%rdx= to zero , corresponds to =x = 0=, exploiting the property =x^x = 0=
+      B. A more straightforward way: =movq 0, %rdx=
+      C. =xorq= requires 3 bytes, =movq= requirs 7 bytes, =xorl= (2 bytes), or =movl= (5 bytes)
+      #+end_quote
+
+**** 3.5.4 Discussion
+
+*******ractice Problem 3.10
+      C code:
+      #+begin_src c
+        long arith2(long x, long y, long z) {
+                long t1 = x | y ;
+                long t2 = t1 >> 3;
+                long t3 = ~t2;
+                long t4 = z-t3;
+                return t4;
+        }
+      #+end_src
+      generated assembly code:
+      #+begin_src asm
+                ;; long arith2(long x, long y, long z)
+                ;; x in %rdi, y in %rsi, z in %rdx
+                arith2:
+                  orq %rsi, %rdi                ; t1 = x | y?
+                  sarq $3, %rdi                 ; t2 = t1 >> 3?
+                  notq %rdi                     ; t3 = ~t2
+                  movq %rdx, %rax               ; t4 = z?
+                  subq %rdi, %rax               ; t4 = t4 - t3?
+                  ret
+      #+end_src
+
+**** 3.5.5 Special Arithmetic Operations
+     #+caption: Figure 3.12 Special arithmetic operations
+     | Instruction | Effect                                  | Description            |
+     |-------------+-----------------------------------------+------------------------|
+     | imulq S     | R[%rdx]: R[%rax] <- S * R[%rax]         | Signed full multiply   |
+     | mulq S      | R[%rdx]: R[%rax] <- S * R[%rax]         | Unsigned full multiply |
+     | cqto S      | R[%rdx]: R[%rax] <- SignExtend(R[%rax]) | convert to oct word    |
+     | idviq S     | R[%rdx] <- R[%rdx]:R[%rax] mod S;       | Signed divide          |
+     |             | R[%rax] <- R[%rax]:%[%rax] / S          |                        |
+     | divq S      | R[%rdx] <- R[%rdx]:R[%rax] mod S;       | Unsigned divide        |
+     |             | R[%rax] <- R[%rax]:%[%rax] / S          |                        |
+
+     * example:
+       C code
+       #+begin_src c
+         #include <inttypes.h>
+
+         typedef unsigned __int128 uint128_t;
+
+         void store_uprod(uint128_t *dest, uint64_t x, uint64_t y) {
+                 ,*dest = x * (uint128_t)y;
+         }
+       #+end_src
+       generated assembly:
+       #+begin_src asm
+                   ;; void store_uprod(uint128_t *dest, uint64_t x, uint64_t y)
+                   ;; dest in %rdi, x in %rsi, y in %rdx
+                 store_uprod:
+                   movq %rsi, %rax                ; copy x to multiplicand
+                   mulq %rdx                      ; multiply by y
+                   movq %rax, (%rdi)              ; store lower 8 bytes at dest
+                   movq %rdx, 8(%rdi)             ; store upper 8 bytes at dest+8
+                   ret
+       #+end_src
+
+       c code:
+       #+begin_src c
+         void remdiv(long x, long y, long *qp, long *rp) {
+                 long q = x / y;
+                 long r = x % y;
+                 ,*qp    = q;
+                 ,*rp    = r;
+         }
+       #+end_src
+       generated assembly:
+       #+begin_src asm
+                 ;; void remdiv(long x, long y, long *qp, long *rp)
+                   ;; x in %rdi, y in %rsi, qp in %rdx, rp in %rcx
+                 remdiv:
+                   movq %rdx, %r8                ; copy qp
+                   movq %rdi, %rax               ; move x to lower 8 bytes of dividend
+                   cqto                          ; sign-extend to upper 8 bytes of dividend
+                   idivq %rsi                    ; divide by y
+                   movq %rax, (%r8)              ; store quotient at qp
+                   movq %rdx, (%rcx)             ; store reminder at rp
+                   ret
+       #+end_src
+
+***** Practice Problem 3.12
+      c code:
+      #+begin_src c
+        void uremdiv(unsigned long x, unsigned long y,
+                     unsigned long *qp, unsigned long *rp) {
+                unsigned long q = x / y;
+                unsigned long r = x % y;
+                ,*qp             = q;
+                ,*rp             = r;
+        }
+      #+end_src
+      implement assembly code:
+      #+begin_src asm
+                ;; void remdiv(long x, long y, long *qp, long *rp)
+                  ;; x in %rdi, y in %rsi, qp in %rdx, rp in %rcx
+                remdiv:
+                  movq %rdx, %r8                ; copy qp
+                  movq %rdi, %rax               ; move x to lower 8 bytes of dividend
+                  cqto                          ; sign-extend to upper 8 bytes of dividend
+                  divq %rsi                    ; divide by y
+                  movq %rax, (%r8)              ; store quotient at qp
+                  movq %rdx, (%rcx)             ; store reminder at rp
+                  ret
+      #+end_src
+
+***** Some Arithmetic Operations
+      | Format        | Computation         |                  |
+      |---------------+---------------------+------------------|
+      | addq src,dst  | dst = dst + src     |                  |
+      | subq src,dst  | dst = dst - src     |                  |
+      | imulq src,dst | dst = dst * src     |                  |
+      | salq src,dst  | dst = dst << src    | Also called shlq |
+      | sarq src,dst  | dst = dst >> src    | Arithmetic       |
+      | shrq src,dst  | dst = dst >> src    | Logic            |
+      | xorq src,dst  | dst = dst ^ src     |                  |
+      | andq src,dst  | dst = dst & src     |                  |
+      | orq src,dst   | dst = dst \vert src |                  |
+
+*** 3.6 Control
+**** 3.6.1 Condition Codes
+     CF: carry flag. Used to detect overflow for unsigned operations
+
+     ZF: zero flag.
+
+     SF: Sign flag.
+
+     OF: overflow flag. caused a two's-complement overflow - either negative or positive.
+
+     * Example:
+       ~t = a + b~
+       #+begin_quote
+       * CF set if carry out from most significant bit (unsigned overflow)
+       * ZF set if t == 0
+       * SF set if t < 0
+       * OF set if =(a > 0 && b > 0 && t < 0) || (a < 0 && b < 0 && t > 0)=
+       #+end_quote
+
+       The =leaq= instruction does not alter any condition codes, since it is intended to be used in address computations.
+
+
+     #+caption: Figure 3.13 Comparison and test instructions
+     | Instruction |          | Based on  | Description         |
+     |-------------+----------+-----------+---------------------|
+     | CMP         | S_1, S_2 | S_2 - S_1 | Compare             |
+     |-------------+----------+-----------+---------------------|
+     | ~cmpb~      |          |           | Compare byte        |
+     | ~cmpw~      |          |           | Compare word        |
+     | ~cmpl~      |          |           | Compare double word |
+     | ~cmpq~      |          |           | Compare quad word   |
+     |-------------+----------+-----------+---------------------|
+     | TEST        | S_1, S_2 | S_1 & S_2 | TEST                |
+     |-------------+----------+-----------+---------------------|
+     | ~testb~     |          |           |                     |
+     | ~testw~     |          |           |                     |
+     | ~testl~     |          |           |                     |
+     | ~testq~     |          |           |                     |
+
+**** 3.6.2 Accessing the Condition Codes
+     three ways to use the condition codes:
+     1. set a single byte to 0 or 1 depending on some combination of the condition codes
+     2. conditionally jump to some other part of the program
+     3. conditinoally transfer data
+
+
+     #+caption: Figure 3.14 The =SET= instructions
+     | Instruction | Synonym  | Effect                    | Set condition                |
+     |-------------+----------+---------------------------+------------------------------|
+     | ~sete~ D    | ~setz~   | D <- ~ZF~                 | Euqal/zero                   |
+     | ~setne~ D   | ~setnz~  | D <- ~ ~ZF~               | Not euqal/not zero           |
+     | ~sets~      |          |                           | Negative                     |
+     | ~setns~     |          |                           | Nonnegative                  |
+     |-------------+----------+---------------------------+------------------------------|
+     | Signed      |          |                           |                              |
+     |-------------+----------+---------------------------+------------------------------|
+     | ~setg~      | ~setnle~ | D <- ~~ (SF ^ OF) & ~ ZF~ | Greater (signed >)           |
+     | ~setge~     | ~setnl~  | D <- ~~ (SF ^ OF)~        | Greater or equal (signed >=) |
+     | ~setl~      | ~setnge~ | D <- ~SF ^ OF~            | Less (signed <)              |
+     | ~setle~     | ~setng~  | D <- ~(SF ^ OF) \vert ZF~ | Less or equal (signed <=)    |
+     |-------------+----------+---------------------------+------------------------------|
+     | Unsigned    |          |                           |                              |
+     |-------------+----------+---------------------------+------------------------------|
+     | ~seta~      | ~setnbe~ | D <- ~~ CF & ~ ZF~        | Above (unsigned >)           |
+     | ~setae~     | ~setnb~  | D <- ~~ CF~               | Above or euqal(unsigned >=)  |
+     | ~setb~      | ~setnae~ | D <- ~CF~                 | Below (unsigned <)           |
+     | ~setbe~     | ~setna~  | D <- ~CF \vert ZF~        | Below or equal (unsigned <=) |
+
+     #+begin_src asm
+               ;; int comp(data_t a, data_t b)
+                 ;; a in %rdi, b in %rsi
+               comp:
+                 cmpq %rsi, %rdi               ; compare a:b
+                 setl %al                      ; set low-order byte of %eax to 0 or 1 (depends on the result of a-b)
+                 movzbl %al, %eax              ; Clear rest of %eax (and rest of %rax)
+                 ret
+     #+end_src
+
+***** Practice Problem 3.13
+      C code:
+      #+begin_src c
+        int comp(data_t a, data_b b) {
+                return a COMP b;
+        }
+      #+end_src
+      determine which data type is for ~data_t~ and which COMP could cause
+      * A.
+        #+begin_src asm
+                  cmpl %esi, %edi
+                  setl %al                        ; <
+        #+end_src
+        `l` means 32-bit, ~setl~ is for signed, so ~data_t~ is ~int~
+      * B.
+        #+begin_src asm
+                  cmpw %si, %di
+                  setge %al                       ; >=
+        #+end_src
+        `w` means 16-bit, ~setge~ is for signed, so ~data_t~ is ~short~
+      * C.
+        #+begin_src asm
+                  cmpb %sil, %dil
+                  setbe %al                       ; <=
+        #+end_src
+        `b` means 8-bit, ~setbe~ is for unsigned, so ~data_t~ is ~unsigned char~
+      * D.
+        #+begin_src asm
+                  cmpq %rsi, %rdi
+                  setne %a                        ; !=
+        #+end_src
+        `q` means 64-bit, ~setne~ does not matter signed or not, so ~data_t~ can be ~long~ or ~unsigned long~
+
+***** Practice Problem 3.14
+      The C code:
+      #+begin_src c
+        int test(data_t a) {
+                return a TEST 0;
+        }
+      #+end_src
+
+                * A
+                  #+begin_src asm
+                            testq %rdi, %rdi
+                            setge %al                       ; >=
+                  #+end_src
+                  ~long~
+                * B
+                  #+begin_src asm
+                            testw %di, %di
+                            sete %al                        ; ==
+                  #+end_src
+                  ~short~, ~unsigned short~
+
+                  * C
+                    #+begin_src asm
+                              testb %dil, %dil
+                              seta %al                        ; >
+                    #+end_src
+                    ~unsigned char~
+
+                  * D
+                    #+begin_src asm
+                              testl %edi, %edi
+                              setle %al                       ; <=
+                    #+end_src
+                    ~int~
+
+**** 3.6.3 Jump Instructions
+     #+caption: Figure 3.15 The jump instructions.
+     | Instruction |          | Synonym | Condition          |                     |
+     |-------------+----------+---------+--------------------+---------------------|
+     | ~jmp~       | Label    |         | 1                  | Direct jump         |
+     | ~jmp~       | *Operand |         | 1                  | Indirect jump       |
+     | ~je~        | Label    | ~jz~    | ZF                 | Euqal/zero          |
+     | ~jne~       |          | ~jnz~   | ~ZF                | Not equal/not zero  |
+     | ~js~        |          |         | SF                 | Negative            |
+     | ~jns~       |          |         | ~SF                |                     |
+     | ~jg~        |          | ~jnle~  | ~(SF ^ OF) & ~ZF   | Greater (signed > ) |
+     | ~jge~       |          | ~jnl~   | ~(SF ^ OF)         | signed >=           |
+     | ~jl~        |          | ~jnge~  | SF ^ OF            | signed <            |
+     | ~jle~       |          | ~jng~   | (SF ^ OF) \vert ZF | signed <=           |
+     | ~ja~        |          | ~jnbe~  | ~CF & ~ZF          | unsigned >          |
+     | ~jae~       |          | ~jnb~   | ~CF                | unsigned >=         |
+     | ~jb~        |          | ~jnae~  | CF                 | unsigned <          |
+     | ~jbe~       |          | ~jna~   | CF \vert ZF        | unsigned <=         |
+
+     #+begin_src asm
+               jmp *%rax
+     #+end_src
+     uses the value in ~%rax~ as the jump target
+
+     #+begin_src asm
+               jmp *(%rax)
+     #+end_src
+     reads the jump target from memory, using the value in ~%rax~ as the read address
+
+**** 3.6.4 Jump Instruction Encodings
+
+     #+begin_quote
+     * Aside What do the instructions ~rep~ and ~repz~ do?
+
+       See <<Software Optimization Guide for the AMD64>> - AMD: 8.3 Repeated String Instructions
+
+       They recommend using the combination of rep followed by ret to avoid making the ret instruction the destination of a conditional jump instruction. Without the rep instruction, the jg instruction (line 7 of the assembly code) would proceed to the ret instruction when the branch is not taken. ”
+
+     Excerpt From: Randal E. Bryant. “Computer Systems: A Programmer's Perspective.
+     #+end_quote
+
+     #+begin_src asm
+               0:      48 89 f8        mov     %rdi,%rax
+               3:      eb 03           jmp     8 <loop+0x8> ; 0x5(the next addr) + 0x3 = 0x8
+               5:      48 d1 f8        sar     %rax
+               8:      48 85 c0        test    %rax,%rax
+               b:      7f f8           jg      5 <loop+0x5> ; 0xd(the nex addr) - 0x8 = 0x5
+               d:      f3 c3           repz retq
+     #+end_src
+
+
+***** Practice Problem 3.15
+      * A. What is the target of the ~je~ instruction below?
+        #+begin_src asm
+                  4003fa:  74  02  je     XXXXXX
+                  4003fc:  ff  d0  callq  *%rax
+        #+end_src
+        ans. : 0x4003fc + 0x20 = x40043e
+      * B. What is the target of the ~je~ instruction below?
+        #+begin_src asm
+                  40042f:  74 f4 je  XXXXXX
+                  400431:  5d    pop %rbp
+        #+end_src
+        ans. : do pop on 0x40033b (*0xf4 is -12, so 0x400431 - 12 = 0x400425*)
+      * C. What is the address of the ~ja~ and ~pop~ instructions ?
+        #+begin_src asm
+                  XXXXXX:  77     02      ja      400547 (+0x2 = 0x400547-0x2)
+                  XXXXXX:  5d             pop     %rbp   (+0x2 = 0x400547)
+        #+end_src
+        ~ja~ addr: 0x400545 (*right answer: 0x400543, ~ja~ itself has 2 bytes, namely 0x400547 - 02 - 02 = 400543*)
+        ~pop~ addr: 0x400547 (*right answer: 0x400545, ~pop~ itslef has 2 bytes, namely 0x400547 - 02 = 0x400545*)
+      * D. In the code that follows, the jump target is encoded in PC-relative form as a 4-byte two's complement number. The bytes are listed from least significant to most, reflecting the litte-endian byte ordering of X86-64. What is the address of the jump target?
+        #+begin_src asm
+                  4005e8:  e9 73 ff ff ff jmpq XXXXXX
+                  4005ed:  90             nop
+        #+end_src
+        ans: 0x4005ed - 0xffffff73(-141) = 0x400560
+
+**** 3.6.5 Implementing Conditional Branches with Conditional Contral
+     * Figure 3.16 Compilation of conditional statements
+     #+begin_src asm
+               ;; long absdiff_se(long x, long y)
+               ;; x in %rdi, y in %rsi
+               absdiff_se:
+                   cmpq    %rsi, %rdi          ; compare x     y
+                   jge     .L2                 ; if (x >= y) { goto .L2; }
+                   addq    $1,lt_cnt(%rip)     ; lt_cnt++;
+                   movq    %rsi,%rax           ; int ret = y;
+                   subq    %rdi,%rax           ; ret -= x;
+                   ret                         ; return ret;
+                 .L2:
+                   addq    $1,ge_cnt(%rip)     ; ge_cnt++
+                   movq    %rdi,%rax           ; int ret = x;
+                   subq    %rsi,%rax           ; ret -= y;
+                   ret                         ; return ret;
+     #+end_src
+
+     #+begin_quote
+     Using ~goto~ statements is generally considered a bad programming style, since their use can make code very difficult to read and debug.
+     #+end_quote
+
+
+***** Practice Problem 3.16
+      #+begin_src c
+        void cond(long a, long *p)
+        {
+                if (p && a > *p)
+                        ,*p = a;
+        }
+      #+end_src
+
+      #+begin_src asm
+                ;; void cond(long a, long *p)
+                ;; a in %rdi, p in %rsi
+
+                cond:
+                        testq   %rsi, %rsi      ; if (p is not null)
+                        je      .L1             ; if (!p) { goto .L1; }
+                        cmpq    %rdi, (%rsi)
+                        jge     .L1             ; if (*p >= a) { goto .L1; }
+                        movq    %rdi, (%rsi)    ; *p = a
+                      .L1:
+                        rep                     ; ret
+      #+end_src
+      A. write a goto version in C
+      #+begin_src c
+        void cond(long a, long *p) {
+                if (!p) {
+                        goto end;
+                }
+
+                if (*p >= a) {
+                        goto end;
+                }
+
+                ,*p = a;
+
+        end:
+                return;
+        }
+      #+end_src
+      B. Explain why the assembly code contains two conditional branches: \
+      ans:  because p && a > *p means two conditions, and the order is from left to right.
+
+***** Practice Problem 3.17
+      A. Rewrite ~absdiff_se~ based on if-goto rule
+      #+begin_src c
+        long absdiff_se(long x, long y)
+        {
+                long result;
+                if (x >= y) {
+                        goto x_ge_;
+                } else {
+                        lt_cnt++;
+                        result = y - x;
+                        goto done;
+                }
+        x_ge_y:
+                ge_cnt++;
+                result = x - y;
+
+        done:
+                return result;
+        }
+      #+end_src
+      B. reasons:
+
+      a) the code is note readable (it's not parallel in look)
+
+      b) it's difficult to find label if there are too many ones.
+
+***** Practice Problem 3.18
+      fulfill C code from assembly code
+      #+begin_src c
+        long test(long x, long y, long z)
+        {
+                long val = ;
+                if (x < -3) {
+                        if (y < z)
+                                val = x * y;
+                        else
+                                val = y * z;
+                } else if (x > 2)
+                        val = x * z;
+                return val;
+        }
+      #+end_src
+
+      #+begin_src asm
+                        ;; long test (long x, long y, long z)
+                        ;; x in %rdi, y in %rsi, z in %rdx
+                test:
+                        leaq    (%rdi,%rsi), %rax
+                        addq    %rdx,%rax
+                        cmpq    $-3,%rdi        ; compare
+                        jge     .L2             ; if (x >= -3) { goto .L2; }
+                        cmpq    %rdx,%rsi
+                        jge     .L3             ; if (x < -3 && y >= z) { goto .L3; }
+                        movq    %rdi,%rax       ; if (x < -3 && y < z) { val = x; }
+                        imulq   %rsi,%rax       ; if (x < -3 && y < z) { val = x * y; }
+                        ret
+                   .L3:
+                        movq    %rsi,%rax       ; if (x < -3 && y >= z) { val = y; }
+                        imulq   %rdx,%rax       ; if (x < -3 && y >= z) { val = y * z; }
+                        ret
+                   .L2:
+                        cmpq    $2,%rdi         ; if (x >= -3)
+                        jle     .L4             ; if (x >= -3 && x <= 2) { goto .L4; }
+                        movq    %rdi,%rax       ; if (x >= -3 && x > 2) { val = x; }
+                        imulq   %rdx,%rax       ; if (x >= -3 && x > 2) { val = x * z; }
+                   .L4:
+                        rep                     ; ret val;
+      #+end_src
+
+**** 3.6.6 Implementing Conditional Branches with Conditional Moves
+     * Figure 3.17 Compilation of conditional statements using conditional assignment.
+       (a) Original C code
+     #+begin_src c
+       long absdiff(long x, long y)
+       {
+               long result;
+               if (x < y)
+                       result = y - x;
+               else
+                       result = x - y;
+               return result;
+       }
+     #+end_src
+     (b) Implementing using conditional assignment
+     #+begin_src c
+       long cmovdiff(long x, long y)
+       {
+               long rval = y - x;
+               long eval = x - y;
+               long test = x >= y;
+               /* Line below requires single instruction: */
+               if (ntest) {
+                       rval = eval;
+               }
+               return rval;
+       }
+     #+end_src
+     (c) Generated assembly code
+     #+begin_src asm
+                       ;; long absdiff(long x, long y)
+                       ;; x in %rdi, y in %rsi
+               absdiff:
+                       movq %rsi, %rax
+                       subq %rdi, %rax         ; rval = y - x
+                       movq %rdi, %rdx
+                       subq %rsi, %rdx         ; eval = x - y
+                       cmpq %rsi, %rdi         ; compare x:y
+                       cmovge %rdx, %rax       ; if (x >= y)
+                       ret
+     #+end_src
+
+     #+begin_quote
+     The key is that the single  ~cmovge~ instruction of the assembly code implements the conditional assignment of ~cmovdiff~. It will transfer the data from the source register to the destination, *only if* the ~cmpq~ instruction of line 6 indicates that value is greater than or equal to the other (as indicated by the suffix ~ge~).
+
+     This approach achieves high performance by overlapping the steps of the successive instructions.
+     #+end_quote
+
+
+
+     misprediction penalty is \(T_{avg}(P) = (1 - P)T_{OK} + T_{MP} = T_OK + PT_{MP}.\)
+     \begin{align*}
+     T_{ran} &= T_{avg}(P) = T_{OK} + 0.5 T_{MP} \\
+     T_{MP} &= 2(T_{ran} - T{OK})
+     \end{align*}
+***** Practice Problem 3.19
+     - What is the approximate miss penalty?
+       $$T_{MP} = 2(T_{ran} - T_{OK}) = 30$$
+     - How many cycles would the function require when the branch is mispredicted?
+       $$ 30 + 16 = 46 $$
+
+
+     #+caption: Figure 3.18 The conditional move instructions
+    | Instruction |      | Synonym | Move condition     | Description                   |
+    | ~cmove~     | S, R | ~cmovz~ | ~ZF~               | Equal /Zero                   |
+    | cmovne      | S, R | cmovnz  | ~ZF                | Not equal / not zero          |
+    | cmovs       | S, R |         | SF                 | Negative                      |
+    | cmovns      | S, R |         | ~SF                | Nonnegative                   |
+    | cmovg       | S, R | cmovnle | ~(SF ^ OF) & ~ZF   | Greater (signed > )           |
+    | cmovge      | S, R | cmovnl  | ~(SF ^ OF)         | Greater or equal (signed >=)  |
+    | cmovl       | S, R | cmovnge | SF ^ OF            | Less (signed < )              |
+    | cmovnle     | S, R | cmovng  | (SF ^ OF) \vert ZF | Less or equal (signed <= )    |
+    | cmova       | S, R | cmovnbe | ~CF & ~ZF          | Above (unsigned >)            |
+    | cmovae      | S, R | cmovnb  | ~CF                | Above or equal (unsigned >=)  |
+    | cmovb       | S, R | cmovna  | CF                 | Below (unsigned < )           |
+    | cmovbe      | S, R | cmova   | CF \vert ZF        | Below or euqal (unsigned <= ) |
+
+
+     #+begin_example
+       v = test-expr ? then-expr : else-expr;
+
+       # is equivalent to
+       if (!test-expr)
+               goto false;
+       v = then-expr;
+       goto done;
+
+       false:
+               v = else-expr;
+       done:
+
+       # can be described by the following abstract code
+       v = then-expr;
+       ve = else-expr;
+       t = test-expr;
+       if (!t) v = ve;
+     #+end_example
+
+     consider the C function:
+     #+begin_src c
+       long cread(long *xp)
+       {
+               return (xp ? *xp : 0);
+       }
+     #+end_src
+
+     #+begin_src asm
+               ;; long cread(long *xp)
+               ;; Invlaid implementation of function cread
+               ;; xp in register %rdi
+       cread:
+               movq    (%rdi), %rax    ; v = *xp     -- if xp == NULL !!!
+               testq   %rdi, %rdi      ; Test x
+               movl    $0, %edx        ; ve = 0
+               cmove   %rdx, %rax      ; if (x == 0) v = ve;
+               ret                     ; return v;
+     #+end_src
+***** Practice Problem 3.20
+      #+begin_src c
+        #define OP ____ /* Unknown operator */
+        long arith(long x)
+        {
+                return x OP 8;
+        }
+      #+end_src
+
+      #+begin_src asm
+                ;; long arith(long x)
+                ;; x in %rdi
+        arith:
+                leaq    7(%rdi), %rax   ; r = x + 7
+                testq   %rdi, %rdi      ; Test x
+                cmovns  %rdi, %rax      ; if (x >= 0) {r = x;}
+                sarq    $3, %rax        ; r >>= 3       -- r / 8
+                ret                     ; return r;
+      #+end_src
+      * What operation is ~OP~ ? \\
+        ~/~
+      * Annoate the code to explain how it works.
+***** Practice Problem 3.21
+      #+begin_src c
+        long test(long x, long y)
+        {
+                long val = 8 * x;
+                if (y > 0) {
+                        if (x >= y)
+                                val = x & y;
+                        else
+                                val = y - x;
+
+                } else if (y <= -2) {
+                        val = x + y;
+                }
+
+                return val;
+        }
+      #+end_src
+
+      #+begin_src asm
+        ;; long test(long x, long y)
+        ;; x in %rdi, y in %rsi
+        test:
+                leaq    0(, %rdi, 8), %rax ; val = 8x;
+                testq   %rsi, %rsi         ; Test y
+                jle     .L2                ; if (y <= 0) goto .L2;
+                movq    %rsi, %rax         ; val = y;
+                subq    %rdi, %rax         ; val = y - x;
+                movq    %rdi, %rdx         ; v = x;
+                andq    %rsi, %rdx         ; v = x & y;
+                cmpq    %rsi, %rdi         ; compare y:x
+                cmovge  %rdx, %rax         ; if (y >= x) val = v = x & y;
+                ret                        ; return val;
+          .L2:
+                addq    %rsi, %rdi      ; x  = x + y;
+                cmpq    $-2, %rsi       ; compare -2: y
+                cmovle  %rdi, %rax      ; if (y <= -2) { val = x; } // x + y
+                ret
+      #+end_src
+**** 3.6.7 Loops
+     *Always go-to mode*
+
+***** Do-While Loops
+
+***** While Loops
+
+***** For Loops
+
+**** 3.6.7 Switch Statements
+     *go-to different labels*
+
+*** 3.7 Procedures
+
+**** 3.7.1 The Run-Time Stack
+     #+begin_quote
+     the x86-64 stack grows toward lower addresses and the stack pointer ~%rsp~ points to the top element of the stack.
+
+     Procedure ~P~ can pass up to *6* integral values on the stack, but if ~Q~ requires more arguments, these can be stored by ~P~ within its stack frame prior to the call.
+     #+end_quote
+
+**** 3.7.2 Control Transfer
+     *program counter (PC)*
+
+
+**** 3.7.3 Data Transfer
+     #+begin_quote
+     most of these data passing to and from procedures take place via registers.
+     #+end_quote
+
+     #+caption: Figure 3.28 Registers for passing function arguments.
+     +--------+-----------------------------------------+
+     |Operand |             Argument number             |
+     |  size  +------+------+------+------+------+------+
+     | (bits) |  1   |  2   |  3   |  4   |  5   |  6   |
+     +--------+------+------+------+------+------+------+
+     |   64   | %rdi | %rsi | %rdx | %rcx | %r8  | %r9  |
+     +--------+------+------+------+------+------+------+
+     |   32   | %edi | %esi | %rdx | %ecx | %r8d | %r9d |
+     +--------+------+------+------+------+------+------+
+     |   16   | %di  | %si  | %dx  | %cx  | %r8w | %r9w |
+     +--------+------+------+------+------+------+------+
+     |   8    | %dil | %sil | %dl  | %cl  | %r8b | %r9b |
+     +--------+------+------+------+------+------+------+
+
+     #+begin_quote
+     The proccedure copies arguments 1-6 into the appropriate registers, and it puts arguments 7 through /n/ onto the stack , with argument 7 at the top of the stack.
+     #+end_quote
+
+***** Practice Problem 3.33
+
+      #+begin_src c
+        ,*u += a;
+        ,*v += b;
+        return sizeof(a) + sizeof(b);
+      #+end_src
+
+      #+begin_src asm
+        procprob:
+                movslq  %edi, %rdi      ; 'a' was converted from 4 bytes to 8 bytes, so 'a' is int, 'u' is long *
+                addq    %rdi, (%rax)    ; int a, long *u;
+                addb    %sil, (%rcx)    ; char b, long *v;
+                                        ; Add low-order byte of b to *v
+      #+end_src
+
+
+      (a) C code
+      #+begin_src c
+        void proc(long a1, long *a1p,
+                  int a2, int *a2p,
+                  short a3, short *a3p,
+                  char a4, char *a4p)
+        {
+                ,*a1p += a1;
+                ,*a2p += a2;
+                ,*a3p += a3;
+                ,*a4p += a4;
+        }
+      #+end_src
+
+*** 3.9 Heterogeneous Data Structure
+
+**** 3.9.1 Structures
+
+**** 3.9.2 Unions
+
+**** 3.9.3 Data Alignment
+
+*** 3.10 Combining Control and Data in Machine-Level Programs
+
+**** 3.10.1 Understanding Pointers
+     * Every pointer has an associated type
+     * Every pointer has a value.
+     * Pointers are created with the '&' operator
+     * Pointers are dereferenced with the '*' operator
+     * Arrays and pointers are closely related
+     * Casting from one type of pointer to another changes its type but not its value.
+     * Pointers can also point to functions
+
+**** 3.10.3 Out-ofbounds Memory Refernces and Buffer Overflow
+     #+caption: Figure 3.39 Example =GDB= comamnds
+     +---------------------------------+----------------------------------------------------+
+     |Command                          |Effect                                              |
+     +---------------------------------+----------------------------------------------------+
+     |                                Starting and stopping                                 |
+     +---------------------------------+----------------------------------------------------+
+     |quit                             |Exit GDB                                            |
+     +---------------------------------+----------------------------------------------------+
+     |run                              |Run your program (give command-line arguments he)   |
+     +---------------------------------+----------------------------------------------------+
+     |kill                             |Stop your program                                   |
+     +---------------------------------+----------------------------------------------------+
+     |                                     Breakpoints                                      |
+     +---------------------------------+----------------------------------------------------+
+     |break multstore                  |Set breakpoint at entry to function multstore       |
+     +---------------------------------+----------------------------------------------------+
+     |break *0x400540                  |Set breakpoint at address 0x400540                  |
+     +---------------------------------+----------------------------------------------------+
+     |delete 1                         |Delete breakpoint 1                                 |
+     +---------------------------------+----------------------------------------------------+
+     |delete                           |Delete all breakpoints                              |
+     +---------------------------------+----------------------------------------------------+
+     |                                      Execution                                       |
+     +---------------------------------+----------------------------------------------------+
+     |stepi                            |Execute one instruction                             |
+     +---------------------------------+----------------------------------------------------+
+     |stepi 4                          |Execute four instructions                           |
+     +---------------------------------+----------------------------------------------------+
+     |nexti                            |Like stepi , but proceed through function call      |
+     +---------------------------------+----------------------------------------------------+
+     |continue                         |Resume exectuion                                    |
+     +---------------------------------+----------------------------------------------------+
+     |finish                           |Run until function returns                          |
+     +---------------------------------+----------------------------------------------------+
+     |                                    Examining code                                    |
+     +---------------------------------+----------------------------------------------------+
+     |disas                            |Disassemble current function                        |
+     +---------------------------------+----------------------------------------------------+
+     |disas multstore                  |Disassemble function multstore                      |
+     +---------------------------------+----------------------------------------------------+
+     |disas 0x400544                   |Disassemble function around address 0x400544        |
+     +---------------------------------+----------------------------------------------------+
+     |disas 0x400544, 0x40054d         |Disassemble code within specified address range     |
+     +---------------------------------+----------------------------------------------------+
+     |print /x $rip                    |Print program counter in hex                        |
+     +---------------------------------+----------------------------------------------------+
+     |                                    Examining data                                    |
+     +---------------------------------+----------------------------------------------------+
+     |print $rax                       |Print contents of %rax in decimal                   |
+     +---------------------------------+----------------------------------------------------+
+     |print /x $rax                    |Print contents of %rax in hex                       |
+     +---------------------------------+----------------------------------------------------+
+     |print /t $rax                    |Print contents of %rax in binary                    |
+     +---------------------------------+----------------------------------------------------+
+     |print /x 555                     |Print hex representation of 555                     |
+     +---------------------------------+----------------------------------------------------+
+     |pirnt /x ($rsp + 8)              |Print contents of %rsp plus 8 in hex                |
+     +---------------------------------+----------------------------------------------------+
+     |print *(long *)0x7fffffffe818    |Print long integer at address                       |
+     +---------------------------------+----------------------------------------------------+
+     |print *(long *)($rsp + 8)        |Print long integer at address %rsp + 8              |
+     +---------------------------------+----------------------------------------------------+
+     |x/2g 0x7fffffffe818              |Examine two (8-byte) words starting at address      |
+     +---------------------------------+----------------------------------------------------+
+     |x/20b multstore                  |Examine first 20 bytes of function multstore        |
+     +---------------------------------+----------------------------------------------------+
+     |Useful information                                                                    |
+     +---------------------------------+----------------------------------------------------+
+     |info frame                       |Information about current stack frame               |
+     +---------------------------------+----------------------------------------------------+
+     |info registers                   |Values of all the registers                         |
+     +---------------------------------+----------------------------------------------------+
+     |help                             |Get information about GDB                           |
+     +---------------------------------+----------------------------------------------------+
+
+**** 3.10.4 Thwarting Buffer Overflow Attacks
+***** Stack Randomization
+      #+begin_quote
+      The idea of stack randomization is to make the position of the stack vary from one run of a program to another.
+      #+end_quote
+
+      Linux: /address-space layout randomization/, ASLR, but it can be overcomed by true force.
+
+***** Stack Corruption Detection
+      store a special /canary/ value in the stack frame between any local bufer and the rest of the stack state
+      #+begin_quote
+      we had to give the command-line option -fno-stack- protector to prevent GCC from inserting this code
+      #+end_quote
+
+***** Limiting Executable Code Regions
+      #+begin_quote
+      AMD introduced an NX (for "no-executable") bit into the memory protection for its 64-bit processors, separating the read and exectue access modes. The stack can be marked as being readable and writable, but not executable, check performed in hardware.
+      #+end_quote
+
+*** 3.11 Floating-Point Code
+
+    #+caption: Figure 3.46 Floating-point movement instructions.
+    |-------------+----------+-------------+---------------------------------------|
+    | Instruction | Source   | Destination | Description                           |
+    |-------------+----------+-------------+---------------------------------------|
+    | =vmovss=    | $M_{32}$ | $X$         | Move single precision                 |
+    | =vmovss=    | $X$      | $M_{32}$    | Move single precision                 |
+    | =vmovsd=    | $M_{64}$ | $X$         | Move double precision                 |
+    | =vmovsd=    | $X$      | $M_{32}$    | Move double precision                 |
+    | =vmovaps=   | $X$      | $X$         | Move aligned, packed single precision |
+    | =vmovapd=   | $X$      | $X$         | Move aligned, packed double precision |
+
+**** 3.11.1 Floating-Point Movement and Conversion Operations
+
+     #+caption: Figure 3.47 Two-operand floating-point conversion operations
+     | Instruction   | Source     | Destination | Description                                                   |
+     |---------------+------------+-------------+---------------------------------------------------------------|
+     | =vcvttss2si=  | $X/M_{32}$ | $R_{32}$    | Convert with truncation single precision to integer           |
+     | =vcvttsd2si=  | $X/M_{64}$ | $R_{32}$    | Convert with truncation double precision to integer           |
+     | =vcvttss2siq= | $X/M_{32}$ | $R_{64}$    | Convert with truncation single precision to quad word integer |
+     | =vcvttsd2siq= | $X/M_{64}$ | $R_{64}$    | Convert with truncation double precision to quad word integer |
+
+     #+begin_quote
+     These convert floating-point data to integers. ($X$: XMM register (e.g., =%xmm3=); $R_{32}$: 32-bit general-purpose register (e.g., =%eax=); $R_{64}$: 64-bit general-purpose register (e.g., =%rax=); $M_{32}$:32-bit memory range; $M_{64}$: 64-bit memory range)
+     #+end_quote
+
+     #+caption: Figure 3.48 Three-operand floating-point conversion operations
+     | Instruction  | Source 1        | Source 2 | Destination | Description                                   |
+     |--------------+-----------------+----------+-------------+-----------------------------------------------|
+     | =vcvtsi2ss=  | $M_{32}/R_{32}$ | $X$      | $X$         | Convert integer to single precision           |
+     | =vcvtsi2sd=  | $M_{32}/R_{32}$ | $X$      | $X$         | Convert integer to double precision           |
+     | =vcvtsi2ssq= | $M_{32}/R_{64}$ | $X$      | $X$         | Convert quad word integer to single precision |
+     | =vcvtsi2sd=  | $M/R_{64}$      | $X$      | $X$         | Convert quad word integer to double precision |
+
+     #+begin_src asm
+         ;; Reads a long integer from register %rax,
+         ;; converts it to data type double,
+         ;; and stores the result in the lower bytes of %xmm1
+       vcvtsi2sdq  %rax, %xmm1, %xmm1
+     #+end_src
+
+     #+begin_src asm
+         ;; convert to a double-precision value
+         ;; and store the result in the lower 8 bytes of %xmm0
+       vcvtss2sd   %xmm0, %xmm0, %xmm0
+     #+end_src
+
+     #+begin_quote
+     The =vunpcklps= instruction is normally used to interleave the values in two XMM registers and store them in a third.
+     #+end_quote
+
+*** 3.12 Summary
+
+** Chapter 4 Processor Architecture
+
+*** 4.1 The Y86-64 Instruction Set Architecture
+
+**** 4.1.1 Programmer-Visible State
+
+     programs reference memory locations using virtual addresses.
+
+     physical addresses indicating where the values are actaully stored in memory
+
+**** 4.1.2 Y86-64 Instructions
+
+** Chapter 5 Optimizing Program Performance
+
+*** 5.1 Capabilities and Limitations of Optimizing Compilers
+    #+begin_quote
+    Invoking GCC with option −01 or higher (e.g., −02 or −03 ) will cause it to apply more extensive optimizations. These can further improve program performance, but they may *expand the program size* and they may make the program *more difficult to debug* using standard debugging tools
+    #+end_quote
+
+*** 5.2 Expressing Program Performance
+    * CPE: /cycles per element/,
+
+*** 5.3 Program Example
+    #+begin_src c
+      /* create abstract data type for vector */
+      typedef struct {
+              long len;
+              data_t *data;
+      } vec_rec, *vec_ptr;
+
+      typedef long data_t;
+
+      #define IDENT 0
+      #define OP +
+    #+end_src
+
+
+    #+caption: Figure 5.4 Implementation of vector abstract data type.
+    #+begin_src c
+      /* create vector of specfied length */
+      vec_ptr new_vec(long len)
+      {
+              /* Allocate header structure */
+              vec_ptr result = (vec_ptr)malloc(sizeof(vec_ptr));
+              data_t *data = NULL;
+
+              if (!result) {
+                      goto fail;
+              }
+
+              result->len = len;
+
+              /* Allocate array */
+              if (len > 0) {
+                      data = (data_t *)calloc(len, sizeof(data_t));
+                      if (!data) {
+                              goto fail;
+                      }
+
+                      /* data will either be NULL or allocated array  */
+                      result->data = data;
+                      return result;
+              }
+
+      fail:
+              if (result) {
+                      free(result);
+                      return NULL;
+              }
+      }
+
+      /*
+       ,* retrieve vector element and store at dest.
+       ,* return 0 (out of bounds) or 1 (successful)
+       ,*/
+      int get_vec_element(const vec_ptr v, const long index, data_t *dest)
+      {
+              if (index < 0 || index >= v->len) {
+                      return 0;
+              }
+
+              ,*dest = v->data[index];
+              return 1;
+      }
+
+      /* return length of vector */
+      long vec_length(const vec_ptr v)
+      {
+              return v->len;
+      }
+    #+end_src
+
+    #+caption: Figure 5.5 Initial Implementation of combining operation.
+    #+begin_src c
+      /* implementation with maximum use of data abstraction */
+      void combine(vec_ptr v, data_t *dest)
+      {
+              long i;
+
+              ,*dest = IDENT;
+
+              for (i = 0; i < vec_length(v); ++i) {
+                      data_t val;
+                      get_vec_element(v, i, &val);
+                      ,*dest = *dest OP val;
+              }
+      }
+    #+end_src
+*** 5.4 Eliminating Loop Inefficiencies
+    #+caption: Figure 5.6 Improving the efficiency of the loop test
+    #+begin_src c
+      /* Move call to vec_length out of loop */
+      void combine2(vec_ptr v, data_t *dest)
+      {
+              long i;
+              long length = vec_length(v);
+
+              ,*dest = IDENT;
+
+              /*
+               ,* by moving the call vec_length() out of the loop test,
+               ,* we don't need to calculate length each time.
+               ,*/
+              for (i = 0; i < length; ++i) {
+                      data_t val;
+                      get_vec_element(v, i, &val);
+                      ,*dest = *dest OP val;
+              }
+      }
+    #+end_src
+
+    #+caption: Figure 5.7 Lowercase conversion routines.
+    #+begin_src c
+      /* convert string to lowercase: slow */
+      void lower1(char *s)
+      {
+              long i;
+
+              for (i = 0; i < strlen(s); i++) {
+                      /* need to compute length every loop */
+                      if (s[i] >= 'A' && s[i] <= 'Z') {
+                              s[i] -= ('A' - 'a');
+                      }
+              }
+      }
+
+      /* convert string to lowercase: faster */
+      void lower2(char *s)
+      {
+              long i;
+              long len = strlen(s);
+
+              for (i = 0; i < len; i++) {
+                      if (s[i] >= 'A' && s[i] <= 'Z') {
+                              s[i] -= ('A' - 'a');
+                      }
+              }
+      }
+
+      /*
+       ,* sample implementation of library function: strlen
+       ,* compute length of string
+       ,*/
+      size_t strlen(const char *s)
+      {
+              long length = 0;
+              while (*s != '\0') {
+                      s++;
+                      length++;
+              }
+              return length;
+      }
+    #+end_src
+*** 5.5 Reducing Procedure Calls
+    #+caption: Figure 5.9 Eliminating function calls within the loop
+    #+begin_src c
+      data_t *get_vec_start(vec_ptr v)
+      {
+              return v->data;
+      }
+
+      /* direct access to vector data */
+      void combine3(vec_ptr v, data *dest)
+      {
+              long i;
+              long length = vec_length(v);
+              data_t *data = get_vec_start(v);
+
+              ,*dest = IDENT;
+              for (i = 0; i < length; ++i) {
+                      ,*dest = *dest OP data[i];
+              }
+      }
+    #+end_src
+*** 5.6 Eliminating Unneeded Memory References
+    #+begin_src asm
+        ;; Inner loop of combine3 data_t = double, OP = *
+        ;; dest in %rbx, data+i in %rdx, data+length in %rax
+
+      .L17:                         ; loop:
+        vmovsd (%rbx), %xmm0        ; Read product from dest
+        vmulsd (%rdx), %xmm0, %xmm0 ; Multiply product by data[i]
+        vmovsd %xmm0, (%rbx)        ; Store product at dest
+        addq $8, %rdx               ; Increment data + i
+        cmopq %rax, %rdx            ; Compare to data + length
+        jne .17
+
+
+      ;; The accumulated value is read and written to memory on each iteration
+    #+end_src
+
+
+    If we just need the result after all the whole loop, we can reduce the memory operations.
+    #+begin_src asm
+      .L25:
+              vmulsd (%rdx), %xmm0, %xmm0
+              addq $8, %rdx
+              cmpq %rax, %rdx
+              jne .L25
+    #+end_src
+
+    #+caption: Figure 5.10 Accumulating result in temporary
+    #+begin_src c
+      /* Accumulate result in local variable */
+      void combine4(vec_ptr v, data_t *dest)
+      {
+              long i;
+              long length = vec_length(v);
+              data_t *data = get_vec_start(v);
+              data_t acc = IDENT;
+
+              for (i = 0; i < length; ++i) {
+                      acc = acc OP data[i];
+              }
+
+              ,*dest = acc;
+      }
+    #+end_src
+*** 5.7 Understanding Modern Processors
+*** 5.8 Loop Unrolling
+*** 5.9 Enhancing Parallelism
+*** 5.10 Summary of Results for Optimizing Combining Code
+*** 5.11 Some Limiting Factors
+*** 5.12 Understanding Memory Performance
+
+* Footnotes
+[fn:1] [[https://www.youtube.com/watch?v=ScMxnXq6fbI&list=PLcQU3vbfgCc9sVAiHf5761UUApjZ3ZD3x&index=1&t=26s][CMU 15213/15513 CSAPP 深入理解计算机系统 Lecture 01 Course Overview 中英字幕 - YouTube 🔊]]

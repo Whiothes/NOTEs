@@ -1,0 +1,8 @@
+* <2021-03-29 10:51> 工作
+** DONE osipparser2 解析 algorithm
+   CLOSED: [2021-03-29 Mon 12:00]
+   - [X] __osip_token_set for "algorithm"
+* <2021-03-29 14:41>
+** 603080
+   * 放量二板
+   * 日, 周线走强

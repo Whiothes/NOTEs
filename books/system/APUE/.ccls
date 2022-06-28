@@ -1,0 +1,2 @@
+%c -std=c11
+-I./include

@@ -1,0 +1,15 @@
+* <2021-04-14 13:21>
+** DONE [#A] 28181 Server
+   CLOSED: [2021-04-14 Wed 13:22]
+   - [ ] A 级出现段错误
+   - [X] 监听改为线程以加快响应速度
+   - [X] REGISTER 成功后修改 device status
+   - [X] REGISTER 成功后修改 channellist channelStatus
+   - [X] UnRegister 更新数据库
+   - [X] Register 添加 Contact
+   - [X] 添加线程更新 Register::expires
+   - [X] 编译openwrt
+** DONE [#B] GIT
+   CLOSED: [2021-04-14 Wed 13:21]
+   - [X] 28181 Server
+   - [X] AW-SQLITE

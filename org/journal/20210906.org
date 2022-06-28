@@ -1,0 +1,37 @@
+* <2021-09-06 10:17>
+** DONE 认证时比较的是密码明文还是密文
+   CLOSED: [2021-09-06 Mon 10:18]
+*** 解密:
+    * krb5,
+
+** 思路:
+   宏定义在: tdb.h,
+   #+begin_src c
+     /** Flags to tdb_store() */
+     #define TDB_REPLACE 1 /** Unused */
+     #define TDB_INSERT 2  /** Don't overwrite an existing entry */
+     #define TDB_MODIFY 3  /** Don't create an existing entry    */
+
+     /** Flags for tdb_open() */
+     #define TDB_DEFAULT           0    /** just a readability place holder */
+     #define TDB_CLEAR_IF_FIRST    1    /** If this is the first open, wipe the db */
+     #define TDB_INTERNAL          2    /** Don't store on disk
+                                            只在 hash_init 时赋值了此宏 */
+     #define TDB_NOLOCK            4    /** Don't do any locking */
+     #define TDB_NOMMAP            8    /** Don't use mmap */
+     #define TDB_CONVERT           16   /** Convert endian (internal use) */
+     #define TDB_BIGENDIAN         32   /** Header is big-endian (internal use) */
+     #define TDB_NOSYNC            64   /** Don't use synchronous transactions */
+     #define TDB_SEQNUM            128  /** Maintain a sequence number */
+     #define TDB_VOLATILE          256  /** Activate the per-hashchain freelist, default 5 */
+     #define TDB_ALLOW_NESTING     512  /** Allow transactions to nest */
+     #define TDB_DISALLOW_NESTING  1024 /** Disallow transactions to nest */
+     #define TDB_INCOMPATIBLE_HASH 2048 /** Better hashing: can't be opened by tdb < 1.2.6. */
+     #define TDB_MUTEX_LOCKING     4096 /** optimized locking using robust mutexes if supported,
+                                            only with tdb >= 1.3.0 and TDB_CLEAR_IF_FIRST
+                                            after checking tdb_runtime_check_for_robust_mutexes() */
+   #+end_src
+
+   1. restore , join
+   2. join, 直接拷贝数据库文件
+   3. 继续研究源码

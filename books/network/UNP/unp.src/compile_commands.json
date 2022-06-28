@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/build/intro",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/include    -o CMakeFiles/daytimetcpcli.dir/daytimetcpcli.c.o   -c /Users/zhoush/Documents/Private/Notes/books/c/UNP/src/intro/daytimetcpcli.c",
+  "file": "/Users/zhoush/Documents/Private/Notes/books/c/UNP/src/intro/daytimetcpcli.c"
+}
+]

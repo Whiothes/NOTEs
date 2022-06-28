@@ -1,0 +1,15 @@
+#+SETUPFILE: ~/Documents/style.setup
+#+OPTIONS: num:nil
+#+LaTeX_CLASS: smarticle
+#+LaTeX_HEADER: \pdfmapfile{/home/neilsen/texmf/fonts/map/dvips/libertine/libertine.map}
+#+LaTeX_HEADER: \usepackage[ttscale=.875]{libertine}
+#+LaTeX_HEADER: \usepackage{sectsty}
+#+LATEX_HEADER: \usepackage{smsmath}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+AUTHOR: 周尚
+
+#+TITLE: 今今乐道
+* <2019-01-22 Tue> 2019
+** 2019-02 February
+*** 2019-02-21 Thursday

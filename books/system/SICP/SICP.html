@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-11-08 一 16:49 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SICP</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zhoushang" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://39.105.199.190/org-html-themes/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://39.105.199.190/org-html-themes/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://39.105.199.190/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="http://39.105.199.190/org-html-themes/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">SICP</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org818a256">Structure and Interpreter of Computre Programs</a>
+<ul>
+<li><a href="#org6d84166">1 Building Abstractions with Procedures</a>
+<ul>
+<li><a href="#org4630d5d">1.1 The Elements of Programming</a></li>
+<li><a href="#org38b7b85">1.2 Procedures and the Processes They Generate</a></li>
+<li><a href="#org28e3604">1.3 Formulating Abstractions with Higher-Order Procedures</a></li>
+</ul>
+</li>
+<li><a href="#orgeb482da">2 Building Abstractions with Data</a>
+<ul>
+<li><a href="#org306d996">2.1 Introduction to Data Abstraction</a></li>
+<li><a href="#org017d559">2.2 Hierarchical Data and the Closure Property</a></li>
+<li><a href="#org6141f0e">2.3 Symbolic Data</a></li>
+<li><a href="#org60b3e06">2.4 Multiple Representations for Abstract Data</a></li>
+<li><a href="#orge093a72">2.5 Systems with Generic Operations</a></li>
+</ul>
+</li>
+<li><a href="#org81df197">3 Modularity, Objects, and State</a>
+<ul>
+<li><a href="#org01ee14c">3.1 Assignment and Local State</a></li>
+<li><a href="#orga9c6e09">3.2 The Environment Model of Evaluation</a></li>
+<li><a href="#orge53b041">3.3 Modeling with Mutable Data</a></li>
+<li><a href="#orgda6319e">3.4 Concurrency: Time Is of the Essence</a></li>
+<li><a href="#orgdec3b02">3.5 Streams</a></li>
+</ul>
+</li>
+<li><a href="#org8c0ee4c">4 Metalinguistic Abstraction</a>
+<ul>
+<li><a href="#orgd664d24">4.1 The Metacircular Evaluator</a></li>
+<li><a href="#org4f09b34">4.2 Variations on a Scheme — Lazy Evaluation</a></li>
+<li><a href="#org1bdcd89">4.3 Variations on a Scheme — Nondeterministic Computing</a></li>
+<li><a href="#org954b6ca">4.4 Logic Programming</a></li>
+</ul>
+</li>
+<li><a href="#org8323eaf">5 Computing with Register Maines</a>
+<ul>
+<li><a href="#orgbd11859">5.1 Designing Register Machines</a></li>
+<li><a href="#org631c7d6">5.2 A Register-Machine Simulator</a></li>
+<li><a href="#orge75dbca">5.3 Storage Allocation and Garbage Collection</a></li>
+<li><a href="#orga5ea9a1">5.4 The Explicit-Control Evaluator</a></li>
+<li><a href="#orgb9a75ba">5.5 Compilation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org818a256" class="outline-2">
+<h2 id="org818a256">Structure and Interpreter of Computre Programs</h2>
+<div class="outline-text-2" id="text-org818a256">
+</div>
+<div id="outline-container-org6d84166" class="outline-3">
+<h3 id="org6d84166">1 Building Abstractions with Procedures</h3>
+<div class="outline-text-3" id="text-org6d84166">
+</div>
+<div id="outline-container-org4630d5d" class="outline-4">
+<h4 id="org4630d5d">1.1 The Elements of Programming</h4>
+<div class="outline-text-4" id="text-org4630d5d">
+</div>
+<ul class="org-ul">
+<li><a id="orgdb00809"></a>1.1.1 Expressions<br />
+<div class="outline-text-5" id="text-orgdb00809">
+<p>
+(<i>operands</i> <i>arguments&#x2026;</i>)
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #4f97d7;">(</span>* <span style="color: #a45bad;">5</span> <span style="color: #a45bad;">99</span><span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org517a051"></a>1.1.2 Naming and the Environment<br /></li>
+<li><a id="org6b61040"></a>1.1.3 Evaluating Combinations<br /></li>
+<li><a id="org2398082"></a>1.1.4 Compound Procedures<br /></li>
+<li><a id="orgcee1e1b"></a>1.1.5 The Substitution Model for Procedure Application<br /></li>
+<li><a id="org3fba570"></a>1.1.6 Conditional Expressions and Predicates<br /></li>
+<li><a id="orgb6cccf2"></a>1.1.7 Example: Square Roots by Newton’s Method<br /></li>
+<li><a id="org3be3903"></a>1.1.8 Procedures as Black-Box Abstractions<br /></li>
+</ul>
+</div>
+<div id="outline-container-org38b7b85" class="outline-4">
+<h4 id="org38b7b85">1.2 Procedures and the Processes They Generate</h4>
+<div class="outline-text-4" id="text-org38b7b85">
+</div>
+<ul class="org-ul">
+<li><a id="org185581c"></a>1.2.1 Linear Recursion and Iteration<br /></li>
+<li><a id="org4b9d534"></a>1.2.2 Tree Recursion<br /></li>
+<li><a id="orgc9fd839"></a>1.2.3 Orders of Growth<br /></li>
+<li><a id="orgfe720dd"></a>1.2.4 Exponentiation<br /></li>
+<li><a id="org66d7824"></a>1.2.5 Greatest Common Divisors<br /></li>
+<li><a id="org6248399"></a>1.2.6 Example: Testing for Primality<br /></li>
+</ul>
+</div>
+<div id="outline-container-org28e3604" class="outline-4">
+<h4 id="org28e3604">1.3 Formulating Abstractions with Higher-Order Procedures</h4>
+<div class="outline-text-4" id="text-org28e3604">
+</div>
+<ul class="org-ul">
+<li><a id="org62f3d5f"></a>1.3.1 Procedures as Arguments<br /></li>
+<li><a id="org1debc84"></a>1.3.2 Constructing Procedures Using lambda<br /></li>
+<li><a id="org1f085c9"></a>1.3.3 Procedures as General Methods<br /></li>
+<li><a id="orgdb282ce"></a>1.3.4 Procedures as Returned Values<br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgeb482da" class="outline-3">
+<h3 id="orgeb482da">2 Building Abstractions with Data</h3>
+<div class="outline-text-3" id="text-orgeb482da">
+</div>
+<div id="outline-container-org306d996" class="outline-4">
+<h4 id="org306d996">2.1 Introduction to Data Abstraction</h4>
+<div class="outline-text-4" id="text-org306d996">
+</div>
+<ul class="org-ul">
+<li><a id="orgd6deddc"></a>2.1.1 Example: Arithmetic Operations for Rational Numbers<br /></li>
+<li><a id="orgef21d28"></a>2.1.2 Abstraction Barriers<br /></li>
+<li><a id="org728f820"></a>2.1.3 What Is Meant by Data?<br /></li>
+<li><a id="orgda8031f"></a>2.1.4 Extended Exercise: Interval Arithmetic<br /></li>
+</ul>
+</div>
+<div id="outline-container-org017d559" class="outline-4">
+<h4 id="org017d559">2.2 Hierarchical Data and the Closure Property</h4>
+<div class="outline-text-4" id="text-org017d559">
+</div>
+<ul class="org-ul">
+<li><a id="org7e6f7c4"></a>2.2.1 Representing Sequences<br /></li>
+<li><a id="org94c74b6"></a>2.2.2 Hierarchical Structures<br /></li>
+<li><a id="orgbec6eac"></a>2.2.3 Sequences as Conventional Interfaces<br /></li>
+<li><a id="orgafca662"></a>2.2.4 Example: A Picture Language<br /></li>
+</ul>
+</div>
+<div id="outline-container-org6141f0e" class="outline-4">
+<h4 id="org6141f0e">2.3 Symbolic Data</h4>
+<div class="outline-text-4" id="text-org6141f0e">
+</div>
+<ul class="org-ul">
+<li><a id="orge4ed94c"></a>2.3.1 otation<br /></li>
+<li><a id="org8146137"></a>2.3.2 Example: Symbolic Differentiation<br /></li>
+<li><a id="org3587fb1"></a>2.3.3 Example: Representing Sets<br /></li>
+<li><a id="org78443d0"></a>2.3.4 Example: Huffman Encoding Trees<br /></li>
+</ul>
+</div>
+<div id="outline-container-org60b3e06" class="outline-4">
+<h4 id="org60b3e06">2.4 Multiple Representations for Abstract Data</h4>
+<div class="outline-text-4" id="text-org60b3e06">
+</div>
+<ul class="org-ul">
+<li><a id="org128c41a"></a>2.4.1 Representations for Complex Numbers<br /></li>
+<li><a id="orge86581c"></a>2.4.2 Tagged data<br /></li>
+<li><a id="org4a6b4ac"></a>2.4.3 Data-Directed Programming and Additivity<br /></li>
+</ul>
+</div>
+<div id="outline-container-orge093a72" class="outline-4">
+<h4 id="orge093a72">2.5 Systems with Generic Operations</h4>
+<div class="outline-text-4" id="text-orge093a72">
+</div>
+<ul class="org-ul">
+<li><a id="orgb6e2b17"></a>2.5.1 Generic Arithmetic Operations<br /></li>
+<li><a id="orgd08eaac"></a>2.5.2 Combining Data of Different Types<br /></li>
+<li><a id="orgb933df7"></a>2.5.3 Example: Symbolic Algebra<br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org81df197" class="outline-3">
+<h3 id="org81df197">3 Modularity, Objects, and State</h3>
+<div class="outline-text-3" id="text-org81df197">
+</div>
+<div id="outline-container-org01ee14c" class="outline-4">
+<h4 id="org01ee14c">3.1 Assignment and Local State</h4>
+<div class="outline-text-4" id="text-org01ee14c">
+</div>
+<ul class="org-ul">
+<li><a id="orgfbdd785"></a>3.1.1 Local State Variables<br /></li>
+<li><a id="orgde51adc"></a>3.1.2 The Benefits of Introducing Assignment<br /></li>
+<li><a id="orge05b2a9"></a>3.1.3 The Costs of Introducing Assignment<br /></li>
+</ul>
+</div>
+<div id="outline-container-orga9c6e09" class="outline-4">
+<h4 id="orga9c6e09">3.2 The Environment Model of Evaluation</h4>
+<div class="outline-text-4" id="text-orga9c6e09">
+</div>
+<ul class="org-ul">
+<li><a id="org084ea7e"></a>3.2.1 The Rules for Evaluation<br /></li>
+<li><a id="org6266512"></a>3.2.2 Applying Simple Procedures<br /></li>
+<li><a id="orgcba2d59"></a>3.2.3 Frames as the Repository of Local State<br /></li>
+<li><a id="org7b1943f"></a>3.2.4 Internal Definitions<br /></li>
+</ul>
+</div>
+<div id="outline-container-orge53b041" class="outline-4">
+<h4 id="orge53b041">3.3 Modeling with Mutable Data</h4>
+<div class="outline-text-4" id="text-orge53b041">
+</div>
+<ul class="org-ul">
+<li><a id="orgadb7570"></a>3.3.1 Mutable List Structure<br /></li>
+<li><a id="org66452f3"></a>3.3.2 Representing eues<br /></li>
+<li><a id="orgbb325b9"></a>3.3.3 Representing Tables<br /></li>
+<li><a id="org3f90c73"></a>3.3.4 A Simulator for Digital Circuits<br /></li>
+<li><a id="org569ed1e"></a>3.3.5 Propagation of Constraints<br /></li>
+</ul>
+</div>
+<div id="outline-container-orgda6319e" class="outline-4">
+<h4 id="orgda6319e">3.4 Concurrency: Time Is of the Essence</h4>
+<div class="outline-text-4" id="text-orgda6319e">
+</div>
+<ul class="org-ul">
+<li><a id="org8de47d6"></a>3.4.1 The Nature of Time in Concurrent Systems<br /></li>
+<li><a id="org26b6df3"></a>3.4.2 Mechanisms for Controlling Concurrency<br /></li>
+</ul>
+</div>
+<div id="outline-container-orgdec3b02" class="outline-4">
+<h4 id="orgdec3b02">3.5 Streams</h4>
+<div class="outline-text-4" id="text-orgdec3b02">
+</div>
+<ul class="org-ul">
+<li><a id="org6801b26"></a>3.5.1 Streams Are Delayed Lists<br /></li>
+<li><a id="org9ee1791"></a>3.5.2 Infinite Streams<br /></li>
+<li><a id="orgaee3f92"></a>3.5.3 Exploiting the Stream Paradigm<br /></li>
+<li><a id="orga8ccfc1"></a>3.5.4 Streams and Delayed Evaluation<br /></li>
+<li><a id="org78a07ad"></a>3.5.5 Modularity of Functional Programs and Modularity of Objects<br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8c0ee4c" class="outline-3">
+<h3 id="org8c0ee4c">4 Metalinguistic Abstraction</h3>
+<div class="outline-text-3" id="text-org8c0ee4c">
+</div>
+<div id="outline-container-orgd664d24" class="outline-4">
+<h4 id="orgd664d24">4.1 The Metacircular Evaluator</h4>
+<div class="outline-text-4" id="text-orgd664d24">
+</div>
+<ul class="org-ul">
+<li><a id="org799e493"></a>4.1.1 The Core of the Evaluator<br /></li>
+<li><a id="org8547adc"></a>4.1.2 Representing Expressions<br /></li>
+<li><a id="org14e4abe"></a>4.1.3 Evaluator Data Structures<br /></li>
+<li><a id="org2398969"></a>4.1.4 Running the Evaluator as a Program<br /></li>
+<li><a id="orgd92d842"></a>4.1.5 Data as Programs<br /></li>
+<li><a id="org7b712c4"></a>4.1.6 Internal Definitions<br /></li>
+<li><a id="org2b026b6"></a>4.1.7 Separating Syntactic Analysis from Execution<br /></li>
+</ul>
+</div>
+<div id="outline-container-org4f09b34" class="outline-4">
+<h4 id="org4f09b34">4.2 Variations on a Scheme — Lazy Evaluation</h4>
+<div class="outline-text-4" id="text-org4f09b34">
+</div>
+<ul class="org-ul">
+<li><a id="org0eaf907"></a>4.2.1 Normal Order and Applicative Order<br /></li>
+<li><a id="orgb1e6e32"></a>4.2.2 An Interpreter with Lazy Evaluation<br /></li>
+<li><a id="org3aa63aa"></a>4.2.3 Streams as Lazy Lists<br /></li>
+</ul>
+</div>
+<div id="outline-container-org1bdcd89" class="outline-4">
+<h4 id="org1bdcd89">4.3 Variations on a Scheme — Nondeterministic Computing</h4>
+<div class="outline-text-4" id="text-org1bdcd89">
+</div>
+<ul class="org-ul">
+<li><a id="org0bc1e33"></a>4.3.1 Amb and Search<br /></li>
+<li><a id="orgd375511"></a>4.3.2 Examples of Nondeterministic Programs<br /></li>
+<li><a id="org3a078d1"></a>4.3.3 Implementing the amb Evaluator<br /></li>
+</ul>
+</div>
+<div id="outline-container-org954b6ca" class="outline-4">
+<h4 id="org954b6ca">4.4 Logic Programming</h4>
+<div class="outline-text-4" id="text-org954b6ca">
+</div>
+<ul class="org-ul">
+<li><a id="orgff8440d"></a>4.4.1 Deductive Information Retrieval<br /></li>
+<li><a id="org8200d21"></a>4.4.2 How the ery System Works<br /></li>
+<li><a id="org0ed9781"></a>4.4.3 Is Logic Programming Mathematical Logic?<br /></li>
+<li><a id="org63c9720"></a>4.4.4 Implementing the ery System<br />
+<ul class="org-ul">
+<li><a id="org28ee629"></a>4.4.4.1 The Driver Loop and Instantiation<br /></li>
+<li><a id="org205ff90"></a>4.4.4.2 The Evaluator<br /></li>
+<li><a id="orge83297f"></a>4.4.4.3 Finding Assertions by Paern Matching<br /></li>
+<li><a id="orgf52befe"></a>4.4.4.4 Rules and Unification<br /></li>
+<li><a id="org0025241"></a>4.4.4.5 Maintaining the Data Base<br /></li>
+<li><a id="org5448e9b"></a>4.4.4.6 Stream Operations<br /></li>
+<li><a id="org71135eb"></a>4.4.4.7 ery Syntax Procedures<br /></li>
+<li><a id="orgc7c06bc"></a>4.4.4.8 Frames and Bindings<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8323eaf" class="outline-3">
+<h3 id="org8323eaf">5 Computing with Register Maines</h3>
+<div class="outline-text-3" id="text-org8323eaf">
+</div>
+<div id="outline-container-orgbd11859" class="outline-4">
+<h4 id="orgbd11859">5.1 Designing Register Machines</h4>
+<div class="outline-text-4" id="text-orgbd11859">
+</div>
+<ul class="org-ul">
+<li><a id="org02d3c96"></a>5.1.1 A Language for Describing Register Machines<br /></li>
+<li><a id="org98c4391"></a>5.1.2 Abstraction in Machine Design<br /></li>
+<li><a id="orgfef78fb"></a>5.1.3 Subroutines<br /></li>
+<li><a id="orgec32a05"></a>5.1.4 Using a Stack to Implement Recursion<br /></li>
+<li><a id="orgb56b7eb"></a>5.1.5 Instruction Summary<br /></li>
+</ul>
+</div>
+<div id="outline-container-org631c7d6" class="outline-4">
+<h4 id="org631c7d6">5.2 A Register-Machine Simulator</h4>
+<div class="outline-text-4" id="text-org631c7d6">
+</div>
+<ul class="org-ul">
+<li><a id="org23148ba"></a>5.2.1 The Machine Model<br /></li>
+<li><a id="org36b00e5"></a>5.2.2 The Assembler<br /></li>
+<li><a id="orgb9dacbe"></a>5.2.3 Generating Execution Procedures for Instructions<br /></li>
+<li><a id="orgcb5ece5"></a>5.2.4 Monitoring Machine Performance<br /></li>
+</ul>
+</div>
+<div id="outline-container-orge75dbca" class="outline-4">
+<h4 id="orge75dbca">5.3 Storage Allocation and Garbage Collection</h4>
+<div class="outline-text-4" id="text-orge75dbca">
+</div>
+<ul class="org-ul">
+<li><a id="org2856106"></a>5.3.1 Memory as Vectors<br /></li>
+<li><a id="org7fed605"></a>5.3.2 Maintaining the Illusion of Infinite Memory<br /></li>
+</ul>
+</div>
+<div id="outline-container-orga5ea9a1" class="outline-4">
+<h4 id="orga5ea9a1">5.4 The Explicit-Control Evaluator</h4>
+<div class="outline-text-4" id="text-orga5ea9a1">
+</div>
+<ul class="org-ul">
+<li><a id="org1bd1656"></a>5.4.1 The Core of the Explicit-Control Evaluator<br /></li>
+<li><a id="org0e5e521"></a>5.4.2 Sequence Evaluation and Tail Recursion<br /></li>
+<li><a id="org4f5e85a"></a>5.4.3 Conditionals, Assignments, and Definitions<br /></li>
+<li><a id="org52301eb"></a>5.4.4 Running the Evaluator<br /></li>
+</ul>
+</div>
+<div id="outline-container-orgb9a75ba" class="outline-4">
+<h4 id="orgb9a75ba">5.5 Compilation</h4>
+<div class="outline-text-4" id="text-orgb9a75ba">
+</div>
+<ul class="org-ul">
+<li><a id="orga3cc7e9"></a>5.5.1 Structure of the Compiler<br /></li>
+<li><a id="org52e3508"></a>5.5.2 Compiling Expressions<br /></li>
+<li><a id="orgdadb9c2"></a>5.5.3 Compiling Combinations<br /></li>
+<li><a id="orgb089c5f"></a>5.5.4 Combining Instruction Sequences<br /></li>
+<li><a id="org0f6187b"></a>5.5.5 An Example of Compiled Code<br /></li>
+<li><a id="org9d1e85e"></a>5.5.6 Lexical Addressing<br /></li>
+<li><a id="orgf1755bf"></a>5.5.7 Interfacing Compiled Code to the Evaluator<br /></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: zhoushang</p>
+<p class="date">Created: 2021-11-08 一 16:49</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

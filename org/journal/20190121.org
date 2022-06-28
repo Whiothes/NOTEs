@@ -1,0 +1,19 @@
+#+SETUPFILE: ~/Documents/style.setup
+
+* <2019-01-21 13:00> Apple Pencil 问题描述
+
+** 起因
+   1. 昨晚睡觉之前直到今天中午笔都在 iPad Pro 上
+   2. 中午连接蓝牙耳机听音乐时发现Pencil无法使用
+
+** 状态
+   * iPad Pro: 蓝牙开启
+   * Apple Pencil: 充电10几小时, 理应有电, 若没有, 则充电环节故障
+
+** 操作
+   1. 蓝牙忽略设备: 此时查找不到 Pencil
+   2. 蓝牙关闭重启: 查找不到 Pencil
+   3. 点击Pencil连接: 没有出现进度条, 一段时间后 Apple Pencil对话框消失
+   4. 重启iPad Pro: 重复执行步骤 2 和 3, 结果相同
+   5. 关闭iPad Pro, 重新开机: 重复执行步骤 2 和 3, 结果相同
+   6. iPad Pro充电, Pencil 置于磁条 10 分钟: 重复执行步骤 2 和 3, 结果相同

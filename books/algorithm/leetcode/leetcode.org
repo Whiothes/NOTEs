@@ -1,0 +1,15 @@
+* LeetCode
+#+SETUPFILE: ~/Documents/style.setup
+** 简单
+   [[https://leetcode-cn.com/problems/two-sum/][1. 两数之和 - 力扣（LeetCode）]]
+   #+begin_src cpp
+     #include <vector>
+
+     class Solution {
+     public:
+         vector <int> twoSum(vector <int> & nums, int target) {
+             int b, e, mid;
+             e = nums.size();
+         }
+     }
+   #+end_src

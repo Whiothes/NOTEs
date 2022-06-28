@@ -1,0 +1,111 @@
+#+LATEX_HEADER: \usepackage{ulem}
+#+SETUPFILE: ~/Documents/style.setup
+#+LATEX_HEADER: \usepackage{ctex}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+OPTIONS: num:nil
+#+AUTHOR: whiothes
+
+#+TITLE: The Go Programming Language
+
+* Progress [0%]
+** TODO 1. Tutorial [2/8]
+*** DONE 1.1 Hello, World
+    CLOSED: [2019-11-08 Fri 00:33]
+    #+caption: helloworld
+    #+include: "src/ch1/helloworld.go" src go
+*** DONE 1.2 Command-Line Arguments
+    CLOSED: [2019-11-08 Fri 00:33]
+    #+caption: echo1
+    #+include: "src/ch1/echo1.go" src go
+
+    #+begin_src go
+      for initialization; condition; post { // { must be the same line
+        // zero or more statement
+      }
+    #+end_src
+
+    #+begin_src go
+      // a traditional "while" loop
+      for condition {
+        // ...
+      }
+    #+end_src
+
+    #+begin_src go
+      // infinite loop
+      for {
+        // ...
+      }
+    #+end_src
+
+    ~_~: syntax requires a variable name but program logic does not
+    #+caption: echo2
+    #+include: "src/ch1/echo2.go" src go
+
+    declare a string variable
+    #+begin_src go
+      s := ""
+      var s string
+      var s = ""
+      var s string = ""
+    #+end_src
+
+    #+caption: echo3
+    #+include: "src/ch1/echo3.go" src go
+
+    - Exercise 1.1
+      #+caption: Modify the echo program to also print os.Args[0]
+      #+include: "src/ch1/ex1.1.go" src go
+    - Exercise 1.2
+      #+caption: Modify the echo program to print the index and value of each of its arguments, one per line.
+      #+include: "src/ch1/ex1.2.go" src go
+    - Exercise 1.3
+      #+begin_src sh
+
+        ➜   time go run echo1.go hello world zhou shang sakljglksa sadlkjgklsad kjlqjwe kljsdkla jlkd jflksadj gklajsdlkqjkle jklasd jfklsad jklfqj eklf jdslka jlks jdgklasdj
+        hello world zhou shang sakljglksa sadlkjgklsad kjlqjwe kljsdkla jlkd jflksadj gklajsdlkqjkle jklasd jfklsad jklfqj eklf jdslka jlks jdgklasdj
+        go run echo1.go hello world zhou shang sakljglksa sadlkjgklsad kjlqjwe  jlkd   *0.21s user 0.22s system 71% cpu 0.591 total*
+
+        ➜   time go run echo2.go hello world zhou shang sakljglksa sadlkjgklsad kjlqjwe kljsdkla jlkd jflksadj gklajsdlkqjkle jklasd jfklsad jklfqj eklf jdslka jlks jdgklasdj
+        hello world zhou shang sakljglksa sadlkjgklsad kjlqjwe kljsdkla jlkd jflksadj gklajsdlkqjkle jklasd jfklsad jklfqj eklf jdslka jlks jdgklasdj
+        go run echo2.go hello world zhou shang sakljglksa sadlkjgklsad kjlqjwe  jlkd   *0.22s user 0.17s system 105% cpu 0.370 total*
+
+        ➜   time go run echo3.go hello world zhou shang sakljglksa sadlkjgklsad kjlqjwe kljsdkla jlkd jflksadj gklajsdlkqjkle jklasd jfklsad jklfqj eklf jdslka jlks jdgklasdj
+        hello world zhou shang sakljglksa sadlkjgklsad kjlqjwe kljsdkla jlkd jflksadj gklajsdlkqjkle jklasd jfklsad jklfqj eklf jdslka jlks jdgklasdj
+        go run echo3.go hello world zhou shang sakljglksa sadlkjgklsad kjlqjwe  jlkd   *0.22s user 0.16s system 139% cpu 0.272 total*
+      #+end_src
+
+*** TODO 1.3 Finding Duplicate Lines
+    #+caption: dup1
+    #+include: "src/ch1/dup1.go" src go
+    #+begin_quote
+    A /map/ holds a set of key/value pairs and provides constant-time operations to store, retrieve, or test for an item in the set.
+
+    In this example, the keys are strings and the values are ints.
+    #+end_quote
+
+    #+begin_src go
+      counts[input.Text()]++
+    #+end_src
+    is equivalent to
+    #+begin_src go
+      line := input.Text()
+      counts[line] = counts[line] + 1
+    #+end_src
+
+    [[file:~/Documents/Practice/go/src/The Go Programming Language/ch1/dup2/main.go::// Dup2 prints the count and text of lines that appear more than][dup2]]
+*** TODO Animated GIFs
+*** TODO Fetching a URL
+*** TODO Fetching URLs Concurrently
+*** TODO A Web Server
+*** TODO Loose Ends
+** TODO 2. Program Structure [0/7]
+*** TODO Names
+*** TODO Declarations
+    [[file:~/Documents/Practice/go/src/The Go Programming Language/ch2/boiling/main.go::// Boiling prints the boiling point of water][boiling]]
+*** TODO Variables
+*** TODO Assignments
+*** TODO Type Declarations
+*** TODO Packages and Files
+*** TODO Scope

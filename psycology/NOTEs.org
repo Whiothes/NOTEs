@@ -1,0 +1,10 @@
+#+SETUPFILE: ~/Documents/style.setup
+#+STARTUP: align
+#+LATEX_HEADER: \usepackage{ulem}
+#+LATEX_HEADER: \usepackage{ctex}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+author: whiothes
+
+* 人性的弱点
+  * 对他人漠不关心的人，命运注定多舛，也会给他人造成伤害，正是因为这类人，世界才充满苦难。

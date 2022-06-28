@@ -1,0 +1,3 @@
+* About
+#+SETUPFILE: ~/Documents/style.setup
+  This is a study notes for "Expert C Programming"

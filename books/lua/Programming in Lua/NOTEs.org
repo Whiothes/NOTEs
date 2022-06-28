@@ -1,0 +1,30 @@
+#+SETUPFILE: ~/Documents/style.setup
+
+#+STARTUP: inlineimages:png
+#+OPTIONS: num:nil
+#+LATEX_HEADER: \usepackage{ulem}
+#+LATEX_HEADER: \usepackage{ctex}
+#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}
+#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}
+#+title: Programping in Lua
+* Chapter 24. Corountines
+** Corountine Basics
+   - ~coroutine.create~
+   #+begin_src lua
+     co = coroutines.create(function() print("hi") end)
+     print (type(co)) --> thread
+   #+end_src
+   - ~coroutine.status~
+     #+begin_src lua
+       coroutine.status(co) --> suspended
+     #+end_src
+     - suspended
+     - dead
+     - running
+
+* TODO Chapter 27. An Overview of the C API [1/2]
+** DONE A First Example
+   CLOSED: [2019-12-11 Wed 21:13]
+   #+caption: Figure 27.1 A bare-bones stand-alone Lua interpreter
+   #+include: "Chapter27/fig27.1.c" src c
+** TODO The Stack

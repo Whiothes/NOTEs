@@ -1,0 +1,12 @@
+#+SETUPFILE: ~/Documents/style.setup
+#+OPTIONS: num:nil
+#+LATEX_HEADER: \usepackage{ctex}
+
+* <2019-01-20 Sun> Latex
+  \(\begin{align*}
+  & \, \cosh x \cosh y - \sinh x \sinh y \\
+  = & \, \frac{e^{x} + e^{-x}}{2} \cdot \frac{e^{y} + e^{-y}}{2} - \frac{e^{x} - e^{-x}}{2} \cdot \frac{e^{y} - e^{-y}}{2} \\
+  = & \, \frac{e^{x+y} + e^{-x + y} + e^{x-y} + e^{-(x+y)}}{4} - \frac{e^{x+y} - e^{-x+y} - e^{x-y} + e^{-(x+y)}}{4} \\
+  = & \, \frac{e^{-x+y} + e^{x-y}}{2} \\
+  = & \, \cosh (x-y) \\
+  \end{align*}\)

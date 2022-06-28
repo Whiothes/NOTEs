@@ -1,0 +1,41 @@
+* <2021-04-08 10:24>
+** TODO [#A] AW-SM-Tass
+** TODO [#B] SM-Client
+   - [ ] 网络连接失败: 清理资源
+   - [ ] 初始化后网络中断信号量未释放
+   - [ ] 段错误清理资源 (信号量和信号量文件)
+** TODO [#C] strongSWan 网关
+   - [X] 编译运行: 初始化失败
+   - [X] 服务端运行 (不能在docker内)
+   - [X] 客户端初始化
+     #+begin_quote
+     /awserver/strongSwan_tests/gmalg # ./init_client.sh
+     killall: charon: no process killed
+     /awserver/strongSwan_tests/gmalg # 00[DMN] Starting IKE charon daemon (strongSwan 5.7.0dr8, Linux 4.9.37, armv7l)
+     00[LIB] feature CUSTOM:libcharon in critical plugin 'charon' has unmet dependency: NONCE_GEN
+     00[LIB] feature CUSTOM:libcharon-receiver in critical plugin 'charon' has unmet dependency: HASHER:HASH_SHA1
+     00[LIB] feature CUSTOM:libcharon-sa-managers in critical plugin 'charon' has unmet dependency: HASHER:HASH_SHA1
+     00[LIB] failed to load 3 critical plugin features
+     00[DMN] initialization failed - aborting charon
+     #+end_quote
+     解决: ~/ipsec/etc/strongswan.d/charon/random.conf~
+     #+begin_src conf
+       random {
+              load = yes
+       }
+     #+end_src
+   - [ ] 客户端运行
+     #+begin_quote
+     connecting to 'unix:///var/run/charon.vici' failed: No such file or directory
+     Error: connecting to 'default' URI failed: No such file or directory
+     #+end_quote
+   - [ ] 国密算法替换
+** TODO 28181 Server
+   - [ ] A 级出现段错误
+   - [X] UnRegister 更新数据库
+   - [X] Register 添加 Contact
+   - [X] 添加线程更新 Register::expires
+   - [X] 编译openwrt
+* Stock
+** TODO 新研股份
+   放量, 趋势反转, 十四五纲要:军工, 新疆
